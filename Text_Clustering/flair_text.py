@@ -80,13 +80,15 @@ true_k = np.unique(labels).shape[0]
 
 #############################################################################
 # get vectorized X
-from flair.embeddings import WordEmbeddings, DocumentPoolEmbeddings, BertEmbeddings
+from flair.embeddings import WordEmbeddings, DocumentPoolEmbeddings, FlairEmbeddings
 from flair.data import Sentence
 import sklearn.preprocessing as preprocessing
 glove_embedding = WordEmbeddings('glove')
-bertEmbeddings = BertEmbeddings('/home/yjc/.pytorch_pretrained_bert/')
+flair_embedding_forward = FlairEmbeddings('news-forward')
+flair_embedding_backward = FlairEmbeddings('news-backward')
 document_embeddings = DocumentPoolEmbeddings([glove_embedding,
-                                              bertEmbeddings])
+                                              flair_embedding_backward,
+                                              flair_embedding_forward])
 docs = [Sentence(doc) for doc in dataset.data]
 for doc in docs:
     document_embeddings.embed(doc)
