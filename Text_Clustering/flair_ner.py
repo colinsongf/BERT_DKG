@@ -1,6 +1,6 @@
 from flair.data import TaggedCorpus
 from flair.data_fetcher import NLPTaskDataFetcher, NLPTask
-from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings, BertEmbeddings
+from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings, BertEmbeddings, FlairEmbeddings
 from typing import List
 from flair.training_utils import EvaluationMetric
 
@@ -22,8 +22,8 @@ embedding_types: List[TokenEmbeddings] = [
     # CharacterEmbeddings(),
 
     # comment in these lines to use flair embeddings
-    # FlairEmbeddings('news-forward'),
-    # FlairEmbeddings('news-backward'),
+    FlairEmbeddings('news-forward'),
+    FlairEmbeddings('news-backward'),
 ]
 
 embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
