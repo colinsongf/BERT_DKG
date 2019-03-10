@@ -84,11 +84,13 @@ import gensim
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import sklearn.preprocessing as preprocessing
 docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(dataset.data)]
-model = Doc2Vec(vector_size=200, min_count=1, max_count=1000)
-model.build_vocab(docs)
-model.train(docs, total_examples=model.corpus_count, epochs=10)
-X = [model.infer_vector(doc.words) for doc in docs]
-X = preprocessing.normalize(X)
+doc2vec_model = Doc2Vec(vector_size=100, min_count=1, max_count=1000)
+doc2vec_model.build_vocab(docs)
+doc2vec_model.train(docs, total_examples=doc2vec_model.corpus_count, epochs=10)
+lda = gensim.models.ldamodel.LdaModel(corpus=docs, id2word=doc2vec_model.wv.index2word, num_topics=100, update_every=1, passes=1)
+
+doc2vec_X = [doc2vec_model.infer_vector(doc.words) for doc in docs]
+X = preprocessing.normalize(doc2vec_X)
 
 # #############################################################################
 # Do the actual clustering
