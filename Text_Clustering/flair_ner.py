@@ -1,12 +1,12 @@
 from flair.data import TaggedCorpus
 from flair.data_fetcher import NLPTaskDataFetcher, NLPTask
-from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings
+from flair.embeddings import TokenEmbeddings, WordEmbeddings, StackedEmbeddings, BertEmbeddings
 from typing import List
 from flair.training_utils import EvaluationMetric
 
 # define columns
 columns = {0: 'text', 1: 'pos', 2: 'chunk', 3: 'ner'}
-data_folder = r'D:\github\NER_projects\pt_bert_ner\data'
+data_folder = './data'
 corpus: TaggedCorpus = NLPTaskDataFetcher.load_column_corpus(data_folder, columns,
                                                               train_file='train.txt',
                                                               test_file='test.txt',
