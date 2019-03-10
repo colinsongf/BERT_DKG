@@ -43,7 +43,7 @@ trainer: ModelTrainer = ModelTrainer(tagger, corpus)
 
 trainer.train('resources/taggers/example-ner',
               learning_rate=0.1,
-              mini_batch_size=32,
+              mini_batch_size=1000,
               max_epochs=10)
 
 from flair.visual.training_curves import Plotter
