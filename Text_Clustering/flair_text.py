@@ -93,8 +93,8 @@ docs = [Sentence(doc) for doc in dataset.data]
 for doc in docs:
     document_embeddings.embed(doc)
 
-X = [preprocessing.normalize(embed_doc.embedding.numpy(),axis=0) for embed_doc in docs]
-
+X = [embed_doc.embedding.numpy() for embed_doc in docs]
+X = preprocessing.normalize(X)
 # #############################################################################
 # Do the actual clustering
 
