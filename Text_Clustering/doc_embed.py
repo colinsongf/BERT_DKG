@@ -36,6 +36,7 @@ def get_doc2vec_embed(data):
 
 def get_bert_embed(data):
     import torch
+    import gensim
     from torch.utils.data import TensorDataset
     import os
     from pytorch_pretrained_bert import BertModel, BertTokenizer
@@ -47,7 +48,8 @@ def get_bert_embed(data):
     #     with open("data/20news_conll.txt", "w") as f:
     #         for doc in docs:
     #             f.write('\n'.join(["-DOCSTART-\n"]+[tok.text for tok in doc.tokens]+["\n\n"]))
-    docs = [Sentence(doc) for doc in data]
+    #docs = [Sentence(doc) for doc in data]
+    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
     model = BertModel.from_pretrained('bert-base-cased')
     tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=False)
@@ -57,8 +59,8 @@ def get_bert_embed(data):
     for i,doc in enumerate(docs):
         print("converting %d"%i)
         doc_tok = ['[CLS]']
-        for word in doc.tokens:
-            toks = tokenizer.tokenize(word.text)
+        for word in doc:
+            toks = tokenizer.tokenize(word)
             doc_tok.extend(toks)
         doc_tok += ['[SEP]']
         doc_ids = tokenizer.convert_tokens_to_ids(doc_tok[:512])
