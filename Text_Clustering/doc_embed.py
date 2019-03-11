@@ -41,7 +41,7 @@ def get_bert_embed(data):
             toks = tokenizer.tokenize(word.text)
             doc_tok.extend(toks)
         doc_tok += ['[SEP]']
-        doc_ids = tokenizer.convert_tokens_to_ids(doc_tok)
+        doc_ids = tokenizer.convert_tokens_to_ids(doc_tok[:512])
         tokens_tensor = torch.tensor([doc_ids]).to(device)
         with torch.no_grad():
             encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=False)
