@@ -5,14 +5,15 @@ def get_lda_embed(data):
     import sklearn.preprocessing as preprocessing
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     dictionary = Dictionary(docs)
+    dictionary.filter_extremes(no_below=1, no_above=0.8)
     corpus = [dictionary.doc2bow(text) for text in docs]
 
-    # lda = gensim.models.ldamodel.LdaModel(corpus=corpus, dictionary=dictionary, num_topics=100, alpha='auto', eval_every=5)
+    lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=50, alpha='auto', eval_every=5, update_every=5, chunksize=10000, passes=100)
     from gensim.test.utils import datapath
     import numpy as np
     temp_file = datapath("lda_model")
-    #lda.save(temp_file)
-    lda = gensim.models.ldamodel.LdaModel.load(temp_file)
+    lda.save(temp_file)
+    #lda = gensim.models.ldamodel.LdaModel.load(temp_file)
     topics = lda.get_topics()
     X = []
     for doc in corpus:
