@@ -29,8 +29,8 @@ def get_bert_embed(data):
     #             f.write('\n'.join(["-DOCSTART-\n"]+[tok.text for tok in doc.tokens]+["\n\n"]))
     docs = [Sentence(doc) for doc in data]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
-    model = BertModel.from_pretrained('/home/yjc/.pytorch_pretrained_bert/bert-base-cased')
-    tokenizer = BertTokenizer.from_pretrained('/home/yjc/.pytorch_pretrained_bert/bert-base-cased', do_lower_case=False)
+    model = BertModel.from_pretrained('bert-base-cased')
+    tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=False)
     model.to(device)
     model.eval()
     X = []
