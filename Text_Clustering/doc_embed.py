@@ -1,4 +1,24 @@
 
+def get_lda_embed(data):
+    import gensim
+    from gensim.corpora.dictionary import Dictionary
+    import sklearn.preprocessing as preprocessing
+    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
+    dictionary = Dictionary(docs)
+    corpus = [dictionary.doc2bow(text) for text in docs]
+
+    # lda = gensim.models.ldamodel.LdaModel(corpus=corpus, dictionary=dictionary, num_topics=100, alpha='auto', eval_every=5)
+    from gensim.test.utils import datapath
+    import numpy as np
+    temp_file = datapath("lda_model")
+    #lda.save(temp_file)
+    lda = gensim.models.ldamodel.LdaModel.load(temp_file)
+    topics = lda.get_topics()
+    X = []
+    for doc in corpus:
+        topic_probs = lda.get_document_topics(doc)
+        X.append(np.sum([topics[pair[0]]*pair[1] for pair in topic_probs], axis=0))
+    return X
 
 def get_doc2vec_embed(data):
     import gensim
@@ -8,7 +28,7 @@ def get_doc2vec_embed(data):
     doc2vec_model = Doc2Vec(vector_size=100, min_count=1, max_count=1000)
     doc2vec_model.build_vocab(docs)
     doc2vec_model.train(docs, total_examples=doc2vec_model.corpus_count, epochs=10)
-    lda = gensim.models.ldamodel.LdaModel(corpus=docs, id2word=doc2vec_model.wv.index2word, num_topics=100, update_every=1, passes=1)
+
 
     doc2vec_X = [doc2vec_model.infer_vector(doc.words) for doc in docs]
     X = preprocessing.normalize(doc2vec_X)
@@ -46,7 +66,7 @@ def get_bert_embed(data):
         with torch.no_grad():
             encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=False)
         X.append(pooled_output.tolist()[0])
-    return sklearn.preprocessing.normalize(X)
+    return X
 
 
 
