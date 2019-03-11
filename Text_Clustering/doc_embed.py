@@ -40,7 +40,7 @@ def get_bert_embed(data):
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
     model = BertModel.from_pretrained('bert-base-uncased')
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=False)
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     model.to(device)
     model.eval()
     X = []
@@ -50,8 +50,8 @@ def get_bert_embed(data):
         for word in doc:
             toks = tokenizer.tokenize(word)
             doc_tok.extend(toks)
-        doc_tok += ['[SEP]']
-        doc_ids = tokenizer.convert_tokens_to_ids(doc_tok[:512])
+        doc_tok = doc_tok[:511]+['[SEP]']
+        doc_ids = tokenizer.convert_tokens_to_ids(doc_tok)
         tokens_tensor = torch.tensor([doc_ids]).to(device)
         with torch.no_grad():
             encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=False)
