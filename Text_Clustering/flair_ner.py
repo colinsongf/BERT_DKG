@@ -16,11 +16,11 @@ tag_dictionary = corpus.make_tag_dictionary(tag_type=tag_type)
 
 embedding_types: List[TokenEmbeddings] = [
 
-    # WordEmbeddings('glove'),
+    WordEmbeddings('glove'),
     # CharacterEmbeddings(),
     # FlairEmbeddings('news-forward'),
     # FlairEmbeddings('news-backward'),
-    BertEmbeddings("/home/yjc/.pytorch_pretrained_bert")
+    # BertEmbeddings("/home/yjc/.pytorch_pretrained_bert")
 ]
 
 embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)

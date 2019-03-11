@@ -9,7 +9,7 @@ import logging
 from optparse import OptionParser
 import sys
 from time import time
-
+from doc_embed import *
 import numpy as np
 
 
@@ -37,7 +37,7 @@ op.add_option("--n-features", type=int, default=10000,
 op.add_option("--verbose",
               action="store_true", dest="verbose", default=False,
               help="Print progress reports inside k-means algorithm.")
-
+op.add_option("--embed_type",dest="embed_type", default="get_doc2vec_embed")
 print(__doc__)
 op.print_help()
 
@@ -80,17 +80,7 @@ true_k = np.unique(labels).shape[0]
 
 #############################################################################
 # get vectorized X
-import gensim
-from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-import sklearn.preprocessing as preprocessing
-docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(dataset.data)]
-doc2vec_model = Doc2Vec(vector_size=100, min_count=1, max_count=1000)
-doc2vec_model.build_vocab(docs)
-doc2vec_model.train(docs, total_examples=doc2vec_model.corpus_count, epochs=10)
-lda = gensim.models.ldamodel.LdaModel(corpus=docs, id2word=doc2vec_model.wv.index2word, num_topics=100, update_every=1, passes=1)
-
-doc2vec_X = [doc2vec_model.infer_vector(doc.words) for doc in docs]
-X = preprocessing.normalize(doc2vec_X)
+X = eval(opts.embed_type)(dataset.data)
 
 # #############################################################################
 # Do the actual clustering
