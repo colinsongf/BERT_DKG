@@ -38,7 +38,7 @@ def get_bert_embed(data):
         print("converting %d"%i)
         doc_tok = ['[CLS]']
         for word in doc.tokens:
-            toks = tokenizer.tokenize(word)
+            toks = tokenizer.tokenize(word.text)
             doc_tok.extend(toks)
         doc_tok += ['[SEP]']
         doc_ids = tokenizer.convert_tokens_to_ids(doc_tok)
