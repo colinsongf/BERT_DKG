@@ -34,7 +34,8 @@ def get_bert_embed(data):
     model.to(device)
     model.eval()
     X = []
-    for doc in docs:
+    for i,doc in enumerate(docs):
+        print("converting %d"%i)
         doc_tok = ['[CLS]']
         for word in doc.tokens:
             toks = tokenizer.tokenize(word)
