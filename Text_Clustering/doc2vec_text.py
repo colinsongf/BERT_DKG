@@ -37,7 +37,7 @@ op.add_option("--n-features", type=int, default=10000,
 op.add_option("--verbose",
               action="store_true", dest="verbose", default=False,
               help="Print progress reports inside k-means algorithm.")
-op.add_option("--embed_type",dest="embed_type", default="get_doc2vec_embed")
+op.add_option("--embed_type",dest="embed_type", default="get_bert_embed")
 print(__doc__)
 op.print_help()
 
