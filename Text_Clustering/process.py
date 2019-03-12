@@ -2,7 +2,7 @@ import json
 import spacy
 nlp = spacy.load('en')
 with open("data/ai_data_sents.txt", "w") as fw:
-    with open("~/fc_out_academic.txt") as fr:
+    with open("home/yjc/fc_out_academic.txt") as fr:
         len = 10000
         i = 1
         while i<len:
