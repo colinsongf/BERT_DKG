@@ -21,7 +21,7 @@ with codecs.open("data/20news.txt","w",encoding='utf-8') as f:
         sents = re.sub(r1, "\n",doc).split("\n\n")
         reg_sents = []
         for sent in sents:
-            line = re.sub(r2, " ", sent.replace("\n", " ")).strip()
+            line = re.sub(r2, " ", sent.replace("\n", " "))
             lines =re.split(r3, line)
             for line in lines:
                 if len(line.split(" "))>2:

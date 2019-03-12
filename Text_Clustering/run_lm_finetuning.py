@@ -70,7 +70,7 @@ class BERTDataset(Dataset):
             with open(corpus_path, "r", encoding=encoding) as f:
                 for line in tqdm(f, desc="Loading Dataset", total=corpus_lines):
                     line = line.strip()
-                    if line == "":
+                    if line == "" and doc!=[]:
                         self.all_docs.append(doc)
                         doc = []
                         #remove last added sample because there won't be a subsequent line anymore in the doc
@@ -84,7 +84,7 @@ class BERTDataset(Dataset):
                         self.corpus_lines = self.corpus_lines + 1
 
             # if last row in file is not empty
-            if self.all_docs[-1] != doc:
+            if self.all_docs[-1] != doc and doc != []:
                 self.all_docs.append(doc)
                 self.sample_to_doc.pop()
 
