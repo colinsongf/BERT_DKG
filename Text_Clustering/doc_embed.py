@@ -76,8 +76,8 @@ def get_finetuned_bert_embed(data):
     # docs = [Sentence(doc) for doc in data]
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
-    model = BertModel.from_pretrained('bert-base-cased')
-    tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=False)
+    model = BertModel.from_pretrained('output_dir')
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=False)
     model.to(device)
     model.eval()
     X = []
