@@ -24,7 +24,7 @@ with codecs.open("data/20news.txt","w",encoding='utf-8') as f:
             line = re.sub(r2, " ", sent.replace("\n", " ")).strip()
             lines =re.split(r3, line)
             for line in lines:
-                if len(line.split(" "))>1:
+                if len(line.split(" "))>2:
                     reg_sents.append(line)
         f.write('\n'.join(reg_sents)+"\n\n")
 
