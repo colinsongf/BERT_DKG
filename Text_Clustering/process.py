@@ -16,6 +16,7 @@ with open("data/ai_data_sents.txt", "w") as fw:
             doc = re.sub(r, " ", doc)
             doc = nlp(doc)
             fw.write('\n'.join([sent.text.strip() for sent in doc.sents])+'\n\n')
+            i += 1
 
 
 
