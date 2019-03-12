@@ -62,6 +62,7 @@ def get_bert_embed(data):
 def get_finetuned_bert_embed(data):
     import torch
     import gensim
+    import sklearn.preprocessing as preprocessing
     from torch.utils.data import TensorDataset
     import os
     from pytorch_pretrained_bert import BertModel, BertTokenizer
@@ -94,4 +95,4 @@ def get_finetuned_bert_embed(data):
             encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=True)
         X.append(np.sum([encoded_layer.sum(1).tolist()[0] for encoded_layer in encoded_layers],0))
 
-    return X
+    return preprocessing.normalize(X)
