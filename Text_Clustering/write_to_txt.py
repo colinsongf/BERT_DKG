@@ -9,12 +9,12 @@ categories = [
 dataset = fetch_20newsgroups(subset='all', categories=categories,
                              shuffle=True, random_state=42)
 print(categories)
-# import spacy
+import spacy
 import codecs
 import re
-# nlp = spacy.load("en")
+nlp = spacy.load("en")
 r1 = re.compile("[\n]>+")
-r2 = re.compile("[ ]+")
+r2 = re.compile("\s+")
 r3 = re.compile("[?!.] ")
 with codecs.open("data/20news.txt","w",encoding='utf-8') as f:
     for doc in dataset.data:
@@ -22,9 +22,10 @@ with codecs.open("data/20news.txt","w",encoding='utf-8') as f:
         reg_sents = []
         for sent in sents:
             line = re.sub(r2, " ", sent.replace("\n", " "))
-            lines =re.split(r3, line)
+            lines = nlp(line).sents
             for line in lines:
-                if len(line.split(" "))>2:
-                    reg_sents.append(line)
+                reg_line = line.string.strip().strip("\t")
+                if len(reg_line.split(" "))>3:
+                    reg_sents.append(reg_line)
         f.write('\n'.join(reg_sents)+"\n\n")
 
