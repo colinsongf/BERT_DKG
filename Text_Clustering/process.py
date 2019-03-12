@@ -27,7 +27,6 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                     fw1.write('\n'.join(fw1_)+"\n\n")
                     fw2.write('\n')
                     i += 1
-                    break
 
 
 
