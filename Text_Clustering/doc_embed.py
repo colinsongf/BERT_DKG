@@ -91,7 +91,7 @@ def get_finetuned_bert_embed(data):
         doc_ids = tokenizer.convert_tokens_to_ids(doc_tok[:512])
         tokens_tensor = torch.tensor([doc_ids]).to(device)
         with torch.no_grad():
-            encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=False)
-        #X.append(encoded_layers.sum(1).tolist()[0])
-        X.append(pooled_output.tolist()[0])
+            encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=True)
+        X.append(np.concatenate([encoded_layer.sum(1).tolist()[0] for encoded_layer in encoded_layers]))
+
     return X
