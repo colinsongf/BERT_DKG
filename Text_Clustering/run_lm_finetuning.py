@@ -70,7 +70,7 @@ class BERTDataset(Dataset):
             with open(corpus_path, "r", encoding=encoding) as f:
                 for line in tqdm(f, desc="Loading Dataset", total=corpus_lines):
                     line = line.strip()
-                    if line == "" and doc!=[]:
+                    if line == "":
                         self.all_docs.append(doc)
                         doc = []
                         #remove last added sample because there won't be a subsequent line anymore in the doc
@@ -84,7 +84,7 @@ class BERTDataset(Dataset):
                         self.corpus_lines = self.corpus_lines + 1
 
             # if last row in file is not empty
-            if self.all_docs[-1] != doc and doc != []:
+            if self.all_docs[-1] != doc:
                 self.all_docs.append(doc)
                 self.sample_to_doc.pop()
 
@@ -206,9 +206,12 @@ class BERTDataset(Dataset):
         # the random document is not the same as the document we're processing.
         for _ in range(10):
             if self.on_memory:
-                rand_doc_idx = random.randint(0, len(self.all_docs)-1)
-                rand_doc = self.all_docs[rand_doc_idx]
-                line = rand_doc[random.randrange(len(rand_doc))]
+                while True:
+                    rand_doc_idx = random.randint(0, len(self.all_docs)-1)
+                    rand_doc = self.all_docs[rand_doc_idx]
+                    if len(rand_doc)!=0:
+                        line = rand_doc[random.randrange(len(rand_doc))]
+                        break
             else:
                 rand_index = random.randint(1, self.corpus_lines if self.corpus_lines < 1000 else 1000)
                 #pick random line
