@@ -23,7 +23,7 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                     fw2_ = ["-DOCSTART-","\n"]
                     for sent in doc.sents:
                         fw1_.append(sent.text.strip())
-                        fw2_.append([word.text for word in sent]+["\n"])
+                        fw2_.extend([word.text for word in sent]+["\n"])
                     fw1.write('\n'.join(fw1_)+"\n\n")
                     fw2.write('\n'.join(fw2_)+'\n\n')
                     i += 1
