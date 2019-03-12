@@ -95,22 +95,23 @@ km.fit(X)
 print("done in %0.3fs" % (time() - t0))
 print()
 
-print("--------------The larger the better---------------------")
+f = open("result_%s.txt" % opts.embed_type, "w")
+print("--------------The larger the better---------------------", file=f)
 
-print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_))
-print("Completeness: %0.3f" % metrics.completeness_score(labels, km.labels_))
-print("V-measure: %0.3f" % metrics.v_measure_score(labels, km.labels_))
+print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_), file=f)
+print("Completeness: %0.3f" % metrics.completeness_score(labels, km.labels_), file=f)
+print("V-measure: %0.3f" % metrics.v_measure_score(labels, km.labels_), file=f)
 print("Adjusted Rand-Index: %.3f"
-      % metrics.adjusted_rand_score(labels, km.labels_))
+      % metrics.adjusted_rand_score(labels, km.labels_), file=f)
 print("Normalized Mutual Information: %0.3f"
-      % metrics.normalized_mutual_info_score(labels, km.labels_))
+      % metrics.normalized_mutual_info_score(labels, km.labels_), file=f)
 print("Rand index adjusted: %0.3f"
-      % metrics.adjusted_rand_score(labels, km.labels_))
+      % metrics.adjusted_rand_score(labels, km.labels_), file=f)
 print("Silhouette Coefficient: %0.3f"
-      % metrics.silhouette_score(X, km.labels_, sample_size=1000))
-print()
+      % metrics.silhouette_score(X, km.labels_, sample_size=1000), file=f)
+print("\n", file=f)
 
-print("--------------The lower the better---------------------")
+print("--------------The lower the better---------------------", file=f)
 print("Davies-Bouldin score: %0.3f"
-      % metrics.davies_bouldin_score(X, km.labels_))
-
+      % metrics.davies_bouldin_score(X, km.labels_), file=f)
+f.close()
