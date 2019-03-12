@@ -5,7 +5,7 @@ import re
 nlp = spacy.load('en')
 r = re.compile("[\n]+")
 with open("data/ai_data_sents.txt", "w") as fw:
-    with open("home/yjc/fc_out_academic.txt") as fr:
+    with open("/home/yjc/fc_out_academic.txt") as fr:
         len = 10000
         i = 1
         while i<len:
