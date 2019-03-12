@@ -409,7 +409,7 @@ def main():
                         type=str,
                         #required=True,
                         help="The input train corpus.")
-    parser.add_argument("--bert_model", default="bert-base-uncased", type=str,
+    parser.add_argument("--bert_model", default="bert-base-cased", type=str,
                         #required=True,
                         help="Bert pre-trained model selected in the list: bert-base-uncased, "
                              "bert-large-uncased, bert-base-cased, bert-base-multilingual, bert-base-chinese.")
