@@ -407,15 +407,16 @@ def main():
     parser.add_argument("--train_file",
                         default="./data/20news.txt",
                         type=str,
-                        required=True,
+                        #required=True,
                         help="The input train corpus.")
-    parser.add_argument("--bert_model", default="bert-base-uncased", type=str, required=True,
+    parser.add_argument("--bert_model", default="bert-base-uncased", type=str,
+                        #required=True,
                         help="Bert pre-trained model selected in the list: bert-base-uncased, "
                              "bert-large-uncased, bert-base-cased, bert-base-multilingual, bert-base-chinese.")
     parser.add_argument("--output_dir",
                         default="./output_dir",
                         type=str,
-                        required=True,
+                        #required=True,
                         help="The output directory where the model checkpoints will be written.")
 
     ## Other parameters
