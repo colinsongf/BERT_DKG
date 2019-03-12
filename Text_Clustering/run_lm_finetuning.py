@@ -447,7 +447,7 @@ def main():
                         help="Proportion of training to perform linear learning rate warmup for. "
                              "E.g., 0.1 = 10%% of training.")
     parser.add_argument("--no_cuda",
-                        action='store_false',
+                        action='store_true',
                         help="Whether not to use CUDA when available")
     parser.add_argument("--on_memory",
                         action='store_true',
