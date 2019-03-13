@@ -39,9 +39,9 @@ from flair.trainers import ModelTrainer
 trainer: ModelTrainer = ModelTrainer(tagger, corpus)
 
 trainer.train('resources/taggers/example-ner',
-              learning_rate=0.001,
+              learning_rate=0.01,
               mini_batch_size=32,
-              max_epochs=10)
+              max_epochs=20)
 
 from flair.visual.training_curves import Plotter
 plotter = Plotter()
