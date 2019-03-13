@@ -511,7 +511,6 @@ We propose an approach that combines flexible Information Retrieval and Concepts
 Flexible information retrieval contributes to filter MEDLINE biomedical literature to the most relevant documents, whereas concept-based indexing allows to quickly identifying candidate concepts that could potentially validate a hypothesis.
 We have tested our approach by replicating the Swanson’s first discovery on fish oil and Raynaud's disease correlation.
 The obtained results show the effectiveness of our approach.
-MOTS-CLÉS recherche d’information, découverte de connaissances dans la littérature biomédicale MeSH; hypothèse de Swanson.
 
 This paper will first briefly survey the existing impact of multimedia information retrieval (MIR) in applications.
 It will then analyze the current trends of MIR research which can have an influence on future applications.
