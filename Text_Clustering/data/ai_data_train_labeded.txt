@@ -7779,24 +7779,24 @@ in O
 MANET B-MISC
 . O
 
-///
+
 -DOCSTART- O
 
 In O
 applications O
 including O
-chemoinformatics O
+chemoinformatics 1
 , O
-bioinformatics O
+bioinformatics 1
 , O
-information O
-retrieval O
+information 1
+retrieval 2
 , O
-text O
-classification O
+text 1
+classification 2
 , O
-computer O
-vision O
+computer 1
+vision 2
 and O
 others O
 , O
@@ -7844,9 +7844,9 @@ thesis O
 focuses O
 on O
 developing O
-robust O
-machine O
-learning O
+robust 3
+machine 4
+learning 4
 models O
 that O
 address O
@@ -7868,20 +7868,20 @@ a O
 major O
 problem O
 in O
-Distributed O
-Information O
-Retrieval O
+Distributed 1
+Information 2
+Retrieval 2
 . O
 
 We O
 used O
-Regression O
-- O
-SVM O
+Regression 3
+- 4
+SVM 4
 and O
-Ranking O
-- O
-SVM O
+Ranking 3
+- 4
+SVM 4
 which O
 would O
 learn O
@@ -7906,7 +7906,7 @@ titles O
 , O
 summaries O
 and O
-URLs O
+URLs 5
 contained O
 in O
 the O
@@ -7932,11 +7932,11 @@ bandwidth O
 usage O
 . O
 
-CORI O
+CORI 3
 and O
-Round O
-Robin O
-merging O
+Round 3
+Robin 4
+merging 4
 were O
 used O
 as O
@@ -7950,7 +7950,8 @@ results O
 show O
 that O
 the O
-SVMmethods O
+SVM 3
+methods O
 do O
 not O
 improve O
@@ -7966,16 +7967,16 @@ The O
 new O
 frontier O
 of O
-mobile O
-information O
-retrieval O
+mobile 1
+information 2
+retrieval 2
 will O
 combine O
-context O
-awareness O
+context 3
+awareness 4
 and O
-content O
-adaptation O
+content 3
+adaptation 4
 . O
 
 
@@ -7987,13 +7988,13 @@ studies O
 the O
 problem O
 of O
-end O
-- O
-to O
-- O
-end O
-windows O
-mining O
+end 1
+- 2
+to 2
+- 2
+end 2
+windows 2
+mining 2
 directly O
 from O
 detection O
@@ -8009,23 +8010,23 @@ this O
 problem O
 in O
 an O
-ad O
-- O
-hoc O
-manner O
+ad 3
+- 4
+hoc 4
+manner 4
 , O
 say O
 , O
-Non O
-- O
-
-Maximum O
-Suppression O
-
+Non 3
+- 4
+Maximum 4
+Suppression 4
 ( O
-NMS O
+NMS 3
+) O
+
 Beyond O
-NMS O
+NMS 3
 , O
 multi O
 - O
@@ -8070,9 +8071,9 @@ this O
 problem O
 and O
 propose O
-semantic O
-windows O
-mining O
+semantic 3
+windows 4
+mining 4
 . O
 
 To O
@@ -8081,11 +8082,11 @@ recall O
 , O
 we O
 propose O
-Selective O
-Forward O
-Search O
+Selective 3
+Forward 4
+Search 4
 ( O
-SFS O
+SFS 3
 ) O
 which O
 keeps O
@@ -8105,7 +8106,7 @@ positives O
 . O
 
 After O
-SFS O
+SFS 3
 , O
 to O
 improve O
@@ -8114,13 +8115,13 @@ precision O
 we O
 present O
 the O
-end O
-- O
-to O
-- O
-end O
-windows O
-mining O
+end 1
+- 2
+to 2
+- 2
+end 2
+windows 2
+mining 2
 by O
 means O
 of O
@@ -8128,15 +8129,15 @@ similarity O
 refining O
 optimized O
 for O
-mean O
-Average O
-Precision O
+mean 3
+Average 4
+Precision 4
 ( O
-mAP O
+mAP 3
 ) O
 and O
-overlap O
-regression O
+overlap 3
+regression 4
 . O
 
 We O
@@ -8146,8 +8147,8 @@ noticeable O
 improvement O
 on O
 the O
-PASCAL O
-VOC O
+PASCAL 5
+VOC 6
 datasets O
 in O
 both O
@@ -8160,13 +8161,13 @@ precision O
 -DOCSTART- O
 
 In O
-FIPA O
-- O
-style O
-multi O
-- O
-agent O
-systems O
+FIPA 5
+- 6
+style 6
+multi 1
+- 2
+agent 2
+systems 2
 , O
 agents O
 coordinate O
@@ -8182,6 +8183,7 @@ acts O
 ( O
 or O
 performatives O
+
 Agent O
 communication O
 languages O
@@ -8245,13 +8247,13 @@ communication O
 needs O
 of O
 a O
-multi O
-- O
-agent O
-distributed O
-information O
-retrieval O
-system O
+multi 1
+- 2
+agent 2
+distributed 2
+information 2
+retrieval 2
+system 2
 and O
 discusses O
 how O
@@ -8261,20 +8263,20 @@ are O
 met O
 by O
 the O
-FIPA O
-ACL O
+FIPA 5
+ACL 6
 . O
 
 
 -DOCSTART- O
 
 The O
-Knowledge O
-Base O
-Discovery O
-Tool O
+Knowledge 3
+Base 4
+Discovery 4
+Tool 4
 ( O
-KBDT O
+KBDT 3
 ) O
 is O
 a O
@@ -8294,7 +8296,7 @@ for O
 documents O
 . O
 
-KBDT O
+KBDT 3
 extracts O
 and O
 displays O
@@ -8314,7 +8316,7 @@ than O
 keywords O
 . O
 
-KBDT O
+KBDT 3
 uses O
 the O
 indexes O
@@ -8374,15 +8376,15 @@ The O
 tools O
 are O
 the O
-Knowledge O
-Base O
-Editor O
+Knowledge 3
+Base 4
+Editor 4
 and O
 the O
-Intelligent O
-Information O
-Retrieval O
-Engine O
+Intelligent 3
+Information 4
+Retrieval 4
+Engine 4
 . O
 
 
@@ -8393,15 +8395,15 @@ the O
 last O
 few O
 years O
-peer O
-- O
-to O
-- O
-peer O
+peer 1
+- 2
+to 2
+- 2
+peer 2
 ( O
-p2p O
+p2p 1
 ) O
-networks O
+networks 1
 have O
 become O
 widely O
@@ -8434,17 +8436,17 @@ finding O
 relevant O
 information O
 over O
-p2p O
-networks O
+p2p 1
+networks 2
 . O
 
 Existing O
-p2p O
-file O
-search O
+p2p 1
+file 2
+search 2
 and O
-information O
-retrieval O
+information 1
+retrieval 2
 techniques O
 are O
 based O
@@ -8472,12 +8474,12 @@ a O
 method O
 to O
 perform O
-semantic O
-information O
-retrieval O
+semantic 1
+information 2
+retrieval 2
 over O
-p2p O
-networks O
+p2p 1
+networks 2
 . O
 
 Our O
@@ -8508,92 +8510,8 @@ peer O
 
 -DOCSTART- O
 
-Yu O
-Yang O
-a O
-c O
-Hongbo O
-Liu O
-a O
-b O
-Hua O
-Wang O
-c O
-Hongsun O
-Fu O
-
-d O
-a O
-School O
-of O
-Information O
-Science O
-and O
-Technology O
-, O
-Dalian O
-Maritime O
-University O
-, O
-Dalian O
-116026 O
-, O
-China O
-b O
-Institute O
-for O
-Neural O
-Computation O
-, O
-University O
-of O
-California O
-, O
-San O
-Diego O
-, O
-La O
-Jolla O
-, O
-CA O
-92093 O
-, O
-USA O
-c O
-Department O
-of O
-Mathematical O
-Sciences O
-, O
-Georgia O
-Southern O
-University O
-, O
-Statesboro O
-, O
-GA O
-30460 O
-, O
-USA O
-d O
-Department O
-of O
-Mathematics O
-, O
-Dalian O
-Maritime O
-University O
-, O
-Dalian O
-116026 O
-, O
-China O
-
-
--DOCSTART- O
-
-Bipartite O
-matching O
+Bipartite 1
+matching 2
 problems O
 characterize O
 many O
@@ -8614,7 +8532,8 @@ vision O
 Exact O
 inference O
 in O
-realworld O
+real O
+world O
 applications O
 of O
 these O
@@ -8640,17 +8559,17 @@ we O
 propose O
 a O
 novel O
-sequential O
-matching O
-sampler O
+sequential 3
+matching 4
+sampler 4
 based O
 on O
 a O
 generalization O
 of O
 the O
-PlackettLuce O
-model O
+PlackettLuce 3
+model 4
 , O
 which O
 can O
@@ -8697,7 +8616,6 @@ with O
 bipartite O
 matching O
 problems O
-
 — O
 ranking O
 and O
@@ -8708,9 +8626,9 @@ which O
 show O
 that O
 the O
-sequential O
-matching O
-sampler O
+sequential 3
+matching 4
+sampler 4
 efficiently O
 approximates O
 the O
@@ -8728,7 +8646,7 @@ approaches O
 -DOCSTART- O
 
 As O
-Internet O
+Internet 5
 resources O
 become O
 accessible O
@@ -8747,10 +8665,10 @@ develop O
 efficient O
 methods O
 for O
-information O
-retrieval O
-across O
-languages O
+information 1
+retrieval 2
+across 2
+languages 2
 . O
 
 In O
@@ -8761,8 +8679,8 @@ paper O
 we O
 focus O
 on O
-query O
-expansion O
+query 1
+expansion 2
 techniques O
 to O
 improve O
@@ -8770,23 +8688,23 @@ the O
 effectiveness O
 of O
 an O
-information O
-retrieval O
+information 1
+retrieval 2
 . O
 
 A O
 combination O
 to O
 a O
-dictionary O
-- O
-based O
-translation O
+dictionary 3
+- 4
+based 4
+translation 4
 and O
-statistical O
-- O
-based O
-disambiguation O
+statistical 3
+- 4
+based 4
+disambiguation 4
 is O
 indispensable O
 to O
@@ -8804,10 +8722,10 @@ using O
 multiple O
 sources O
 for O
-query O
-reformulation O
-and O
-expansion O
+query 1
+reformulation 2
+and 2
+expansion 2
 to O
 select O
 expansion O
@@ -8871,9 +8789,10 @@ an O
 application O
 to O
 a O
-FrenchEnglish O
-Information O
-Retrieval O
+French 1
+English 2
+Information 2
+Retrieval 2
 . O
 
 
@@ -8890,7 +8809,7 @@ in O
 the O
 first O
 six O
-ISMIR O
+ISMIR 5
 conferences O
 , O
 despite O
@@ -8915,8 +8834,8 @@ both O
 the O
 library O
 and O
-Music O
-IR O
+Music 1
+IR 2
 communities O
 of O
 increased O
@@ -8924,7 +8843,7 @@ representation O
 of O
 librarians O
 at O
-ISMIR O
+ISMIR 5
 . O
 
 An O
@@ -8949,8 +8868,8 @@ library O
 literature O
 relevant O
 to O
-Music O
-IR O
+Music 1
+IR 2
 research O
 is O
 presented O
@@ -8967,16 +8886,16 @@ could O
 potentially O
 contribute O
 to O
-Music O
-IR O
+Music 1
+IR 2
 research O
 and O
 the O
 ways O
 in O
 which O
-Music O
-IR O
+Music 1
+IR 2
 research O
 could O
 further O
@@ -9013,20 +8932,21 @@ query O
 translation O
 approaches O
 for O
-cross O
-- O
-language O
-information O
-retrieval O
+cross 1
+- 2
+language 2
+information 2
+retrieval 2
 ( O
-CLIR O
+CLIR 1
+) O
 
 We O
 translate O
 queries O
 with O
-Google O
-Translate O
+Google 5
+Translate 6
 and O
 extend O
 them O
@@ -9048,12 +8968,12 @@ the O
 target O
 language O
 using O
-Wikipedia O
+Wikipedia 5
 . O
 
 For O
 two O
-CLIR O
+CLIR 1
 collections O
 , O
 we O
@@ -9077,7 +8997,7 @@ on O
 a O
 top O
 performing O
-SMT O
+SMT 3
 system O
 . O
 
@@ -9124,12 +9044,12 @@ this O
 paper O
 presents O
 a O
-chaos O
-- O
-based O
-fragile O
-watermarking O
-scheme O
+chaos 3
+- 4
+based 4
+fragile 4
+watermarking 4
+scheme 4
 with O
 recovery O
 . O
@@ -9266,10 +9186,10 @@ these O
 documents O
 . O
 
-Information O
-Retrieval O
+Information 1
+Retrieval 2
 ( O
-IR O
+IR 1
 ) O
 refers O
 to O
@@ -9291,19 +9211,20 @@ set O
 such O
 as O
 the O
-World O
-Wide O
-Web O
+World 5
+Wide 6
+Web 6
 ( O
+WWW 5
+) O
 
-WWW O
 A O
 web O
 search O
 engine O
 is O
 an O
-IR O
+IR 1
 system O
 that O
 is O
@@ -9314,9 +9235,9 @@ for O
 information O
 on O
 the O
-World O
-Wide O
-Web O
+World 5
+Wide 6
+Web 6
 . O
 
 There O
@@ -9329,7 +9250,7 @@ information O
 retrieval O
 . O
 
-IR O
+IR 1
 system O
 has O
 following O
@@ -9339,16 +9260,16 @@ components O
 
 -DOCSTART- O
 
-Multilingual O
-Digital O
-Libraries O
+Multilingual 5
+Digital 6
+Libraries 6
 ask O
 for O
-Cross O
-- O
-Language O
-search O
-engines O
+Cross 1
+- 2
+Language 2
+search 2
+engines 2
 able O
 to O
 disambiguate O
@@ -9373,22 +9294,22 @@ first O
 evaluation O
 of O
 a O
-Cross O
-- O
-Language O
-Information O
-Retrieval O
+Cross 1
+- 2
+Language 2
+Information 2
+Retrieval 2
 ( O
-CLIR O
+CLIR 1
 ) O
 system O
 enriched O
 with O
 a O
-Word O
-To O
-Category O
-Module O
+Word 3
+To 4
+Category 4
+Module 4
 : O
 we O
 automatically O
@@ -9403,21 +9324,21 @@ meta O
 data O
 of O
 the O
-Catalog O
+Catalog 5
 ’s O
 records O
 to O
 the O
 associated O
-Classification O
-Categories O
+Classification 1
+Categories 2
 and O
 exploit O
 it O
 to O
 help O
 the O
-CLIR O
+CLIR 1
 system O
 retrieve O
 only O
@@ -9507,9 +9428,9 @@ explore O
 the O
 effectiveness O
 of O
-QA O
+QA 1
 and O
-IR O
+IR 1
 systems O
 at O
 addressing O
@@ -9552,7 +9473,7 @@ is O
 widely O
 assumed O
 that O
-QA O
+QA 1
 technology O
 provides O
 more O
@@ -9561,7 +9482,7 @@ access O
 to O
 information O
 than O
-IR O
+IR 1
 systems O
 , O
 our O
@@ -9570,7 +9491,7 @@ show O
 that O
 a O
 simple O
-IR O
+IR 1
 baseline O
 is O
 quite O
@@ -9586,10 +9507,10 @@ understand O
 the O
 role O
 of O
-NLP O
+NLP 1
 technology O
 in O
-QA O
+QA 1
 systems O
 and O
 suggest O
@@ -9621,9 +9542,9 @@ quantum O
 physics O
 and O
 for O
-quantum O
-information O
-science O
+quantum 1
+information 2
+science 2
 and O
 its O
 applications O
@@ -9637,9 +9558,9 @@ of O
 trapped O
 ions O
 for O
-quantum O
-information O
-science O
+quantum 1
+information 2
+science 2
 one O
 notes O
 that O
@@ -9673,16 +9594,16 @@ wavelength O
 radiation O
 in O
 the O
-microwave O
+microwave 3
 ( O
-MW O
+MW 3
 ) O
 and O
-radio O
-- O
-frequency O
+radio 3
+- 4
+frequency 4
 ( O
-RF O
+RF 3
 ) O
 regime O
 radiation O
@@ -9710,10 +9631,10 @@ retrieval O
 on O
 the O
 ( O
-geospatial O
+geospatial 1
 ) O
-semantic O
-Web O
+semantic 1
+Web 2
 , O
 information O
 retrieval O
@@ -9745,11 +9666,11 @@ and O
 extensional O
 paradigms O
 for O
-similarity O
-- O
-based O
-information O
-retrieval O
+similarity 1
+- 2
+based 2
+information 2
+retrieval 2
 are O
 introduced O
 . O
@@ -9771,7 +9692,7 @@ pointed O
 out O
 . O
 
-Web O
+Web 5
 user O
 interfaces O
 implementing O
@@ -9789,11 +9710,11 @@ the O
 integration O
 of O
 the O
-SIM O
-- O
-DL O
-similarity O
-theory O
+SIM 3
+- 4
+DL 4
+similarity 4
+theory 4
 into O
 a O
 spatial O
@@ -9912,8 +9833,8 @@ calls O
 for O
 automation O
 of O
-plagirism O
-discovery O
+plagirism 1
+discovery 2
 . O
 
 In O
@@ -9922,16 +9843,16 @@ paper O
 we O
 evaluate O
 an O
-Information O
-Retrieval O
+Information 1
+Retrieval 2
 approach O
 of O
 dealing O
 with O
 plagiarism O
 through O
-Vector O
-Spaces O
+Vector 3
+Spaces 4
 . O
 
 This O
@@ -9956,8 +9877,8 @@ consider O
 the O
 extension O
 of O
-Vector O
-Spaces O
+Vector 3
+Spaces 4
 where O
 input O
 documents O
@@ -9980,8 +9901,8 @@ our O
 approach O
 beyond O
 mere O
-word O
-matching O
+word 1
+matching 2
 . O
 
 The O
@@ -10001,10 +9922,10 @@ as O
 part O
 of O
 the O
-DML O
-- O
-CZ O
-project O
+DML 3
+- 4
+CZ 4
+project 4
 . O
 
 
@@ -10040,11 +9961,11 @@ standards O
 that O
 apply O
 to O
-information O
-retrieval O
+information 1
+retrieval 2
 and O
-web O
-search O
+web 1
+search 2
 , O
 and O
 discuss O
@@ -10073,8 +9994,8 @@ standards O
 where O
 for O
 instance O
-information O
-retrieval O
+information 1
+retrieval 2
 would O
 benefit O
 , O
@@ -10107,11 +10028,13 @@ optimizing O
 the O
 feature O
 based O
-Bag O
-- O
-of O
-- O
-Words(Bow O
+Bag 3
+- 4
+of 4
+- 4
+Words 4
+( O
+Bow 3
 ) O
 representation O
 towards O
@@ -10143,7 +10066,7 @@ data O
 . O
 
 The O
-Bow O
+Bow 3
 model O
 are O
 often O
@@ -10185,15 +10108,15 @@ three O
 fold O
 since O
 the O
-EO O
-- O
-Bow O
+EO 3
+- 4
+Bow 4
 will O
 improve O
 the O
-mean O
-Average O
-preciseness O
+mean 3
+Average 4
+preciseness 4
 , O
 whereas O
 reducing O
@@ -10206,8 +10129,9 @@ the O
 info O
 storage O
 requirements O
+
 The O
-Bow O
+Bow 3
 model O
 treats O
 each O
@@ -10253,14 +10177,15 @@ describe O
 the O
 corresponding O
 images O
-andthey O
+and O
+they O
 can O
 be O
 used O
 for O
 the O
-subsequent O
-retrieval O
+subsequent 1
+retrieval 2
 tasks O
 . O
 
@@ -10273,13 +10198,13 @@ four O
 approaches O
 to O
 the O
-Amharic O
-French O
+Amharic 5
+French 5
 bilingual O
 track O
 at O
-CLEF O
-2005 O
+CLEF 5
+2005 6
 . O
 
 All O
@@ -10292,15 +10217,15 @@ approach O
 to O
 translate O
 the O
-Amharic O
+Amharic 5
 queries O
 into O
-French O
-Bags O
-- O
-of O
-- O
-words O
+French 5
+Bags 3
+- 4
+of 4
+- 4
+words 4
 , O
 but O
 while O
@@ -10342,11 +10267,11 @@ search O
 engines O
 : O
 The O
-SICS O
+SICS 5
 experimental O
 engine O
 and O
-Lucene O
+Lucene 5
 , O
 hence O
 four O
@@ -10356,6 +10281,7 @@ the O
 two O
 approaches O
 . O
+
 Non O
 - O
 content O
@@ -10372,9 +10298,9 @@ dictionary O
 lookup O
 . O
 
-TF O
-/ O
-IDF O
+TF 3
+/ 4
+IDF 4
 values O
 supplemented O
 by O
@@ -10390,11 +10316,11 @@ stop O
 words O
 from O
 the O
-Amharic O
+Amharic 5
 queries O
 and O
 two O
-French O
+French 5
 stopwords O
 lists O
 were O
@@ -10404,7 +10330,7 @@ remove O
 them O
 from O
 the O
-French O
+French 5
 translations O
 . O
 
@@ -10416,13 +10342,13 @@ we O
 found O
 that O
 the O
-SICS O
+SICS 5
 search O
 engine O
 performs O
 better O
 than O
-Lucene O
+Lucene 5
 and O
 that O
 using O
@@ -10479,18 +10405,18 @@ application O
 areas O
 , O
 including O
-knowledge O
-engineering O
+knowledge 1
+engineering 2
 , O
-database O
-design O
-and O
-integration O
+database 1
+design 2
+and 2
+integration 2
 , O
-information O
-retrieval O
-and O
-extraction O
+information 1
+retrieval 2
+and 2
+extraction 2
 . O
 
 We O
@@ -10579,11 +10505,11 @@ to O
 the O
 perspective O
 of O
-ontology O
-- O
-driven O
-information O
-systems O
+ontology 1
+- 2
+driven 2
+information 2
+systems 2
 . O
 
 

@@ -399,9 +399,6 @@ Existing p2p file search and information retrieval techniques are based on the n
 In this paper we present a method to perform semantic information retrieval over p2p networks.
 Our method semantically inspects the content of shared data in peers to generate conceptual information about documents and general information about the peer.
 
-Yu Yang a c Hongbo Liu a b Hua Wang c Hongsun Fu
-d a School of Information Science and Technology, Dalian Maritime University, Dalian 116026, China b Institute for Neural Computation, University of California, San Diego, La Jolla, CA 92093, USA c Department of Mathematical Sciences, Georgia Southern University, Statesboro, GA 30460, USA d Department of Mathematics, Dalian Maritime University, Dalian 116026, China
-
 Bipartite matching problems characterize many situations, ranging from ranking in information retrieval to correspondence in vision.
 Exact inference in realworld applications of these problems is intractable, making efficient approximation methods essential for learning and inference.
 In this paper we propose a novel sequential matching sampler based on a generalization of the PlackettLuce model, which can effectively make large moves in the space of matchings.
