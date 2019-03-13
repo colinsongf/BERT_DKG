@@ -951,7 +951,7 @@ such O
 as O
 artificial B-TEC
 immune I-TEC
-system T-TEC
+system I-TEC
 [ O
 4,7 O
 In O
