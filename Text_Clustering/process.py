@@ -28,7 +28,7 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                                 fw_c = fw3
                             else:
                                 fw_c = fw4
-                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<500:
+                            if len(doc.strip(" "))>20:
                                 doc = nlp(doc)
                                 fw1_ = []
                                 fw_c.write("-DOCSTART-\n\n")
