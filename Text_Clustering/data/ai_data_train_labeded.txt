@@ -61,10 +61,10 @@ embedding
 .
 
 Therefore
-Information
-retrieval
+Information B-FIELD
+retrieval I-FIELD
 (
-IR
+IR B-FIELD
 )
 on
 such

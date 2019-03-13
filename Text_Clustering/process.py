@@ -28,14 +28,14 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                                 fw_c = fw3
                             else:
                                 fw_c = fw4
-                            if len(doc.strip(" "))>20:
+                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<600:
                                 doc = nlp(doc)
                                 fw1_ = []
-                                fw_c.write("-DOCSTART-\n\n")
+                                fw_c.write("-DOCSTART- O\n\n")
                                 for sent in doc.sents:
                                     if len(sent.text.strip())>10:
                                         fw1_.append(sent.text.strip())
-                                        fw_c.write('\n'.join([word.text for word in sent])+"\n\n")
+                                        fw_c.write('\n'.join([word.text+" O" for word in sent])+"\n\n")
                                 fw1.write('\n'.join(fw1_)+"\n\n")
                                 fw_c.write('\n')
                                 i += 1
