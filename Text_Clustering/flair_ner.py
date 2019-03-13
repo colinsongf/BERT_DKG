@@ -16,11 +16,11 @@ tag_dictionary = corpus.make_tag_dictionary(tag_type=tag_type)
 
 embedding_types: List[TokenEmbeddings] = [
 
-    WordEmbeddings('glove'),
+    #WordEmbeddings('glove'),
     # CharacterEmbeddings(),
     # FlairEmbeddings('news-forward'),
     # FlairEmbeddings('news-backward'),
-    # BertEmbeddings("/home/yjc/.pytorch_pretrained_bert")
+    BertEmbeddings("/home/yjc/.pytorch_pretrained_bert")
 ]
 
 embeddings: StackedEmbeddings = StackedEmbeddings(embeddings=embedding_types)
@@ -39,7 +39,7 @@ from flair.trainers import ModelTrainer
 trainer: ModelTrainer = ModelTrainer(tagger, corpus)
 
 trainer.train('resources/taggers/example-ner',
-              learning_rate=0.1,
+              learning_rate=0.001,
               mini_batch_size=32,
               max_epochs=10)
 
