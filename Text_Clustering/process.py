@@ -26,7 +26,7 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                                 fw_c = fw3
                             else:
                                 fw_c = fw4
-                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<200:
+                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<300:
                                 doc = nlp(doc)
                                 fw1_ = []
                                 fw_c.write("-DOCSTART-\n\n")
@@ -37,6 +37,7 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                                 fw1.write('\n'.join(fw1_)+"\n\n")
                                 fw_c.write('\n')
                                 i += 1
+                    print(i)
 
 
 
