@@ -8,9 +8,9 @@ defined_words = set(["Information retrieval","Information sciences","Information
 with open("data/ai_data_sents3000.txt", "w") as fw1:
     with open("data/ai_data_conll3000.txt", "w") as fw2:
         with open("/home/yjc/fc_out_academic.txt") as fr:
-            len = 3000
+            max_len = 3000
             i = 1
-            while i<len:
+            while i<max_len:
                 line = fr.readline()
                 if not line:
                     break
@@ -18,7 +18,7 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                 if set(ob["entities"]).intersection(defined_words) !=set():
                     doc = ob['paperAbstract']
                     doc = re.sub(r, " ", doc)
-                    if len(doc)>10:
+                    if len(doc) >10:
                         doc = nlp(doc)
                         fw1_ = []
                         fw2.write("-DOCSTART-\n\n")
