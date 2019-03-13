@@ -3,7 +3,8 @@ import spacy
 import re
 
 nlp = spacy.load('en')
-r = re.compile("[\n]+")
+r1 = re.compile("[\n]+")
+r2 = re.compile("[\W]{3,}")
 defined_words = set(["Information retrieval","Information sciences","Information science"])
 with open("data/ai_data_sents3000.txt", "w") as fw1:
     with open("data/ai_data_train_labeded.txt", "w") as fw2:
@@ -19,14 +20,15 @@ with open("data/ai_data_sents3000.txt", "w") as fw1:
                         ob = json.loads(line)
                         if set(ob["entities"]).intersection(defined_words) !=set():
                             doc = ob['paperAbstract']
-                            doc = re.sub(r, " ", doc)
+                            doc = re.sub(r1, " ", doc)
+                            doc = re.sub(r2, " ", doc)
                             if i<=250:
                                 fw_c = fw2
                             elif i<=2750:
                                 fw_c = fw3
                             else:
                                 fw_c = fw4
-                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<300:
+                            if len(doc.strip(" "))>20 and len(doc.strip(" "))<500:
                                 doc = nlp(doc)
                                 fw1_ = []
                                 fw_c.write("-DOCSTART-\n\n")
