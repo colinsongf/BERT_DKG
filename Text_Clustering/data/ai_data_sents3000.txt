@@ -539,13 +539,6 @@ We also describe an improved index representation that supports the required ope
 Based on bibliometric methods, the article makes an analysis on 455 papers published by the scholars of Mainland China (ML) in 66 foreign periodicals in the field of Information Science &amp; Library Science (ISLS) included in Social Sciences Citation Index from 2000 to 2010.
 A series of quantitative analysis has been made from the aspects of publications, periodicals, affiliation to reflect the current research status and academic ability of Mainland China in the field of ISLS.
 
-This paper presents the results obtained by our group at the GeoCLEF 2006.
-Our system used a method based on the expansion of
-
-Edward A. FOX DepL of Computer Science VPI& State University
-This system involves the development of a usercentemd hypermedia @abase from the computer science literature.
-We will demonstrate several innovative savens for “digital library” access,that am the result of an ongoing program of user-interviewing, interface desi~ usability testing, and iterative refinement, Searching, nXrievaL and display of ACM publications builds upon our wok with the Large External object-oriented Network Database (LEND) and MARIAN systems, along with extensions to the Z39.50 information retrieval protocol.
-
 We describe our approach and results towards the Hyperlinking sub-task at MediaEval 2012.
 We approached this as an Information Retrieval task and used re-ranking strategies for finding relevant videos.
 A three-step approach was then applied on results to extract the most relevant part of the video regarding the query content.
@@ -575,11 +568,6 @@ So, we have developed several speedup techniques in order to realize real time r
 In addition, the meta server is a single point of failure in CSE.
 So, we introduce redundancy of the meta search server increase availability of CSE.
 In this paper, we describe scalability and reliability of CSE and their evaluations.
-
-Seamless multivariate affine errorin-variables transformation and its application to map rectification Bofeng Li
-a b Yunzhong Shen a c Xingfu Zhang
-Chuang Li a Lizhi Lou a a College of Surveying and Geo-Informatics, Tongji University Shanghai PR China b State Key Laboratory of Geo-information Engineering, Xi'an Research of Surveying and Mapping Xian PR China c Centre for Spatial Information Science and Sustainable Development, Tongji University Shanghai PR China
-d Department of Surveying and Geomatics Guangdong University of Technology Guangzhou PR China Published online: 14 Apr 2013.
 
 A major problem concerning the reusability of software is the retrieval of software components.
 Different approaches have been followed to solve this problem.
@@ -660,10 +648,6 @@ It implements a virtual file structure over email where files and entire directo
 The content and shape of the lattice formed by the conceptual ontology can assist in email discovery.
 The system described provides more flexibility in retrieving stored emails than what is normally availableq in email clients and the approach can be generalised to any electronic document type.
 The paper discusses how conceptual ontologies can leverage traditional IR systems.
-
-Publisher UPGRADE is published on behalf of CEPIS (Council of European Professional Informatics Societies http www.
-cepis.org by Novática <http www.ati.es/novatica journal of the CEPIS society ATI (Asociación de Técnicos de Informática,
-Spain <http www.ati.es UPGRADE is also published in Spanish (full issue printed, some articles online) by Novática, and in Italian (online edition, abstracts only) by the Italian CEPIS society ALSI <http www.alsi.it> and the Italian IT portal Tecnoteca <http www.tecnoteca.it UPGRADE was created in October 2002 by CEPIS and was first published by Novática and by Informatik/Informatique, bimonthly journal of SVI/FSI (Swiss Federation of Professional Informatics Societies http www.svifsi.ch>)
 
 Music information retrieval (MIR) as a nascent discipline is blessed with a multi-disciplinary group of people endeavoring to bring their respective knowledge-bases and research paradigms to bear on MIR problems.
 Communication difficulties across disciplinary boundaries, however, threaten to impede the maturation of MIR into a full-fledge discipline.
@@ -826,9 +810,6 @@ For this, we propose a new spatial match representation scheme to describe spati
 In order to accelerate image searching, we also design an efficient retrieval method using a signature file technique.
 Finally, we show from our experiments that our representation scheme achieves better retrieval effectiveness than the 9-DLT scheme.
 
-Library; Bacon’s Media Directory; Cabell’s Directories; Compendex (Elsevier Engineering Index DBLP;
-GetCited; Google Scholar; HCIBIB; INSPEC; JournalTOCs; Library Information Science Abstracts (LISA MediaFinder; Norwegian Social Science Data Services (NSD PsycINFO SCOPUS; The Index of Information Systems Journals; The Standard Periodical Directory; Ulrich’s Periodicals Directory Editorial Preface
-
 The last decade has seen a great progress on the research and applications of information retrieval.
 The major improvement has been made to combine traditional keyword-based search with implicit inputs such as eye movements or fixations, mouse clicks and voice commands, thus gradually forming a new branch under the name of proactive information retrieval.
 This paper focuses on the the study of eye movement tracking in the document retrieval by constructing a universal online research platform that merges all the research steps collecting data, feature selection, model selection and testing into a flexible and extendible cross-platform software system.
@@ -850,8 +831,6 @@ The paper presents an analysis of the performance of the system using different 
 Approximate matching used a dynamic programming algorithm designed for comparing musical sequences.
 Current work focuses on developing a faster algorithm.
 
-ACM Digital Library; Bacon’s Media Directory; Cabell’s Directories; Compendex (Elsevier Engineering Index CSA Illumina; DBLP; GetCited; Google Scholar; IAOR Online; INSPEC; JournalTOCs; Library Information Science Abstracts (LISA MediaFinder; Norwegian Social Science Data Services (NSD SCOPUS; The Index of Information Systems Journals; The Standard Periodical Directory; Ulrich’s Periodicals Directory Research Articles
-
 This article reports research that explored children’s information retrieval behavior using an online public access catalog (OPAC) in an elementary school library.
 The study considers the impact of a variety of factors including user characteristics, the school setting, interface usability, and information access features on children’s information retrieval success and breakdown.
 The study reports the overall patterns of children’s behavior that influence success and breakdown in information retrieval as well as findings about the intentions, moves, plans, strategies, and search terms of children in grades one through six.
@@ -860,14 +839,12 @@ While it is generally agreed that an elliptical Verb Phrase must be identical to
 I present a semantic identity condition on VP ellipsis: the elided VP must have the same meaning as its antecedent.
 I argue that a semantic identity condition is superior to a syntactic condition on both empirical and theoretical grounds.
 In addition, I show that the proposed condition differs significantly from previously proposed semantic conditions, in that other approaches do not take into account the dynamic nature of semantic representation.
-Comments University of Pennsylvania Department of Computer and Information Science Technical Report
-No. MSCIS-93-04.
-This technical report is available at ScholarlyCommons: http repository.upenn.edu/cis_reports/414 VP Ellipsis and Semantic Identity MS-CIS-93-04 LINC LAB 243
 
 This paper presents a unified utility framework for resource selection of distributed text information retrieval.
 This new framework shows an efficient and effective way to infer the probabilities of relevance of all the documents across the text databases.
 With the estimated relevance information, resource selection can be made by explicitly optimizing the goals of different applications.
-Specifically, when used for database recommendation, the selection is optimized for the goal of high-recall (include as many relevant documents as possible in the selected databases when used for distributed document retrieval, the selection targets the high-precision goal (high precision in the final merged list of documents This new model provides a more solid framework for distributed information retrieval.
+Specifically, when used for database recommendation, the selection is optimized for the goal of high-recall (include as many relevant documents as possible in the selected databases when used for distributed document retrieval, the selection targets the high-precision goal (high precision in the final merged list of documents
+This new model provides a more solid framework for distributed information retrieval.
 Empirical studies show that it is at least as effective as other state-of-the-art algorithms.
 
 Users nowadays need to manage large amounts of information, including documents, e-mails, contacts, and multimedia content.
@@ -976,8 +953,6 @@ Our approach aims to provide a pre-processor for an information retrieval (IR) s
 IR searching is computationally intensive so much so that if we can prevent futile searches we can minimise computational cost.
 We evaluate our approach against several commonly used spell checking techniques for memory-use, retrieval speed and recall accuracy.
 The proposed methodology has low memory use, high speed for word presence checking, reasonable speed for spell checking and a high recall rate 2002 Pattern Recognition Society.
-Published by Elsevier Science Ltd.
-All rights reserved.
 
 Modeling term dependence has been shown to have a significant positive impact on retrieval.
 Current models, however, use sequential term dependencies, leading to an increased query latency, especially for long queries.
@@ -995,9 +970,6 @@ A variety of data types, research problems,methodologies are involved.
 Researchers in the field come from very different disciplines, ranging from mathematical and physical sciences, computational sciences and engineering, to application domains.
 The panel, consisting of highly visible active researchers from both academia and the industry,opens a discussion on the importance of diversity to the healthy growth of the field.
 This paper records their opinions expressed at the panel.
-
-1 Hiroshima City University, Faculty of Information Sciences, 3-4-1 Ozukahigashi, Asaminami-ku, Hiroshima, 731-3194, Japan E-mail doba, okita}@im.hiroshima-cu.ac.jp 2
-The University of Tokyo, Department of Information Science, 7-3-1 Hongo, Bunkyo-ku, Tokyo, 113-0033, Japan E-mail: nis@is.s.u-tokyo.ac.jp 3 Hiroshima University, Faculty of Engineering, 1-4-1 Kagamiyama, Higashi-Hiroshima, 739-8527, Japan E-mail: yama@eml.hiroshima-u.ac.jp
 
 Essential for the success of FAQ systems is their ability to systematically manage knowledge including the intelligent retrieval of useful FAQ documents and the continuous evolution of the knowledge base.
 Based on our experiences, we propose a hybrid approach for the management of FAQ documents on programming languages written in Portuguese, Spanish or other latin languages.
@@ -1053,19 +1025,6 @@ We investigate using readability to re-rank web pages.
 We take an extended view of readability that considers the reading level of retrieved web pages using techniques that consider both textual and cognitive factors.
 Readability of a selection of query results is examined, and a re-ranking on readability is compared to the original ranking.
 Results to date suggest that considering a view of readability for each reader may increase the probability of relevance to a particular user.
-
-Short biography of the author(s) Dr. Shyan-Bin Chou received B.S. degree of Civil and Hydraulic Eng.
-from ChungYuan Christian University, Taiwan, R.O.C. in 1984.
-He then received M.S. of Computer and Information Science from New Jersey Institute of Technology, U.S.A in 1990.
-And on 2002, he received PhD of Information Eng.
-from Chung-Yuan Christian University, Taiwan, R.O.C.
-His research interest includes: collaborative design, computer animation and digital art creation.
-He is currently director and associate professor of Graduate Institute of Design, National Taiwan Normal University, Taiwan, R.O.C. E_mail: chou@ntnu.edu.tw
-
-Documents Using Information Retrieval Techniques Young-Ho Park1,
-Kyu-Young Whang1, Byung Suk Lee2, and Wook-Shin Han3 1 Department of Computer Science and Advanced Information Technology Research Center (AITrc Korea Advanced Institute of Science and Technology (KAIST Korea fyhpark,
-kywhangg@mozart.kaist.ac.kr 2 Department of Computer Science University of Vermont Burlington, VT, USA bslee@cs.uvm.edu 3 Department of Computer Engineering Kyungpook National University, Korea
-wshan@knu.ac.kr
 
 Semantic similarity is an essential part for question answering, it is used various fields such as Artificial Intelligence, Natural Language Processing, information retrieval, Document Retrieval and Automatic evaluations.
 This paper mainly focuses on similarity measure based on the posted query, and finding the appropriate meaning between the words.
@@ -1197,7 +1156,6 @@ In this article, we report on the study of Terrier search engine for Quranic ver
 However, the results produced by Terrier search engine are not yet completely satisfying; an extensible framework has been proposed that incorporates feedback from the user to generate a better, query.
 In this article, we integrate the feedback framework with the Terrier search engine and extend the existing browser-based interface of Terrier search engine to support explicit relevance feedback, reevaluate the query when new feedback is available.
 We also modify the existing Terrier search engine to support queries; the evaluation of the query should reuse the partial results from the evaluation of the original query.
-KEYWORDS— Relevance Feedback, Web Based User Interface, Information Retrieval, Terrier.
 
 We construct a scheme for private information retrieval with k databases and communication complexity O(n
 
@@ -1207,8 +1165,6 @@ At the same time, new business models of online vendors arise and the inherent i
 In this paper, we show alternative ways of interacting with large music collections, based on the Self-Organising Map clustering algorithm applied to an audio feature representation of audio files.
 We therein focus on the presentation of full desktop applications as well as applications for mobile devices like PDAs and Smartphones with the goal of bringing Music Information Retrieval technologies closer to end users.
 Further, the presented interfaces give an outlook to means of access to other types of media in streaming environments, e.g. video.
-
-International Journal of Geographical Information Science Publication details, including instructions for authors and subscription information: http www.informaworld.com/smpp/title~content=t713599799 Towards a General Field model and its order in GIS Y. Liu a; M. F. Goodchild b; Q. Guo c; Y. Tian a; L. Wu a a Institute of Remote Sensing and Geographic Information Systems, Peking University, Beijing 100871, China b National Center for Geographic Information and Analysis, and Department of Geography, University of California, Santa Barbara, CA 93106-4060, USA c School of Engineering, University of California at Merced, Merced, CA 95344, USA
 
 Children experience several difficulties retrieving information using current Information Retrieval (IR) systems.
 Particularly, children struggle to find the right keywords to construct queries given their lack of domain knowledge.
@@ -1257,21 +1213,11 @@ We attempt to build an event profile from the given on-topic stories by robust i
 A feature selection metric and a recognized event clause are utilized to determine most (if not all) key semantic elements of the target event.
 Preliminary experiments on the TDT2 mandarin corpus show that this profile-based event tracking method is promising.
 
-Papers from the workshop held in conjunction with the 28th Annual International ACM Conference on Research and Development in Information Retrieval, August 13-19, 2005, Salvador, Bahia, Brazil
-
 The performance of distributed text document retrieval systems is strongly influenced by the organization of the inverted text.
 This article compares the performance impact on query processing of various physical organizations for inverted lists.
 We present a new probabilistic model of the database and queries.
 Simulation experiments determine those variables that most strongly influence response time and throughput.
 This leads to a set of design trade-offs over a wide range of hardware configurations and new parallel query processing strategies.
-
-The CLEF 2012 Conference on Information Access Evaluation meets Multilinguality, Multimodality, and Visual Analytics was held at the “Sapienza” University of Rome, Italy, September 17–20, 2011.
-CLEF 2012 was organized by the Department of Computer, Control, and Management Enigneering “
-Antonio Ruberti
-Since 2000 the Cross-Language Evaluation Forum (CLEF) has played a leading role in stimulating research and innovation in a wide range of key areas in the domain of information retrieval.
-It has become a landmark in the annual research calendar of the international Information Retrieval and Search community.
-Through the years, CLEF has promoted the study and implementation of evaluation methodologies for diverse types of retrieval task and search scenario.
-As a result, a broad, strong and multidisciplinary research community has been created, which covers and spans the different areas of expertise needed to deal with the evaluation of solutions to challenging information tasks.
 
 The paper makes three points of significance for IR research 1)
 The Cranfield paradigm of IR evaluation seems to lose power when one looks at human instead of system performance 2)
@@ -1285,7 +1231,7 @@ A two-stages translation model is proposed for the acquisition of bilingual term
 Different rescoring techniques are proposed and evaluated in order to select best phrasal translation alternatives.
 Results demonstrate that the proposed translation model yields better translations and retrieval effectiveness could be achieved across JapaneseEnglish language pair.
 
-Feature Selection Pattern Extraction, Classification, Cluster Analysis, Information Retrieval, Text Analytics Interpretation Evaluation Document Sources Abstract—Text mining is a technique to discover or find interesting patterns from the available text documents, which is more prevalent in text mining applications.
+Text mining is a technique to discover or find interesting patterns from the available text documents, which is more prevalent in text mining applications.
 It is also known as knowledge discovery from text (KDT deals with the machine supported analysis of text.
 The pattern discovery from the collection of text documents is a well-known problem in text mining.
 Analysis of terms or text content and categorization of the documents is a complex task of data mining.
@@ -1297,27 +1243,12 @@ Public health informatics is an evolving domain in which practices constantly ch
 Given the emergence of various concepts, such as learning health systems, smart health systems, and adaptive complex health systems, health informatics professionals would benefit from a common set of measures and capabilities to inform our modeling, measuring, and managing of health system "smartness Here, we introduce the concepts of organizational complexity, problem/issue complexity, and situational awareness as three codependent drivers of smart public health systems characteristics.
 We also propose seven smart public health systems measures and capabilities that are important in a public health informatics professional's toolkit.
 
-alumni magazine faculty of geo-information science and earth observation university of twente issue 2013-1 convention on climate change SEMA in TAnzAniA memorandum of understanding greetings from Kenya s
-f e a t u r e h e a l t h New website, latest off ers, start saving…
-
-306 1 The PSI conference is the premier forum in Russia for research and its applications in computer, software and information sciences.
-The conference brings together academic and industrial researchers, devel opers and users to present and discuss the most recent innovations, trends, experiences and concerns in the conference area.
-The previous seven conferences were held in 1991, 1996, 1999, 2001, 2003, 2006 and 2009, respectively, and proved to be significant international events.
-Information on the previous conference and some pictures can be found at the conference web site: http psi.nsc.ru/psi11/index.shtml.
-
 This paper describes the design, implementation and evaluation of Parallel Multimedia Information Retrieval systems.
 PAMIR is implemented on a network of Pentium PC based workstations to exploit the I/O and computation parallelism in both insertion and processing phase of complex similarity queries in multimedia Information retrieval.
 The system is capable to index and query multimedia objects concurrently based on more than one features (i.e global color, local color, texture, shape) and each features of an object queried by a different workstation using multithreaded version of M-tree.
 The system was tested for a collection of approximately 68000 images and each image described by three features; color moments, histogram layouts and texture.
 Experimentation has been shown that the system provides a good reduction in CPU times on both insertion and query processing phase.
 Detailed explanation of the system and experimentation results also presented.
-
-As the Internet grows in importance, concerns about online privacy have arisen.
-We describe the development and validation of three short Internet-administered scales measuring privacy related attitudes Privacy Concern and behaviors General Caution' and 'Technical Protection Internet Privacy Scales 1
-In Press: Journal of the American Society for Information Science and Technology UNCORRECTED proofs.
-This is a preprint of an article accepted for publication in Journal of the American Society for Information Science and Technology copyright 2006 Wiley Periodicals, Inc.
-Running Head
-: INTERNET PRIVACY SCALES Development of measures of online privacy concern and protection for use on the
 
 This paper and panel discussion will cover the growing and exciting new area of Music Information Retrieval (MIR as well as the more general topic of Audio Information Retrieval (AIR
 The main topics, challenges and future directions of MIR research will be identified and four projects from industry and academia are described.
@@ -1362,15 +1293,6 @@ A prototype software was developed and evaluated through a case study using micr
 π-calculus is a calculus for modeling dynamically changing configurations of a network of communicating agents.
 This paper studies the suitability of π-calculus as a unifying framework to model the operational semantics of the three paradigms of programming: functional, logic and imperative paradigms.
 In doing so, the attempt is to demonstrate that π-calculus models a primitive that is pervasive in the three paradigms and to illustrate that the three forms of sequential computing are special instances of concurrent computing.
-Comments University of Pennsylvania Department of Computer and Information Science Technical Report
-No. MSCIS-93-81.
-This technical report is available at ScholarlyCommons: http repository.upenn.edu/cis_reports/603 T-calculus: A Unifying Framework for Programming Paradigms MS-CIS-93-81 LINC LAB 256
-
-–The Information Retrieval (IR) area, is responsibility, mainly to the study of systems and techniques to assign index, search and give back valuable data to user, i.e. is used to investigate documents that exhibited a greater similar to the issued query [1
-In the research in IR, are currently in development models based on Fingerprint.
-In this research, we have developed different information to represent models based on Fingerprints, with the aim to show the documents/queries, so ensuring the management of large information’s volume efficiently.
-In the phase of experimentation, we took as a corpus to that granted by the TREC and they offered queries (with their respective Gold Standard we had successful results with the evaluation program of the TREC
-we take it with a base line to the evaluation of our IR System.
 
 In past decades, the precedent for businesses looking for new retail sites has been to choose locations based on intuition or personal experience.
 However, in today’s struggling economy and crowded market place, many businesses are looking for more analytical methods.
@@ -1432,13 +1354,6 @@ Keywords-Ontolog; Query Expansion; Information Retrieval; Conceptual Retrieval; 
 With the increasing number of documents that are available in digital form, also the number of digital historical documents is increasing (Berkvens, 2001 It cannot be assumed that standard IR systems perform well on historical documents: historical texts differ from modern texts in three ways (Hüning, 1996; Van Der Horst and Marschall, 1989 a) vocabularies have changed b) spelling has changed (sometimes to the extent that two variants of the same word are not even recognizable as such and (c) spelling used to be highly inconsistent (in the Netherlands until the 19th century The goals of this research were to identify the bottlenecks of information retrieval from historical corpora and to find solutions for these bottlenecks.
 Section 1 describes our efforts to further identify the bottlenecks, section 2 examines potential solutions, and section 3 sketches our approach to alleviate the bottlenecks.
 Finally section 4 draws conclusions and provides directions for future research.
-
-Image segmentation remains one of the greatest problems in machine vision.
-The technique described here takes an image and a geometric description of the object required, determines multiple binary thresholds to segment the image, and combines the information from the appropriate thresholds.
-By utilizing regiongrowing hardware it is possible to achieve segmentation in less than 2 seconds.
-Comments University of Pennsylvania Department of Computer and Information Science Technical Report
-MSCIS-89-46.
-This technical report is available at ScholarlyCommons: http repository.upenn.edu/cis_reports/841 FAST IMAGE SEGMENTATION Peter I. Corke'and Helen I. Anderson MS-CIS-89-46 GRASP LAB 185 Department of Computer and Information Science School of Engineering and Applied Science University of Pennsylvania Philadelphia, PA 191 04
 
 Indexing is an important Information Retrieval (IR) operation, which must be parallelised to support large-scale document corpora.
 We propose a novel adaptation of the state-of-the-art single-pass indexing algorithm in terms of the MapReduce programming model.
