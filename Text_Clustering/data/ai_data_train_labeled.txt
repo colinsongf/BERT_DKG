@@ -27092,7 +27092,7 @@ modeling O
 of O
 geospatial O
 context O
-.
+. O
 
 This O
 paper O
