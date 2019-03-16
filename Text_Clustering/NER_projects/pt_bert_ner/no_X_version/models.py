@@ -69,6 +69,7 @@ class SoftmaxDecoder(nn.Module):
 
     def forward(self, inputs, predict_mask, label_ids=None):
         logits = self.forward_model(inputs)
+        p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
         predict_mask, label_ids, logits = valid_first(predict_mask, label_ids, logits)
         if label_ids is not None:
             # cross entropy loss
@@ -81,7 +82,7 @@ class SoftmaxDecoder(nn.Module):
             # label smooth with KL-div loss
             return self.crit(logits, label_ids, predict_mask)
         else:
-            return torch.argmax(logits, -1)
+            return torch.argmax(logits, -1), p
 
     @classmethod
     def create(cls, label_size, input_dim, input_dropout=0.5):
@@ -110,12 +111,13 @@ class CRFDecoder(nn.Module):
     def forward(self, inputs, predict_mask, labels=None):
         logits = self.forward_model(inputs)
         logits = self.crf.pad_logits(logits)
+        p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
         predict_mask, labels, logits = valid_first(predict_mask, labels,logits)
         lens = predict_mask.sum(-1)
         if labels is None:
             #scores, preds = self.crf.viterbi_decode(logits, predict_mask)
             scores, preds = self.crf.viterbi_decode(logits, lens)
-            return preds
+            return preds, p
         #return self.score(logits, predict_mask, labels)
         return self.score(logits, lens, labels)
 
@@ -156,6 +158,7 @@ class AttnSoftmaxDecoder(nn.Module):
 
     def forward(self, inputs, predict_mask, label_ids=None):
         logits = self.forward_model(inputs)
+        p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
         predict_mask, label_ids, logits = valid_first(predict_mask, label_ids, logits)
         if label_ids is not None:
             # p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
@@ -165,7 +168,7 @@ class AttnSoftmaxDecoder(nn.Module):
             # return torch.mean(masked_losses)
             return self.crit(logits, label_ids, predict_mask)
         else:
-            return torch.argmax(logits, -1)
+            return torch.argmax(logits, -1), p
 
     @classmethod
     def create(cls, label_size, input_dim, input_dropout=0.5):
@@ -198,12 +201,13 @@ class AttnCRFDecoder(nn.Module):
     def forward(self, inputs, predict_mask, labels=None):
         logits = self.forward_model(inputs)
         logits = self.crf.pad_logits(logits)
+        p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
         predict_mask, labels, logits = valid_first(predict_mask, labels, logits)
         lens = predict_mask.sum(-1)
         if labels is None:
             # scores, preds = self.crf.viterbi_decode(logits, predict_mask)
             scores, preds = self.crf.viterbi_decode(logits, lens)
-            return preds
+            return preds, p
         # return self.score(logits, predict_mask, labels)
         return self.score(logits, lens, labels)
 
