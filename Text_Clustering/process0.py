@@ -14,7 +14,8 @@ with open("data/ai_data_json", "w") as fw1:
                 break
             ob = json.loads(line)
             if set(ob["entities"]).intersection(defined_words) !=set():
-               fw1.write(line+"\n")
+                fw1.write(line+"\n")
+                i+=1
         print(i)
 
 
