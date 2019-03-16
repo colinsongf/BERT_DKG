@@ -110,8 +110,8 @@ class CRFDecoder(nn.Module):
 
     def forward(self, inputs, predict_mask, labels=None):
         logits = self.forward_model(inputs)
-        logits = self.crf.pad_logits(logits)
         p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
+        logits = self.crf.pad_logits(logits)
         predict_mask, labels, logits = valid_first(predict_mask, labels,logits)
         lens = predict_mask.sum(-1)
         if labels is None:
@@ -200,8 +200,8 @@ class AttnCRFDecoder(nn.Module):
 
     def forward(self, inputs, predict_mask, labels=None):
         logits = self.forward_model(inputs)
-        logits = self.crf.pad_logits(logits)
         p = torch.nn.functional.softmax(logits, -1)  # (batch_size, max_seq_len, num_labels)
+        logits = self.crf.pad_logits(logits)
         predict_mask, labels, logits = valid_first(predict_mask, labels, logits)
         lens = predict_mask.sum(-1)
         if labels is None:
