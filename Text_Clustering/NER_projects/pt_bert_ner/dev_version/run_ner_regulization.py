@@ -289,7 +289,7 @@ def train():
                 unlabeled_loss = -((probs.log()*probs).sum(-1)*predict_mask.float()).mean()
                 loss = weight*unlabeled_loss + loss
 
-                #print("unlabeled loss: %.3f; \nlabeled loss: %.3f; " % (unlabeled_loss.item(), loss.item()))
+                print("unlabeled loss: %.3f; \nlabeled loss: %.3f; " % (unlabeled_loss.item(), loss.item()))
 
             if config['n_gpu'] > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu.
