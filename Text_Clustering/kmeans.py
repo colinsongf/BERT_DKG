@@ -41,7 +41,7 @@ op.add_option("--n-features", type=int, default=10000,
               help="Maximum number of features (dimensions)"
                    " to extract from text.")
 op.add_option("--verbose",
-              action="store_true", dest="verbose", default=False,
+              action="store_true", dest="verbose", default=True,
               help="Print progress reports inside k-means algorithm.")
 
 print(__doc__)
