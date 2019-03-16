@@ -350,7 +350,7 @@ def evaluate(dataset, train_steps=None):
         input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
         with torch.no_grad():
             tmp_eval_loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-            outputs = model(input_ids, segment_ids, input_mask, predict_mask)
+            outputs,_ = model(input_ids, segment_ids, input_mask, predict_mask)
         reshaped_predict_mask, reshaped_label_ids, _ = valid_first(predict_mask, label_ids)
         masked_label_ids = torch.masked_select(label_ids, predict_mask)
         masked_outputs = torch.masked_select(outputs, reshaped_predict_mask)
