@@ -24,7 +24,7 @@ train:
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   # Total number of training epochs to perform
-  epochs: 10
+  epochs: 20
   # Proportion of training to perform linear learning rate warmup for
   warmup_proportion: 0.1
   # Number of updates steps to accumulate before performing a backward/update pass
