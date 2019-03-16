@@ -127,7 +127,7 @@ class CONLLProcessor(DataProcessor):
         return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, TEST + '.txt'), 'test')
 
     def get_unlabeled_train_examples(self, data_dir):
-        return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, TRAIN + '_unlabeled.txt'),
+        return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, UNLABELED_TRAIN + '.txt'),
                                                                     'train_unlabeled')
 
     @staticmethod
