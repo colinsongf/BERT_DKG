@@ -385,8 +385,7 @@ def evaluate(dataset, train_steps=None):
         raise ValueError("The dataset %s cannot be evaled." % dataset)
     eval_examples_dict = {e.guid:e for e in eval_examples}
     eval_features, eval_tokenize_info = convert_examples_to_features(eval_examples, max_seq_length,
-                                                                     tokenizer, label_preprocessed,
-                                                                     label_list)
+                                                                     tokenizer,label_list)
     # with codecs.open(os.path.join(config['task']['output_dir'], "%s.tokenize_info" % dataset), 'w', encoding='utf-8') as f:
     #     for item in eval_tokenize_info:
     #         f.write(' '.join([str(num) for num in item]) + '\n')
@@ -503,7 +502,6 @@ if __name__ == "__main__":
 
         if task_name not in processors:
             raise ValueError("Task not found: %s" % task_name)
-        label_preprocessed = False
         processor = processors[task_name]()
         label_list = processor.get_labels()
 
