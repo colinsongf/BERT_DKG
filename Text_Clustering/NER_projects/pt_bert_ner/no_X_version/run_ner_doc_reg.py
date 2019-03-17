@@ -189,7 +189,15 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
             for j in range(len(sub_words)):
                 if j == 0:
                     predict_mask[sent_id].append(1)
-                    label_ids[sent_id].append(label_map[example.labels[i]])
+                    try:
+                        label_ids[sent_id].append(label_map[example.labels[i]])
+                    except:
+                        print(example.guid)
+                        print(example.words)
+                        print(example.labels)
+                        print(w)
+                        print(sub_words)
+                        exit()
                 else:
                     predict_mask[sent_id].append(0)
                     label_ids[sent_id].append(0)  # X -> 0
