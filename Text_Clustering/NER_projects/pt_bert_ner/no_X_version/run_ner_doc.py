@@ -29,9 +29,10 @@ logger = logging.getLogger(__name__)
 
 TRAIN = DEV = TEST = "tiny"
 
-TRAIN = "train"
-DEV = "dev"
-TEST = "test"
+TRAIN = "ai_data_train_labeled_140"
+UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
+DEV = "ai_data_dev46"
+TEST = "ai_data_test46"
 
 
 class BertForNER(BertPreTrainedModel):

@@ -14,7 +14,7 @@ task:
   # Whether you are using an uncased model or not
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
-  max_seq_length: 128
+  max_seq_length: 512
 train:
   # Whether do training in this run
   do: true
@@ -37,14 +37,14 @@ dev:
   # Which dataset to be predicted: train, dev or test
   dataset: dev
   # Total batch size for predicting
-  batch_size: 32
+  batch_size: 8
 test:
   # Whether do predicting in this run
   do: true
   # Which dataset to be predicted: train, dev or test
   dataset: test
   # Total batch size for predicting
-  batch_size: 32
+  batch_size: 8
   do_every_epoch: true
   do_after_train: true
 # Whether to use CUDA when available
