@@ -145,6 +145,10 @@ class CONLLProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, TEST + '.txt'), 'test')
 
+    def get_unlabeled_train_examples(self, data_dir):
+        return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, UNLABELED_TRAIN + '.txt'),
+                                                                    'train_unlabeled')
+
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
