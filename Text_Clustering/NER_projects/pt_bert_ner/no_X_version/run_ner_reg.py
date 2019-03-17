@@ -345,7 +345,7 @@ def train():
     if not config['test']['do_every_epoch'] and config['test']['do_after_train']:
         evaluate(config['test']['dataset'])
 
-    draw(train_loss_list, dev_loss_list, start_epoch, config['train']['epochs'])
+    draw(train_loss_list, dev_loss_list, config['train']['epochs'])
 
 def evaluate(dataset, train_steps=None):
     if dataset == 'train':
