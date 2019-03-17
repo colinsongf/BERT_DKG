@@ -14,7 +14,7 @@ task:
   # Whether you are using an uncased model or not
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
-  max_seq_length: 512
+  max_seq_length: 384
 train:
   # Whether do training in this run
   do: true
