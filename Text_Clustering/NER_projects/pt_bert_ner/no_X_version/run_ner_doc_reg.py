@@ -357,8 +357,6 @@ def train():
 
     logger.info("***** Running training*****")
     weight = torch.tensor(1., requires_grad=False).to(device)
-    train_loss_list = []
-    dev_loss_list = []
     for epoch in trange(start_epoch, config['train']['epochs'], desc="Epoch"):
         model.train()
         tr_loss = 0
