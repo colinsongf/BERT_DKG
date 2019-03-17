@@ -1,3 +1,4 @@
+# -*- coding:utf8 -*-
 from __future__ import absolute_import, division, print_function
 
 import os
@@ -47,7 +48,7 @@ class BertForNER(BertPreTrainedModel):
 
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
-        hidden, _ = self.bert(input_ids, segment_ids, input_mask,
+        hidden, _ = self.bert(input_ids, None, input_mask,
                                   output_all_encoded_layers=False)  # bert_layer: (batch_size, max_seq_len, hidden_size)
         #hidden = self.bilstm(hidden)
         return self.decoder(hidden, predict_mask, label_ids)
@@ -63,14 +64,14 @@ class InputExample(object):
 
 class InputFeatures(object):
 
-    def __init__(self, input_ids, input_mask, segment_ids, predict_mask, label_ids):
+    def __init__(self, input_ids, input_mask, segment_ids, predict_mask, label_ids,ex_id,start_ix):
         self.input_ids = input_ids
         self.input_mask = input_mask
         self.segment_ids = segment_ids
         self.predict_mask = predict_mask
         self.label_ids = label_ids
-
-
+        self.ex_id = ex_id
+        self.start_ix = start_ix
 def memory_usage_psutil():
     # return the memory usage in MB
     import psutil, os
@@ -98,17 +99,35 @@ class DataProcessor(object):
         examples = []
         words = []
         labels = []
+        start = 0
+        max_len = 0
         for index, line in enumerate(codecs.open(data_file, encoding='utf-8')):
+            segs = line.split()
             if not line.strip():
-                guid = "%s-%d" % (set_type, index)
-                examples.append(InputExample(guid=guid, words=words, labels=labels))
+                if words and words[-1]!='[SEP]':
+                    words.append("[SEP]")
+                    labels.append("")
+                continue
+            if segs[0]=='-DOCSTART-' and words != []:
+                guid = "%s-%d" % (set_type, start)
+                max_len = max(max_len, len(words)-1)
+                examples.append(InputExample(guid=guid, words=words[:-1], labels=labels[:-1]))
                 words = []
                 labels = []
+                start = -1
+            elif segs[0]=='-DOCSTART-':
+                continue
             else:
-                segs = line.split()
                 words.append(segs[0])
-                labels.append(segs[-1])
+                labels.append(segs[-1] if len(segs)>1 else "")
+                if start == -1:
+                    start = index
+        guid = "%s-%d" % (set_type, start)
+        examples.append(InputExample(guid=guid, words=words[:-1], labels=labels[:-1]))
+        max_len = max(max_len, len(words) - 1)
+        logger.info("%s max_doc_len = %d"%(set_type, max_len))
         return examples
+
 
     @staticmethod
     def get_labels():
@@ -126,17 +145,13 @@ class CONLLProcessor(DataProcessor):
     def get_test_examples(self, data_dir):
         return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, TEST + '.txt'), 'test')
 
-    def get_unlabeled_train_examples(self, data_dir):
-        return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, UNLABELED_TRAIN + '.txt'),
-                                                                    'train_unlabeled')
-
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
         return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
 
 
-def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list):
+def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list=[]):
     """Loads a data file into a list of `InputBatch`s."""
 
     label_map = {label: i for i, label in enumerate(label_list)}
@@ -144,55 +159,107 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
     tokenize_info = []
     add_label = 'X'
     for (ex_index, example) in enumerate(examples):
-        tokenize_count = []
-        tokens = ['[CLS]']
-        predict_mask = [0]
-        label_ids = [0]  # [CLS] -> 0
+        tokenize_count = [[]]
+        tokens = [[]]
+        segment_ids = [[]]
+        sent_index = [0] # doc里面每个句子起始的index
+        predict_mask = [[]]
+        label_ids = [[]]
+        sent_id = 0 # 当前的句子id
         for i, w in enumerate(example.words):
+            if w == '[SEP]': # 遇到SEP表示一个句子结束，这里忽略句子间的分隔符
+                sent_id += 1
+                sent_index.append(i+1)
+                segment_ids.append([])
+                tokenize_count.append([])
+                tokens.append([])
+                predict_mask.append([])
+                label_ids.append([])
+                continue
             sub_words = tokenizer.tokenize(w)
             if not sub_words:
                 sub_words = ['[UNK]']
-            tokenize_count.append(len(sub_words))
-            tokens.extend(sub_words)
+            tokenize_count[sent_id].append(len(sub_words))
+            tokens[sent_id].extend(sub_words)
+            segment_ids[sent_id].extend([sent_id] * len(sub_words))
             for j in range(len(sub_words)):
                 if j == 0:
-                    predict_mask.append(1)
-                    label_ids.append(label_map[example.labels[i]])
+                    predict_mask[sent_id].append(1)
+                    label_ids[sent_id].append(label_map[example.labels[i]])
                 else:
-                    predict_mask.append(0)
-                    label_ids.append(0)  # X -> 0
+                    predict_mask[sent_id].append(0)
+                    label_ids[sent_id].append(0)  # X -> 0
         tokenize_info.append(tokenize_count)
 
-        if len(tokens) > max_seq_length - 1:
-            logging.debug('Example {} is too long: {}'.format(ex_index, len(tokens)))
-            tokens = tokens[0:(max_seq_length - 1)]
-            predict_mask = predict_mask[0:(max_seq_length - 1)]
-            label_ids = label_ids[0:(max_seq_length - 1)]
-        tokens.append('[SEP]')
-        predict_mask.append(0)
-        label_ids.append(0)  # [SEP] -> 0
+        words_num = 0
+        doc_segment_ids = []
+        doc_predict_mask = []
+        doc_label_ids = []
+        doc_tokens = []
+        start_ix = 0
+        for i,sent in enumerate(segment_ids):
+            words_num += len(sent)
+            if words_num>max_seq_length-2:
+                doc_segment_ids = [0]+ doc_segment_ids + [doc_segment_ids[-1]]
+                doc_predict_mask = [0] + doc_predict_mask + [0]
+                doc_label_ids = [0] + doc_label_ids + [0]
+                doc_tokens = ['[CLS]'] + doc_tokens + ['[SEP]']
 
-        input_ids = tokenizer.convert_tokens_to_ids(tokens)
-        segment_ids = [0] * len(input_ids)
-        input_mask = [1] * len(input_ids)
+                doc_input_ids = tokenizer.convert_tokens_to_ids(doc_tokens)
+                doc_input_mask = [1] * len(doc_input_ids)
+                # Pad up to the doc length
+                padding_length = max_seq_length - len(doc_input_ids)
+                zero_padding = [0] * padding_length
+                doc_input_ids += zero_padding
+                doc_input_mask += zero_padding
+                doc_segment_ids += zero_padding
+                doc_predict_mask += zero_padding
+                doc_label_ids += [0] * padding_length  # [PAD] -> 0
 
-        # Pad up to the sequence length
-        padding_length = max_seq_length - len(input_ids)
+                assert len(doc_input_ids) == max_seq_length
+                assert len(doc_input_mask) == max_seq_length
+                assert len(doc_segment_ids) == max_seq_length
+                assert len(doc_predict_mask) == max_seq_length
+                assert len(doc_label_ids) == max_seq_length
+
+                features.append(InputFeatures(input_ids=doc_input_ids, input_mask=doc_input_mask, segment_ids=doc_segment_ids,
+                                              predict_mask=doc_predict_mask, label_ids=doc_label_ids, ex_id=example.guid, start_ix = start_ix))
+                words_num = len(sent)
+                doc_segment_ids = [0]*words_num
+                doc_predict_mask = predict_mask[i]
+                doc_label_ids = label_ids[i]
+                doc_tokens = tokens[i]
+                start_ix = sent_index[i]
+            else:
+                doc_segment_ids.extend([s-(doc_segment_ids[0] if doc_segment_ids!=[] else 0) for s in sent])
+                doc_predict_mask.extend(predict_mask[i])
+                doc_label_ids.extend(label_ids[i])
+                doc_tokens.extend(tokens[i])
+
+        doc_segment_ids = [0] + doc_segment_ids + [doc_segment_ids[-1]]
+        doc_predict_mask = [0] + doc_predict_mask + [0]
+        doc_label_ids = [0] + doc_label_ids + [0]
+        doc_tokens = ['[CLS]'] + doc_tokens + ['[SEP]']
+
+        doc_input_ids = tokenizer.convert_tokens_to_ids(doc_tokens)
+        doc_input_mask = [1] * len(doc_input_ids)
+        # Pad up to the doc length
+        padding_length = max_seq_length - len(doc_input_ids)
         zero_padding = [0] * padding_length
-        input_ids += zero_padding
-        input_mask += zero_padding
-        segment_ids += zero_padding
-        predict_mask += zero_padding
-        label_ids += [0] * padding_length  # [PAD] -> 0
+        doc_input_ids += zero_padding
+        doc_input_mask += zero_padding
+        doc_segment_ids += zero_padding
+        doc_predict_mask += zero_padding
+        doc_label_ids += [0] * padding_length  # [PAD] -> 0
 
-        assert len(input_ids) == max_seq_length
-        assert len(input_mask) == max_seq_length
-        assert len(segment_ids) == max_seq_length
-        assert len(predict_mask) == max_seq_length
-        assert len(label_ids) == max_seq_length
+        assert len(doc_input_ids) == max_seq_length
+        assert len(doc_input_mask) == max_seq_length
+        assert len(doc_segment_ids) == max_seq_length
+        assert len(doc_predict_mask) == max_seq_length
+        assert len(doc_label_ids) == max_seq_length
 
-        features.append(InputFeatures(input_ids=input_ids, input_mask=input_mask, segment_ids=segment_ids,
-                                      predict_mask=predict_mask, label_ids=label_ids))
+        features.append(InputFeatures(input_ids=doc_input_ids, input_mask=doc_input_mask, segment_ids=doc_segment_ids,
+                                      predict_mask=doc_predict_mask, label_ids=doc_label_ids,ex_id=example.guid,start_ix = start_ix))
     return features, tokenize_info
 
 
@@ -205,6 +272,7 @@ def warmup_linear(x, warmup=0.002):
     if x < warmup:
         return x / warmup
     return 1.0 - x
+
 def create_tensor_data(features):
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_input_mask = torch.ByteTensor([f.input_mask for f in features])
@@ -212,6 +280,7 @@ def create_tensor_data(features):
     all_predict_mask = torch.ByteTensor([f.predict_mask for f in features])
     all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
     return TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_predict_mask, all_label_ids)
+
 
 def train():
     if config['train']['gradient_accumulation_steps'] < 1:
@@ -245,7 +314,7 @@ def train():
                          warmup=config['train']['warmup_proportion'], t_total=num_train_steps)
 
     train_features, train_tokenize_info = convert_examples_to_features(train_examples, max_seq_length,
-                                                                       tokenizer, label_list)
+                                                                       tokenizer,label_list)
     unlabeled_train_features, unlabeled_train_tokenize_info = convert_examples_to_features(unlabeled_train_examples,
                                                                                            max_seq_length,
                                                                                            tokenizer,
@@ -349,14 +418,15 @@ def evaluate(dataset, train_steps=None):
         eval_examples = processor.get_test_examples(config['task']['data_dir'])
     else:
         raise ValueError("The dataset %s cannot be evaled." % dataset)
+    eval_examples_dict = {e.guid:e for e in eval_examples}
     eval_features, eval_tokenize_info = convert_examples_to_features(eval_examples, max_seq_length,
-                                                                     tokenizer,
-                                                                     label_list)
+                                                                     tokenizer,label_list)
     # with codecs.open(os.path.join(config['task']['output_dir'], "%s.tokenize_info" % dataset), 'w', encoding='utf-8') as f:
     #     for item in eval_tokenize_info:
     #         f.write(' '.join([str(num) for num in item]) + '\n')
     logger.info("***** Running Evaluation on %s set*****" % dataset)
     logger.info("  Num examples = %d", len(eval_examples))
+    logger.info("  Num features = %d", len(eval_features))
     logger.info("  Batch size = %d", config[dataset]['batch_size'])
     all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
     all_input_mask = torch.ByteTensor([f.input_mask for f in eval_features])
@@ -379,7 +449,7 @@ def evaluate(dataset, train_steps=None):
         input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
         with torch.no_grad():
             tmp_eval_loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-            outputs, _ = model(input_ids, segment_ids, input_mask, predict_mask)
+            outputs,_ = model(input_ids, segment_ids, input_mask, predict_mask)
         reshaped_predict_mask, reshaped_label_ids, _ = valid_first(predict_mask, label_ids)
         masked_label_ids = torch.masked_select(label_ids, predict_mask)
         masked_outputs = torch.masked_select(outputs, reshaped_predict_mask)
@@ -410,11 +480,15 @@ def evaluate(dataset, train_steps=None):
         fn2 = "%s.mistake " % dataset
     writer1 = codecs.open(os.path.join(config['task']['output_dir'], fn1), 'w', encoding='utf-8')
     writer2 = codecs.open(os.path.join(config['task']['output_dir'], fn2), 'w', encoding='utf-8')
-    for example, predict_line, predict_mask in zip(eval_examples, predictions, predict_masks):
+    for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
+        example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
-        word_idx = 0
+        word_idx = eval_feature.start_ix
         mistake = False
         for index, label_id in enumerate(predict_line[:sum(predict_mask)]):
+            if example.words[word_idx]=='[SEP]':
+                word_idx += 1
+                w1_sent.append("\n")
             line = ' '.join([example.words[word_idx], example.labels[word_idx], label_list[label_id]])
             w1_sent.append(line)
             if label_list[label_id] != example.labels[word_idx]:
@@ -446,8 +520,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-
-        config['task']['output_dir'] = config['task']['output_dir']+"_reg"
+        config['task']['output_dir'] = config['task']['output_dir'] + "_doc_reg"
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
             use_gpu = True
