@@ -288,16 +288,17 @@ def train():
             batch = tuple(t.to(device) for t in batch)
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
             loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-
+            pre_loss = loss.item()
+            print("labeled_loss : %.4f" % pre_loss)
             if epoch > 2:
-                batch = unlabeled_iter.next()
-                batch = tuple(t.to(device) for t in batch)
-                input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
-                _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
-                unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
-                loss = weight * unlabeled_loss + loss
-
-                print("unlabeled loss: %.3f; \nlabeled loss: %.3f; " % (unlabeled_loss.item(), loss.item()))
+                for ix in range(10):
+                    batch = unlabeled_iter.next()
+                    batch = tuple(t.to(device) for t in batch)
+                    input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
+                    _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
+                    unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
+                    loss += unlabeled_loss*weight
+                    print("unlabeled_loss itr_%d: %.4f" % (ix+1, unlabeled_loss.item()))
 
             if config['n_gpu'] > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu.
