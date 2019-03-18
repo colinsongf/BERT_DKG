@@ -408,7 +408,7 @@ def main():
 
     ## Required parameters
     parser.add_argument("--train_file",
-                        default="./data/20news.txt",
+                        default="./data/ai_data_sents3000.txt",
                         type=str,
                         #required=True,
                         help="The input train corpus.")
@@ -417,7 +417,7 @@ def main():
                         help="Bert pre-trained model selected in the list: bert-base-uncased, "
                              "bert-large-uncased, bert-base-cased, bert-base-multilingual, bert-base-chinese.")
     parser.add_argument("--output_dir",
-                        default="./output_dir",
+                        default="./output_dir_lm_ai",
                         type=str,
                         #required=True,
                         help="The output directory where the model checkpoints will be written.")
