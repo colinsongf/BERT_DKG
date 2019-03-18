@@ -4,7 +4,8 @@ task:
   # The input data directory
   data_dir: /home/yjc/bishe/Text_Clustering/data
   # bert pre-trained model directory
-  bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
+  #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
+  bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
   decoder: AttnCRFDecoder
   # The output directory where the model predictions and checkpoints will be written
