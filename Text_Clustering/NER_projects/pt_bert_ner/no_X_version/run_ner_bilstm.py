@@ -444,7 +444,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-
+        config['task']['output_dir'] = config['task']['output_dir'] + "_bilstm"
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
             use_gpu = True
