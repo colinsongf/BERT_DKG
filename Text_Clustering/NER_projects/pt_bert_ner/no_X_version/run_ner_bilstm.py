@@ -42,7 +42,7 @@ class BilstmNER(nn.Module):
         self.hidden_size = config.hidden_size
         self.bilstm = BiLSTM(self.hidden_size,self.hidden_size, 1, self.dropout_rate)
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
-        self.embedding = torch.nn.Parameter(torch.tensor([config.vocab_size, self.hidden_size]))
+        self.embedding = torch.nn.Parameter(torch.tensor([config.vocab_size, self.hidden_size]), dtype=torch.float32)
         nn.init.xavier_uniform_(self.embedding)
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
