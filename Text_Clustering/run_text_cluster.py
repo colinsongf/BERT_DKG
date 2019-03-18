@@ -20,6 +20,7 @@ logging.basicConfig(level=logging.INFO,
 # parse commandline arguments
 op = OptionParser()
 op.add_option("--embed_type",dest="embed_type", default="get_doc2vec_embed")
+op.add_option("--run_num",dest="run_num", type=int, default=1)
 print(__doc__)
 op.print_help()
 
@@ -70,7 +71,7 @@ X = eval(opts.embed_type)(dataset.data)
 f = open("result_%s.txt" % opts.embed_type, "a")
 vs = np.array([])
 nmis = np.array([])
-for i in range(10):
+for i in range(opts.run_num):
     km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
                              init_size=1000, batch_size=1000, verbose=opts.verbose)
 
