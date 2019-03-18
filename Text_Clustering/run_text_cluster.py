@@ -19,24 +19,6 @@ logging.basicConfig(level=logging.INFO,
 
 # parse commandline arguments
 op = OptionParser()
-op.add_option("--lsa",
-              dest="n_components", type="int",
-              help="Preprocess documents with latent semantic analysis.")
-op.add_option("--no-minibatch",
-              action="store_false", dest="minibatch", default=True,
-              help="Use ordinary k-means algorithm (in batch mode).")
-op.add_option("--no-idf",
-              action="store_false", dest="use_idf", default=True,
-              help="Disable Inverse Document Frequency feature weighting.")
-op.add_option("--use-hashing",
-              action="store_true", default=True,
-              help="Use a hashing feature vectorizer")
-op.add_option("--n-features", type=int, default=10000,
-              help="Maximum number of features (dimensions)"
-                   " to extract from text.")
-op.add_option("--verbose",
-              action="store_true", dest="verbose", default=False,
-              help="Print progress reports inside k-means algorithm.")
 op.add_option("--embed_type",dest="embed_type", default="get_doc2vec_embed")
 print(__doc__)
 op.print_help()
@@ -80,38 +62,42 @@ true_k = np.unique(labels).shape[0]
 
 #############################################################################
 # get vectorized X
+print("using embedding: %s" % opts.embed_type)
 X = eval(opts.embed_type)(dataset.data)
 
 # #############################################################################
 # Do the actual clustering
+f = open("result_%s.txt" % opts.embed_type, "a")
+vs = np.array([])
+nmis = np.array([])
+for i in range(10):
+    km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
+                             init_size=1000, batch_size=1000, verbose=opts.verbose)
+
+    print("Clustering sparse data with %s" % km)
+    t0 = time()
+    km.fit(X)
+    print("done in %0.3fs" % (time() - t0))
 
 
-km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
-                         init_size=1000, batch_size=1000, verbose=opts.verbose)
+    print("--------------The larger the better (%d)---------------------"%(i+1), file=f)
+    v = metrics.v_measure_score(labels, km.labels_)
+    nmi = metrics.normalized_mutual_info_score(labels, km.labels_)
+    vs = np.append(vs, v)
+    nmis = np.append(nmis, nmi)
+    print("V-measure: %0.3f" % v, file=f)
+    print("Normalized Mutual Information: %0.3f"
+          % nmi, file=f)
 
-print("Clustering sparse data with %s" % km)
-t0 = time()
-km.fit(X)
-print("done in %0.3fs" % (time() - t0))
-print()
+    print("\n\n", file=f)
 
-f = open("result_%s.txt" % opts.embed_type, "w")
-print("--------------The larger the better---------------------", file=f)
-
-print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_), file=f)
-print("Completeness: %0.3f" % metrics.completeness_score(labels, km.labels_), file=f)
-print("V-measure: %0.3f" % metrics.v_measure_score(labels, km.labels_), file=f)
-print("Adjusted Rand-Index: %.3f"
-      % metrics.adjusted_rand_score(labels, km.labels_), file=f)
-print("Normalized Mutual Information: %0.3f"
-      % metrics.normalized_mutual_info_score(labels, km.labels_), file=f)
-print("Rand index adjusted: %0.3f"
-      % metrics.adjusted_rand_score(labels, km.labels_), file=f)
-print("Silhouette Coefficient: %0.3f"
-      % metrics.silhouette_score(X, km.labels_, sample_size=1000), file=f)
-print("\n", file=f)
-
-print("--------------The lower the better---------------------", file=f)
-print("Davies-Bouldin score: %0.3f"
-      % metrics.davies_bouldin_score(X, km.labels_), file=f)
+v_var = vs.var()
+v_mean = vs.mean()
+nmi_var = nmis.var()
+nmi_mean = nmis.mean()
+print("V-measure: var: %0.4f; mean: %0.4f" %(v_var, v_mean), file=f)
+print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" %(nmi_var, nmi_mean), file=f)
 f.close()
+
+print("V-measure: var: %0.4f; mean: %0.4f" %(v_var, v_mean))
+print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" %(nmi_var, nmi_mean))

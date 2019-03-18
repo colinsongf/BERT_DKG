@@ -148,6 +148,8 @@ km.fit(X)
 print("done in %0.3fs" % (time() - t0))
 print()
 
+#################################################################################
+
 print("--------------The larger the better---------------------")
 
 print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_))

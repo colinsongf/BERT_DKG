@@ -96,3 +96,11 @@ def get_finetuned_bert_embed(data):
         X.append(np.concatenate([encoded_layer.sum(1).tolist()[0] for encoded_layer in encoded_layers[-4:]]))
 
     return preprocessing.normalize(X)
+
+def get_tfidf_embed(data):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
+                                 min_df=2, stop_words='english',
+                                 use_idf=True)
+    X = vectorizer.fit_transform(data)
+    return X
