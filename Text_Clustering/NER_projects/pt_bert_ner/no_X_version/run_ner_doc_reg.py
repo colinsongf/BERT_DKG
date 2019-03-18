@@ -362,13 +362,13 @@ def train():
         tr_loss = 0
         nb_tr_examples, nb_tr_steps = 0, 0
         unlabeled_iter = iter(unlabeled_data_loader)
-        weight.fill_(1.)
+        weight.fill_(10.)
         for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
             batch = tuple(t.to(device) for t in batch)
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
             loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
 
-            if epoch > 2:
+            if epoch > 0:
                 batch = unlabeled_iter.next()
                 batch = tuple(t.to(device) for t in batch)
                 input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
@@ -393,7 +393,7 @@ def train():
                 optimizer.step()
                 optimizer.zero_grad()
                 global_step += 1
-                weight += 1.
+                #weight += 1.
             nb_tr_examples += input_ids.size(0)
             nb_tr_steps += 1
 
