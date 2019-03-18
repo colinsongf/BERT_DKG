@@ -54,8 +54,8 @@ class BilstmNER(nn.Module):
         from pytorch_pretrained_bert.file_utils import cached_path
         import tempfile
         import tarfile
-        from pytorch_pretrained_bert.modeling import BertConfig
-        archive_file = archive_file
+        from pytorch_pretrained_bert.modeling import BertConfig, PRETRAINED_MODEL_ARCHIVE_MAP
+        archive_file = PRETRAINED_MODEL_ARCHIVE_MAP[archive_file]
         # redirect to the cache, if necessary
         resolved_archive_file = cached_path(archive_file, cache_dir=None)
         if resolved_archive_file == archive_file:
