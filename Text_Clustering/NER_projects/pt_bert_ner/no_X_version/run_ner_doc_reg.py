@@ -357,7 +357,7 @@ def train():
 
     logger.info("***** Running training*****")
     weight = torch.tensor(1., requires_grad=False).to(device)
-    weight.fill_(10.)
+    weight.fill_(5.)
     for epoch in trange(start_epoch, config['train']['epochs'], desc="Epoch"):
         model.train()
         tr_loss = 0
@@ -399,7 +399,7 @@ def train():
         # logger.info("memory usage: %.4f" % memory_usage_psutil())
         # logger.info("epoch loss (mean word loss): %.4f" % (tr_loss / nb_tr_steps))
         train_loss_list.append(tr_loss / nb_tr_steps)
-        weight += 10.
+        weight += 5.
         if config['dev']['do_every_epoch']:
             dev_loss_list.append(evaluate(config['dev']['dataset'], epoch))
 
