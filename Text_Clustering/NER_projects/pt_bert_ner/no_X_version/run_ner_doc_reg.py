@@ -368,7 +368,7 @@ def train():
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
             loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
 
-            if epoch > 0:
+            if epoch > 2:
                 batch = unlabeled_iter.next()
                 batch = tuple(t.to(device) for t in batch)
                 input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
@@ -393,14 +393,13 @@ def train():
                 optimizer.step()
                 optimizer.zero_grad()
                 global_step += 1
-                #weight += 1.
+
             nb_tr_examples += input_ids.size(0)
             nb_tr_steps += 1
-
         # logger.info("memory usage: %.4f" % memory_usage_psutil())
         # logger.info("epoch loss (mean word loss): %.4f" % (tr_loss / nb_tr_steps))
         train_loss_list.append(tr_loss / nb_tr_steps)
-
+        weight += 10.
         if config['dev']['do_every_epoch']:
             dev_loss_list.append(evaluate(config['dev']['dataset'], epoch))
 
