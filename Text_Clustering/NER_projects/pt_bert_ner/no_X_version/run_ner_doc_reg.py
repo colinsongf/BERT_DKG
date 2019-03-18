@@ -357,12 +357,12 @@ def train():
 
     logger.info("***** Running training*****")
     weight = torch.tensor(1., requires_grad=False).to(device)
+    weight.fill_(10.)
     for epoch in trange(start_epoch, config['train']['epochs'], desc="Epoch"):
         model.train()
         tr_loss = 0
         nb_tr_examples, nb_tr_steps = 0, 0
         unlabeled_iter = iter(unlabeled_data_loader)
-        weight.fill_(10.)
         for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
             batch = tuple(t.to(device) for t in batch)
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
