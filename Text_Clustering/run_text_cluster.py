@@ -64,6 +64,7 @@ true_k = np.unique(labels).shape[0]
 #############################################################################
 # get vectorized X
 print("using embedding: %s" % opts.embed_type)
+print("run_num: %d" % opts.run_num)
 X = eval(opts.embed_type)(dataset.data)
 
 # #############################################################################
@@ -73,7 +74,7 @@ vs = np.array([])
 nmis = np.array([])
 for i in range(opts.run_num):
     km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
-                             init_size=1000, batch_size=1000, verbose=opts.verbose)
+                             init_size=1000, batch_size=1000, verbose=False)
 
     print("Clustering sparse data with %s" % km)
     t0 = time()
