@@ -6,9 +6,9 @@ task:
   # bert pre-trained model directory
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
-  decoder: CRFDecoder
+  decoder: AttnCRFDecoder
   # The output directory where the model predictions and checkpoints will be written
-  output_dir: ./output_CRFDecoder
+  output_dir: ./output_AttnCRFDecoder
   # Specify the ckeckpoint to load
   checkpoint: ~
   # Whether you are using an uncased model or not
@@ -19,7 +19,7 @@ train:
   # Whether do training in this run
   do: true
   # Total batch size for training
-  batch_size: 32
+  batch_size: 2
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   # Total number of training epochs to perform
