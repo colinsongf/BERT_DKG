@@ -26,10 +26,14 @@ def get_doc2vec_embed(data):
     from gensim.models.doc2vec import Doc2Vec, TaggedDocument
     import sklearn.preprocessing as preprocessing
     docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(data)]
-    doc2vec_model = Doc2Vec(dm=0, vector_size=300, min_count=2, max_count=1000, iter=10)
-    doc2vec_model.build_vocab(docs)
-    doc2vec_model.train(docs, total_examples=doc2vec_model.corpus_count, epochs=10)
-    doc2vec_X = [doc2vec_model.infer_vector(doc.words) for doc in docs]
+    doc2vec_dbow = Doc2Vec(dm=0, vector_size=300, min_count=2, max_count=1000, iter=10)
+    doc2vec_dm = Doc2Vec(dm=1, vector_size=300, min_count=2, max_count=1000, iter=10)
+    doc2vec_dbow.build_vocab(docs)
+    doc2vec_dm.build_vocab(docs)
+    doc2vec_dbow.train(docs, total_examples=doc2vec_dbow.corpus_count, epochs=10)
+    doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
+
+    doc2vec_X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
     X = preprocessing.normalize(doc2vec_X)
     return X
 
