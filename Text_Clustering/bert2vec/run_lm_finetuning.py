@@ -254,8 +254,6 @@ def main(train_file, args):
     if not args.do_train:
         raise ValueError("Training is currently the only implemented execution option. Please set `do_train`.")
 
-    if os.path.exists(args.output_dir) and os.listdir(args.output_dir):
-        raise ValueError("Output directory ({}) already exists and is not empty.".format(args.output_dir))
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
