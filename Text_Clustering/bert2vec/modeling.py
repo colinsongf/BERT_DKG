@@ -793,6 +793,8 @@ class BertForPreTraining(BertPreTrainedModel):
         else:
             return prediction_scores, seq_relationship_score
 
+    def get_doc_embed(self):
+        return self.bert.embeddings.token_type_embeddings
 
 class BertForMaskedLM(BertPreTrainedModel):
     """BERT model with the masked language modeling head.

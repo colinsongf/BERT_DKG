@@ -43,13 +43,12 @@ logger = logging.getLogger(__name__)
 
 
 class BERTDataset(Dataset):
-    def __init__(self, corpus_path, tokenizer, seq_len, encoding="utf-8", corpus_lines=None, on_memory=True):
+    def __init__(self, corpus_path_or_list, tokenizer, seq_len, encoding="utf-8", corpus_lines=None):
         self.vocab = tokenizer.vocab
         self.tokenizer = tokenizer
         self.seq_len = seq_len
-        self.on_memory = on_memory
         self.corpus_lines = corpus_lines  # number of non-empty lines in input corpus
-        self.corpus_path = corpus_path
+        self.corpus_path_or_list = corpus_path_or_list
         self.encoding = encoding
         self.current_doc = 0  # to avoid random sentence from same doc
 
@@ -60,53 +59,29 @@ class BERTDataset(Dataset):
         # for loading samples in memory
         self.current_random_doc = 0
         self.num_docs = 0
-        self.sample_to_doc = [] # map sample index to doc and line
 
-        # load samples into memory
-        if on_memory:
-            self.all_docs = []
-            doc = []
-            self.corpus_lines = 0
-            with open(corpus_path, "r", encoding=encoding) as f:
+        self.all_docs = []
+        doc = []
+        self.corpus_lines = 0
+        if isinstance(corpus_path_or_list, str):
+            with open(corpus_path_or_list, "r", encoding=encoding) as f:
                 for line in tqdm(f, desc="Loading Dataset", total=corpus_lines):
                     line = line.strip()
                     if line == "":
                         self.all_docs.append(doc)
                         doc = []
-                        #remove last added sample because there won't be a subsequent line anymore in the doc
-                        self.sample_to_doc.pop()
                     else:
-                        #store as one sample
-                        sample = {"doc_id": len(self.all_docs),
-                                  "line": len(doc)}
-                        self.sample_to_doc.append(sample)
                         doc.append(line)
-                        self.corpus_lines = self.corpus_lines + 1
+                        self.corpus_lines += 1
 
             # if last row in file is not empty
-            if self.all_docs[-1] != doc:
+            if self.all_docs[-1] != doc and doc:
                 self.all_docs.append(doc)
-                self.sample_to_doc.pop()
-
-            self.num_docs = len(self.all_docs)
-
-        # load samples later lazily from disk
         else:
-            if self.corpus_lines is None:
-                with open(corpus_path, "r", encoding=encoding) as f:
-                    self.corpus_lines = 0
-                    for line in tqdm(f, desc="Loading Dataset", total=corpus_lines):
-                        if line.strip() == "":
-                            self.num_docs += 1
-                        else:
-                            self.corpus_lines += 1
+            self.all_docs = corpus_path_or_list
 
-                    # if doc does not end with empty line
-                    if line.strip() != "":
-                        self.num_docs += 1
+        self.num_docs = len(self.all_docs)
 
-            self.file = open(corpus_path, "r", encoding=encoding)
-            self.random_file = open(corpus_path, "r", encoding=encoding)
 
     def __len__(self):
         # last line of doc won't be used, because there's no "nextSentence". Additionally, we start counting at 0.
@@ -115,12 +90,6 @@ class BERTDataset(Dataset):
     def __getitem__(self, item):
         cur_id = self.sample_counter
         self.sample_counter += 1
-        if not self.on_memory:
-            # after one epoch we start again from beginning of file
-            if cur_id != 0 and (cur_id % len(self) == 0):
-                self.file.close()
-                self.file = open(self.corpus_path, "r", encoding=self.encoding)
-
         # tokenize
         doc_tok = []
         for sent in self.all_docs[item]:
@@ -256,87 +225,7 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     return features
 
 
-def main():
-    parser = argparse.ArgumentParser()
-
-    ## Required parameters
-    parser.add_argument("--train_file",
-                        default="../data/ai_data_sents3000.txt",
-                        type=str,
-                        #required=True,
-                        help="The input train corpus.")
-    parser.add_argument("--vocab", default=r"./vocab.txt", type=str,
-                        #required=True
-                        )
-    parser.add_argument("--bert_config",
-                        default=r"./bert_config.json",
-                        type=str,
-                        # required=True
-                        )
-    parser.add_argument("--output_dir",
-                        default="./output_dir_lm_ai",
-                        type=str,
-                        #required=True,
-                        help="The output directory where the model checkpoints will be written.")
-
-    ## Other parameters
-    parser.add_argument("--max_seq_length",
-                        default=512,
-                        type=int,
-                        help="The maximum total input sequence length after WordPiece tokenization. \n"
-                             "Sequences longer than this will be truncated, and sequences shorter \n"
-                             "than this will be padded.")
-    parser.add_argument("--do_train",
-                        action='store_true',
-                        help="Whether to run training.")
-    parser.add_argument("--train_batch_size",
-                        default=32,
-                        type=int,
-                        help="Total batch size for training.")
-    parser.add_argument("--learning_rate",
-                        default=3e-5,
-                        type=float,
-                        help="The initial learning rate for Adam.")
-    parser.add_argument("--num_train_epochs",
-                        default=3.0,
-                        type=float,
-                        help="Total number of training epochs to perform.")
-    parser.add_argument("--warmup_proportion",
-                        default=0.1,
-                        type=float,
-                        help="Proportion of training to perform linear learning rate warmup for. "
-                             "E.g., 0.1 = 10%% of training.")
-    parser.add_argument("--no_cuda",
-                        action='store_true',
-                        help="Whether not to use CUDA when available")
-    parser.add_argument("--on_memory",
-                        action='store_true',
-                        help="Whether to load train samples into memory or use disk")
-    parser.add_argument("--do_lower_case",
-                        action='store_true',
-                        help="Whether to lower case the input text. True for uncased models, False for cased models.")
-    parser.add_argument("--local_rank",
-                        type=int,
-                        default=-1,
-                        help="local_rank for distributed training on gpus")
-    parser.add_argument('--seed',
-                        type=int,
-                        default=42,
-                        help="random seed for initialization")
-    parser.add_argument('--gradient_accumulation_steps',
-                        type=int,
-                        default=1,
-                        help="Number of updates steps to accumualte before performing a backward/update pass.")
-    parser.add_argument('--fp16',
-                        action='store_true',
-                        help="Whether to use 16-bit float precision instead of 32-bit")
-    parser.add_argument('--loss_scale',
-                        type = float, default = 0,
-                        help = "Loss scaling to improve fp16 numeric stability. Only used when fp16 set to True.\n"
-                        "0 (default value): dynamic loss scaling.\n"
-                        "Positive power of 2: static loss scaling value.\n")
-
-    args = parser.parse_args()
+def main(train_file, args):
 
     if args.local_rank == -1 or args.no_cuda:
         device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
@@ -375,9 +264,8 @@ def main():
     #train_examples = None
     num_train_optimization_steps = None
     if args.do_train:
-        print("Loading Train Dataset", args.train_file)
-        train_dataset = BERTDataset(args.train_file, tokenizer, seq_len=args.max_seq_length,
-                                    corpus_lines=None, on_memory=args.on_memory)
+        train_dataset = BERTDataset(train_file, tokenizer, seq_len=args.max_seq_length,
+                                    corpus_lines=None)
         num_train_optimization_steps = int(
             len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
         if args.local_rank != -1:
@@ -481,6 +369,7 @@ def main():
         if args.do_train:
             torch.save(model_to_save.state_dict(), output_model_file)
 
+    return model.get_doc_embed().tolist()
 
 def accuracy(out, labels):
     outputs = np.argmax(out, axis=1)
@@ -488,4 +377,81 @@ def accuracy(out, labels):
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+
+    ## Required parameters
+    parser.add_argument("--train_file",
+                        default="../data/20news.txt",
+                        type=str,
+                        # required=True,
+                        help="The input train corpus.")
+    parser.add_argument("--vocab", default=r"./vocab.txt", type=str,
+                        # required=True
+                        )
+    parser.add_argument("--bert_config",
+                        default=r"./bert_config.json",
+                        type=str,
+                        # required=True
+                        )
+    parser.add_argument("--output_dir",
+                        default="./output_dir_lm_ai",
+                        type=str,
+                        # required=True,
+                        help="The output directory where the model checkpoints will be written.")
+
+    ## Other parameters
+    parser.add_argument("--max_seq_length",
+                        default=512,
+                        type=int,
+                        help="The maximum total input sequence length after WordPiece tokenization. \n"
+                             "Sequences longer than this will be truncated, and sequences shorter \n"
+                             "than this will be padded.")
+    parser.add_argument("--do_train",
+                        action='store_true',
+                        help="Whether to run training.")
+    parser.add_argument("--train_batch_size",
+                        default=32,
+                        type=int,
+                        help="Total batch size for training.")
+    parser.add_argument("--learning_rate",
+                        default=3e-5,
+                        type=float,
+                        help="The initial learning rate for Adam.")
+    parser.add_argument("--num_train_epochs",
+                        default=3.0,
+                        type=float,
+                        help="Total number of training epochs to perform.")
+    parser.add_argument("--warmup_proportion",
+                        default=0.1,
+                        type=float,
+                        help="Proportion of training to perform linear learning rate warmup for. "
+                             "E.g., 0.1 = 10%% of training.")
+    parser.add_argument("--no_cuda",
+                        action='store_true',
+                        help="Whether not to use CUDA when available")
+    parser.add_argument("--do_lower_case",
+                        action='store_true',
+                        help="Whether to lower case the input text. True for uncased models, False for cased models.")
+    parser.add_argument("--local_rank",
+                        type=int,
+                        default=-1,
+                        help="local_rank for distributed training on gpus")
+    parser.add_argument('--seed',
+                        type=int,
+                        default=42,
+                        help="random seed for initialization")
+    parser.add_argument('--gradient_accumulation_steps',
+                        type=int,
+                        default=1,
+                        help="Number of updates steps to accumualte before performing a backward/update pass.")
+    parser.add_argument('--fp16',
+                        action='store_true',
+                        help="Whether to use 16-bit float precision instead of 32-bit")
+    parser.add_argument('--loss_scale',
+                        type=float, default=0,
+                        help="Loss scaling to improve fp16 numeric stability. Only used when fp16 set to True.\n"
+                             "0 (default value): dynamic loss scaling.\n"
+                             "Positive power of 2: static loss scaling value.\n")
+
+    args = parser.parse_args()
+    main(args.train_file, args)

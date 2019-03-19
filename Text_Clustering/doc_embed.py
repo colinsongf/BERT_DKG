@@ -82,7 +82,7 @@ def get_finetuned_bert_embed(data):
     # docs = [Sentence(doc) for doc in data]
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
-    model = BertModel.from_pretrained('output_dir')
+    model = BertModel.from_pretrained('bert2vec/output_dir_lm_ai')
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=False)
     model.to(device)
     model.eval()
@@ -102,6 +102,15 @@ def get_finetuned_bert_embed(data):
 
     return preprocessing.normalize(X)
 
+def get_bert2vec_embed(data):
+    import torch
+    import gensim
+    import sklearn.preprocessing as preprocessing
+    from bert2vec.run_lm_finetuning import main
+    X = main(data, Args())
+    #X = preprocessing.normalize(X)
+    return X
+
 def get_tfidf_embed(data):
     from sklearn.feature_extraction.text import TfidfVectorizer
     vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
@@ -109,3 +118,23 @@ def get_tfidf_embed(data):
                                  use_idf=True)
     X = vectorizer.fit_transform(data)
     return X
+
+class Args(object):
+    def __init__(self, train_file="./data/20news.txt", vocab="./bert2vec/vocab.txt", bert_config="./bert2vec/bert_config.json"):
+        self.train_file = train_file
+        self.vocab = vocab
+        self.bert_config = bert_config
+        self.output_dir = "./output_bert_model"
+        self.max_seq_length = 512
+        self.do_train = True
+        self.train_batch_size = 32
+        self.learning_rate = 3e-5
+        self.num_train_epochs = 3.0
+        self.warmup_proportion = 0.1
+        self.no_cuda = False
+        self.do_lower_case = True
+        self.local_rank = -1
+        self.seed = 42
+        self.gradient_accumulation_steps = 1
+        self.fp16 = False
+        self.loss_scale = 0
