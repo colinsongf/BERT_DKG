@@ -85,7 +85,7 @@ class BERTDataset(Dataset):
 
     def __len__(self):
         # last line of doc won't be used, because there's no "nextSentence". Additionally, we start counting at 0.
-        return self.num_docs -1
+        return self.num_docs
 
     def __getitem__(self, item):
         cur_id = self.sample_counter
@@ -272,7 +272,7 @@ def main(train_file, args):
     # Prepare model
     bert_config = BertConfig(args.bert_config)
     bert_config.type_vocab_size = len(train_dataset)
-    output_model_file = os.path.join(args.output_dir, "pytorch_model.bin.gz")
+    output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
     if os.path.exists(output_model_file):
         model = BertForPreTraining.from_pretrained(output_model_file)
         args.do_train = False
