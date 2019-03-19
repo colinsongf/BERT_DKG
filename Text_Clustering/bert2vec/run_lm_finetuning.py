@@ -272,7 +272,7 @@ def main(train_file, args):
     # Prepare model
     bert_config = BertConfig(args.bert_config)
     bert_config.type_vocab_size = len(train_dataset)
-    output_model_file = os.path.join(args.output_dir, "model.zip")
+    output_model_file = os.path.join(args.output_dir, "pytorch_model.bin.gz")
     if os.path.exists(output_model_file):
         model = BertForPreTraining.from_pretrained(output_model_file)
         args.do_train = False
