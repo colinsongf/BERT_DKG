@@ -19,6 +19,7 @@ def get_lda_embed(data):
     for doc in corpus:
         topic_probs = lda.get_document_topics(doc)
         X.append(np.sum([topics[pair[0]]*pair[1] for pair in topic_probs], axis=0))
+    X = preprocessing.normalize(X)
     return X
 
 def get_doc2vec_embed(data):
@@ -33,8 +34,8 @@ def get_doc2vec_embed(data):
     doc2vec_dbow.train(docs, total_examples=doc2vec_dbow.corpus_count, epochs=10)
     doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
-    doc2vec_X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
-    X = preprocessing.normalize(doc2vec_X)
+    X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
+    X = preprocessing.normalize(X)
     return X
 
 def get_bert_embed(data):
