@@ -61,7 +61,7 @@ class BERTDataset(Dataset):
         self.num_docs = 0
 
         self.all_docs = []
-        doc = []
+        doc = ""
         self.corpus_lines = 0
         if isinstance(corpus_path_or_list, str):
             with open(corpus_path_or_list, "r", encoding=encoding) as f:
@@ -69,9 +69,9 @@ class BERTDataset(Dataset):
                     line = line.strip()
                     if line == "":
                         self.all_docs.append(doc)
-                        doc = []
+                        doc = ""
                     else:
-                        doc.append(line)
+                        doc += line
                         self.corpus_lines += 1
 
             # if last row in file is not empty
@@ -91,9 +91,7 @@ class BERTDataset(Dataset):
         cur_id = self.sample_counter
         self.sample_counter += 1
         # tokenize
-        doc_tok = []
-        for sent in self.all_docs[item]:
-            doc_tok.extend(self.tokenizer.tokenize(sent))
+        doc_tok = self.tokenizer.tokenize(self.all_docs[item])
 
         # combine to one sample
         cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item)
@@ -274,7 +272,7 @@ def main(train_file, args):
     bert_config.type_vocab_size = len(train_dataset)
     output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
     if os.path.exists(output_model_file):
-        model = BertForPreTraining.from_pretrained(output_model_file)
+        model = BertForPreTraining.from_pretrained(args.output_dir)
         args.do_train = False
 
     else:
@@ -370,8 +368,7 @@ def main(train_file, args):
         logger.info("** ** * Saving fine - tuned model ** ** * ")
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
-        if args.do_train:
-            torch.save(model_to_save.state_dict(), output_model_file)
+        torch.save(model_to_save.state_dict(), output_model_file)
 
     return model.get_doc_embed().weight.tolist()
 
@@ -398,7 +395,7 @@ if __name__ == "__main__":
                         # required=True
                         )
     parser.add_argument("--output_dir",
-                        default="./output_dir_lm_ai",
+                        default=r"D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model",
                         type=str,
                         # required=True,
                         help="The output directory where the model checkpoints will be written.")
