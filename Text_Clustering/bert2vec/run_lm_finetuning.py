@@ -224,6 +224,13 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     input_ids = tokenizer.convert_tokens_to_ids(doc_tokens)
     input_mask = [1] * len(input_ids)
     doc_id = [example.doc_id] * len(input_ids)
+
+    if len(input_ids) > max_seq_length:
+        input_ids = input_ids[:max_seq_length]
+        input_mask = input_mask[:max_seq_length]
+        doc_id = doc_id[:max_seq_length]
+        lm_label_ids = lm_label_ids[:max_seq_length]
+
     # Zero-pad up to the sequence length.
     while len(input_ids) < max_seq_length:
         input_ids.append(0)
@@ -274,7 +281,7 @@ def main():
 
     ## Other parameters
     parser.add_argument("--max_seq_length",
-                        default=512,
+                        default=1024,
                         type=int,
                         help="The maximum total input sequence length after WordPiece tokenization. \n"
                              "Sequences longer than this will be truncated, and sequences shorter \n"
