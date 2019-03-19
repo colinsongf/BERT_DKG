@@ -274,7 +274,12 @@ def main(train_file, args):
     # Prepare model
     bert_config = BertConfig(args.bert_config)
     bert_config.type_vocab_size = len(train_dataset)
-    model = BertForPreTraining(bert_config)
+    output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
+    if os.path.exists(output_model_file):
+        model = BertForPreTraining.from_pretrained(output_model_file)
+        args.do_train = False
+    else:
+        model = BertForPreTraining(bert_config)
     if args.fp16:
         model.half()
     model.to(device)
@@ -369,7 +374,7 @@ def main(train_file, args):
         if args.do_train:
             torch.save(model_to_save.state_dict(), output_model_file)
 
-    return model.get_doc_embed().tolist()
+    return model.get_doc_embed().weight.tolist()
 
 def accuracy(out, labels):
     outputs = np.argmax(out, axis=1)
