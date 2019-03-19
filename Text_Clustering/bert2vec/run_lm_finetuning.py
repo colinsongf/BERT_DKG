@@ -281,7 +281,7 @@ def main():
 
     ## Other parameters
     parser.add_argument("--max_seq_length",
-                        default=1024,
+                        default=512,
                         type=int,
                         help="The maximum total input sequence length after WordPiece tokenization. \n"
                              "Sequences longer than this will be truncated, and sequences shorter \n"
