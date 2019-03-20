@@ -1,8 +1,4 @@
-import multiprocessing
-import os
 import re
-import signal
-from math import ceil
 from os.path import join
 import random
 from tqdm import trange, tqdm
@@ -16,7 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset
 vec_dim = 200
 dbow = True
 num_epochs = 10
-batch_size = 512
+batch_size = 512 * 16
 lr = 1e-3
 window_size = 5
 noise_num = 100
@@ -102,9 +98,11 @@ def get_train_dataset(dataset, vocab):
     return train_dataset
 
 
-def main(data):
-    # dataset = load_dataset(file_path)
-    dataset = MyDataset(data)
+def main(data_or_file):
+    if isinstance(data_or_file, str):
+        dataset = load_dataset(data_or_file)
+    else:
+        dataset = MyDataset(data_or_file)
     print("doc num: %d" % (len(dataset)))
     vocab = dataset.fields['text'].vocab
     train_dataset = get_train_dataset(dataset, vocab)
@@ -116,6 +114,7 @@ def main(data):
     else:
         model = DM(vec_dim, num_docs=len(dataset), num_words=len(vocab.itos))
 
+    model.to(device)
     cost_func = NegativeSampling()
     optimizer = Adam(params=model.parameters(), lr=lr)
     best_loss = float("inf")
