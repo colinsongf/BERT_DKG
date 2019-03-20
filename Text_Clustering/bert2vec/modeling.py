@@ -444,7 +444,7 @@ class BertLMPredictionHead(nn.Module):
         self.decoder = nn.Linear(bert_model_embedding_weights.size(1) * 2,
                                  bert_model_embedding_weights.size(0),
                                  bias=False)
-        self.decoder.weight = bert_model_embedding_weights
+        # self.decoder.weight = bert_model_embedding_weights
         self.bias = nn.Parameter(torch.zeros(bert_model_embedding_weights.size(0)))
 
     def forward(self, hidden_states):
