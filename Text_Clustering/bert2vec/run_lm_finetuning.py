@@ -29,12 +29,14 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-from .modeling import BertForPreTraining, BertConfig
-from .tokenization import BertTokenizer
-from .optimization import BertAdam, warmup_linear
+from modeling import BertForPreTraining, BertConfig
+from tokenization import BertTokenizer
+from optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
 import random
+from collections import Counter, OrderedDict
+import re
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -43,9 +45,9 @@ logger = logging.getLogger(__name__)
 
 
 class BERTDataset(Dataset):
-    def __init__(self, corpus_path_or_list, tokenizer, seq_len, encoding="utf-8", corpus_lines=None):
-        self.vocab = tokenizer.vocab
-        self.tokenizer = tokenizer
+    def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None):
+        self.tokenizer = None
+        self.vocab = None
         self.seq_len = seq_len
         self.corpus_lines = corpus_lines  # number of non-empty lines in input corpus
         self.corpus_path_or_list = corpus_path_or_list
@@ -82,6 +84,9 @@ class BERTDataset(Dataset):
 
         self.num_docs = len(self.all_docs)
 
+    def build_vocab(self, tokenizer):
+        self.tokenizer = tokenizer
+        self.vocab = tokenizer.vocab
 
     def __len__(self):
         # last line of doc won't be used, because there's no "nextSentence". Additionally, we start counting at 0.
@@ -223,6 +228,45 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     return features
 
 
+class Tokenizer():
+    def __init__(self, docs, vocab_size=30000, lower_case=True):
+        self.vocab = {'[UNK]': 0, '[MASK]': 1}
+        self.lower_case = lower_case
+        self.vocab.update(build_dict(self.tokenize(' '.join(docs)), vocab_size - len(self.vocab), len(self.vocab)))
+        self.ids_to_tokens = OrderedDict(
+            [(ids, tok) for tok, ids in self.vocab.items()])
+
+    def tokenize(self, doc):
+        if self.lower_case:
+            doc = doc.lower()
+        token_pattern = re.compile('(?u)\\b\\w\\w+\\b')
+        return token_pattern.findall(doc)
+
+    def convert_ids_to_tokens(self, ids):
+        tokens = []
+        for i in ids:
+            tokens.append(self.ids_to_tokens[i])
+        return tokens
+
+    def convert_tokens_to_ids(self, tokens):
+        ids = []
+        for token in tokens:
+            if self.vocab.get(token) is None:
+                ids.append(self.vocab["[UNK]"])
+            else:
+                ids.append(self.vocab[token])
+        return ids
+
+
+def build_dict(words, max_words=None, offset=0):
+    cnt = Counter(words)
+    if max_words:
+        words = cnt.most_common(max_words)  # [(word, count)]
+    else:
+        words = cnt.most_common()
+    return {word: offset + i for i, (word, _) in enumerate(words)}
+
+
 def main(train_file, args):
 
     if args.local_rank == -1 or args.no_cuda:
@@ -255,17 +299,17 @@ def main(train_file, args):
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
-    tokenizer = BertTokenizer(args.vocab, do_lower_case=args.do_lower_case)
-
     #train_examples = None
     num_train_optimization_steps = None
-    if args.do_train:
-        train_dataset = BERTDataset(train_file, tokenizer, seq_len=args.max_seq_length,
-                                    corpus_lines=None)
-        num_train_optimization_steps = int(
-            len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
-        if args.local_rank != -1:
-            num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
+    train_dataset = BERTDataset(train_file, seq_len=args.max_seq_length,
+                                corpus_lines=None)
+    num_train_optimization_steps = int(
+        len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
+    if args.local_rank != -1:
+        num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
+
+    tokenizer = Tokenizer(train_dataset.all_docs, lower_case=args.do_lower_case)
+    train_dataset.build_vocab(tokenizer)
 
     # Prepare model
     bert_config = BertConfig(args.bert_config)

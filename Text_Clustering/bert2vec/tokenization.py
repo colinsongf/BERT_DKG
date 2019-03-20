@@ -70,7 +70,6 @@ def whitespace_tokenize(text):
     tokens = text.split()
     return tokens
 
-
 class BertTokenizer(object):
     """Runs end-to-end tokenization: punctuation splitting + wordpiece"""
 
