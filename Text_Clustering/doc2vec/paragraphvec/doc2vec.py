@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader, TensorDataset
 vec_dim = 200
 dbow = True
 num_epochs = 10
-batch_size = 32
+batch_size = 512
 lr = 1e-3
 window_size = 5
 noise_num = 100
