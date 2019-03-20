@@ -238,10 +238,9 @@ class BertEmbeddings(nn.Module):
     """
     def __init__(self, config):
         super(BertEmbeddings, self).__init__()
-        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size)
-        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)
-        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)
-
+        self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size // 2)
+        self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size // 2)
+        self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size // 2)
         # self.LayerNorm is not snake-cased to stick with TensorFlow model variable name and be able to load
         # any TensorFlow checkpoint file
         self.LayerNorm = BertLayerNorm(config.hidden_size, eps=1e-12)
@@ -258,7 +257,8 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         token_type_embeddings = self.token_type_embeddings(token_type_ids)
 
-        embeddings = words_embeddings + position_embeddings + token_type_embeddings
+        # embeddings = words_embeddings + position_embeddings + token_type_embeddings
+        embeddings = torch.cat([words_embeddings + position_embeddings, token_type_embeddings], dim=-1)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
