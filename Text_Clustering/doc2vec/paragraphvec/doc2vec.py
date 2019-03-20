@@ -9,6 +9,7 @@ from tqdm import trange, tqdm
 from torchtext.data import Field, TabularDataset
 from .models import *
 from .loss import NegativeSampling
+import torch
 from torch.optim import Adam
 from torch.utils.data import DataLoader, TensorDataset
 
@@ -91,6 +92,7 @@ def get_train_dataset(dataset, vocab):
 
 def main(file_path):
     dataset = load_dataset(file_path)
+    print("doc num: %d" % (len(dataset)))
     vocab = dataset.fields['text'].vocab
     train_dataset = get_train_dataset(dataset, vocab)
 
@@ -128,3 +130,7 @@ def main(file_path):
         print("loss: {:.4f}".format(loss))
 
     return model._D.tolist()
+
+
+if __name__ == "__main__":
+    main("../data/temp.txt")
