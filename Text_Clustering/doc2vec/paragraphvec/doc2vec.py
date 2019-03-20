@@ -23,11 +23,11 @@ noise_num = 100
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def load_dataset(file_name):
+def load_dataset(file_path):
     """Loads contents from a file in the *data* directory into a
     torchtext.data.TabularDataset instance.
     """
-    file_path = join("../data", file_name)
+    file_path = join(file_path)
     text_field = Field(lower=True, tokenize=_tokenize_str)
 
     dataset = TabularDataset(
@@ -89,8 +89,8 @@ def get_train_dataset(dataset, vocab):
     return train_dataset
 
 
-def main():
-    dataset = load_dataset("temp.txt")
+def main(file_path):
+    dataset = load_dataset(file_path)
     vocab = dataset.fields['text'].vocab
     train_dataset = get_train_dataset(dataset, vocab)
 

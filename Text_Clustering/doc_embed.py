@@ -149,6 +149,6 @@ def get_doc2vec2_embed(data):
         f.write('\n'.join(data))
     from doc2vec.paragraphvec.doc2vec import main
     import sklearn.preprocessing as preprocessing
-    X = main()
+    X = main("./doc2vec/data/temp.txt")
     X = preprocessing.normalize(X)
     return X
