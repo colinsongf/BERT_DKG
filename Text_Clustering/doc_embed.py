@@ -143,7 +143,7 @@ def get_tfidf_embed(data):
 
 
 def get_doc2vec2_embed(data):
-    with open("../doc2vec/data/temp.txt", "w", encoding="utf8") as f:
+    with open("./doc2vec/data/temp.txt", "w", encoding="utf8") as f:
         f.write("text\n")
         data = [doc.replace("\n", " ") for doc in data]
         f.write('\n'.join(data))
