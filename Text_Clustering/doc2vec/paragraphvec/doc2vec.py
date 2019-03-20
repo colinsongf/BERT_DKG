@@ -66,7 +66,7 @@ def _tokenize_str(str_):
 def get_noise_words(vocab, word_ix, num):
     noise_words = []
     while len(noise_words) != num:
-        index = random.randint(0, len(vocab.stoi))
+        index = random.randint(0, len(vocab.stoi) - 1)
         if index != word_ix and index not in noise_words:
             noise_words.append(index)
     return noise_words
