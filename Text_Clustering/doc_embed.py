@@ -120,7 +120,7 @@ def get_tfidf_embed(data):
     return X
 
 class Args(object):
-    def __init__(self, train_file="./data/20news.txt", vocab="./bert2vec/vocab.txt", bert_config="./bert2vec/bert_config.json"):
+    def __init__(self, train_file="./data/20news.txt", vocab="./bert2vec/vocab.txt", bert_config="./bert2vec/bert_config.json", vocab_size = 28000):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
@@ -138,3 +138,4 @@ class Args(object):
         self.gradient_accumulation_steps = 1
         self.fp16 = False
         self.loss_scale = 0
+        self.vocab_size = vocab_size

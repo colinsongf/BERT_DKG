@@ -307,7 +307,7 @@ def main(train_file, args):
     if args.local_rank != -1:
         num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
 
-    tokenizer = Tokenizer(train_dataset.all_docs, lower_case=args.do_lower_case)
+    tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
     train_dataset.build_vocab(tokenizer)
 
     # Prepare model
