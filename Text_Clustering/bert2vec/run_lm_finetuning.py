@@ -29,8 +29,8 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-from .modeling import BertForPreTraining, BertConfig
-from .optimization import BertAdam, warmup_linear
+from modeling import BertForPreTraining, BertConfig
+from optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
 import random
@@ -229,9 +229,17 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
 
 class Tokenizer():
     def __init__(self, docs, vocab_size=30000, lower_case=True):
-        self.vocab = {'[UNK]': 0, '[MASK]': 1}
+        self.doc_len = len(docs)
+        from sklearn.feature_extraction.text import CountVectorizer
+        counter = CountVectorizer(max_df=0.8, min_df=2, max_features=vocab_size-2)
+        counter.fit_transform(docs)
+        self.vocab = counter.vocabulary_
+        # self.vocab = self.build_dict(self.tokenize(' '.join(docs)), vocab_size - 2, 2)
+        self.vocab['[UNK]'] = len(self.vocab)
+        self.vocab['[MASK]'] = len(self.vocab)
+
         self.lower_case = lower_case
-        self.vocab.update(build_dict(self.tokenize(' '.join(docs)), vocab_size - len(self.vocab), len(self.vocab)))
+
         self.ids_to_tokens = OrderedDict(
             [(ids, tok) for tok, ids in self.vocab.items()])
 
@@ -257,13 +265,13 @@ class Tokenizer():
         return ids
 
 
-def build_dict(words, max_words=None, offset=0):
-    cnt = Counter(words)
-    if max_words:
-        words = cnt.most_common(max_words)  # [(word, count)]
-    else:
-        words = cnt.most_common()
-    return {word: offset + i for i, (word, _) in enumerate(words)}
+    def build_dict(self, words, max_words=None, offset=0, max_df = 0.8):
+        cnt = Counter(words)
+        if max_words:
+            words = cnt.most_common(max_words)  # [(word, count)]
+        else:
+            words = cnt.most_common()
+        return {word: offset + i for i, (word, _) in enumerate(words)}
 
 
 def main(train_file, args):
@@ -451,6 +459,9 @@ if __name__ == "__main__":
                         help="The maximum total input sequence length after WordPiece tokenization. \n"
                              "Sequences longer than this will be truncated, and sequences shorter \n"
                              "than this will be padded.")
+    parser.add_argument("--vocab_size",
+                        default=28000,
+                        type=int)
     parser.add_argument("--do_train",
                         action='store_true',
                         help="Whether to run training.")
