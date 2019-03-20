@@ -111,14 +111,6 @@ def get_bert2vec_embed(data):
     #X = preprocessing.normalize(X)
     return X
 
-def get_tfidf_embed(data):
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
-                                 min_df=2, stop_words='english',
-                                 use_idf=True)
-    X = vectorizer.fit_transform(data)
-    return X
-
 class Args(object):
     def __init__(self, train_file="./data/20news.txt", vocab="./bert2vec/vocab.txt", bert_config="./bert2vec/bert_config.json", vocab_size = 28000):
         self.train_file = train_file
@@ -139,3 +131,24 @@ class Args(object):
         self.fp16 = False
         self.loss_scale = 0
         self.vocab_size = vocab_size
+
+
+def get_tfidf_embed(data):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
+                                 min_df=2, stop_words='english',
+                                 use_idf=True)
+    X = vectorizer.fit_transform(data)
+    return X
+
+
+def get_doc2vec2_embed(data):
+    with open("../doc2vec/data/temp.txt", "w", encoding="utf8") as f:
+        f.write("text\n")
+        data = [doc.replace("\n", " ") for doc in data]
+        f.write('\n'.join(data))
+    from doc2vec.paragraphvec.doc2vec import main
+    import sklearn.preprocessing as preprocessing
+    X = main()
+    X = preprocessing.normalize(X)
+    return X

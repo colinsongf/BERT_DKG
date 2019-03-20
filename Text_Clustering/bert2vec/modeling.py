@@ -259,7 +259,6 @@ class BertEmbeddings(nn.Module):
 
         # embeddings = words_embeddings + position_embeddings + token_type_embeddings
         embeddings = torch.cat([words_embeddings + position_embeddings, token_type_embeddings], dim=-1)
-        print(embeddings.size())
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
