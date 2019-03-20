@@ -7,8 +7,8 @@ from os.path import join
 import random
 from tqdm import trange, tqdm
 from torchtext.data import Field, TabularDataset, Example, Dataset
-from paragraphvec.models import *
-from paragraphvec.loss import NegativeSampling
+from .models import *
+from .loss import NegativeSampling
 import torch
 from torch.optim import Adam
 from torch.utils.data import DataLoader, TensorDataset
