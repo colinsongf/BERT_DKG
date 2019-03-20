@@ -441,7 +441,7 @@ class BertLMPredictionHead(nn.Module):
 
         # The output weights are the same as the input embeddings, but there is
         # an output-only bias for each token.
-        self.decoder = nn.Linear(bert_model_embedding_weights.size(1),
+        self.decoder = nn.Linear(bert_model_embedding_weights.size(1) * 2,
                                  bert_model_embedding_weights.size(0),
                                  bias=False)
         self.decoder.weight = bert_model_embedding_weights
@@ -842,7 +842,7 @@ class BertForMaskedLM(BertPreTrainedModel):
     def __init__(self, config):
         super(BertForMaskedLM, self).__init__(config)
         self.bert = BertModel(config)
-        self.cls = BertOnlyMLMHead(config, self.bert.embeddings.word_embeddings.weight * 2)
+        self.cls = BertOnlyMLMHead(config, self.bert.embeddings.word_embeddings.weight)
         self.apply(self.init_bert_weights)
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, masked_lm_labels=None):
