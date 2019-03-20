@@ -6,9 +6,9 @@ from math import ceil
 from os.path import join
 import random
 from tqdm import trange, tqdm
-from torchtext.data import Field, TabularDataset
-from .models import *
-from .loss import NegativeSampling
+from torchtext.data import Field, TabularDataset, Example, Dataset
+from paragraphvec.models import *
+from paragraphvec.loss import NegativeSampling
 import torch
 from torch.optim import Adam
 from torch.utils.data import DataLoader, TensorDataset
@@ -41,6 +41,18 @@ def load_dataset(file_path):
     return dataset
 
 
+class MyDataset(Dataset):
+
+    def __init__(self, data, **kwargs):
+        text_field = Field(lower=True, tokenize=_tokenize_str)
+        fields = [("text", text_field)]
+        examples = []
+        for text in data:
+            examples.append(Example.fromlist([text], fields))
+        super(MyDataset, self).__init__(examples, fields, **kwargs)
+        text_field.build_vocab(self)
+        self.vocab = text_field.vocab
+    
 def _tokenize_str(str_):
     # keep only alphanumeric and punctations
     str_ = re.sub(r'[^A-Za-z0-9(),.!?\'`]', ' ', str_)
@@ -90,8 +102,9 @@ def get_train_dataset(dataset, vocab):
     return train_dataset
 
 
-def main(file_path):
-    dataset = load_dataset(file_path)
+def main(data):
+    # dataset = load_dataset(file_path)
+    dataset = MyDataset(data)
     print("doc num: %d" % (len(dataset)))
     vocab = dataset.fields['text'].vocab
     train_dataset = get_train_dataset(dataset, vocab)
