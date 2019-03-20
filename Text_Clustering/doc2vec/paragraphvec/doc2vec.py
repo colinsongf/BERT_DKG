@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset
 vec_dim = 200
 dbow = True
 num_epochs = 10
-batch_size = 512 * 16
+batch_size = 512 * 32
 lr = 1e-3
 window_size = 5
 noise_num = 100
@@ -107,7 +107,7 @@ def main(data_or_file):
     vocab = dataset.fields['text'].vocab
     train_dataset = get_train_dataset(dataset, vocab)
 
-    dataloader = DataLoader(train_dataset, batch_size=batch_size)
+    dataloader = DataLoader(train_dataset, batch_size=batch_size, num_workers=8)
 
     if dbow:
         model = DBOW(vec_dim, num_docs=len(dataset), num_words=len(vocab.itos))
