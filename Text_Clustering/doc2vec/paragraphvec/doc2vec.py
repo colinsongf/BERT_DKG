@@ -103,6 +103,7 @@ def main(file_path):
 
     cost_func = NegativeSampling()
     optimizer = Adam(params=model.parameters(), lr=lr)
+    best_loss = float("inf")
 
     for epoch_i in trange(num_epochs, desc="Epoch"):
         loss = []
@@ -124,5 +125,6 @@ def main(file_path):
         loss = torch.mean(torch.FloatTensor(loss))
         is_best_loss = loss < best_loss
         best_loss = min(loss, best_loss)
+        print("loss: {:.4f}".format(loss))
 
     return model._D.tolist()
