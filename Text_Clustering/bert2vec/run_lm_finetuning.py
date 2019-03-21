@@ -155,8 +155,8 @@ def random_word(tokens, tokenizer):
     for i, token in enumerate(tokens):
         prob = random.random()
         # mask token with 15% probability
-        if prob < 0.50:
-            prob /= 0.50
+        if prob < 1:
+            prob /= 1
             tokens[i] = "[MASK]"
             # # 80% randomly change token to mask token
             # if prob < 0.8:
