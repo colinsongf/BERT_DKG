@@ -96,7 +96,9 @@ class BERTDataset(Dataset):
         self.sample_counter += 1
         # tokenize
         doc_tok = self.tokenizer.tokenize(self.all_docs[item])
-
+        # only keep the words in vocab
+        doc_tok = list(filter(lambda x: self.tokenizer.vocab.get(x), doc_tok))
+        
         # combine to one sample
         cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item)
 
@@ -232,7 +234,7 @@ class Tokenizer():
         self.doc_len = len(docs)
         self.lower_case = lower_case
         from sklearn.feature_extraction.text import CountVectorizer
-        counter = CountVectorizer(max_df=0.8, min_df=2, max_features=vocab_size - 2, tokenizer=self.basic_tokenize)
+        counter = CountVectorizer(max_df=0.8, min_df=2, max_features=vocab_size - 2, tokenizer=self.tokenize)
         counter.fit_transform(docs)
         self.vocab = counter.vocabulary_
         # self.vocab = self.build_dict(self.tokenize(' '.join(docs)), vocab_size - 2, 2)
@@ -242,33 +244,11 @@ class Tokenizer():
         self.ids_to_tokens = OrderedDict(
             [(ids, tok) for tok, ids in self.vocab.items()])
 
-    def basic_tokenize(self, doc):
+    def tokenize(self, doc):
         if self.lower_case:
             doc = doc.lower()
-        token_pattern = re.compile('(?u)\\b\\w\\w+\\b')
+        token_pattern = re.compile(r'(?u)\b\w\w+\b')
         return token_pattern.findall(doc)
-
-    def tokenize(self, str_):
-        # keep only alphanumeric and punctations
-        str_ = re.sub(r'[^A-Za-z0-9(),.!?\'`]', ' ', str_)
-        # remove multiple whitespace characters
-        str_ = re.sub(r'\s{2,}', ' ', str_)
-        # punctations to tokens
-        str_ = re.sub(r'\(', ' ( ', str_)
-        str_ = re.sub(r'\)', ' ) ', str_)
-        str_ = re.sub(r',', ' , ', str_)
-        str_ = re.sub(r'\.', ' . ', str_)
-        str_ = re.sub(r'!', ' ! ', str_)
-        str_ = re.sub(r'\?', ' ? ', str_)
-        # split contractions into multiple tokens
-        str_ = re.sub(r'\'s', ' \'s', str_)
-        str_ = re.sub(r'\'ve', ' \'ve', str_)
-        str_ = re.sub(r'n\'t', ' n\'t', str_)
-        str_ = re.sub(r'\'re', ' \'re', str_)
-        str_ = re.sub(r'\'d', ' \'d', str_)
-        str_ = re.sub(r'\'ll', ' \'ll', str_)
-        # lower case
-        return str_.strip().lower().split()
 
     def convert_ids_to_tokens(self, ids):
         tokens = []
@@ -466,7 +446,7 @@ if __name__ == "__main__":
                         # required=True
                         )
     parser.add_argument("--output_dir",
-                        default=r"D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model",
+                        default=r"./output_dir",
                         type=str,
                         # required=True,
                         help="The output directory where the model checkpoints will be written.")
