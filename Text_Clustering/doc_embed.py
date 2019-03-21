@@ -121,8 +121,8 @@ class Args(object):
         self.max_seq_length = 512
         self.do_train = True
         self.train_batch_size = 32
-        self.learning_rate = 3e-4
-        self.num_train_epochs = 20.0
+        self.learning_rate = 3e-3
+        self.num_train_epochs = 40.0
         self.warmup_proportion = 0.1
         self.no_cuda = False
         self.do_lower_case = True
