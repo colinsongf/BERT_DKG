@@ -108,7 +108,7 @@ def get_bert2vec_embed(data):
     import sklearn.preprocessing as preprocessing
     from bert2vec.run_lm_finetuning import main
     X = main(data, Args())
-    #X = preprocessing.normalize(X)
+    X = preprocessing.normalize(X)
     return X
 
 class Args(object):

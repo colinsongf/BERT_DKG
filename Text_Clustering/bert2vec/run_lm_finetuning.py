@@ -157,18 +157,18 @@ def random_word(tokens, tokenizer):
         # mask token with 15% probability
         if prob < 0.15:
             prob /= 0.15
-
-            # 80% randomly change token to mask token
-            if prob < 0.8:
-                tokens[i] = "[MASK]"
-
-            # 10% randomly change token to random token
-            elif prob < 0.9:
-                tokens[i] = random.choice(list(tokenizer.vocab.items()))[0]
-
-            # -> rest 10% randomly keep current token
-
-            # append current token to output (we will predict these later)
+            tokens[i] = "[MASK]"
+            # # 80% randomly change token to mask token
+            # if prob < 0.8:
+            #     tokens[i] = "[MASK]"
+            #
+            # # 10% randomly change token to random token
+            # elif prob < 0.9:
+            #     tokens[i] = random.choice(list(tokenizer.vocab.items()))[0]
+            #
+            # # -> rest 10% randomly keep current token
+            #
+            # # append current token to output (we will predict these later)
             try:
                 output_label.append(tokenizer.vocab[token])
             except KeyError:
