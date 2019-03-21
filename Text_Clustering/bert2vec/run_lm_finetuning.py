@@ -151,12 +151,12 @@ def random_word(tokens, tokenizer):
     :return: (list of str, list of int), masked tokens and related labels for LM prediction
     """
     output_label = []
-    masked = False
+    # masked = False
     for i, token in enumerate(tokens):
         prob = random.random()
         # mask token with 15% probability
-        if prob < 0.3 and not masked:
-            prob /= 0.3
+        if prob < 0.5:
+            prob /= 0.5
             tokens[i] = "[MASK]"
             masked = True
             # # 80% randomly change token to mask token
