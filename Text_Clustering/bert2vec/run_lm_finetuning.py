@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import sklearn.preprocessing as preprocessing
-from .modeling import BertForPreTraining, BertConfig
+from .modeling2 import BertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
