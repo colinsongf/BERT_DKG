@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-from .modeling import BertForPreTraining, BertConfig
+from .modeling2 import BertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
@@ -243,11 +243,33 @@ class Tokenizer():
         self.ids_to_tokens = OrderedDict(
             [(ids, tok) for tok, ids in self.vocab.items()])
 
-    def tokenize(self, doc):
+    def basic_tokenize(self, doc):
         if self.lower_case:
             doc = doc.lower()
         token_pattern = re.compile('(?u)\\b\\w\\w+\\b')
         return token_pattern.findall(doc)
+
+    def tokenize(self, str_):
+        # keep only alphanumeric and punctations
+        str_ = re.sub(r'[^A-Za-z0-9(),.!?\'`]', ' ', str_)
+        # remove multiple whitespace characters
+        str_ = re.sub(r'\s{2,}', ' ', str_)
+        # punctations to tokens
+        str_ = re.sub(r'\(', ' ( ', str_)
+        str_ = re.sub(r'\)', ' ) ', str_)
+        str_ = re.sub(r',', ' , ', str_)
+        str_ = re.sub(r'\.', ' . ', str_)
+        str_ = re.sub(r'!', ' ! ', str_)
+        str_ = re.sub(r'\?', ' ? ', str_)
+        # split contractions into multiple tokens
+        str_ = re.sub(r'\'s', ' \'s', str_)
+        str_ = re.sub(r'\'ve', ' \'ve', str_)
+        str_ = re.sub(r'n\'t', ' n\'t', str_)
+        str_ = re.sub(r'\'re', ' \'re', str_)
+        str_ = re.sub(r'\'d', ' \'d', str_)
+        str_ = re.sub(r'\'ll', ' \'ll', str_)
+        # lower case
+        return str_.strip().lower().split()
 
     def convert_ids_to_tokens(self, ids):
         tokens = []
@@ -264,13 +286,11 @@ class Tokenizer():
                 ids.append(self.vocab[token])
         return ids
 
-
-    def build_dict(self, words, max_words=None, offset=0, max_df = 0.8):
+    def build_dict(self, words, max_words=10000, offset=0, max_df=0.8):
         cnt = Counter(words)
-        if max_words:
-            words = cnt.most_common(max_words)  # [(word, count)]
-        else:
-            words = cnt.most_common()
+        words = dict(filter(lambda x: x[1] < max_df * self.doc_len, cnt.items()))
+        words = sorted(words.items(), key=lambda x: x[1], reverse=True)
+        words = words[:max_words]  # [(word, count)]
         return {word: offset + i for i, (word, _) in enumerate(words)}
 
 

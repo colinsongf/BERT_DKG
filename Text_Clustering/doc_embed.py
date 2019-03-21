@@ -119,9 +119,9 @@ class Args(object):
         self.output_dir = "./output_bert_model"
         self.max_seq_length = 512
         self.do_train = True
-        self.train_batch_size = 32
-        self.learning_rate = 3e-5
-        self.num_train_epochs = 3.0
+        self.train_batch_size = 64
+        self.learning_rate = 3e-4
+        self.num_train_epochs = 10.0
         self.warmup_proportion = 0.1
         self.no_cuda = False
         self.do_lower_case = True
