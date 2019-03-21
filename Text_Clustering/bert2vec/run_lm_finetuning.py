@@ -28,7 +28,7 @@ import torch
 from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
-
+import sklearn.preprocessing as preprocessing
 from .modeling import BertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
 
@@ -273,7 +273,7 @@ class Tokenizer():
     #     return {word: offset + i for i, (word, _) in enumerate(words)}
 
 
-def main(train_file, args):
+def main(dataset, args, hook):
 
     if args.local_rank == -1 or args.no_cuda:
         device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
@@ -307,7 +307,7 @@ def main(train_file, args):
 
     #train_examples = None
     num_train_optimization_steps = None
-    train_dataset = BERTDataset(train_file, seq_len=args.max_seq_length,
+    train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
                                 corpus_lines=None)
     num_train_optimization_steps = int(
         len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
@@ -414,7 +414,9 @@ def main(train_file, args):
                     optimizer.step()
                     optimizer.zero_grad()
                     global_step += 1
-
+            X = model.get_doc_embed().weight.tolist()
+            X = preprocessing.normalize(X)
+            hook(dataset, X)
         # Save a trained model
         logger.info("** ** * Saving fine - tuned model ** ** * ")
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self

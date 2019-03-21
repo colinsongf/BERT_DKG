@@ -39,67 +39,68 @@ if len(args) > 0:
 
 # #############################################################################
 # Load some categories from the training set
-categories = [
-    'alt.atheism',
-    'talk.religion.misc',
-    'comp.graphics',
-    'sci.space',
-]
-# Uncomment the following to do the analysis on all the categories
-# categories = None
+def load_data():
+    categories = [
+        'alt.atheism',
+        'talk.religion.misc',
+        'comp.graphics',
+        'sci.space',
+    ]
+    # Uncomment the following to do the analysis on all the categories
+    # categories = None
 
-print("Loading 20 newsgroups dataset for categories:")
-print(categories)
+    print("Loading 20 newsgroups dataset for categories:")
+    print(categories)
 
-dataset = fetch_20newsgroups(subset='all', categories=categories,
-                             shuffle=True, random_state=42)
+    dataset = fetch_20newsgroups(subset='all', categories=categories,
+                                 shuffle=True, random_state=42)
 
-print("%d documents" % len(dataset.data))
-print("%d categories" % len(dataset.target_names))
-print()
+    print("%d documents" % len(dataset.data))
+    print("%d categories" % len(dataset.target_names))
+    print()
+    return dataset
 
-labels = dataset.target
-true_k = np.unique(labels).shape[0]
 
-#############################################################################
-# get vectorized X
-print("using embedding: %s" % opts.embed_type)
-print("run_num: %d" % opts.run_num)
-X = eval(opts.embed_type)(dataset.data)
-
-# #############################################################################
-# Do the actual clustering
-f = open("result_%s.txt" % opts.embed_type, "a")
-vs = np.array([])
-nmis = np.array([])
-for i in range(opts.run_num):
-    km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
+def hook(dataset, X):
+    labels = dataset.target
+    true_k = np.unique(labels).shape[0]
+    f = open("result_%s.txt" % opts.embed_type, "a")
+    vs = np.array([])
+    nmis = np.array([])
+    for i in range(opts.run_num):
+        km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
                              init_size=1000, batch_size=1000, verbose=False)
+        t0 = time()
+        km.fit(X)
 
-    print("Clustering sparse data with %s" % km)
-    t0 = time()
-    km.fit(X)
-    print("done in %0.3fs" % (time() - t0))
+        print("--------------The larger the better (%d)---------------------" % (i + 1), file=f)
+        v = metrics.v_measure_score(labels, km.labels_)
+        nmi = metrics.normalized_mutual_info_score(labels, km.labels_)
+        vs = np.append(vs, v)
+        nmis = np.append(nmis, nmi)
+        print("V-measure: %0.3f" % v, file=f)
+        print("Normalized Mutual Information: %0.3f"
+              % nmi, file=f)
+        print("\n\n", file=f)
+
+    v_var = vs.var()
+    v_mean = vs.mean()
+    nmi_var = nmis.var()
+    nmi_mean = nmis.mean()
+    print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean), file=f)
+    print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean), file=f)
+    f.close()
+
+    print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean))
+    print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
 
 
-    print("--------------The larger the better (%d)---------------------"%(i+1), file=f)
-    v = metrics.v_measure_score(labels, km.labels_)
-    nmi = metrics.normalized_mutual_info_score(labels, km.labels_)
-    vs = np.append(vs, v)
-    nmis = np.append(nmis, nmi)
-    print("V-measure: %0.3f" % v, file=f)
-    print("Normalized Mutual Information: %0.3f"
-          % nmi, file=f)
+def run():
+    dataset = load_data()
+    print("using embedding: %s" % opts.embed_type)
+    print("run_num: %d" % opts.run_num)
+    eval(opts.embed_type)(dataset, hook)
 
-    print("\n\n", file=f)
 
-v_var = vs.var()
-v_mean = vs.mean()
-nmi_var = nmis.var()
-nmi_mean = nmis.mean()
-print("V-measure: var: %0.4f; mean: %0.4f" %(v_var, v_mean), file=f)
-print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" %(nmi_var, nmi_mean), file=f)
-f.close()
-
-print("V-measure: var: %0.4f; mean: %0.4f" %(v_var, v_mean))
-print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" %(nmi_var, nmi_mean))
+if __name__ == "__main__":
+    run()

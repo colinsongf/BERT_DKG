@@ -22,11 +22,12 @@ def get_lda_embed(data):
     X = preprocessing.normalize(X)
     return X
 
-def get_doc2vec_embed(data):
+
+def get_doc2vec_embed(dataset, hook):
     import gensim
     from gensim.models.doc2vec import Doc2Vec, TaggedDocument
     import sklearn.preprocessing as preprocessing
-    docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(data)]
+    docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(dataset.data)]
     doc2vec_dbow = Doc2Vec(dm=0, vector_size=300, min_count=2, max_count=1000)
     doc2vec_dm = Doc2Vec(dm=1, vector_size=300, min_count=2, max_count=1000)
     doc2vec_dbow.build_vocab(docs)
@@ -36,6 +37,7 @@ def get_doc2vec_embed(data):
 
     X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
     X = preprocessing.normalize(X)
+    hook(dataset, X)
     return X
 
 def get_bert_embed(data):
@@ -102,12 +104,11 @@ def get_finetuned_bert_embed(data):
 
     return preprocessing.normalize(X)
 
-def get_bert2vec_embed(data):
-    import torch
-    import gensim
+
+def get_bert2vec_embed(dataset, hook):
     import sklearn.preprocessing as preprocessing
     from bert2vec.run_lm_finetuning import main
-    X = main(data, Args())
+    X = main(dataset, Args(), hook)
     X = preprocessing.normalize(X)
     return X
 
@@ -121,7 +122,7 @@ class Args(object):
         self.do_train = True
         self.train_batch_size = 32
         self.learning_rate = 3e-4
-        self.num_train_epochs = 10.0
+        self.num_train_epochs = 20.0
         self.warmup_proportion = 0.1
         self.no_cuda = False
         self.do_lower_case = True
@@ -133,23 +134,21 @@ class Args(object):
         self.vocab_size = vocab_size
 
 
-def get_tfidf_embed(data):
+def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
     vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
                                  min_df=2, stop_words='english',
                                  use_idf=True)
-    X = vectorizer.fit_transform(data)
+    X = vectorizer.fit_transform(dataset.data)
+    hook(dataset, X)
     return X
 
 
-def get_doc2vec2_embed(data):
-    print("data len:%d" % len(data))
-    # with open("./doc2vec/data/temp.txt", "w", encoding="utf8") as f:
-    #     f.write("text\n")
-    #     data = [doc.replace("\n", " ").replace("\r", " ") for doc in data]
-    #     f.write('\n'.join(data))
+def get_doc2vec2_embed(dataset, hook):
+    print("data len:%d" % len(dataset.data))
     from doc2vec.paragraphvec.doc2vec import main
     import sklearn.preprocessing as preprocessing
-    X = main(data)
+    X = main(dataset.data)
     X = preprocessing.normalize(X)
+    hook(dataset, X)
     return X
