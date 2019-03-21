@@ -230,6 +230,7 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
 class Tokenizer():
     def __init__(self, docs, vocab_size=30000, lower_case=True):
         self.doc_len = len(docs)
+        self.lower_case = lower_case
         from sklearn.feature_extraction.text import CountVectorizer
         counter = CountVectorizer(max_df=0.8, min_df=2, max_features=vocab_size - 2, tokenizer=self.basic_tokenize)
         counter.fit_transform(docs)
@@ -237,8 +238,6 @@ class Tokenizer():
         # self.vocab = self.build_dict(self.tokenize(' '.join(docs)), vocab_size - 2, 2)
         self.vocab['[UNK]'] = len(self.vocab)
         self.vocab['[MASK]'] = len(self.vocab)
-
-        self.lower_case = lower_case
 
         self.ids_to_tokens = OrderedDict(
             [(ids, tok) for tok, ids in self.vocab.items()])
