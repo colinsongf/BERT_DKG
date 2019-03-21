@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 
-from .modeling2 import BertForPreTraining, BertConfig
+from .modeling import BertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
@@ -265,12 +265,12 @@ class Tokenizer():
                 ids.append(self.vocab[token])
         return ids
 
-    def build_dict(self, words, max_words=10000, offset=0, max_df=0.8):
-        cnt = Counter(words)
-        words = dict(filter(lambda x: x[1] < max_df * self.doc_len, cnt.items()))
-        words = sorted(words.items(), key=lambda x: x[1], reverse=True)
-        words = words[:max_words]  # [(word, count)]
-        return {word: offset + i for i, (word, _) in enumerate(words)}
+    # def build_dict(self, words, max_words=10000, offset=0, max_df=0.8):
+    #     cnt = Counter(words)
+    #     words = dict(filter(lambda x: x[1] < max_df * self.doc_len, cnt.items()))
+    #     words = sorted(words.items(), key=lambda x: x[1], reverse=True)
+    #     words = words[:max_words]  # [(word, count)]
+    #     return {word: offset + i for i, (word, _) in enumerate(words)}
 
 
 def main(train_file, args):
