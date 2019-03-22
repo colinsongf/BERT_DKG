@@ -215,30 +215,33 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
         for i,sent in enumerate(segment_ids):
             words_num += len(sent)
             if words_num>max_seq_length-2:
-                doc_segment_ids = [0]+ doc_segment_ids + [doc_segment_ids[-1]]
-                doc_predict_mask = [0] + doc_predict_mask + [0]
-                doc_label_ids = [0] + doc_label_ids + [0]
-                doc_tokens = ['[CLS]'] + doc_tokens + ['[SEP]']
+                if doc_segment_ids:
+                    doc_segment_ids = [0] + doc_segment_ids + [doc_segment_ids[-1]]
+                    doc_predict_mask = [0] + doc_predict_mask + [0]
+                    doc_label_ids = [0] + doc_label_ids + [0]
+                    doc_tokens = ['[CLS]'] + doc_tokens + ['[SEP]']
 
-                doc_input_ids = tokenizer.convert_tokens_to_ids(doc_tokens)
-                doc_input_mask = [1] * len(doc_input_ids)
-                # Pad up to the doc length
-                padding_length = max_seq_length - len(doc_input_ids)
-                zero_padding = [0] * padding_length
-                doc_input_ids += zero_padding
-                doc_input_mask += zero_padding
-                doc_segment_ids += zero_padding
-                doc_predict_mask += zero_padding
-                doc_label_ids += [0] * padding_length  # [PAD] -> 0
+                    doc_input_ids = tokenizer.convert_tokens_to_ids(doc_tokens)
+                    doc_input_mask = [1] * len(doc_input_ids)
+                    # Pad up to the doc length
+                    padding_length = max_seq_length - len(doc_input_ids)
+                    zero_padding = [0] * padding_length
+                    doc_input_ids += zero_padding
+                    doc_input_mask += zero_padding
+                    doc_segment_ids += zero_padding
+                    doc_predict_mask += zero_padding
+                    doc_label_ids += [0] * padding_length  # [PAD] -> 0
 
-                assert len(doc_input_ids) == max_seq_length
-                assert len(doc_input_mask) == max_seq_length
-                assert len(doc_segment_ids) == max_seq_length
-                assert len(doc_predict_mask) == max_seq_length
-                assert len(doc_label_ids) == max_seq_length
+                    assert len(doc_input_ids) == max_seq_length
+                    assert len(doc_input_mask) == max_seq_length
+                    assert len(doc_segment_ids) == max_seq_length
+                    assert len(doc_predict_mask) == max_seq_length
+                    assert len(doc_label_ids) == max_seq_length
 
-                features.append(InputFeatures(input_ids=doc_input_ids, input_mask=doc_input_mask, segment_ids=doc_segment_ids,
-                                              predict_mask=doc_predict_mask, label_ids=doc_label_ids, ex_id=example.guid, start_ix = start_ix))
+                    features.append(
+                        InputFeatures(input_ids=doc_input_ids, input_mask=doc_input_mask, segment_ids=doc_segment_ids,
+                                      predict_mask=doc_predict_mask, label_ids=doc_label_ids, ex_id=example.guid,
+                                      start_ix=start_ix))
                 words_num = len(sent)
                 doc_segment_ids = [0]*words_num
                 doc_predict_mask = predict_mask[i]
