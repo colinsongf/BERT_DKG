@@ -97,7 +97,7 @@ def hook(dataset, X):
 
 
 def run():
-    if args.doc_path == "20newsgroup":
+    if opts.doc_path == "20newsgroup":
         dataset = load_20news_data()
     else:
         pass
