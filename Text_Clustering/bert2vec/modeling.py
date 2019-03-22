@@ -248,13 +248,14 @@ class BertEmbeddings(nn.Module):
         self.word_embeddings = nn.Embedding(config.vocab_size, config.hidden_size)
         self.position_embeddings = nn.Embedding(config.max_position_embeddings, config.hidden_size)
         self.token_type_embeddings = nn.Embedding(config.type_vocab_size, config.hidden_size)
-        self.interact = nn.Parameter(torch.FloatTensor(config.hidden_size, config.hidden_size))
+        self.interact = nn.Parameter(torch.FloatTensor(config.hidden_size, config.hidden_size).unsqueeze(0))
         # self.LayerNorm is not snake-cased to stick with TensorFlow model variable name and be able to load
         # any TensorFlow checkpoint file
         self.LayerNorm = BertLayerNorm(config.hidden_size, eps=1e-12)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
     def forward(self, input_ids, token_type_ids=None):
+        batch_size = input_ids.size(0)
         seq_length = input_ids.size(1)
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)
         position_ids = position_ids.unsqueeze(0).expand_as(input_ids)
@@ -266,7 +267,8 @@ class BertEmbeddings(nn.Module):
         token_type_embeddings = self.token_type_embeddings(token_type_ids)
 
         # embeddings = words_embeddings + token_type_embeddings + position_embeddings
-        embeddings = words_embeddings.matmul(self.interact).bmm(token_type_embeddings)
+        embeddings = words_embeddings.bmm(self.interact.expand([batch_size] + list(self.interact.size()))).bmm(
+            token_type_embeddings.unsqueeze(-1)).squeeze(-1)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
