@@ -17749,3 +17749,6 @@ So, long-distance dependencies can be handled by the dependency structure langua
 We carried out some experiments to verify the proposed model.
 In our experiments, the dependency structure model gives a better performance than recently proposed language models, and the dependency structure is more effective than bigram in language modeling for information retrieval.
 
+The goal of the FID/LD Workshop on Linguistics and Information Science was to contribute to the development of a comprehensive plan that can be used to guide research activities for more effective use of linguistics in information science.
+To appreciate our progress toward that goal during the.three days at Biskops-Arno in May of 1976, it is necessary to consider in some detail the stimulus that prompted the establishment of the Workshop, the composition of the group that participated, the common information we shared in the form of the materials distributed in advance to the participants, and the similarities and differences in our perceptions of the needs for linguistics in information science and of the resources that are available to work with.
+This chapter is organized so that these items of background data are presented first, followed by a description of the conduct of the Workshop itself.

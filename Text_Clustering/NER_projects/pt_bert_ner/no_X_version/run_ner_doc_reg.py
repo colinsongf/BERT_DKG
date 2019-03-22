@@ -29,11 +29,11 @@ logger = logging.getLogger(__name__)
 
 TRAIN = DEV = TEST = "tiny"
 
-TRAIN = "ai_data_train_labeled_140"
+TRAIN = "ai_data_train_labeled"
 UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
 DEV = "ai_data_dev46"
 TEST = "ai_data_test46"
-
+PREDICT = "ai_data_to_predict"
 
 class BertForNER(BertPreTrainedModel):
 
@@ -149,6 +149,9 @@ class CONLLProcessor(DataProcessor):
         return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, UNLABELED_TRAIN + '.txt'),
                                                                     'train_unlabeled')
 
+    def get_predict_examples(self, data_dir):
+        return DataProcessor.create_examples_from_conll_format_file(os.path.join(data_dir, PREDICT + '.txt'),
+                                                                    'predict')
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
@@ -509,6 +512,84 @@ def evaluate(dataset, train_steps=None):
     writer2.close()
     return eval_loss
 
+
+def predict():
+    eval_examples = processor.get_predict_examples(config['task']['data_dir'])
+    eval_examples_dict = {e.guid: e for e in eval_examples}
+    eval_features, eval_tokenize_info = convert_examples_to_features(eval_examples, max_seq_length,
+                                                                     tokenizer, label_list)
+    # with codecs.open(os.path.join(config['task']['output_dir'], "%s.tokenize_info" % dataset), 'w', encoding='utf-8') as f:
+    #     for item in eval_tokenize_info:
+    #         f.write(' '.join([str(num) for num in item]) + '\n')
+    logger.info("***** Running Evaluation on prediction set*****")
+    logger.info("  Num examples = %d", len(eval_examples))
+    logger.info("  Num features = %d", len(eval_features))
+    logger.info("  Batch size = %d", config['predict']['batch_size'])
+    all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
+    all_input_mask = torch.ByteTensor([f.input_mask for f in eval_features])
+    # all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
+    all_segment_ids = torch.tensor([f.segment_ids for f in eval_features], dtype=torch.long)
+    all_eval_mask = torch.ByteTensor([f.predict_mask for f in eval_features])
+    all_label_ids = torch.tensor([f.label_ids for f in eval_features], dtype=torch.long)
+    eval_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_eval_mask, all_label_ids)
+    # Run evalion for full data
+    eval_sampler = SequentialSampler(eval_data)
+    eval_dataloader = DataLoader(eval_data, sampler=eval_sampler,
+                                 batch_size=config['predict']['batch_size'])
+    model.eval()
+    predictions = []
+    predict_masks = []
+    nb_eval_steps, nb_eval_examples = 0, 0
+    for batch in tqdm(eval_dataloader, desc="Predicting"):
+        batch = tuple(t.to(device) for t in batch)
+        input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
+        with torch.no_grad():
+            outputs, _ = model(input_ids, segment_ids, input_mask, predict_mask)
+        reshaped_predict_mask, _, _ = valid_first(predict_mask, label_ids)
+
+        predictions.extend(outputs.detach().cpu().numpy().tolist())
+        predict_masks.extend(reshaped_predict_mask.detach().cpu().numpy().tolist())
+
+        nb_eval_examples += predict_mask.detach().cpu().numpy().sum()
+        nb_eval_steps += 1
+    writer1 = codecs.open(os.path.join(config['task']['output_dir'], "prediction_conll_results.txt"), 'w',
+                          encoding='utf-8')
+    writer2 = codecs.open(os.path.join(config['task']['output_dir'], "prediction_entities.txt"), 'w', encoding='utf-8')
+    for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
+        example = eval_examples_dict[eval_feature.ex_id]
+        w1_sent = []
+        entities = []
+        entity = []
+        pretype = None
+        word_idx = eval_feature.start_ix
+        for index, label_id in enumerate(predict_line[:sum(predict_mask)]):
+            if example.words[word_idx] == '[SEP]':
+                word_idx += 1
+                w1_sent.append("\n")
+            line = ' '.join([example.words[word_idx], label_list[label_id]])
+            if label_list[label_id] != "O":
+                if label_list[label_id].startswith("B-"):
+                    if pretype is not None:
+                        entities.append(' '.join(entity))
+                        entity = []
+                    pretype = label_list[label_id].split("-")[1]
+                    entity.append(example.words[word_idx])
+                else:
+                    if pretype is not None and label_list[label_id].split("-")[1] == pretype:
+                        entity.append(example.words[word_idx])
+            else:
+                if pretype is not None:
+                    entities.append(' '.join(entity))
+                    entity = []
+                    pretype = None
+            w1_sent.append(line)
+            word_idx += 1
+        writer1.write('-DOCSTART- O\n' + '\n'.join(w1_sent) + '\n\n')
+        writer2.write('\t'.join(entities) + "\n")
+    writer1.close()
+    writer2.close()
+
+
 def draw(train, dev,end):
     import matplotlib.pyplot as plt
     plt.switch_backend('agg')
@@ -587,5 +668,7 @@ if __name__ == "__main__":
             train()
         if config['test']['do']:
             evaluate(config['test']['dataset'])
+        if config['predict']['do']:
+            predict()
     else:
         print("Please specify the config file.")

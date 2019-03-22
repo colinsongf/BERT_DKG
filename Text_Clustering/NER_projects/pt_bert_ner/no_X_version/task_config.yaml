@@ -48,6 +48,12 @@ test:
   batch_size: 8
   do_every_epoch: true
   do_after_train: true
+predict:
+  do: true
+  # Total batch size for predicting
+  batch_size: 8
+
+
 # Whether to use CUDA when available
 use_cuda: true
 n_gpu: 1

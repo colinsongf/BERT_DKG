@@ -391,10 +391,10 @@ class BertLayer(nn.Module):
 
     def forward(self, hidden_states, attention_mask):
         attention_output = self.attention(hidden_states, attention_mask)
-        # intermediate_output = self.intermediate(attention_output)
-        # layer_output = self.output(intermediate_output, attention_output)
-        # return layer_output
-        return attention_output
+        intermediate_output = self.intermediate(attention_output)
+        layer_output = self.output(intermediate_output, attention_output)
+        return layer_output
+        # return attention_output
 
 
 class BertEncoder(nn.Module):
