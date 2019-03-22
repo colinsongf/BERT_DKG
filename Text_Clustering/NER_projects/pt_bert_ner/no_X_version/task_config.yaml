@@ -18,7 +18,7 @@ task:
   max_seq_length: 256
 train:
   # Whether do training in this run
-  do: true
+  do: false
   # Total batch size for training
   batch_size: 8
   # The initial learning rate for Adam
