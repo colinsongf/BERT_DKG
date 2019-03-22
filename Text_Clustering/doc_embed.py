@@ -28,14 +28,16 @@ def get_doc2vec_embed(dataset, hook):
     from gensim.models.doc2vec import Doc2Vec, TaggedDocument
     import sklearn.preprocessing as preprocessing
     docs = [TaggedDocument(gensim.utils.simple_preprocess(doc), [i]) for i, doc in enumerate(dataset.data)]
-    doc2vec_dbow = Doc2Vec(dm=0, vector_size=300, min_count=2, max_count=1000)
-    doc2vec_dm = Doc2Vec(dm=1, vector_size=300, min_count=2, max_count=1000)
+    doc2vec_dbow = Doc2Vec(size=300, window=15, min_count=5, sample=1e-5, alpha=0.025, min_alpha=0.001, dm=0,
+                           negative=5, dbow_words=1, dm_concat=1, iter=20)
+    # doc2vec_dm = Doc2Vec(dm=1, vector_size=300, min_count=2, max_count=1000)
     doc2vec_dbow.build_vocab(docs)
-    doc2vec_dm.build_vocab(docs)
+    #doc2vec_dm.build_vocab(docs)
     doc2vec_dbow.train(docs, total_examples=doc2vec_dbow.corpus_count, epochs=10)
-    doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
+    # doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
-    X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
+    # X = [doc2vec_dbow.infer_vector(doc.words)+doc2vec_dm.infer_vector(doc.words) for doc in docs]
+    X = [doc2vec_dbow.infer_vector(doc.words) for doc in docs]
     X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
