@@ -267,7 +267,7 @@ class BertEmbeddings(nn.Module):
 
         embeddings = words_embeddings + position_embeddings + token_type_embeddings
         embeddings = self.LayerNorm(embeddings)
-        # embeddings = self.dropout(embeddings)
+        embeddings = self.dropout(embeddings)
         return embeddings
 
 
