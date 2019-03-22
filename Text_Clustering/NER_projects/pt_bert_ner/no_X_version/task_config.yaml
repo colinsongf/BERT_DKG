@@ -9,7 +9,7 @@ task:
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
   decoder: AttnCRFDecoder
   # The output directory where the model predictions and checkpoints will be written
-  output_dir: ./output_AttnCRFDecoder
+  output_dir: ./output_predict
   # Specify the ckeckpoint to load
   checkpoint: ~
   # Whether you are using an uncased model or not
