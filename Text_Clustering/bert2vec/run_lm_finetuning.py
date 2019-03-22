@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import sklearn.preprocessing as preprocessing
-from .modeling import BertForPreTraining, BertConfig
+from .modeling import MyBertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
 
 from torch.utils.data import Dataset
@@ -324,11 +324,11 @@ def main(dataset, args, hook):
     bert_config.vocab_size = len(train_dataset.vocab)
     output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
     if os.path.exists(output_model_file):
-        model = BertForPreTraining.from_pretrained(args.output_dir)
+        model = MyBertForPreTraining.from_pretrained(args.output_dir)
         args.do_train = False
 
     else:
-        model = BertForPreTraining(bert_config)
+        model = MyBertForPreTraining(bert_config)
     if args.fp16:
         model.half()
     model.to(device)
