@@ -21,6 +21,7 @@ logging.basicConfig(level=logging.INFO,
 op = OptionParser()
 op.add_option("--embed_type",dest="embed_type", default="get_doc2vec_embed")
 op.add_option("--run_num",dest="run_num", type=int, default=1)
+op.add_option("--doc_path", dest="doc_path", default="20newsgroup")
 print(__doc__)
 op.print_help()
 
@@ -39,7 +40,7 @@ if len(args) > 0:
 
 # #############################################################################
 # Load some categories from the training set
-def load_data():
+def load_20news_data():
     categories = [
         'alt.atheism',
         'talk.religion.misc',
@@ -96,7 +97,10 @@ def hook(dataset, X):
 
 
 def run():
-    dataset = load_data()
+    if args.doc_path == "20newsgroup":
+        dataset = load_data()
+    else:
+
     print("using embedding: %s" % opts.embed_type)
     print("run_num: %d" % opts.run_num)
     eval(opts.embed_type)(dataset, hook)
