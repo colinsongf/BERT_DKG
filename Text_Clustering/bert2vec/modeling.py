@@ -802,7 +802,7 @@ class MyBertForPreTraining(BertPreTrainedModel):
         return masked_lm_loss
 
     def get_doc_embed(self):
-        return self.bert.embeddings.token_type_embeddings
+        return self.bert.embeddings.doc_embeddings
 
 
 class BertForMaskedLM(BertPreTrainedModel):
