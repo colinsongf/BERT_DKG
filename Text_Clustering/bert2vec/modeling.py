@@ -729,7 +729,7 @@ class BertModel(BertPreTrainedModel):
         return encoded_layers, pooled_output
 
 
-class BertForPreTraining(BertPreTrainedModel):
+class MyBertForPreTraining(BertPreTrainedModel):
     """BERT model with pre-training heads.
     This module comprises the BERT model followed by the two pre-training heads:
         - the masked language modeling head, and
@@ -781,7 +781,7 @@ class BertForPreTraining(BertPreTrainedModel):
     """
 
     def __init__(self, config):
-        super(BertForPreTraining, self).__init__(config)
+        super(MyBertForPreTraining, self).__init__(config)
         self.bert = BertModel(config)
         self.cls = BertPreTrainingHeads(config, self.bert.embeddings.word_embeddings.weight)
         self.apply(self.init_bert_weights)
@@ -790,20 +790,10 @@ class BertForPreTraining(BertPreTrainedModel):
                 next_sentence_label=None):
         sequence_output, pooled_output = self.bert(input_ids, token_type_ids, attention_mask,
                                                    output_all_encoded_layers=False)
-        prediction_scores, seq_relationship_score = self.cls(sequence_output, pooled_output)
-
-        if masked_lm_labels is not None and next_sentence_label is not None:
-            loss_fct = CrossEntropyLoss(ignore_index=-1)
-            masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), masked_lm_labels.view(-1))
-            next_sentence_loss = loss_fct(seq_relationship_score.view(-1, 2), next_sentence_label.view(-1))
-            total_loss = masked_lm_loss + next_sentence_loss
-            return total_loss
-        elif masked_lm_labels is not None:
-            loss_fct = CrossEntropyLoss(ignore_index=-1)
-            masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), masked_lm_labels.view(-1))
-            return masked_lm_loss
-        else:
-            return prediction_scores, seq_relationship_score
+        prediction_scores, _ = self.cls(sequence_output, pooled_output)
+        loss_fct = CrossEntropyLoss()
+        masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), masked_lm_labels.view(-1))
+        return masked_lm_loss
 
     def get_doc_embed(self):
         return self.bert.embeddings.token_type_embeddings
