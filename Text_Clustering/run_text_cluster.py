@@ -98,9 +98,9 @@ def hook(dataset, X):
 
 def run():
     if args.doc_path == "20newsgroup":
-        dataset = load_data()
+        dataset = load_20news_data()
     else:
-
+        pass
     print("using embedding: %s" % opts.embed_type)
     print("run_num: %d" % opts.run_num)
     eval(opts.embed_type)(dataset, hook)
