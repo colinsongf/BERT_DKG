@@ -566,7 +566,7 @@ def predict():
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
         example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
-        entities = []
+        entities = {"FIELD": [], "TEC": [], "MISC": []}
         entity = []
         pretype = None
         word_idx = eval_feature.start_ix
@@ -578,7 +578,7 @@ def predict():
             if label_list[label_id] != "O":
                 if label_list[label_id].startswith("B-"):
                     if pretype is not None:
-                        entities.append(' '.join(entity))
+                        entities[pretype].append(' '.join(entity))
                         entity = []
                     pretype = label_list[label_id].split("-")[1]
                     entity.append(example.words[word_idx])
@@ -587,13 +587,13 @@ def predict():
                         entity.append(example.words[word_idx])
             else:
                 if pretype is not None:
-                    entities.append(' '.join(entity))
+                    entities[pretype].append(' '.join(entity))
                     entity = []
                     pretype = None
             w1_sent.append(line)
             word_idx += 1
         writer1.write('-DOCSTART- O\n' + '\n'.join(w1_sent) + '\n\n')
-        writer2.write('\t'.join(entities) + "\n")
+        writer2.write(', '.join(['\t'.join(entity) for entity in entities.values()]) + "\n")
     writer1.close()
     writer2.close()
 
