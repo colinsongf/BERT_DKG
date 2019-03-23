@@ -242,11 +242,12 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
                         InputFeatures(input_ids=doc_input_ids, input_mask=doc_input_mask, segment_ids=doc_segment_ids,
                                       predict_mask=doc_predict_mask, label_ids=doc_label_ids, ex_id=example.guid,
                                       start_ix=start_ix))
-                words_num = len(sent)
+
+                words_num = min(len(sent), max_seq_length - 2)  # 单句大于max的情况
                 doc_segment_ids = [0]*words_num
-                doc_predict_mask = predict_mask[i]
-                doc_label_ids = label_ids[i]
-                doc_tokens = tokens[i]
+                doc_predict_mask = predict_mask[i][:max_seq_length - 2]
+                doc_label_ids = label_ids[i][:max_seq_length - 2]
+                doc_tokens = tokens[i][:max_seq_length - 2]
                 start_ix = sent_index[i]
             else:
                 doc_segment_ids.extend([s-(doc_segment_ids[0] if doc_segment_ids!=[] else 0) for s in sent])
