@@ -491,8 +491,7 @@ Artificial Intelligence	deductive information retrieval, Prolog, Portuguese	Port
 Cross Lingual Word Semantic	CLWS	Semantic similarity	CLWS similarity	Cross Lingual Information Retrieval	Machine Translation	Cross Lingual Word Sense Disambiguation	CLWS, semantic similarity, WordNet	English	Hindi
 grid information retrieval	grid information retrieval, Semantic Grid, 
 semantic Web	e - commerce	information retrieval, relational database	OWL	OWL ontology	OWL, W3C
-Neurology	Computer and Information Science, , GRAVITY	Sergei . B. Yakushin	Yongqing Xiang	Bernard Cohen	Theodore Raphan	Mount Sinai School of Medicine	New York	New York	10029	USA	Department	Brooklyn College	City	University of New York	Brooklyn	New	York	GRAVITY	Sergei B. Yakushin	PhD	Department of Neurology	Mount Sinai School of Medicine	East 100th Street	New York	NY
-, , Fax	PresS.	J	Neurophysiol	August
+Neurology	Computer and Information Science, , GRAVITY	Sergei . B. Yakushin	Yongqing Xiang	Bernard Cohen	Theodore Raphan	Mount Sinai School of Medicine	New York	New York	10029	USA	Department	Brooklyn College	City	University of New York	Brooklyn	New	York	GRAVITY	Sergei B. Yakushin	PhD	Department of Neurology	Mount Sinai School of Medicine	East 100th Street	New York	NY	Fax	PresS.	J	Neurophysiol	August
 Ad	CLIR	Adaptive Filtering	SDR	natural language processing	Ad - Hoc	CLIR	automatic sense disambiguation	CLIR, relevance feedback algorithm, Twenty - One	TREC-8	Twenty - One
 Performance prediction	Recommender Systems	ad - hoc Information Retrieval	Recommender Systems, , 
 symbolic music information retrieval	MIR	symbolic retrieval	state	text	IR, dynamic programming, 
@@ -690,8 +689,7 @@ case - based reasoning	Information Retrieval	CBR, ,
 information retrieval, meta - data, Web
 Information Retrieval	Information Evolution	Information Retrieval, , Web 2.0	Social Media	Web
 formal	FCA	information retrieval	IR	distributed information, FCA	FCA, 
-Information Retrieval, Mensch - Maschine - Interaktion, Web	Benutzer	Benutzer
-, Visualisierung, 
+Information Retrieval, Mensch - Maschine - Interaktion	Visualisierung, Web	Benutzer	Benutzer
 information retrieval, , 
 Ranking	information retrieval	collaborative filtering	ad hoc information retrieval, rank - based metrics	Parameter estimation, 
 information retrieval, Latent semantic indexing	LSI	multi - label informed	latent semantic indexing	MLSI	latent semantics, Reuters-21578	RCV1
@@ -1038,8 +1036,7 @@ parallel nite analysis	solid earth eld	geoscience	information science, GeoFEM	\E
 ad - hoc Information Retrieval	IR	IR	IR, topic	lo language modelling	multinomial query	topic based language modelling, 
 information retrieval	probability theory	probabilistic inference	probabilistic inference for	information retrieval, Boolean	fuzzy set	vector space	probabilistic models, 
 Analytical Business Intelligence	information classification	knowledge extraction	Information Retrieval, Knowledge Base, Web
-, Informationssysteme, Informationen	Informationen	Suchmaschine	Sammlung	Informations	Suchmaschinen
-, Möglichkeiten	Interaktion, Ergebnispräsentation	Ergebnisliste
+, Informationssysteme	Möglichkeiten	Interaktion, Informationen	Informationen	Suchmaschine	Sammlung	Informations	Suchmaschinen	Ergebnispräsentation	Ergebnisliste
 Information Retrieval	IR	IR	Natural Language Processing	NLP, Document representation	Link Parser	Self - Organizing Map	SOM	mutual, TFIDF
 Information Retrieval	Latent Semantic Indexing, Vector Space Model, 
 Information Systems	knowledge management	Strategic Management Journal	Information Management, , Yulin Fang	Professor	Department of	Hong kong	Ph.D.	richard Ivey School of Business	Western Ontario	Ontario	Journal of	Journal of Management	Journal	American Society for	Communications	AIS
@@ -1436,7 +1433,6 @@ information creation	keyword based search engines	Ontology Based Information Ret
 IRLed	Information Retrieval from Legal Documents	FIRE, , 
 conventional information retrieval	information extraction	information retrieval, , 
 Electrical and Automation Engineering	Electrical and Electronics Engineering	Electronic and Information Engineering	Computer Engineering, , Qiang Lai	ID	Akif Akgul	Chunbiao Li	Guanghui Xu	Ünal Çavuşoğlu	School of	East China Jiaotong University	Nanchang	China	Department	Faculty of Technology	Sakarya University	Serdivan	Turkey	School	Nanjing University of	Nanjing	China	School of	Hubei University of Technology	Wuhan	China	Department	Faculty of	Sakarya University	Serdivan	Turkey
-, , 
 , plug - in hybrid electric vehicles, Research Goals	PHEVs
 Information Processing Letters	Energy Research and Development, , U.S.	Contract E(Oh.-3)-515	National Science Foundation
 information retrieval, immune query optimization algorithm, 
@@ -1900,7 +1896,6 @@ Information retrieval	information retrieval	image retrieval, , Vannevar	Bush	Web
 RSS	RSS	RSS, fuzzy - set information retrieval model, Internet	Internet
 , Evaluation Methodology, SPIRIT consortium	SPIRIT	SPIRIT	IST-2001	D19
 , BACKGROUND, Journal of	Krystyna	K.	Matusiak	OCLC	N.J.	BELKIN	R.N.	ODDY	H.M.	BROOKS	ASK	PART I.	THEORY	Journal of
-, , 
 , , 
 information retrieval	Clustering - based Information Retrieval, Topic Mapsbased	Clustering - based method	Topic Maps	Topic Maps - based, 
 Information Retrieval	Information Extraction	Named Entity Recognition	Multi Text Summarization, newsAgent, Internet	Internet	Nyhetsguiden
@@ -2504,9 +2499,7 @@ Peer - to - peer	P2P	resource	P2P	P2P	P2P networks	keyword, ,
 Semantic Web	RDF	HTML	Data	Information Retrieval	Unified Web, Unified Web	Hybrid Query, SITAR
 e - commerce	online shopping	e - commerce	e - commerce product information retrieval, ontology - based	ontology - based adaptation	Vector Space Model, 
 Music Genre Classification	Music Information Retrieval	MIR, Machine Learning algorithms, 
-, , 
 , , ACM
-, , 
 Information Coding Classification	Information Retrieval, thesauri	MultiWordNet	EuroWordNet	RDF /	OWL	Knowledge Organisation System	KOS, Knowledge Organisation	Digital Libraries
 , island genetic algorithm	IGA	Cosine similarity, World Wide Web	WWW
 XQL	Information Retrieval	IR	XQL, , XML	XML	XML	XML	XML	Robie	XML	W3C	XPath	Clark DeRose	XML
@@ -2923,8 +2916,7 @@ Music Transcription	Music Information Retrieval	MIR	Automatic Music Transcriptio
 , semantic proximity of	SRS	SRSs	semantic proximity based	mean - average - precision, WordNet	TREC
 information retrieval, , European
 P2P, semantic based	peer sharing policies	semantic routing, 
-Hypertext, Offene Hypertext - Systeme	Kriterienkatalog, Bereich	ECHT	DHH+92	Unabhängigkeit	Systemplattformen	Kommunikation	Hypertexts
-Hypertext	Information Retrieval, Kriterienkatalog	Umfeld, Konstanzer
+Hypertext	Hypertext	Information Retrieval, Offene Hypertext - Systeme	Kriterienkatalog	Kriterienkatalog	Umfeld, Bereich	ECHT	DHH+92	Unabhängigkeit	Systemplattformen	Kommunikation	Hypertexts	Konstanzer
 Semantic Web, semantic distance, 
 steganography	steganography, , 
 Adaptive information retrieval	IR	connectionist IR, connectionist architectures	dynamic document routing, 
