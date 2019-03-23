@@ -53,7 +53,7 @@ test:
 predict:
   do: true
   # Total batch size for predicting
-  batch_size: 64
+  batch_size: 512
 
 
 # Whether to use CUDA when available
