@@ -599,6 +599,7 @@ def predict():
             word_idx += 1
         writer1.write('-DOCSTART- O\n' + '\n'.join(w1_sent) + '\n\n')
         last_example_id = eval_feature.ex_id
+    writer2.write(', '.join(['\t'.join(entity) for entity in entities.values()]) + "\n")
     writer1.close()
     writer2.close()
 
