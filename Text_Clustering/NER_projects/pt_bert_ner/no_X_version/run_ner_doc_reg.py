@@ -563,10 +563,15 @@ def predict():
     writer1 = codecs.open(os.path.join(config['task']['output_dir'], "prediction_conll_results.txt"), 'w',
                           encoding='utf-8')
     writer2 = codecs.open(os.path.join(config['task']['output_dir'], "prediction_entities.txt"), 'w', encoding='utf-8')
+    last_example_id = None
+    entities = {"FIELD": [], "TEC": [], "MISC": []}
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
         example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
-        entities = {"FIELD": [], "TEC": [], "MISC": []}
+        if eval_feature.ex_id != last_example_id:
+            if last_example_id is not None:
+                writer2.write(', '.join(['\t'.join(entity) for entity in entities.values()]) + "\n")
+            entities = {"FIELD": [], "TEC": [], "MISC": []}
         entity = []
         pretype = None
         word_idx = eval_feature.start_ix
@@ -593,7 +598,7 @@ def predict():
             w1_sent.append(line)
             word_idx += 1
         writer1.write('-DOCSTART- O\n' + '\n'.join(w1_sent) + '\n\n')
-        writer2.write(', '.join(['\t'.join(entity) for entity in entities.values()]) + "\n")
+        last_example_id = eval_feature.ex_id
     writer1.close()
     writer2.close()
 
