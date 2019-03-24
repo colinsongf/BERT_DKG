@@ -188,6 +188,7 @@ def hook(dataset, X):
 
             import networkx as nx
             from matplotlib import pyplot as plt
+            plt.switch_backend('agg')
             DG = nx.DiGraph()
             DG.add_weighted_edges_from(eages)
 
