@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 
 class BERTDataset(Dataset):
-    def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None):
+    def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None, entities=None):
         self.tokenizer = None
         self.vocab = None
         self.seq_len = seq_len
@@ -52,7 +52,6 @@ class BERTDataset(Dataset):
         self.corpus_path_or_list = corpus_path_or_list
         self.encoding = encoding
         self.current_doc = 0  # to avoid random sentence from same doc
-
         # for loading samples directly from file
         self.sample_counter = 0  # used to keep track of full epochs on file
         self.line_buffer = None  # keep second sentence of a pair in memory and use as first sentence in next pair
@@ -83,6 +82,16 @@ class BERTDataset(Dataset):
 
         self.num_docs = len(self.all_docs)
 
+        ents = []
+        for entity in entities:
+            field_set = entity['FIELD']
+            tec_set = entity['TEC']
+            e = list(field_set.update(tec_set))
+            ents.append([e_.lower() for e_ in e])
+
+        self.entities = ents
+
+
     def build_vocab(self, tokenizer):
         self.tokenizer = tokenizer
         self.vocab = tokenizer.vocab
@@ -100,7 +109,7 @@ class BERTDataset(Dataset):
         doc_tok = list(filter(lambda x: self.tokenizer.vocab.get(x), doc_tok))
         
         # combine to one sample
-        cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item)
+        cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item, entities=self.entities[item])
 
         # transform sample to features
         cur_features = convert_example_to_features(cur_example, self.seq_len, self.tokenizer)
@@ -115,7 +124,7 @@ class BERTDataset(Dataset):
 class InputExample(object):
     """A single training/test example for the language model."""
 
-    def __init__(self, guid, doc_tok, doc_id, lm_labels=None):
+    def __init__(self, guid, doc_tok, doc_id, lm_labels=None, entities=None):
         """Constructs a InputExample.
 
         Args:
@@ -131,17 +140,17 @@ class InputExample(object):
         self.doc_tok = doc_tok
         self.lm_labels = lm_labels  # masked words for language model
         self.doc_id = doc_id
-
+        self.entities = entities
 
 class InputFeatures(object):
     """A single set of features of data."""
 
-    def __init__(self, input_ids, input_mask, doc_id, lm_label_ids):
+    def __init__(self, input_ids, input_mask, doc_id, lm_label_ids, word_weight=None):
         self.input_ids = input_ids
         self.input_mask = input_mask
         self.lm_label_ids = lm_label_ids
         self.doc_id = doc_id
-
+        self.word_weight = None
 
 def random_word(tokens, tokenizer):
     """
@@ -199,18 +208,29 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     input_mask = [1] * len(input_ids)
     doc_id = [example.doc_id] * len(input_ids)
 
+    if example.entities:
+        entities_tokens = tokenizer.tokenize(' '.join(example.entities))
+        entities_ids = tokenizer.convert_tokens_to_ids(entities_tokens)
+    else:
+        entities_ids = []
+    word_weight = [1] * len(input_ids)
+    for i, word_id in enumerate(input_ids):
+        if word_id in entities_ids:
+            word_weight[i] = 10
+
     if len(input_ids) > max_seq_length:
         input_ids = input_ids[:max_seq_length]
         input_mask = input_mask[:max_seq_length]
         doc_id = doc_id[:max_seq_length]
         lm_label_ids = lm_label_ids[:max_seq_length]
-
+        word_weight = word_weight[:max_seq_length]
     # Zero-pad up to the sequence length.
     while len(input_ids) < max_seq_length:
         input_ids.append(0)
         input_mask.append(0)
         doc_id.append(0)
         lm_label_ids.append(-1)
+        word_weight.append(1)
 
     if example.guid < 1:
         logger.info("*** Example ***")
@@ -222,11 +242,14 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
         logger.info(
                 "doc_id: %s" % " ".join([str(x) for x in doc_id]))
         logger.info("LM label: %s " % (lm_label_ids))
+        logger.info("word weight: %s " % (word_weight))
 
     features = InputFeatures(input_ids=input_ids,
                              input_mask=input_mask,
                              doc_id=doc_id,
-                             lm_label_ids=lm_label_ids)
+                             lm_label_ids=lm_label_ids,
+                             word_weight=word_weight
+                             )
     return features
 
 
@@ -392,8 +415,8 @@ def main(dataset, args, hook):
             nb_tr_examples, nb_tr_steps = 0, 0
             for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
                 batch = tuple(t.to(device) for t in batch)
-                input_ids, input_mask, doc_id, lm_label_ids = batch
-                loss = model(input_ids, doc_id, input_mask, lm_label_ids)
+                input_ids, input_mask, doc_id, lm_label_ids, word_weight = batch
+                loss = model(input_ids, doc_id, input_mask, lm_label_ids, word_weight)
                 if n_gpu > 1:
                     loss = loss.mean() # mean() to average on multi-gpu.
                 if args.gradient_accumulation_steps > 1:
@@ -415,15 +438,18 @@ def main(dataset, args, hook):
                     optimizer.step()
                     optimizer.zero_grad()
                     global_step += 1
-            X = model.get_doc_embed().weight.tolist()
-            X = preprocessing.normalize(X)
-            hook(dataset, X)
+            # X = model.get_doc_embed().weight.tolist()
+            # X = preprocessing.normalize(X)
+            # hook(dataset, X)
         # Save a trained model
         logger.info("** ** * Saving fine - tuned model ** ** * ")
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
         torch.save(model_to_save.state_dict(), output_model_file)
 
+    X = model.get_doc_embed().weight.tolist()
+    X = preprocessing.normalize(X)
+    hook(dataset, X, metric=False)
     return model.get_doc_embed().weight.tolist()
 
 def accuracy(out, labels):

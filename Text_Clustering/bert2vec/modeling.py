@@ -793,11 +793,11 @@ class MyBertForPreTraining(BertPreTrainedModel):
         self.apply(self.init_bert_weights)
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, masked_lm_labels=None,
-                next_sentence_label=None):
+                word_weight=None):
         sequence_output, pooled_output = self.bert(input_ids, token_type_ids, attention_mask,
                                                    output_all_encoded_layers=False)
         prediction_scores, _ = self.cls(sequence_output, pooled_output)
-        loss_fct = CrossEntropyLoss(ignore_index=-1)
+        loss_fct = CrossEntropyLoss(ignore_index=-1, weight=word_weight)
         masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), masked_lm_labels.view(-1))
         return masked_lm_loss
 
