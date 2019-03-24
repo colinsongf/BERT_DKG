@@ -1,48 +1,65 @@
 Id,Label
-2,Information Retrieval
-9,music information retrieval
-25,IRS
-31,IR
-46,text classification
-65,question answering
-120,Mixed Script Information Retrieval
-123,question classification
-133,Resource selection
-228,EWN
-230,Cross - Language Text RetrievalId,Label
-2495,vector space model
-2506,SVM
-2510,MFCC
-2528,language modeling
-2531,LM
-2534,relevance feedback
-2587,ontologies
-2591,probabilistic model
-2594,recurrent neural network
-2597,CCS
-2598,Conditional Random Field
-2603,genetic algorithms
-2607,CORI
-2633,neural network
-2665,EuroWordNet
-2674,GA
-2675,Genetic Algorithm
-2678,VSM
-2774,FCA
-2846,ARABic Information Retrieval System
-2847,ARABIRS
-2848,Arabic web - based information retrieval system
-2854,Support Vector Machines
-2896,probFuse
-3150,LSI
-3152,Latent Semantic
-3193,Probability Ranking Principle
-3236,Latent Semantic Indexing
-3258,CRF
-3344,vector space
-3376,RDBS
-3441,Latent Dirichlet Allocation
-3442,LDA
-3503,Okapi BM25
-3667,genetic programming
-3752,F - score
+4,genetic algorithms
+21,CLIR
+23,Cross - Language Information Retrieval
+26,machine translation
+34,automatic query expansion
+64,Distributed Information Retrieval
+70,mAP
+82,query expansion
+114,language modeling
+125,FIRE
+137,Precision
+332,LSI
+361,document
+372,Latent Semantic Indexing
+383,Topic segmentation
+387,question answering
+413,query
+505,AP
+543,cross - lingual information retrieval
+611,statistical machine translation
+650,pseudo relevance feedback
+669,Terrier
+784,LDA
+885,probabilistic
+1133,text clustering
+1770,ad hoc retrieval
+1894,PLSA
+2621,probabilistic information retrieval
+3993,multi - attribute dataId,Label
+5113,genetic algorithm
+5123,MT - based approach
+5126,Mean Average Precision
+5153,CORI
+5162,dictionary - based translation
+5164,SMT
+5186,BM25
+5187,LM
+5190,Forum for Information Retrieval Evaluation
+5199,relevance feedback
+5204,Vector Space Model
+5221,logistic regression
+5249,probabilistic model
+5254,dictionary - based query translation
+5264,thesauri
+5295,Latent Semantic
+5326,Reader Judgment
+5344,probabilistic models
+5403,Singular Value Decomposition
+5406,VSM
+5416,content - based analysis
+5449,SVD
+5474,PRF
+5481,latent semantics
+5485,Divergence From Randomness
+5533,OOV
+5545,AQE
+5546,Dirichlet
+5555,Latent Dirichlet Allocation
+5834,F - Score
+6035,HMM
+6307,probabilistic approach
+7003,probabilistic latent semantic analysis
+7144,Markov Network
+7543,top - k

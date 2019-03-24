@@ -1,43 +1,58 @@
 Id,Label
-1,information retrieval
-2,NLP
-3,Natural Language processing
-25,IR
-231,Word Sense Disambiguation
-948,global user similarityId,Label
-2582,ARABic Information Retrieval System
-2583,ARABIRS
-2584,Arabic web - based information retrieval system
-2585,Latent Semantic Analysis
-2594,SOM
-2637,Vector Space Model
-2645,neural networks
-2650,topic map
-2665,probabilistic model
-2693,LSI
-2695,latent semantic indexing
-2701,SVM
-2708,MAP
-2718,Decision tree
-2744,WSD
-2750,OWL
-2761,Singular Value Decomposition
-2788,WordNet ontology
-2790,semantic representation
-2800,ontology matching
-2806,SVD
-2817,MOTS - CLÉS
-2837,ontology
-2844,vector space
-2866,VSM
-2912,thesauri
-2916,probabilistic
-2935,Boolean
-2936,probabilistic models
-3051,Self - organizing Semantic Map
-3052,semantic map
-3053,unsupervised learning algorithm
-3054,neural network
-3081,Boolean model
-3428,surprisal - based vector similarity
-3614,BM25
+16,music information retrieval
+21,information science and technology
+38,text classification
+43,quantum information science
+62,Spatial Information Science
+69,MIR
+93,Computer and Information Science
+189,quantum cryptography
+224,privacy
+225,distributed data management
+226,structured data management
+227,data management
+228,search
+229,Quality of Web Data
+230,Linked Data
+231,-mining
+232,data -extraction integration cleansing
+282,POS tagging
+283,part - of - speech disambiguation
+314,machine learning
+329,Music genre classification
+332,FPGA
+424,Computational Geometry
+476,Soundscape Information Retrieval
+1256,Morphological analyzer
+2789,peer - to - peer systemsId,Label
+5093,federated database
+5107,chaotic encryption technology
+5108,K - L transform
+5135,QKD
+5136,quantum key distribution
+5141,WebDB
+5159,Hidden Markov model
+5161,Raga
+5179,dynamic time warping
+5180,MFCC extraction algorithm
+5183,DTW
+5184,MFCC
+5185,field programmable gate arrays
+5186,Spartan 6 FPGA
+5204,very
+5222,Citygram Project
+5223,RSD
+5224,remote sensing devices
+5359,NMF
+5381,SVM
+5542,Naive Bayes
+5575,morphological generator
+5578,Morphological
+5723,Contact Phone Fax
+5724,queue
+5820,manifold
+5878,Marsyas
+5989,VSM
+5990,Stanford Tagger
+5991,text classification algorithms
+6332,Peers - peers - coordinator scheme

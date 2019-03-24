@@ -1,48 +1,62 @@
 Id,Label
-1,information retrieval
-2,Artificial Intelligence
-7,Natural language processing
-12,NLP
-16,IR
-20,Cross - Language Information Retrieval
-35,CLIR
-48,Music Information Retrieval
-146,Semantic Web
-159,Query expansion
-1598,Peer - to - peer systemsId,Label
-2762,genetic algorithm
-2763,genetic algorithms
-2786,Okapi
-2805,mAP
-2815,RF
-2847,GA
-2849,SVM
-2881,VSM
-2883,Vector Space Model
-2903,QE
-2924,neural network
-2940,probabilistic model
-2971,MIREX
-3006,pseudo relevance feedback
-3011,Divergence From Randomness
-3022,probabilistic models
-3047,ontology
-3052,OOV
-3067,NDCG
-3072,LDA
-3073,Latent Dirichlet Allocation
-3092,neural networks
-3095,FCA
-3159,fuzzy ontology framework
-3160,inclusion relation
-3181,re - ranking
-3211,Relevance feedback
-3305,fuzzy logic
-3499,ARABic Information Retrieval System
-3500,ARABIRS
-3501,Arabic web - based information retrieval system
-3735,Latent Semantic
-3806,probabilistic
-3848,tf - idf
-3944,RDF
-4082,Peers - peers - coordinator scheme
+21,Information Filtering
+24,IF
+27,natural language processing
+34,Semantic Web
+38,Knowledge Discovery
+39,IRS
+86,semantic search
+106,formal concept analysis
+124,text classification
+140,Semantic similarity
+147,Web mining
+179,data mining
+203,RDF
+214,latent semantic indexing
+228,semantic
+241,LSI
+272,HMM
+313,Word Sense Disambiguation
+914,fresh information retrieval
+1481,Global User Similarity
+1483,Local User Similarity
+1664,fuzzy semantic retrieval
+2053,answer extractionId,Label
+4187,vector space model
+4190,PageRank
+4191,Qtag
+4193,unsupervised algorithms
+4194,supervised approach
+4218,CSE
+4228,OWL
+4242,SVM
+4314,vector - space model
+4322,Hidden Markov Model
+4324,FCA
+4343,WSD
+4589,inclusion relation
+4592,fuzzy ontology framework
+4658,singular value decomposition
+4659,SVD
+4813,PageRank algorithm
+4995,MovieLens
+4997,Surprisal - based vector similarity
+4998,surprisal
+4999,LS&GS
+5000,collaborative filtering algorithms
+5047,RDBs
+5086,SWD
+5088,latent semantic
+5188,Fuzzy Ontology
+5251,semantic relation
+5317,ExtrAns
+5318,AE
+5660,Text representations
+5661,SGD
+5662,Linear SVC
+5663,K - Mean
+5730,PR WPR
+5821,Snippets
+5937,WEKA
+6233,knowledge discovery meta model
+6234,KDM
