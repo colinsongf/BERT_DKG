@@ -1,128 +1,119 @@
 Id,Label
-1,IR
-2,Information Retrieval
-7,Natural Language Processing
-12,NLP
-17,CLIR
-22,Web
-25,MT - based approach
-27,machine translation
-28,Cross - Language Information Retrieval
-45,statistical language modeling
-47,DFR
-48,Okapi
-53,dictionary - based translation
-54,query expansion
-59,SMT
-65,Bags - of - words
-76,deep neural network
-79,deep neural networks
-83,Maximum Entropy
-84,10-fold cross - validation
-85,Forum for Information Retrieval Evaluation
-86,FIRE
-94,relevance feedback
-96,WSD
-106,logistic regression
-128,word sense disambiguation
-132,semantic similarity
-147,bilingual lexicon extraction
-148,two - stages translation model
-171,SVM
-174,LM
-175,Language Modeling
-181,Question classification
-182,Question answering
-183,recurrent neural network
-187,CCS
-188,Mixed Script Information Retrieval
-211,Vector Space Model
-230,LSI
-233,latent semantic indexing
-244,Precision
-279,HMM
-299,Statistical Machine Translation
-337,neural network
-350,thesauri
-372,Ontology
-379,Cross - Language Text Retrieval
-555,language
-563,MT
-597,semantic network
-600,probabilistic model
-647,neural networks
-683,SVMS
-684,Support Vector Machines
-698,Latent Dirichlet Allocation
-731,latent semantic analysis
-736,semantic
-799,Recall
-833,WER
-1024,statistical machine
-1123,support vector machine
-1150,Morphological Analyzer
-1202,Latent Semantic
-1224,OOV
-1360,Language Model
-1500,Multi - modal correlations
-1659,Statistical language modelsId,Label
-1754,Code - Mixed
-1761,Web
-1765,MT - based approach
-1775,statistical language modeling
-1777,Okapi
-1778,DFR
-1782,dictionary - based translation
-1784,SMT
-1787,Bags - of - words
-1793,deep neural networks
-1795,deep neural network
-1796,Maximum Entropy
-1797,10-fold cross - validation
-1798,Forum for Information Retrieval Evaluation
-1799,FIRE
-1802,query expansion
-1806,relevance feedback
-1808,WSD
-1813,logistic regression
-1826,two - stages translation model
-1837,SVM
-1840,LM
-1841,Language Modeling
-1843,recurrent neural network
-1845,CCS
-1850,Vector Space Model
-1855,LSI
-1859,latent semantic indexing
-1864,Precision
-1877,HMM
-1899,neural network
-1910,thesauri
-1913,semantic similarity
-1919,EuroWordNet
-1953,statistical machine translation
-1984,language
-2006,semantic network
-2009,probabilistic model
-2034,neural networks
-2052,MT
-2058,SVMS
-2059,Support Vector Machines
-2066,Latent Dirichlet Allocation
-2087,latent semantic analysis
-2103,semantic
-2111,multi - lingual dictionary
-2117,Recall
-2125,WER
-2155,ontology
-2161,morphological
-2201,statistical machine
-2245,support vector machine
-2255,morphological generator
-2256,morphological parser
-2257,Morphological analyzer
-2278,Latent Semantic
-2283,OOV
-2345,Language Model
-2411,Multi - modal correlations
-2487,Statistical language models
+3,NLP
+9,Natural language processing
+10,information retrieval
+11,CLIR
+17,Web
+20,MT - based approach
+22,Cross - Language Information Retrieval
+24,machine translation
+38,dictionary - based
+43,Okapi
+46,dictionary - based translation
+49,query expansion
+51,SMT
+55,IR
+79,FIRE
+80,Forum for Information Retrieval Evaluation
+91,WSD
+101,logistic regression
+132,word sense disambiguation
+142,semantic similarity
+145,question answering
+153,Vector Space Model
+167,probabilistic model
+181,ontology
+188,thesauri
+196,SVM
+200,LM
+201,Language Modeling
+207,Mixed Script Information Retrieval
+208,question classification
+209,recurrent neural network
+213,CCS
+241,VSM
+258,latent semantic indexing
+261,LSI
+272,Precision
+273,Latent Semantic
+275,neural network
+285,Mean Average Precision
+287,MAP
+340,Statistical Machine Translation
+391,Ad - hoc
+424,Cross - Language Text Retrieval
+488,probabilistic models
+490,vector space
+535,PRF
+556,embedding
+587,language
+593,MT
+601,OOV
+625,Latent Dirichlet Allocation
+628,LDA
+664,neural networks
+703,SVMS
+705,Support Vector Machines
+773,latent semantic analysis
+775,semantic
+852,Recall
+896,WER
+1041,context distance
+1089,statistical machine
+1186,support vector machine
+1302,statistical language models
+1439,Language Model
+1610,multi - modal correlationsId,Label
+1860,Web
+1863,MT - based approach
+1872,dictionary - based
+1875,Okapi
+1878,dictionary - based translation
+1880,SMT
+1893,FIRE
+1894,Forum for Information Retrieval Evaluation
+1904,WSD
+1911,logistic regression
+1927,Vector Space Model
+1931,probabilistic model
+1940,ontology
+1946,thesauri
+1951,SVM
+1952,LM
+1953,Language Modeling
+1955,recurrent neural network
+1958,CCS
+1965,VSM
+1970,latent semantic indexing
+1971,LSI
+1976,Precision
+1978,neural network
+1981,Latent Semantic
+1983,Mean Average Precision
+1986,MAP
+2031,Ad - hoc
+2035,semantic similarity
+2041,EuroWordNet
+2065,probabilistic models
+2066,vector space
+2074,statistical machine translation
+2087,PRF
+2103,embedding
+2116,language
+2128,OOV
+2142,Latent Dirichlet Allocation
+2144,LDA
+2165,neural networks
+2184,MT
+2190,SVMS
+2192,Support Vector Machines
+2236,latent semantic analysis
+2256,semantic
+2275,Recall
+2290,WER
+2348,context distance
+2368,statistical machine
+2421,support vector machine
+2476,statistical language models
+2542,Language Model
+2631,Multi - modal correlations

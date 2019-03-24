@@ -1,105 +1,110 @@
 Id,Label
-1,information retrieval
-2,Natural Language processing
-14,Semantic Web
-23,CLIR
-24,cross - language information retrieval
-29,web search
-30,fuzzy information retrieval
-39,question answering
-49,Music Information Retrieval
-53,IRS
-54,IR
-94,MIR
-159,text retrieval
-160,knowledge acquisition and
-221,Music genre classification
-246,Text Understanding
-277,information
-383,question retrieval
-410,Document clustering
-428,indirect matching
-471,Text Categorization
-535,network
-536,sensor networks
-586,Informatics
-622,Artificial Intelligence Research Computer and Information Science
-686,resource selection
-716,Entropy
-846,keyword based search engines
-847,Keywords - data mining
-848,document summarization
-883,bigram
-884,hybrid - term indexing
-970,Information storage
-971,Retrieval Systems
-972,IRSs
-991,visual attribute classification
-1051,audio - to - score alignmentId,Label
-1073,ARABic Information Retrieval System
-1074,ARABIRS
-1075,Arabic web - based information retrieval system
-1107,language modeling
-1108,Dirichlet prior
-1110,LM
-1114,lattice theory
-1141,topic maps
-1180,vector space model
-1190,Knowledge graphs
-1193,MAP
-1195,Mean Average Precision
-1204,FCA
-1216,probabilistic models
-1240,DSP
-1241,field programmable gate arrays
-1242,Spartan 6 FPGA
-1243,DTW
-1244,MFCC
-1245,FPGA
-1246,dynamic time warping
-1247,MFCC extraction algorithm
-1252,meta - theory
-1253,Cooper
-1254,aboutness relation
-1256,VENUS
-1279,fuzzy relational databases
-1307,semantic ontology
-1309,Concept lattice
-1311,Genetic algorithms
-1313,GA
-1317,OOV
-1321,probabilistic model
-1333,Latent Dirichlet Allocation
-1344,thesauri
-1357,convolutional neural networks
-1360,hierarchical question classification
-1361,hierarchical classification
-1405,MDS
-1406,Ward 's clustering
-1407,multi - dimensional scaling
-1418,latent semantic indexing
-1430,fuzzy ontology framework
-1444,NMF
-1505,Top - k
-1506,ANN
-1512,DemonD
-1515,Perspectives
-1517,localized generalization error model
-1525,fuzzy logic
-1562,back propagation
-1594,Latent Semantic Analysis
-1597,LSA
-1659,VSM
-1668,audio - fingerprint
-1734,semantics
-1756,term clustering
-1789,Non - negative Matrix Factorization
-1800,mind maps
-1828,title re - ranking
-1860,artificial neural network
-1921,RDBs
-1937,CNNs
-1938,Berkeley Attributes of
-1977,dynamic time
-1978,active learning
-1995,set - covering - based algorithm
+1,Information retrieval
+2,IR
+4,NLP
+5,Natural Language processing
+6,ARABIRS
+7,Arabic web - based information retrieval system
+8,ARABic Information Retrieval System
+21,machine learning
+46,Semantic Web
+48,Self - Organizing Maps
+84,multimedia information retrieval
+112,Text retrieval
+115,OWL
+119,formal concept analysis
+143,semantic links
+148,image retrieval
+151,pre - filtering
+162,topic map
+164,topic maps
+173,data mining
+180,ontology
+215,thesauri mapping
+222,RDF
+229,knowledge discovery
+238,latent semantic indexing
+245,Haystack
+249,semantic
+251,SW
+280,knowledge acquisition and
+281,knowledge graphs
+292,FCA
+310,late semantic fusion
+333,multimodal interface
+369,principal component analysis
+398,User Modeling
+433,semantic similarity
+510,meta - data
+512,formal
+538,Soundscape Information Retrieval
+552,meta - information
+570,context
+584,semantic ontology
+590,Concept lattice
+598,GA
+599,Genetic algorithms
+729,algorithmic mediation
+735,multi - dividing ontology algorithm
+741,HMM
+847,neural networks
+879,keyword
+935,neural network
+973,Top - k
+1264,thesauri
+1405,vector space model
+1423,m - commerce
+1657,Mind maps
+1851,RDBSId,Label
+1989,Code - Mixed
+1990,Arabic web - based information retrieval system
+1991,ARABIRS
+1992,ARABic Information Retrieval System
+2010,Self - Organizing Maps
+2035,OWL
+2038,formal concept analysis
+2049,semantic links
+2053,image re - ranking
+2054,logistic regression relevance feedback algorithm
+2055,pre - filtering
+2057,topic maps
+2059,topic map
+2062,ontology
+2072,thesauri mapping
+2076,RDF
+2083,latent semantic indexing
+2085,Haystack
+2087,semantic
+2090,SW
+2101,knowledge graphs
+2102,FCA
+2110,late semantic fusion
+2117,multimodal interface
+2129,principal component analysis
+2140,User Modeling
+2149,semantic similarity
+2182,meta - data
+2186,RSD
+2187,remote sensing devices
+2188,Citygram Project
+2194,text
+2196,meta - information
+2207,context
+2213,semantic ontology
+2218,Concept lattice
+2224,Darwin 's
+2225,Genetic algorithms
+2226,GA
+2268,algorithmic mediation
+2269,multi - dividing ontology algorithm
+2272,HMM
+2319,multi - lingual dictionary
+2320,neural networks
+2333,keyword
+2359,neural network
+2376,Top - k
+2485,thesauri
+2535,vector space model
+2542,M - commerce
+2644,Mind maps
+2722,RDBs
