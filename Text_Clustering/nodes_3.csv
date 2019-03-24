@@ -1,45 +1,47 @@
 Id,Label
-4,Information Retrieval
-15,CLIR
-25,text classification
-55,IR
-95,Music Information Retrieval
-96,cross - language information retrieval
-132,question answering
-134,question classificationId,Label
-2528,mean Average Precision
-2552,formal concept analysis
-2553,propositional logic
-2568,topic map
-2583,ontology
-2584,SVM
-2590,Recurrent Neural Network
-2597,latent semantic indexing
-2598,Bayesian Networks
-2621,LSI
-2622,FCA
-2623,vector space model
-2626,neural network
-2660,AP
-2675,language modeling
-2679,LM
-2684,MIREX
-2729,meta - data
-2747,probabilistic models
-2755,WordNet ontology
-2758,TF - IDF
-2771,OOV
-2796,Vector space models
-2799,probabilistic model
-2836,HMM
-2874,MT
-2882,Okapi
-2962,VSM
-3018,fuzzy logic
-3057,Naive Bayes
-3086,genetic algorithms
-3135,neural networks
-3269,thesauri
-3291,probabilistic
-3557,Stanford Tagger
-3558,text classification algorithms
+1,information retrieval
+4,NLP
+18,IR
+24,natural language processing
+28,question answering
+37,Music information retrieval
+85,Question classification
+88,Mixed Script Information Retrieval
+114,Geographic Information Retrieval
+1472,Peer - to - peer systemsId,Label
+2596,genetic algorithm
+2612,Mean Average Precision
+2678,ontology
+2683,CCS
+2684,recurrent neural network
+2689,RDF
+2696,Bayesian Networks
+2697,Vector Space Model
+2699,VSM
+2703,neural network
+2705,Latent Semantic
+2710,MAP
+2732,probabilistic models
+2733,SVM
+2756,thesauri
+2771,Okapi
+2772,AP
+2795,PageRank
+2844,SVD
+2845,singular value decomposition
+2871,relevance feedback
+2872,collaborative filtering
+2893,probabilistic model
+2898,Latent Dirichlet Allocation
+2899,LDA
+2960,vector space
+2961,Boolean
+2995,Fuzzy logic
+3040,Arabic web - based information retrieval system
+3041,ARABIRS
+3042,ARABic Information Retrieval System
+3067,SMART
+3286,probabilistic
+3672,tf - idf
+3957,peers - peers - coordinator scheme
+4005,inverted index

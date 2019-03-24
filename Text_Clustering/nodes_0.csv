@@ -1,46 +1,49 @@
 Id,Label
-3,Information Retrieval
-6,IR
-18,music information retrieval
-35,CLIR
-49,Machine Translation
-131,Semantic Web
-143,Semantic search
-219,Music genre classification
-957,global user similarityId,Label
-2642,SVM
-2649,MFCC
-2661,SMT
-2668,deep neural networks
-2681,GA
-2693,probabilistic model
-2712,genetic algorithms
-2727,vector - space model
-2730,QE
-2733,latent semantic indexing
-2802,Singular Value Decomposition
-2804,Latent Semantic
-2807,Vector Space Model
-2809,Genetic Algorithm
-2810,VSM
-2827,OWL
-2852,EM
-2866,FCA
-2882,Probability Ranking Principle
-2907,ontology
-2914,vector space
-2944,probabilistic
-2961,MT
-2991,Latent Dirichlet Allocation
-2998,probabilistic models
-3001,SOM
-3048,Fuzzy logic
-3072,ontologies
-3098,CiteSeer
-3101,SVD
-3190,TF - IDF
-3210,neural networks
-3241,PageRank
-3254,semantic information
-3361,neural network
-3465,Surprisal - based vector similarity
+1,Information Retrieval
+2,Natural Language Processing
+10,CLIR
+15,Semantic Web
+24,cross - language information retrieval
+41,Music Information Retrieval
+54,IR
+130,query expansion
+932,global user similarityId,Label
+2614,vector space model
+2636,SVM
+2638,Self - Organizing Maps
+2664,F - measure
+2673,WSD
+2700,thesauri
+2706,Boolean model
+2714,latent semantic indexing
+2722,TF - IDF
+2723,LSI
+2768,re - ranking
+2783,Singular Value Decomposition
+2786,MIREX
+2829,meta - data
+2830,FCA
+2838,MOTS - CLÉS
+2857,Genetic Algorithms
+2858,GA
+2868,OOV
+2869,vector space
+2887,Support Vector Machine
+2941,topic
+2959,fuzzy ontology framework
+2985,LM
+3016,MT
+3027,Okapi
+3032,neural network
+3052,relevance feedback
+3066,Self - organizing Semantic Map
+3067,semantic map
+3068,unsupervised learning algorithm
+3084,MAP
+3092,language modeling
+3115,latent Dirichlet allocation
+3144,genetic algorithm
+3391,surprisal - based vector similarity
+3642,VSM
+4111,probabilistic
+4227,fuzzy logic
