@@ -442,6 +442,7 @@ def main(dataset, args, hook):
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
         torch.save(model_to_save.state_dict(), output_model_file)
+        bert_config
 
     X = model.get_doc_embed().weight.tolist()
     X = preprocessing.normalize(X)

@@ -1,3 +1,4 @@
+# -*- coding:utf8 -*-
 from __future__ import print_function
 
 from sklearn.datasets import fetch_20newsgroups
@@ -136,12 +137,12 @@ def hook_doc(dataset, X):
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
     else:
         cluster_num = opts.cluster_num
-        km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
-                             init_size=1000, batch_size=1000, verbose=False)
-        km.fit(X)
-        labels = km.labels_
-        # labels = np.ones([len(dataset.data)])
-        # labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
+        # km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
+        #                      init_size=1000, batch_size=1000, verbose=False)
+        # km.fit(X)
+        # labels = km.labels_
+        labels = np.ones([len(dataset.data)])
+        labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
             id2field = {}
@@ -171,6 +172,21 @@ def hook_doc(dataset, X):
                         if id2field[f] != id2tec[t]:
                             co_occurence.setdefault((f, t), 1)
                             co_occurence[(f, t)] += 1
+            # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
+            confuse = set(id2field.values()).intersection(set(id2tec.values()))
+            delete_tecs = []
+            delete_fields = []
+            for word in list(confuse):
+                if fields[word][1] > tecs[word][1]:
+                    id2tec.pop(tecs[word][-1])
+                    delete_tecs.append(tecs[word][-1])
+                else:
+                    id2field.pop(fields[word][-1])
+                    delete_fields.append(fields[word][-1])
+            for (f, t), n in co_occurence.items():
+                if f in delete_fields or t in delete_tecs:
+                    co_occurence.pop((f, t))
+
             # cluster = 1
             co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:50])
             used_fields = [i[0] for i in co_occurence.keys()]
@@ -335,8 +351,8 @@ def run():
         metric = False
     print("using embedding: %s" % opts.embed_type)
     print("run_num: %d" % opts.run_num)
-    # hook(dataset, None)
-    eval(opts.embed_type)(dataset, hook_doc)
+    hook_doc(dataset, None)
+    # eval(opts.embed_type)(dataset, hook_doc)
 
 
 if __name__ == "__main__":
