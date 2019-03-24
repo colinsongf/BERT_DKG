@@ -152,7 +152,7 @@ class InputFeatures(object):
         self.input_mask = input_mask
         self.lm_label_ids = lm_label_ids
         self.doc_id = doc_id
-        self.word_weight = None
+        self.word_weight = word_weight
 
 def random_word(tokens, tokenizer):
     """
@@ -218,7 +218,7 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     word_weight = [1] * len(input_ids)
     for i, word_id in enumerate(input_ids):
         if word_id in entities_ids:
-            word_weight[i] = 10
+            word_weight[i] = 5
 
     if len(input_ids) > max_seq_length:
         input_ids = input_ids[:max_seq_length]
