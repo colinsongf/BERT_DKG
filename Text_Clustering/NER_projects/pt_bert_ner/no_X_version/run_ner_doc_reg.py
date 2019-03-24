@@ -33,7 +33,7 @@ TRAIN = "ai_data_train_labeled"
 UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
 DEV = "ai_data_dev46"
 TEST = "ai_data_test46"
-PREDICT = "ai_data_to_predict"
+PREDICT = "ai_data_to_predict_new"
 
 class BertForNER(BertPreTrainedModel):
 
