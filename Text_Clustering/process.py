@@ -51,7 +51,7 @@ def json_to_conll2():
     r3 = re.compile("[\xa0 \t]")
     defined_words = set(
         ["Information sciences", "Information science", "Information Science", "Information", "Information Management",
-         "Information retrieval", "Information Retrieval"])
+         "Information retrieval", "Information Retrieval", "System"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
         with open("data/ai_data_to_predict_new.txt", "w") as fw2:
             with open("/home/yjc/fc_out_academic.txt") as fr:
