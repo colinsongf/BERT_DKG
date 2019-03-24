@@ -97,7 +97,7 @@ class BERTDataset(Dataset):
         weights = [1.] * len(self.vocab)
         for word_id in self.vocab.values():
             if word_id in ent_ids:
-                weights[word_id] = 5.
+                weights[word_id] = 2.
 
         self.ent_weights = weights
 
