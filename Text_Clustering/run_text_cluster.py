@@ -236,7 +236,7 @@ def hook_doc(dataset, X):
                     [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
                      tecs.items() if id in used_tecs]))
 
-            eages = [(f, t + len(fields), n) for (f, t), n in list(co_occurence.items())[:50]]
+            eages = [(f, t + len(fields), n) for (f, t), n in co_occurence_]
             id2label = {id: normal for lower, [normal, num, id] in fields.items()}
             id2label.update({id + len(fields): normal for lower, [normal, num, id] in tecs.items()})
 
