@@ -174,6 +174,7 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
+            confuse.update(["information science", "information retrieval", "ir"])
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
