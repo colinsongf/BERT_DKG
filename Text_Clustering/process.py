@@ -47,10 +47,10 @@ def json_to_conll():
 def extract_from_json():
     r1 = re.compile("[\n]+")
     r2 = re.compile("[\W]{3,}")
-    defined_words = set(["Information retrieval", "Information sciences", "Information science"])
+    defined_words = set(["Information sciences", "Information science", "Information", "Information Management"])
     with open("data/ai_data_json", "w") as fw1:
         with open("/home/yjc/fc_out_academic.txt") as fr:
-            max_len = 3000
+            max_len = 10000
             i = 1
             while i < max_len:
                 line = fr.readline()
@@ -61,3 +61,6 @@ def extract_from_json():
                     fw1.write(line)
                     i += 1
             print(i)
+
+
+extract_from_json()

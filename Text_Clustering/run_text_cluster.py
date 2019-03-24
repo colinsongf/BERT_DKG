@@ -100,7 +100,119 @@ def load_ai_data():
     return dataset
 
 
-def hook(dataset, X):
+def hook_doc(dataset, X):
+    if metric:
+        labels = dataset.target
+        true_k = np.unique(labels).shape[0]
+        f = open("result_%s.txt" % opts.embed_type, "a")
+        vs = np.array([])
+        nmis = np.array([])
+        for i in range(opts.run_num):
+            # db = DBSCAN(eps=0.3, min_samples=10).fit(X)
+            # labels_ = db.labels_
+            km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
+                                 init_size=1000, batch_size=1000, verbose=False)
+            km.fit(X)
+            labels_ = km.labels_
+
+            print("--------------The larger the better (%d)---------------------" % (i + 1), file=f)
+            v = metrics.v_measure_score(labels, labels_)
+            nmi = metrics.normalized_mutual_info_score(labels, labels_)
+            vs = np.append(vs, v)
+            nmis = np.append(nmis, nmi)
+            print("V-measure: %0.3f" % v, file=f)
+            print("Normalized Mutual Information: %0.3f"
+                  % nmi, file=f)
+            print("\n\n", file=f)
+        v_var = vs.var()
+        v_mean = vs.mean()
+        nmi_var = nmis.var()
+        nmi_mean = nmis.mean()
+        print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean), file=f)
+        print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean), file=f)
+        f.close()
+
+        print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean))
+        print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
+    else:
+        cluster_num = opts.cluster_num
+        km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
+                             init_size=1000, batch_size=1000, verbose=False)
+        km.fit(X)
+        labels = km.labels_
+        # labels = np.ones([len(dataset.data)])
+        # labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
+        fields = {}  # { lowercase entity: [normal case, nums, id]}
+        id2field = {}
+        tecs = {}
+        id2tec = {}
+        co_occurence = {}  # {(field_id, tec_id):nums}
+        for cluster in range(cluster_num):
+            entities = np.array(dataset.entities)[labels == cluster]
+            for entity in entities:
+                f_ids = []
+                t_ids = []
+                for e in entity["FIELD"]:
+                    if e.lower() not in fields:
+                        id2field[len(fields) + 1] = e.lower()
+                        fields[e.lower()] = [e, 1, len(fields) + 1]
+                    else:
+                        fields[e.lower()][1] += 1
+                    f_ids.append(fields[e.lower()][-1])
+                for t in entity["TEC"]:
+                    if t.lower() not in tecs:
+                        id2tec[len(tecs) + 1] = t.lower()
+                        tecs[t.lower()] = [t, 1, len(tecs) + 1]
+                    else:
+                        tecs[t.lower()][1] += 1
+                    t_ids.append(tecs[t.lower()][-1])
+                for f in f_ids:
+                    for t in t_ids:
+                        if id2field[f] != id2tec[t]:
+                            co_occurence.setdefault((f, t), 1)
+                            co_occurence[(f, t)] += 1
+        cluster = 1
+        co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:400])
+        used_fields = [i[0] for i in co_occurence.keys()]
+        used_tecs = [i[1] for i in co_occurence.keys()]
+        with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
+            f.write('\n'.join(
+                ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
+                                                 (f, t), n in co_occurence.items()]))
+        with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
+            f.write('\n'.join(
+                ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
+                                fields.items() if id in used_fields]))
+            f.write('\n'.join(
+                ["Id,Label"] + [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
+                                tecs.items() if id in used_tecs]))
+
+        eages = [(f, t + len(fields), n) for (f, t), n in list(co_occurence.items())[:50]]
+        id2label = {id: normal for lower, [normal, num, id] in fields.items()}
+        id2label.update({id + len(fields): normal for lower, [normal, num, id] in tecs.items()})
+
+        import networkx as nx
+        from matplotlib import pyplot as plt
+        plt.switch_backend('agg')
+        DG = nx.DiGraph()
+        DG.add_weighted_edges_from(eages)
+
+        pos = nx.spring_layout(DG, k=0.15, iterations=100)
+
+        id2labels = {id: id2label[id] for id in pos.keys()}
+
+        d = nx.degree(DG)
+        d = [(d[node] + 1) * 50 for node in DG.nodes()]
+
+        nx.draw_networkx_nodes(DG, pos, node_size=d)
+        nx.draw_networkx_edges(DG, pos)
+        nx.draw_networkx_labels(DG, pos, labels=id2labels)
+        plt.axis('off')
+        plt.savefig("cluster_%d.png" % cluster)  # save as png
+        # plt.show()
+
+
+def hook_field(dataset, X):
     if metric:
         labels = dataset.target
         true_k = np.unique(labels).shape[0]
@@ -213,8 +325,6 @@ def hook(dataset, X):
 
 
 
-
-
 def run():
     global metric
     if opts.doc_path == "20newsgroup":
@@ -226,7 +336,7 @@ def run():
     print("using embedding: %s" % opts.embed_type)
     print("run_num: %d" % opts.run_num)
     # hook(dataset, None)
-    eval(opts.embed_type)(dataset, hook)
+    eval(opts.embed_type)(dataset, hook_doc)
 
 
 if __name__ == "__main__":
