@@ -445,7 +445,7 @@ def main(dataset, args, hook):
 
     X = model.get_doc_embed().weight.tolist()
     X = preprocessing.normalize(X)
-    hook(dataset, X, metric=False)
+    hook(dataset, X)
     return model.get_doc_embed().weight.tolist()
 
 def accuracy(out, labels):
