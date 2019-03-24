@@ -50,27 +50,32 @@ def json_to_conll2():
     r2 = re.compile("[\W]{3,}")
     defined_words = set(["Information retrieval", "Information sciences", "Information science"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
-        with open("/home/yjc/fc_out_academic.txt") as fr:
-            max_len = 10000
-            i = 1
-            while i < max_len:
-                line = fr.readline()
-                if not line:
-                    break
-                ob = json.loads(line)
-                if set(ob["entities"]).intersection(defined_words) != set():
-                    doc = ob['paperAbstract']
-                    doc = re.sub(r1, " ", doc)
-                    doc = re.sub(r2, " ", doc)
-                    if len(doc.strip(" ")) > 20 and len(doc.strip(" ")) < 1000:
-                        doc = nlp(doc)
-                        fw1_ = []
-                        for sent in doc.sents:
-                            if len(sent.text.strip()) > 10:
-                                fw1_.append(sent.text.strip())
-                        fw1.write('\n'.join(fw1_) + "\n\n")
-                        i += 1
-            print(i)
+        with open("data/ai_data_to_predict_new.txt", "w") as fw2:
+            with open("/home/yjc/fc_out_academic.txt") as fr:
+                max_len = 10000
+                i = 1
+                while i < max_len:
+                    line = fr.readline()
+                    if not line:
+                        break
+                    ob = json.loads(line)
+                    if set(ob["entities"]).intersection(defined_words) != set():
+                        doc = ob['paperAbstract']
+                        doc = re.sub(r1, " ", doc)
+                        doc = re.sub(r2, " ", doc)
+                        fw_c = fw2
+                        if len(doc.strip(" ")) > 20 and len(doc.strip(" ")) < 1000:
+                            doc = nlp(doc)
+                            fw1_ = []
+                            fw_c.write("-DOCSTART- O\n\n")
+                            for sent in doc.sents:
+                                if len(sent.text.strip()) > 10:
+                                    fw1_.append(sent.text.strip())
+                                    fw_c.write('\n'.join([word.text + " O" for word in sent]) + "\n\n")
+                            fw1.write('\n'.join(fw1_) + "\n\n")
+                            fw_c.write('\n')
+                            i += 1
+                print(i)
 
 
 def extract_from_json():
