@@ -200,20 +200,41 @@ def hook_doc(dataset, X):
                     co_occurence.pop((f, t))
 
             # cluster = 1
-            co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:50])
-            used_fields = [i[0] for i in co_occurence.keys()]
-            used_tecs = [i[1] for i in co_occurence.keys()]
+            # 选择top 50频次的边以及相应节点
+            # co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:50])
+            # used_fields = [i[0] for i in co_occurence.keys()]
+            # used_tecs = [i[1] for i in co_occurence.keys()]
+            # with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
+            #     f.write('\n'.join(
+            #         ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
+            #                                          (f, t), n in co_occurence.items()]))
+            # with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
+            #     f.write('\n'.join(
+            #         ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
+            #                         fields.items() if id in used_fields]))
+            #     f.write("\n")
+            #     f.write('\n'.join(
+            #         [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
+            #                         tecs.items() if id in used_tecs]))
+            #
+
+            # 选择top3 field以及相应的tec
+            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:3])
+            used_fields = [i[1][-1] for i in fields_.items()]
+            co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
+            used_tecs = [i[0][1] for i in co_occurence.items() if i[0][0] in used_fields]
             with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
-                                                     (f, t), n in co_occurence.items()]))
+                                                     (f, t), n in co_occurence_.items()]))
             with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
                                     fields.items() if id in used_fields]))
+                f.write("\n")
                 f.write('\n'.join(
-                    ["Id,Label"] + [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
-                                    tecs.items() if id in used_tecs]))
+                    [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
+                     tecs.items() if id in used_tecs]))
 
             eages = [(f, t + len(fields), n) for (f, t), n in list(co_occurence.items())[:50]]
             id2label = {id: normal for lower, [normal, num, id] in fields.items()}
