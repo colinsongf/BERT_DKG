@@ -171,7 +171,7 @@ def hook(dataset, X):
                         if id2field[f] != id2tec[t]:
                             co_occurence.setdefault((f, t), 1)
                             co_occurence[(f, t)] += 1
-        cluster = "1"
+        cluster = 1
         co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:400])
         used_fields = [i[0] for i in co_occurence.keys()]
         used_tecs = [i[1] for i in co_occurence.keys()]
