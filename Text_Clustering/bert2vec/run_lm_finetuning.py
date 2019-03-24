@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 
 class BERTDataset(Dataset):
-    def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None, entities=None):
+    def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None):
         self.tokenizer = None
         self.vocab = None
         self.seq_len = seq_len
@@ -82,15 +82,24 @@ class BERTDataset(Dataset):
 
         self.num_docs = len(self.all_docs)
 
-        ents = []
-        for entity in entities:
-            field_set = entity['FIELD']
-            tec_set = entity['TEC']
-            field_set.update(tec_set)
-            e = list(field_set)
-            ents.append([e_.lower() for e_ in e])
+    def set_entities_weight(self, entities=None):
+        ents = set()
+        if entities:
+            for entity in entities:
+                field_set = entity['FIELD']
+                tec_set = entity['TEC']
+                field_set.update(tec_set)
+                ents.update(set([e_.lower() for e_ in list(field_set)]))
 
-        self.entities = ents
+            ent_ids = self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(' '.join(ents)))
+        else:
+            ent_ids = []
+        weights = [1.] * len(self.vocab)
+        for word_id in self.vocab.values():
+            if word_id in ent_ids:
+                weights[word_id] = 5.
+
+        self.ent_weights = weights
 
 
     def build_vocab(self, tokenizer):
@@ -110,7 +119,7 @@ class BERTDataset(Dataset):
         doc_tok = list(filter(lambda x: self.tokenizer.vocab.get(x), doc_tok))
         
         # combine to one sample
-        cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item, entities=self.entities[item])
+        cur_example = InputExample(guid=cur_id, doc_tok=doc_tok, doc_id=item)
 
         # transform sample to features
         cur_features = convert_example_to_features(cur_example, self.seq_len, self.tokenizer)
@@ -119,14 +128,14 @@ class BERTDataset(Dataset):
                        torch.tensor(cur_features.input_mask),
                        torch.tensor(cur_features.doc_id),
                        torch.tensor(cur_features.lm_label_ids),
-                       torch.tensor(cur_features.word_weight))
+                       torch.tensor(self.ent_weights))
 
         return cur_tensors
 
 class InputExample(object):
     """A single training/test example for the language model."""
 
-    def __init__(self, guid, doc_tok, doc_id, lm_labels=None, entities=None):
+    def __init__(self, guid, doc_tok, doc_id, lm_labels=None):
         """Constructs a InputExample.
 
         Args:
@@ -142,17 +151,15 @@ class InputExample(object):
         self.doc_tok = doc_tok
         self.lm_labels = lm_labels  # masked words for language model
         self.doc_id = doc_id
-        self.entities = entities
 
 class InputFeatures(object):
     """A single set of features of data."""
 
-    def __init__(self, input_ids, input_mask, doc_id, lm_label_ids, word_weight=None):
+    def __init__(self, input_ids, input_mask, doc_id, lm_label_ids):
         self.input_ids = input_ids
         self.input_mask = input_mask
         self.lm_label_ids = lm_label_ids
         self.doc_id = doc_id
-        self.word_weight = word_weight
 
 def random_word(tokens, tokenizer):
     """
@@ -210,29 +217,18 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
     input_mask = [1] * len(input_ids)
     doc_id = [example.doc_id] * len(input_ids)
 
-    if example.entities:
-        entities_tokens = tokenizer.tokenize(' '.join(example.entities))
-        entities_ids = tokenizer.convert_tokens_to_ids(entities_tokens)
-    else:
-        entities_ids = []
-    word_weight = [1.] * len(input_ids)
-    for i, word_id in enumerate(input_ids):
-        if word_id in entities_ids:
-            word_weight[i] = 5.
-
     if len(input_ids) > max_seq_length:
         input_ids = input_ids[:max_seq_length]
         input_mask = input_mask[:max_seq_length]
         doc_id = doc_id[:max_seq_length]
         lm_label_ids = lm_label_ids[:max_seq_length]
-        word_weight = word_weight[:max_seq_length]
+
     # Zero-pad up to the sequence length.
     while len(input_ids) < max_seq_length:
         input_ids.append(0)
         input_mask.append(0)
         doc_id.append(0)
         lm_label_ids.append(-1)
-        word_weight.append(1.)
 
     if example.guid < 1:
         logger.info("*** Example ***")
@@ -244,13 +240,11 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
         logger.info(
                 "doc_id: %s" % " ".join([str(x) for x in doc_id]))
         logger.info("LM label: %s " % (lm_label_ids))
-        logger.info("word weight: %s " % (word_weight))
 
     features = InputFeatures(input_ids=input_ids,
                              input_mask=input_mask,
                              doc_id=doc_id,
-                             lm_label_ids=lm_label_ids,
-                             word_weight=word_weight
+                             lm_label_ids=lm_label_ids
                              )
     return features
 
@@ -334,7 +328,7 @@ def main(dataset, args, hook):
     #train_examples = None
     num_train_optimization_steps = None
     train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
-                                corpus_lines=None, entities=dataset.entities)
+                                corpus_lines=None)
     num_train_optimization_steps = int(
         len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
     if args.local_rank != -1:
@@ -342,7 +336,7 @@ def main(dataset, args, hook):
 
     tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
     train_dataset.build_vocab(tokenizer)
-
+    train_dataset.set_entities_weight(dataset.entities)
     # Prepare model
     bert_config = BertConfig(args.bert_config)
     bert_config.type_vocab_size = len(train_dataset)
