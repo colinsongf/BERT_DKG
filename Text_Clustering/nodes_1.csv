@@ -1,46 +1,44 @@
 Id,Label
-1,NLP
-2,information retrieval
-3,Natural Language processing
-12,music information retrieval
-23,IR
-66,CLIR
-143,information scienceId,Label
-2651,Arabic web - based information retrieval system
-2652,ARABIRS
-2653,ARABic Information Retrieval System
-2663,Latent Semantic Analysis
-2690,SPHINX IV
-2709,Vector Space Model
-2718,Learning to Rank
-2722,SVM
-2724,GA
-2728,neural networks
-2742,probabilistic model
-2749,ontology
-2757,genetic algorithms
-2791,HMM
-2793,Hidden Markov Model
-2830,latent semantic indexing
-2871,Formal Concept Analysis
-2873,genetic programming
-2904,keyword
-2933,TF - IDF
-2935,IDF
-2944,N - layer vector space model
-2984,Knowledge Map of
-3015,SMT
-3033,SOM
-3053,probabilistic models
-3136,DBpedia
-3176,Boolean model
-3178,Probabilistic
-3260,LSA
-3303,VSM
-3330,k - means algorithm
-3403,LSI
-3433,MT
-3647,MIREX
-3661,Bayesian networks
-3768,Ranking
-3808,RDF
+1,Information retrieval
+2,IR
+5,NLP
+7,Natural Language processing
+46,Cross - Language Information Retrieval
+144,Geographic Information Retrieval
+188,question classification
+189,question answering
+214,Resource selection
+298,multilingual Information Retrieval
+349,EWN
+351,multilingual database
+352,ILI
+356,Cross - Language Text Retrieval
+798,neural networks
+1391,LSIId,Label
+3816,ARABic Information Retrieval System
+3817,Arabic web - based information retrieval system
+3818,ARABIRS
+3824,probabilistic framework
+3839,SPHINX IV
+3866,recurrent neural network
+3875,Bayesian Networks
+3878,CORI
+3890,Knowledge graphs
+3913,EuroWordNet
+3923,probabilistic models
+3925,probabilistic
+3944,FCA
+3984,thesauri
+4031,multi - lingual dictionary
+4044,CiteSeer
+4045,neural network
+4206,vector space model
+4214,lexical
+4228,probabilistic model
+4238,Boolean model
+4243,inverted index
+4270,Latent semantic indexing
+4296,VSM
+4327,statistical language models
+4549,LM
+4608,Semantic Spaces

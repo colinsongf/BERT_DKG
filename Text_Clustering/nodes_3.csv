@@ -1,47 +1,49 @@
 Id,Label
-1,information retrieval
-4,NLP
-18,IR
-24,natural language processing
-28,question answering
-37,Music information retrieval
-85,Question classification
-88,Mixed Script Information Retrieval
-114,Geographic Information Retrieval
-1472,Peer - to - peer systemsId,Label
-2596,genetic algorithm
-2612,Mean Average Precision
-2678,ontology
-2683,CCS
-2684,recurrent neural network
-2689,RDF
-2696,Bayesian Networks
-2697,Vector Space Model
-2699,VSM
-2703,neural network
-2705,Latent Semantic
-2710,MAP
-2732,probabilistic models
-2733,SVM
-2756,thesauri
-2771,Okapi
-2772,AP
-2795,PageRank
-2844,SVD
-2845,singular value decomposition
-2871,relevance feedback
-2872,collaborative filtering
-2893,probabilistic model
-2898,Latent Dirichlet Allocation
-2899,LDA
-2960,vector space
-2961,Boolean
-2995,Fuzzy logic
-3040,Arabic web - based information retrieval system
-3041,ARABIRS
-3042,ARABic Information Retrieval System
-3067,SMART
-3286,probabilistic
-3672,tf - idf
-3957,peers - peers - coordinator scheme
-4005,inverted index
+6,information retrieval
+20,CLIR
+75,mAP
+82,query expansion
+88,IR
+115,language modeling
+123,FIRE
+330,LSI
+386,topic segmentation
+613,statistical machine translation
+781,LDAId,Label
+5114,genetic algorithm
+5126,Mean Average Precision
+5135,SVM
+5145,Okapi
+5162,dictionary - based translation
+5164,SMT
+5184,LM
+5185,BM25
+5192,Forum for Information Retrieval Evaluation
+5199,relevance feedback
+5202,Vector Space Model
+5249,probabilistic model
+5254,dictionary - based query translation
+5266,thesauri
+5269,Boolean model
+5292,Latent Semantic
+5293,neural network
+5326,Reader Judgment
+5344,probabilistic models
+5385,re - ranking
+5404,Singular Value Decomposition
+5406,GA
+5408,VSM
+5416,content - based analysis
+5445,nDCG
+5449,SVD
+5471,Topic Modeling
+5474,PRF
+5533,OOV
+5534,vector space
+5555,Latent Dirichlet Allocation
+5598,neural networks
+5684,latent semantic analysis
+5704,TF - IDF
+5736,Ranking SVM
+5835,F - Score
+6035,HMM

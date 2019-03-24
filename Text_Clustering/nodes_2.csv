@@ -1,47 +1,59 @@
 Id,Label
-1,Information retrieval
-2,IR
-12,NLP
-21,music information retrieval
-23,Distributed Information Retrieval
-45,resource selection
-186,MIR
-474,pattern recognitionId,Label
-2636,CORI
-2665,LM
-2666,BM25
-2668,language modeling
-2735,probabilistic model
-2745,LSI
-2746,latent semantic indexing
-2748,formal concept analysis
-2749,FCA
-2750,vector space model
-2774,neural network
-2810,GA
-2811,VSM
-2813,Genetic Algorithm
-2815,SVM
-2831,vector space
-2832,probabilistic
-2833,probabilistic models
-2836,ontology matching
-2888,ontology
-2911,Grid computing
-2914,LDA
-2923,TFIDF
-2941,neural networks
-2953,MT
-2966,MIREX
-3071,thesauri
-3075,Collaborative Filtering
-3130,fuzzy logic
-3161,TF - IDF
-3289,Latent Semantic
-3341,Boolean model
-3342,HMM
-3498,genetic algorithms
-3519,SVD
-3541,K - Means
-3548,COSIMIR
-3603,Arabic web - based information retrieval system
+2,Information Retrieval
+17,music information retrieval
+22,information science and technology
+38,text classification
+47,quantum information science
+51,Information Science
+62,Spatial Information Science
+69,MIR
+95,Computer and Information Science
+109,IR
+189,quantum cryptography
+224,Linked Data
+225,data -extraction integration cleansing
+226,structured data management
+227,data management
+228,distributed data management
+229,privacy
+231,search
+232,Quality of Web Data
+233,-mining
+281,part - of - speech disambiguation
+282,POS tagging
+314,machine learning
+330,music genre classification
+335,FPGA
+1257,Morphological analyzer
+2787,peer - to - peer systemsId,Label
+5062,collaborative filtering
+5091,Federated database
+5107,chaotic encryption technology
+5108,K - L transform
+5135,quantum key distribution
+5136,QKD
+5141,WebDB
+5147,neural network
+5159,Hidden Markov model
+5160,Raga
+5179,MFCC
+5180,DTW
+5181,Spartan 6 FPGA
+5182,field programmable gate arrays
+5184,dynamic time warping
+5185,MFCC extraction algorithm
+5289,Knowledge Map of
+5356,NMF
+5381,SVM
+5541,Naive Bayes
+5576,Morphological
+5578,morphological generator
+5723,queue
+5724,Contact Phone Fax
+5818,manifold
+5878,Marsyas
+5912,vector space model
+5989,Stanford Tagger
+5990,VSM
+5991,text classification algorithms
+6332,Peers - peers - coordinator scheme

@@ -1,49 +1,50 @@
 Id,Label
-1,Information Retrieval
-2,Natural Language Processing
-10,CLIR
-15,Semantic Web
-24,cross - language information retrieval
-41,Music Information Retrieval
-54,IR
-130,query expansion
-932,global user similarityId,Label
-2614,vector space model
-2636,SVM
-2638,Self - Organizing Maps
-2664,F - measure
-2673,WSD
-2700,thesauri
-2706,Boolean model
-2714,latent semantic indexing
-2722,TF - IDF
-2723,LSI
-2768,re - ranking
-2783,Singular Value Decomposition
-2786,MIREX
-2829,meta - data
-2830,FCA
-2838,MOTS - CLÉS
-2857,Genetic Algorithms
-2858,GA
-2868,OOV
-2869,vector space
-2887,Support Vector Machine
-2941,topic
-2959,fuzzy ontology framework
-2985,LM
-3016,MT
-3027,Okapi
-3032,neural network
-3052,relevance feedback
-3066,Self - organizing Semantic Map
-3067,semantic map
-3068,unsupervised learning algorithm
-3084,MAP
-3092,language modeling
-3115,latent Dirichlet allocation
-3144,genetic algorithm
-3391,surprisal - based vector similarity
-3642,VSM
-4111,probabilistic
-4227,fuzzy logic
+8,Information Retrieval
+21,IR
+26,natural language processing
+34,Semantic Web
+42,IRS
+106,formal concept analysis
+121,text classification
+153,Web mining
+175,data mining
+214,latent semantic indexing
+241,LSI
+311,Word Sense Disambiguation
+1481,local user similarity
+1483,global user similarity
+1662,fuzzy semantic retrievalId,Label
+4187,vector space model
+4190,PageRank
+4241,SVM
+4242,GA
+4293,VSM
+4296,TF - IDF
+4299,ontologies
+4312,Support Vector Machine
+4324,FCA
+4343,WSD
+4417,semantic representation
+4419,WordNet ontology
+4476,Genetic algorithms
+4506,Vector space models
+4543,Neural networks
+4557,Support Vector Machines
+4589,inclusion relation
+4590,fuzzy ontology framework
+4659,SVD
+4672,thesauri
+4683,DBpedia
+4739,Latent Semantic Analysis
+4886,genetic algorithm
+4912,neural network
+4994,Surprisal - based vector similarity
+5047,RDBs
+5088,latent semantic
+5239,vector space
+5250,semantic relation
+5619,Page Rank Algorithm
+5660,Text representations
+5661,SGD
+5662,K - Mean
+5663,Linear SVC
