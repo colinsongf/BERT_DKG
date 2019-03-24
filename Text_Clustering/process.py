@@ -48,7 +48,7 @@ def json_to_conll2():
     nlp = spacy.load('en')
     r1 = re.compile("[\n]+")
     r2 = re.compile("[\W]{3,}")
-    r3 = re.compile("[\xa0 \t]")
+    r3 = re.compile("[\xa \t]")
     defined_words = set(["Information retrieval", "Information sciences", "Information science"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
         with open("data/ai_data_to_predict_new.txt", "w") as fw2:
@@ -73,7 +73,7 @@ def json_to_conll2():
                                 if len(sent.text.strip()) > 10:
                                     fw1_.append(sent.text.strip())
                                     fw_c.write('\n'.join([re.sub(r3, "", word.text) + " O" for word in sent if
-                                                          not re.sub(r3, "", word.text)]) + "\n\n")
+                                                          re.sub(r3, "", word.text)]) + "\n\n")
                             fw1.write('\n'.join(fw1_) + "\n\n")
                             fw_c.write('\n')
                             i += 1
