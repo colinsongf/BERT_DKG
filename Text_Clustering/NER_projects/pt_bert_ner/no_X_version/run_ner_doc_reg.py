@@ -565,6 +565,8 @@ def predict():
     writer2 = codecs.open(os.path.join(config['task']['output_dir'], "prediction_entities.txt"), 'w', encoding='utf-8')
     last_example_id = None
     entities = {"FIELD": [], "TEC": [], "MISC": []}
+    import re
+    r = re.compile("[^A-Za-z-]")
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
         example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
@@ -586,10 +588,10 @@ def predict():
                         entities[pretype].append(' '.join(entity))
                         entity = []
                     pretype = label_list[label_id].split("-")[1]
-                    entity.append(example.words[word_idx])
+                    entity.append(re.sub(r, "", example.words[word_idx]))
                 else:
                     if pretype is not None and label_list[label_id].split("-")[1] == pretype:
-                        entity.append(example.words[word_idx])
+                        entity.append(re.sub(r, "", example.words[word_idx]))
             else:
                 if pretype is not None:
                     entities[pretype].append(' '.join(entity))

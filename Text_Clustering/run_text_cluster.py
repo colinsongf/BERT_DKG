@@ -72,7 +72,7 @@ class Mydataset(object):
 
 def load_ai_data():
     docs = []
-    with open("data/ai_data_sents3000.txt", encoding="utf8") as f:
+    with open("data/ai_data_sents_new.txt", encoding="utf8") as f:
         doc = []
         for line in f.readlines():
             if line == "\n":
@@ -83,7 +83,7 @@ def load_ai_data():
     print("%d docs" % len(docs))
 
     docs_entities = []
-    path = "NER_projects/pt_bert_ner/no_X_version/output_predict_doc_reg/prediction_entities.txt"
+    path = "NER_projects/pt_bert_ner/no_X_version/output_predict_new_doc_reg/prediction_entities.txt"
     if os.path.exists(path):
         with open(path, encoding="utf8") as f:
             for line in f.readlines():
