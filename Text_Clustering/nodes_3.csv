@@ -1,0 +1,128 @@
+Id,Label
+8,Information Retrieval
+13,computer vision
+19,mAP
+24,mean Average Precision
+27,SFS
+37,RF
+47,MIR
+48,Music information retrieval
+53,federated database
+54,spatial information science
+55,DEM
+56,federated spatial databases
+58,Artificial Intelligence
+68,dynamic programming algorithm
+83,neural networks
+88,information science
+100,Relation graphs
+109,Nearest neighbor search
+112,machine learning
+130,π-calculus
+145,databases
+181,SVM
+183,Support Vector Machine
+198,neural network
+199,artificial neural network
+211,MIREX
+263,Raga
+294,Average Precision
+318,Principal Component Analysis
+361,informatics
+368,information visualization
+370,Computational Geometry
+416,Visualisierung
+424,soundscape information retrieval
+499,CCS
+534,content
+536,Grid
+560,PROMISE
+561,From Information Retrieval
+573,Bayesian
+577,regression
+580,Bayesian approach
+585,Knowledge Map of
+586,mass estimation
+630,thesauri
+667,ontology
+671,Multi - dividing ontology algorithm
+672,multi - dividing ontology learning algorithms
+681,\Earth Simulator
+683,geoscience
+684,GeoFEM
+700,Artificial Immune Systems
+728,Fourier transform
+736,Galois
+744,multi
+745,NMF
+767,least
+781,LOGIC
+839,BACKGROUND
+877,Prometheus
+878,Prometheus framework
+914,ANN
+1004,AP
+1021,Self - Organizing Maps
+1025,SOM
+1311,audio - fingerprint
+1524,Non - negative Matrix FactorizationId,Label
+1908,mAP
+1912,mean Average Precision
+1915,SFS
+1919,RF
+1928,DEM
+1929,Federated database
+1930,federated spatial databases
+1937,dynamic programming algorithm
+1947,neural networks
+1949,clustering on relation graphs
+1950,cluster patterns from relation graphs
+1951,clustering algorithms
+1953,Nearest neighbor search
+1966,π-calculus
+1972,Support Vector Machine
+1973,SVM
+1979,artificial neural network
+1980,neural network
+1985,MIREX
+2003,Raga
+2020,Average Precision
+2033,Principal Component Analysis
+2041,computational geometry
+2042,very
+2056,Visualisierung
+2062,Citygram Project
+2063,remote sensing devices
+2064,RSD
+2096,CCS
+2109,content
+2110,Grid
+2120,PROMISE
+2121,Bayesian
+2124,Bayesian approach
+2129,Knowledge Map of
+2130,mass estimation
+2153,thesauri
+2173,ontology
+2174,Multi - dividing ontology algorithm
+2175,multi - dividing ontology learning algorithms
+2180,\Earth Simulator
+2181,GeoFEM
+2186,artificial immune systems
+2203,Fourier transform
+2206,Galois
+2211,multi
+2212,NMF
+2221,least
+2225,LOGIC
+2248,BACKGROUND
+2265,Prometheus
+2266,Prometheus framework
+2282,ANN
+2317,Perspectives
+2322,AP
+2332,Self - Organizing Maps
+2335,SOM
+2405,MFCCs
+2487,audio - fingerprint
+2587,Non - negative Matrix Factorization

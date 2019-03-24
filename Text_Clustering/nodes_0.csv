@@ -1,0 +1,109 @@
+Id,Label
+1,Natural Language processing
+2,ARABIRS
+3,ARABic Information Retrieval System
+4,information retrieval
+5,Arabic web - based information retrieval system
+6,NLP
+15,collaborative filtering
+18,music information retrieval
+32,Latent Semantic Analysis
+57,Semantic Web
+60,Self - Organizing Maps
+89,MIR
+92,multimedia information retrieval
+123,Text retrieval
+125,OWL
+132,formal concept analysis
+154,semantic links
+160,Image retrieval
+162,pre - filtering
+174,Vector Space Model
+177,topic map
+178,topic maps
+197,ontology
+229,semantic similarity
+235,thesauri mapping
+246,RDF
+257,latent semantic indexing
+261,distributed information retrieval
+266,CORI
+268,resource selection
+274,Haystack
+276,semantic
+278,ontologies
+279,SW
+312,knowledge acquisition and
+313,knowledge graphs
+322,FCA
+338,Multimedia Information Retrieval System
+339,late semantic fusion
+365,multimodal interface
+388,relational database
+408,Music genre classification
+412,dynamic time warping
+415,DTW
+551,meta - data
+630,Genetic algorithms
+735,algorithmic mediation
+856,neural networks
+945,neural network
+963,thesauri
+977,Top - k
+1415,m - commerce
+1629,Mind maps
+1840,RDBSId,Label
+1952,ARABic Information Retrieval System
+1953,ARABIRS
+1954,Arabic web - based information retrieval system
+1959,collaborative filtering
+1964,Latent Semantic Analysis
+1978,Self - Organizing Maps
+2002,OWL
+2006,formal concept analysis
+2017,semantic links
+2020,image re - ranking
+2021,pre - filtering
+2022,logistic regression relevance feedback algorithm
+2024,Vector Space Model
+2027,topic maps
+2029,topic map
+2033,ontology
+2044,semantic similarity
+2048,thesauri mapping
+2053,RDF
+2057,latent semantic indexing
+2060,resource selection algorithm
+2061,ReDDE
+2062,Relevant Document Distribution Estimation
+2063,CORI
+2064,KL divergence
+2065,KL divergence resource selection algorithm
+2066,Haystack
+2068,ontologies
+2069,semantic
+2070,SW
+2082,Knowledge graphs
+2083,FCA
+2091,late semantic fusion
+2100,multimodal interface
+2109,relational database
+2119,MFCC
+2120,field programmable gate arrays
+2121,dynamic time warping
+2122,Spartan 6 FPGA
+2123,DSP
+2124,DTW
+2125,MFCC extraction algorithm
+2126,FPGA
+2171,ontology matching
+2175,meta - data
+2218,Genetic algorithms
+2256,algorithmic mediation
+2315,neural networks
+2354,neural network
+2362,thesauri
+2370,Top - k
+2541,M - commerce
+2636,mind maps
+2720,RDBs
