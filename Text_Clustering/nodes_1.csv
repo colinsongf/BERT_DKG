@@ -1,0 +1,42 @@
+Id,Label
+1,IR
+3,Information Retrieval
+4,ARABic Information Retrieval System
+5,Natural Language processing
+6,NLP
+7,ARABIRS
+8,Arabic web - based information retrieval system
+46,Cross - Language Information Retrieval
+63,MIR
+95,Machine Translation
+125,Music Information Retrieval
+180,Question classification
+182,question answering
+203,word sense disambiguation
+218,resource selection
+347,Cross - Language Text Retrieval
+352,EWNId,Label
+3816,ARABic Information Retrieval System
+3817,ARABIRS
+3818,Arabic web - based information retrieval system
+3824,probabilistic framework
+3853,ontology
+3866,recurrent neural network
+3875,Bayesian Networks
+3880,CORI
+3913,EuroWordNet
+3923,probabilistic models
+3924,probabilistic
+3944,FCA
+3956,text
+3984,thesauri
+3995,MT
+4001,MIREX
+4020,Fuzzy logic
+4044,CiteSeer
+4045,neural networks
+4046,neural network
+4107,Context
+4108,WSD
+4206,vector space model
+4270,Latent semantic indexing

@@ -1,119 +1,55 @@
 Id,Label
-6,Artificial Intelligence
-9,Information Retrieval
-19,computer vision
-23,SFS
-24,mAP
-32,mean Average Precision
-47,Music information retrieval
-56,spatial information science
-57,DEM
-58,federated spatial databases
-59,Federated database
-79,information science
-85,Cognitive informatics
-99,relation graphs
-132,databases
-133,data mining
-144,Computer and Information Science
-276,machine learning
-353,informatics
-360,information visualization
-361,computational geometry
-543,From Information Retrieval
-555,Bayesian approach
-558,Bayesian
-641,geoscience
-642,GeoFEM
-643,\Earth Simulator
-651,Information Systems
-822,Prometheus framework
-823,Prometheus
-1034,back propagation
-1035,Artificial Intelligence Research Computer and Information Science
-1036,Monte Carlo
-1037,back - propagation
-1038,feed - forward networks
-1129,Morphological Analyzer
-1131,morphological parser
-1199,Shannon
-1220,Bark scale
-1221,SES
-1222,Time domain Entropy Signature
-1223,Spectral Entropy Signature
-1224,Entropy
-1225,AFP
-1226,Audio - Fingerprint
-1227,TES
-1228,spectral flatness signature
-1229,AUD - CONT Index Terms
-1230,EDICS
-1236,cryptography
-1371,queue
-1372,Contact Phone Fax
-1423,object detection
-1424,CNNs
-1426,Convolutional Neural Networks
-1600,bibliography
-1667,Visual attribute classificationId,Label
-1769,SFS
-1770,mAP
-1777,mean Average Precision
-1788,Federated database
-1789,DEM
-1790,federated spatial databases
-1806,clustering on relation graphs
-1807,clustering algorithms
-1808,cluster patterns from relation graphs
-1828,SVM
-1829,Support Vector Machine
-1888,very
-1961,PROMISE
-1962,Bayesian approach
-1963,Bayesian
-1970,Knowledge Map of
-1989,thesauri
-2007,ontology
-2012,GeoFEM
-2013,\Earth Simulator
-2037,Galois
-2085,Prometheus framework
-2086,Prometheus
-2098,ANN
-2131,Perspectives
-2180,back propagation
-2181,Monte Carlo
-2182,back - propagation
-2183,feed - forward networks
-2210,MFCCs
-2239,Morphological
-2240,morphological parser
-2241,Morphological analyzer
-2242,morphological generator
-2267,GUI - based
-2268,DICOM - compliant
-2269,Shannon
-2281,Bark scale
-2282,SES
-2283,Time domain Entropy Signature
-2284,Spectral Entropy Signature
-2285,AFP
-2286,Audio - Fingerprint
-2287,TES
-2288,spectral flatness signature
-2289,AUD - CONT Index Terms
-2290,EDICS
-2296,L
-2318,domain modeling
-2346,queue
-2347,Contact Phone Fax
-2373,CNNs
-2375,Convolutional Neural Networks
-2389,Fuzzy artificial bee colony optimization
-2390,DM
-2391,Cloud computing
-2392,Boosted K - NN
-2393,Fuzzy based ant colony optimization
-2450,metainformation
-2462,modular arithmetic
-2475,Berkeley Attributes of
+5,information retrieval
+7,genetic algorithm
+21,CLIR
+28,Mean Average Precision
+70,mAP
+88,IR
+123,FIRE
+125,Forum for Information Retrieval Evaluation
+129,relevance feedback
+131,RF
+133,Vector Space Model
+328,LSI
+371,Latent Semantic Indexing
+524,Singular Value Decomposition
+528,GA
+529,VSM
+596,SVD
+613,statistical machine translation
+782,Latent Dirichlet Allocation
+784,LDA
+985,latent semantic analysis
+1511,LSAId,Label
+5113,genetic algorithms
+5114,genetic algorithm
+5125,Mean Average Precision
+5135,SVM
+5142,Okapi
+5154,mAP
+5164,SMT
+5183,BM25
+5186,language modeling
+5191,FIRE
+5193,Forum for Information Retrieval Evaluation
+5198,relevance feedback
+5200,RF
+5202,Vector Space Model
+5249,probabilistic model
+5292,LSI
+5294,neural network
+5344,probabilistic models
+5403,Singular Value Decomposition
+5406,GA
+5407,VSM
+5446,nDCG
+5449,SVD
+5478,Latent semantic indexing
+5534,vector space
+5555,Latent Dirichlet Allocation
+5556,LDA
+5567,Query
+5618,probabilistic
+5683,latent semantic analysis
+5722,MT
+5979,LSA

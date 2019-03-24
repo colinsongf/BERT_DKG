@@ -1,100 +1,50 @@
 Id,Label
-2,IR
-3,Information retrieval
-4,NLP
-5,ARABic Information Retrieval System
-6,Arabic web - based information retrieval system
-7,ARABIRS
-8,Natural Language processing
-25,machine learning
-43,Visual Information Retrieval
-46,Semantic Web
-69,web search
-79,multimedia information retrieval
-112,Text retrieval
-119,formal concept analysis
-149,Image retrieval
-162,topic maps
-163,topic map
-173,data mining
-230,knowledge discovery
-253,Information Science
-280,knowledge acquisition and
-293,FCA
-513,formal
-536,Soundscape Information Retrieval
-547,network
-598,Genetic Algorithms
-599,Darwin 's
-600,GA
-624,Ecommerce
-693,MUMIS
-694,cross document merging algorithm
-730,collaborative exploratory search
-735,multi - dividing ontology algorithm
-736,multi - dividing ontology learning algorithms
-741,Information Extraction
-846,neural networks
-936,neural network
-973,sensor networks
-996,E - government
-1093,bug localization
-1343,Multimedia
-1354,Knowledge Maps
-1405,vector space modelId,Label
-1989,Code - Mixed
-1990,Arabic web - based information retrieval system
-1991,ARABIRS
-1992,ARABic Information Retrieval System
-2037,OWL
-2038,formal concept analysis
-2053,logistic regression relevance feedback algorithm
-2054,image re - ranking
-2055,pre - filtering
-2057,topic maps
-2058,topic map
-2062,ontology
-2077,RDF
-2090,SW
-2101,Knowledge graphs
-2102,FCA
-2110,late semantic fusion
-2149,semantic similarity
-2186,remote sensing devices
-2187,Citygram Project
-2188,RSD
-2194,text
-2213,semantic ontology
-2217,Concept lattice
-2224,Genetic Algorithms
-2225,GA
-2226,Darwin 's
-2235,ECOMMTOLOGY
-2254,MUMIS
-2255,cross document merging algorithm
-2268,algorithmic mediation
-2269,Multi - dividing ontology algorithm
-2270,multi - dividing ontology learning algorithms
-2271,HMM
-2287,fuzzy ontology framework
-2319,multi - lingual dictionary
-2320,PolyAnalyst
-2321,neural networks
-2355,CiteSeer
-2358,neural network
-2374,semantic information
-2375,DBpedia
-2376,Top - k
-2377,Self - organizing Semantic Map
-2378,semantic map
-2379,unsupervised learning algorithm
-2397,DemonD
-2408,BIRNDL 2017
-2423,automated bug localization
-2456,Negative bootstrap
-2457,User Modeling Subsystem
-2483,context - awareness
-2507,Appendix
-2511,MDBMS
-2512,ECMA
-2517,interactive knowledge maps
+6,Information Retrieval
+11,vector space model
+23,IR
+27,natural language processing
+33,Semantic Web
+78,CSE
+80,Cooperative Search Engine
+104,formal concept analysis
+120,GA
+213,latent semantic indexing
+223,VSM
+242,LSI
+282,FCA
+552,Genetic Algorithms
+860,SVD
+862,singular value decomposition
+1293,genetic algorithm
+1482,Global user similarityId,Label
+4186,vector space model
+4189,PageRank
+4217,CSE
+4219,Cooperative Search Engine
+4232,formal concept analysis
+4241,GA
+4242,SVM
+4277,semantic similarity
+4283,RDF
+4286,latent semantic indexing
+4294,VSM
+4298,semantic
+4304,LSI
+4324,FCA
+4343,WSD
+4418,WordNet ontology
+4477,Genetic Algorithms
+4478,ontology
+4545,Neural networks
+4591,fuzzy ontology framework
+4592,inclusion relation
+4659,singular value decomposition
+4660,SVD
+4672,thesauri
+4683,DBpedia
+4739,Latent Semantic Analysis
+4885,genetic algorithm
+4912,neural network
+4997,surprisal - based vector similarity
+5088,latent semantic
+5239,vector space

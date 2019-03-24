@@ -1,95 +1,71 @@
 Id,Label
-4,information retrieval
-6,Natural language processing
-7,NLP
-11,CLIR
-22,Cross - Language Information Retrieval
-24,machine translation
-50,query expansion
-55,IR
-63,Flexible information retrieval
-79,Forum for Information Retrieval Evaluation
-80,FIRE
-96,logistic regression
-132,word sense disambiguation
-144,question answering
-154,Vector Space Model
-165,probabilistic model
-166,distributed text document retrieval
-167,parallel query processing strategies
-168,bilingual lexicon extraction
-200,LM
-201,Language Modeling
-207,recurrent neural network
-208,embedding based
-209,MSIR
-210,CCS
-211,question classification
-212,Mixed Script Information Retrieval
-213,Concepts Information systems
-214,Clustering and classification Information systems
-215,Bag - ofWords method
-240,VSM
-259,latent semantic indexing
-260,LSI
-272,Precision
-277,Latent Semantic
-282,MAP
-284,Mean Average Precision
-331,Topic segmentation
-335,English - Chinese CLIR
-336,Chinese IR
-338,English - Chinese Cross - Language Information Retrieval
-340,Statistical Machine Translation
-428,Cross - Language Text Retrieval
-626,LDA
-627,Latent Dirichlet Allocation
-851,RecallId,Label
-1864,MT - based approach
-1878,dictionary - based translation
-1880,SMT
-1886,concept - based indexing
-1893,Forum for Information Retrieval Evaluation
-1894,FIRE
-1904,WSD
-1907,logistic regression
-1927,Vector Space Model
-1930,probabilistic model
-1931,parallel query processing strategies
-1932,two - stages translation model
-1933,dictionary - based query translation
-1941,ontology
-1942,Hadoop MapReduce
-1945,thesauri
-1946,ontologies
-1947,OHSUMED
-1948,UMLS
-1949,decision tree
-1950,SVM
-1952,LM
-1953,Language Modeling
-1955,recurrent neural network
-1956,embedding based
-1957,CCS
-1958,Bag - ofWords method
-1964,VSM
-1969,LSI
-1971,latent semantic indexing
-1976,Precision
-1981,Latent Semantic
-1984,Mean Average Precision
-1985,MAP
-1998,HMM
-2001,Text Tiling algorithm
-2002,C99
-2003,Reader Judgment
-2004,Recall / Precision evaluation metrics
-2005,Lucene toolkit
-2041,EuroWordNet
-2128,OOV
-2142,LDA
-2144,Latent Dirichlet Allocation
-2183,MT
-2236,latent semantic analysis
-2274,Recall
-2476,statistical language models
+1,Information Retrieval
+17,music information retrieval
+22,information science and technology
+39,text classification
+47,quantum information science
+51,Information Science
+55,Large External object
+56,LEND
+60,Spatial Information Science
+73,federated database
+74,DEM
+75,federated spatial databases
+94,Computer and Information Science
+98,K - L transform
+100,chaotic encryption technology
+109,IR
+189,quantum cryptography
+204,pattern recognition
+313,machine learning
+330,music genre classification
+331,dynamic time warping
+332,DTW
+707,quantum
+763,NMF
+1257,Morphological Analyzer
+1591,Contact Phone Fax
+1592,queue
+1630,Non - negative Matrix Factorization
+1646,Convolutional Neural Networks
+1647,CNNs
+1649,CNN
+2789,Peer - to - peer systemsId,Label
+5063,collaborative filtering
+5085,Large External object
+5086,LEND
+5091,federated database
+5092,DEM
+5093,federated spatial databases
+5108,K - L transform
+5109,chaotic encryption technology
+5112,neural networks
+5135,quantum key distribution
+5146,neural network
+5149,MIREX
+5160,Raga
+5180,dynamic time warping
+5181,DTW
+5183,MFCC
+5289,Knowledge Map of
+5327,quantum mechanics
+5328,quantum
+5359,NMF
+5382,SVM
+5542,Naive Bayes
+5575,morphological generator
+5576,morphological parser
+5577,Morphological
+5723,Contact Phone Fax
+5724,queue
+5749,Non - negative Matrix Factorization
+5758,Convolutional Neural Networks
+5759,CNNs
+5760,CNN
+5821,manifold
+5878,Marsyas
+5912,vector space model
+5989,text classification algorithms
+5990,VSM
+5991,Stanford Tagger
+6332,Peers - peers - coordinator scheme
