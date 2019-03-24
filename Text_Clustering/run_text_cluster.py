@@ -178,12 +178,16 @@ def hook_doc(dataset, X):
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
-                if fields[word][1] > tecs[word][1]:
-                    id2tec.pop(tecs[word][-1])
-                    delete_tecs.append(tecs[word][-1])
-                else:
-                    id2field.pop(fields[word][-1])
-                    delete_fields.append(fields[word][-1])
+                try:
+                    if fields[word][1] > tecs[word][1]:
+                        id2tec.pop(tecs[word][-1])
+                        delete_tecs.append(tecs[word][-1])
+                    else:
+                        id2field.pop(fields[word][-1])
+                        delete_fields.append(fields[word][-1])
+                except:
+                    print(word + " not in field or tec!")
+                    continue
 
             _co_occurence = deepcopy(co_occurence)
             for (f, t), n in _co_occurence.items():
