@@ -226,7 +226,7 @@ def hook_doc(dataset, X):
             with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
-                                                     (f, t), n in co_occurence_.items()]))
+                                                     (f, t), n in co_occurence_]))
             with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
