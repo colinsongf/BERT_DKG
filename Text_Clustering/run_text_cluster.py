@@ -354,8 +354,8 @@ def run():
         metric = False
     print("using embedding: %s" % opts.embed_type)
     print("run_num: %d" % opts.run_num)
-    hook_doc(dataset, None)
-    # eval(opts.embed_type)(dataset, hook_doc)
+    # hook_doc(dataset, None)
+    eval(opts.embed_type)(dataset, hook_doc)
 
 
 if __name__ == "__main__":
