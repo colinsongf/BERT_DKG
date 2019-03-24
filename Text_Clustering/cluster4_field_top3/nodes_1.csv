@@ -1,0 +1,155 @@
+Id,Label
+5,NLP
+8,Natural Language processing
+45,CLIR
+2537,Arabic web - based information retrieval system
+2538,ARABic Information Retrieval System
+2539,ARABIRS
+2552,Word To Category Module
+2583,Eurospider
+2594,Forum for Information Retrieval Evaluation
+2608,Precision
+2626,LEMON Model
+2627,MLLOD
+2629,relevance feedback algorithm
+2631,vector
+2634,EuroWordNet
+2643,VENUS
+2646,vector space
+2670,embedding
+2683,ontology alignment
+2684,multidimensional global knowledge map
+2692,MT - based approach
+2698,AnHitz
+2699,Tropos methodology
+2705,thesauri
+2714,Open - i
+2717,Rank
+2725,HMM
+2726,Hidden Markov Model
+2728,Email Mining Toolkit
+2729,EMT
+2730,Columbia Intrusion Detection
+2745,Molecular Interaction Map
+2746,SGM
+2747,distributed word vector representation
+2748,Skip - Gram Model
+2749,SUM
+2750,n - gram matching
+2751,dictionary - based CLIR
+2752,multi - lingual dictionary
+2767,neural network
+2803,Stemmers
+2807,BIRNDL 2017
+2829,multimodal algorithm
+2900,rhetorical relations
+2910,SED
+2911,Scaled Edit Distance
+2912,Surface Similarity
+2913,SDM
+2914,Sequential Dependence Model
+2929,statistical semantic analyzer
+2949,probabilistic model
+2979,OOV
+2991,Latent semantic indexing
+3038,multilingual stemmer
+3048,statistical language models
+3053,Blexisma2
+3064,Dublin Core
+3065,dictionary - based approach
+3117,QARAB
+3124,BIRNDL
+3143,Base Phrase
+3144,Maximum Entropy
+3145,Conditional Random Fields
+3162,HelpDesk
+3176,SNPD 2005
+3190,Minerva II
+3209,Scientific Summarization Shared Task
+3230,Computing Reviews
+3243,Catalyst architecture
+3244,Catalyst
+3258,CSG
+3259,transfer - based MT
+3270,LM
+3278,denotational concept semantics
+3285,cluster - based language models
+3286,generative statistical model
+3287,statistical language modeling
+3311,Lesk
+3312,Extended Lesk
+3328,contextual
+3330,Semantic Spaces
+3336,EuroSearch
+3365,semantic representation
+3366,Conceptual Graph model
+3372,Stemmer
+3373,Urdu stemmer
+3382,DAI
+3383,Einguistic parser
+3390,semantic space model
+3391,Alida
+3392,DEFT'09
+3405,Semantical
+3434,dictionary - based Chinese
+3435,Task - tuned segmentation algorithms
+3460,Word2Vec
+3461,University Entrance Exam
+3462,Turing Test
+3463,ENEM
+3470,Lovins stemmer
+3471,Uzbek stemmer
+3472,stemming algorithms
+3473,stemming algorithm
+3483,Geographical Knowdledge
+3484,gikiTALP
+3485,Sphinx
+3531,FSVM NE
+3532,Fuzzy NER
+3533,Factoid Question Answering model
+3534,Fuzzy Support Vector
+3535,FSVM
+3536,semantically
+3551,REMINER
+3556,WG
+3557,MultiLingMine 2016
+3558,translation - independent
+3569,vector representations
+3570,vector - based language representations
+3574,BIO tag
+3575,SVM - Light
+3576,Code Mix Entity Extraction - IL
+3577,character mappings
+3580,WordNets
+3581,IndoWordNet
+3582,BKYMON
+3629,AVE
+3646,Semi - supervised
+3659,Mulinex
+3662,co - occurrence - based phrasal translation
+3663,word by -
+3718,Sogou
+3719,Sogou English
+3741,Structural Keywords
+3742,BLOCKIN
+3743,structural metadata
+3748,formal knowledge representations
+3749,statistical stemming algorithms
+3750,SGLMs
+3751,Statistical Graphical Language Models
+3752,SLMs
+3776,NN
+3801,M2NL - NLP
+3802,Advanced
+3803,Simple
+3804,Rule - Based techniques
+3805,ElementBased
+3806,M2NL
+3825,Collaborative Question Answering
+3839,DHIYA
+3840,morphological automaton
+3841,Arabic morphological automaton
+3893,Distributional thesauri
+3904,WUs
+3905,Single WUs
+3906,Multi Word Units

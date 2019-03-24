@@ -1,0 +1,286 @@
+Id,Label
+26,natural language processing
+33,Semantic Web
+181,data mining
+1975,hierarchical clustering
+1983,supervised approach
+1984,unsupervised algorithms
+1988,SynFinder
+2000,SIM - DL similarity theory
+2011,nRQL
+2018,OWL
+2024,semantic knowledge management system
+2025,SEMU
+2026,SEMU ontology
+2030,semantic links
+2033,SVM
+2039,WAD
+2040,Web And semantic knowledge - Driven automatic question answering system
+2058,Fuzzy Sets
+2091,Description Logic SHIN
+2092,OIS ontology
+2093,Methontology
+2095,SOM
+2101,keyword - inverted index
+2103,vector - space model
+2104,ontology - based KBs
+2114,FCA
+2123,SIREN
+2133,WSD
+2156,OWL ontology
+2183,distribution analysis
+2188,RDFS
+2198,online
+2207,semantic representation
+2208,Cause - Effect
+2209,WordNet ontology
+2210,Rich Semantic Graph
+2211,RSG
+2215,EM
+2216,WEKA interface
+2217,pattern recognition system
+2218,Expectation Maximization
+2219,machine learning algorithms
+2220,SimpleKMeans
+2221,FarthestFirst
+2222,SimpleKMeans clustering
+2223,ontology matching
+2224,ontology similarity
+2234,SWHi
+2243,questionnaire - based survey
+2256,order theory
+2257,Concept lattice
+2258,lattice theory
+2267,Genetic Algorithms
+2307,Bayes
+2312,link structure information
+2330,Active Learning
+2334,Neural networks
+2346,SVMS
+2347,Support Vector Machines
+2361,Latent Dirichlet Allocation
+2364,Wikiedi
+2365,QuestionCube
+2367,pKaM
+2368,personalized semantic network
+2369,Personal Knowledge Advantage Machine
+2377,k - means
+2379,fuzzy semantic query
+2380,order relation
+2381,equivalence relation
+2382,inclusion relation
+2383,fuzzy ontology framework
+2389,online English dictionary
+2413,Intelligent Search Lifecycle Architecture
+2414,Service - Oriented Architecture
+2415,SOA
+2416,PolyAnalyst
+2449,SVD
+2453,WordNet semantic dictionaryis
+2461,thesauri
+2466,Matrix Factorization
+2470,Markov Random Fields
+2471,probabilistic context - free grammars
+2472,Jaccard coefficient - based WSD algorithm
+2473,DBpedia
+2478,text mining - based approach
+2529,Latent Semantic Analysis
+2541,LocalMax algorithm
+2542,Mutual Expectation
+2568,FOAF
+2569,Chefmoz
+2591,Kohonen Self Organising Map model
+2619,ontology alignment
+2620,clustering algorithm
+2639,Hierarchical agglomerative clustering
+2640,AGG_ANTS
+2641,Ant based clustering
+2653,DNA microarray
+2654,ontology - based approach
+2655,MeatSearch
+2656,ontology - based semantic annotations
+2657,MeatAnnot
+2658,fuzzy set
+2664,OBIRE
+2675,genetic algorithm
+2680,lexical analysis
+2702,neural network
+2703,Data Mining Method
+2704,Lattice
+2723,ontology - based scheme
+2731,link - based
+2733,automated learning algorithm
+2734,D3 M
+2735,Generalized Queries Algorithm
+2736,interactive knowledge discovery
+2758,context injection
+2767,DOM tree
+2772,Harris’ Distributional Hypothesis
+2773,Boosted K - NN
+2774,Fuzzy based ant colony optimization
+2775,Fuzzy artificial bee colony optimization
+2777,DM
+2778,Unified Web
+2779,Hybrid Query
+2784,collaborative filtering algorithms
+2820,semantic crawling
+2821,Cairsweb
+2836,vector model
+2880,HPL
+2881,High - Performance
+2882,K - NLP
+2892,Hierarchical Conditional Random Fields
+2893,hidden markov models
+2894,HMMs
+2895,HCRF
+2903,semantic distance
+2910,Variational Inference and Expectation - Maximization
+2911,Algorithm
+2912,LDA
+2918,Web - based learning
+2938,fuzzy information retrieval model
+2939,fuzzy - based approach
+2956,multi - measurements
+2957,core - tag clustering algorithm
+2958,SkyTagClustering
+2959,folksonomy
+2960,CETClustering
+2961,core - tag
+2962,core - tag clustering
+2963,core - tag clusters
+2968,meta - data
+2978,Fuzzy Ontology
+2999,IndoWordnet visualizer
+3000,IndoWordnet lexical database
+3022,Intelligent agent
+3039,SLAIR
+3043,RDF(S
+3044,DRDF(S
+3046,Virtual Query System
+3077,meta - data model
+3078,MPEG-7
+3087,ATTICS
+3145,semantic model
+3148,Graph based data
+3149,subgraph isomorphism
+3151,Dublin Core
+3152,RDF schema
+3157,histogram - based representation
+3164,AC List Builder
+3165,RPU
+3166,SOAS
+3167,RG
+3168,LB
+3169,Result Generator
+3171,QBH
+3174,k -
+3220,MapReduce
+3221,BioPatentMiner
+3240,Opinion Mining algorithm
+3250,k - means clustering algorithm
+3264,Qooqle
+3283,intermittently
+3284,OSSOBOOK database
+3293,ASK
+3294,MOTS - CLÉS Recherche d’Information
+3295,TokTokTok
+3298,predictive modeling
+3328,rule filtering
+3330,semantic technology
+3347,SP
+3348,SP theory of computing
+3350,complement
+3351,reversion relation
+3366,COMPASS
+3367,Translator
+3368,COMPASS location
+3369,geo - coordinates
+3370,Geo RDF
+3371,topic partition
+3427,ontology - based information visualization
+3429,SemreX
+3435,CSS
+3442,ontology based semantic interpretation
+3457,sample relational databases
+3462,min - cut algorithms
+3463,graph - based algorithms
+3465,ontology visualization
+3481,Boolean Matrix Factorization
+3487,spatial metadata
+3497,RDF Sitemap
+3501,Phoneme - Based model
+3521,fuzzy sets theory
+3522,fuzzy description logic
+3543,mutual information
+3544,mutual information based criterion
+3545,LIDC - IDRI database
+3546,Bilingual Corpus
+3547,KDD Cup
+3561,multiple layered database
+3562,Information Super - Highway
+3563,MLDB
+3587,Swoogle
+3588,N - Gram
+3599,neighborhood
+3613,SDLC
+3625,Hadoop
+3644,Matchmaking Visualizer
+3649,probabilistic models
+3650,semantic models
+3666,complement relation
+3712,CasSys
+3727,WEKA
+3749,patent
+3760,Frequently - Asked - Questions - style
+3827,KBs
+3831,LexOn
+3832,LexOn Search
+3833,deep semantic analysis
+3834,LODifier
+3835,Keyqueries
+3838,AutoASC
+3905,STyLE
+3927,Self Adaptive Genetic Algorithms
+3929,Logic Programming
+3930,DBLP
+3931,SAGAXsearch
+3942,fuzzy machine learning framework
+3946,Anaphora Resolution system
+3947,Anaphora
+3961,biological databases
+3962,RDF data model
+3963,fuzzy linguistic variable ontology models
+3978,Waikato Environment for Knowledge Analysis
+4072,Topology - DirectionDistance
+4073,TDD
+4074,DISC
+4081,XML /
+4082,Tonal MIR
+4092,Clustering Technique
+4094,Content - Filtering approach
+4096,Matrix Factorization technique
+4097,LSA Link Prediction
+4099,hierarchical representation
+4158,matrix facrotization
+4159,BMF
+4168,Mongolian ontology
+4180,Rough Set
+4181,Soft Set
+4182,Crisp set
+4197,view
+4198,multi - facet search paradigm
+4207,ontology based knowledge
+4208,semantic verification
+4242,VQS
+4244,Virtual Query
+4245,VQL
+4250,O(mN
+4251,O(mlogN
+4252,Tag Cloud
+4253,pattern matching algorithm
+4255,Rule Generation Algorithm
+4257,Apache MAHOUT
+4258,query reformulation / ontology alignment
+4259,oMAP
+4327,Index model
+4330,partition clustering
