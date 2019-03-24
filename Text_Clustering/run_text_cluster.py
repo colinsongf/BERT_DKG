@@ -145,7 +145,9 @@ def hook(dataset, X):
         for cluster in range(cluster_num):
             entities = np.array(dataset.entities)[labels == cluster]
             fields = {}  # { lowercase entity: [normal case, nums, id]}
+            id2field = {}
             tecs = {}
+            id2tec = {}
             co_occurence = {}  # {(field_id, tec_id):nums}
             for entity in entities:
                 f_ids = []
@@ -153,19 +155,22 @@ def hook(dataset, X):
                 for e in entity["FIELD"]:
                     if e.lower() not in fields:
                         fields[e.lower()] = [e, 1, len(fields) + 1]
+                        id2field[len(fields) + 1] = e.lower()
                     else:
                         fields[e.lower()][1] += 1
                     f_ids.append(fields[e.lower()][-1])
                 for t in entity["TEC"]:
                     if t.lower() not in tecs:
                         tecs[t.lower()] = [t, 1, len(tecs) + 1]
+                        id2tec[len(tecs) + 1] = t.lower()
                     else:
                         tecs[t.lower()][1] += 1
                     t_ids.append(tecs[t.lower()][-1])
                 for f in f_ids:
                     for t in t_ids:
-                        co_occurence.setdefault((f, t), 1)
-                        co_occurence[(f, t)] += 1
+                        if id2field[f] != id2tec[t]:
+                            co_occurence.setdefault((f, t), 1)
+                            co_occurence[(f, t)] += 1
 
             co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:100])
             used_fields = [i[0] for i in co_occurence.keys()]
