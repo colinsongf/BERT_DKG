@@ -1,42 +1,48 @@
 Id,Label
-1,IR
-3,Information Retrieval
-4,ARABic Information Retrieval System
-5,Natural Language processing
-6,NLP
-7,ARABIRS
-8,Arabic web - based information retrieval system
-46,Cross - Language Information Retrieval
-63,MIR
-95,Machine Translation
-125,Music Information Retrieval
-180,Question classification
-182,question answering
-203,word sense disambiguation
-218,resource selection
-347,Cross - Language Text Retrieval
-352,EWNId,Label
-3816,ARABic Information Retrieval System
-3817,ARABIRS
-3818,Arabic web - based information retrieval system
-3824,probabilistic framework
-3853,ontology
-3866,recurrent neural network
-3875,Bayesian Networks
-3880,CORI
-3913,EuroWordNet
-3923,probabilistic models
-3924,probabilistic
-3944,FCA
-3956,text
-3984,thesauri
-3995,MT
-4001,MIREX
-4020,Fuzzy logic
-4044,CiteSeer
-4045,neural networks
-4046,neural network
-4107,Context
-4108,WSD
-4206,vector space model
-4270,Latent semantic indexing
+1,information retrieval
+2,NLP
+3,Natural Language processing
+5,music information retrieval
+23,IRS
+25,IR
+118,Artificial Intelligence
+168,topic segmentation
+219,Cross - Language Text Retrieval
+1465,Peer - to - peer systemsId,Label
+2674,Arabic web - based information retrieval system
+2675,ARABIRS
+2676,ARABic Information Retrieval System
+2719,language modeling
+2724,BM25
+2740,Vector Space Model
+2746,Precision
+2777,ontology
+2808,Decision tree
+2814,Reader Judgment
+2834,neural network
+2839,thesauri
+2851,SVM
+2856,EuroWordNet
+2873,semantic representation
+2890,latent semantic indexing
+2891,LSI
+2956,LDA
+2958,Latent Dirichlet Allocation
+2959,VSM
+2999,Neural networks
+3144,Vector Space
+3145,Boolean model
+3147,Probabilistic
+3152,relevance
+3187,Latent Semantic Analysis
+3203,Support Vector Machine
+3214,semantic relationships
+3316,PRF
+3392,IDF
+3501,Latent Dirichlet Allocation model
+3524,RDBs
+3563,Statistical language models
+3625,TF - IDF
+3735,GA
+3774,MIREX
+3953,peers - peers - coordinator scheme

@@ -1,50 +1,46 @@
 Id,Label
-6,Information Retrieval
-11,vector space model
-23,IR
-27,natural language processing
-33,Semantic Web
-78,CSE
-80,Cooperative Search Engine
-104,formal concept analysis
-120,GA
-213,latent semantic indexing
-223,VSM
-242,LSI
-282,FCA
-552,Genetic Algorithms
-860,SVD
-862,singular value decomposition
-1293,genetic algorithm
-1482,Global user similarityId,Label
-4186,vector space model
-4189,PageRank
-4217,CSE
-4219,Cooperative Search Engine
-4232,formal concept analysis
-4241,GA
-4242,SVM
-4277,semantic similarity
-4283,RDF
-4286,latent semantic indexing
-4294,VSM
-4298,semantic
-4304,LSI
-4324,FCA
-4343,WSD
-4418,WordNet ontology
-4477,Genetic Algorithms
-4478,ontology
-4545,Neural networks
-4591,fuzzy ontology framework
-4592,inclusion relation
-4659,singular value decomposition
-4660,SVD
-4672,thesauri
-4683,DBpedia
-4739,Latent Semantic Analysis
-4885,genetic algorithm
-4912,neural network
-4997,surprisal - based vector similarity
-5088,latent semantic
-5239,vector space
+3,Information Retrieval
+6,IR
+18,music information retrieval
+35,CLIR
+49,Machine Translation
+131,Semantic Web
+143,Semantic search
+219,Music genre classification
+957,global user similarityId,Label
+2642,SVM
+2649,MFCC
+2661,SMT
+2668,deep neural networks
+2681,GA
+2693,probabilistic model
+2712,genetic algorithms
+2727,vector - space model
+2730,QE
+2733,latent semantic indexing
+2802,Singular Value Decomposition
+2804,Latent Semantic
+2807,Vector Space Model
+2809,Genetic Algorithm
+2810,VSM
+2827,OWL
+2852,EM
+2866,FCA
+2882,Probability Ranking Principle
+2907,ontology
+2914,vector space
+2944,probabilistic
+2961,MT
+2991,Latent Dirichlet Allocation
+2998,probabilistic models
+3001,SOM
+3048,Fuzzy logic
+3072,ontologies
+3098,CiteSeer
+3101,SVD
+3190,TF - IDF
+3210,neural networks
+3241,PageRank
+3254,semantic information
+3361,neural network
+3465,Surprisal - based vector similarity

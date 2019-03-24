@@ -1,71 +1,45 @@
 Id,Label
 1,Information Retrieval
-17,music information retrieval
-22,information science and technology
-39,text classification
-47,quantum information science
-51,Information Science
-55,Large External object
-56,LEND
-60,Spatial Information Science
-73,federated database
-74,DEM
-75,federated spatial databases
-94,Computer and Information Science
-98,K - L transform
-100,chaotic encryption technology
-109,IR
-189,quantum cryptography
-204,pattern recognition
-313,machine learning
-330,music genre classification
-331,dynamic time warping
-332,DTW
-707,quantum
-763,NMF
-1257,Morphological Analyzer
-1591,Contact Phone Fax
-1592,queue
-1630,Non - negative Matrix Factorization
-1646,Convolutional Neural Networks
-1647,CNNs
-1649,CNN
-2789,Peer - to - peer systemsId,Label
-5063,collaborative filtering
-5085,Large External object
-5086,LEND
-5091,federated database
-5092,DEM
-5093,federated spatial databases
-5108,K - L transform
-5109,chaotic encryption technology
-5112,neural networks
-5135,quantum key distribution
-5146,neural network
-5149,MIREX
-5160,Raga
-5180,dynamic time warping
-5181,DTW
-5183,MFCC
-5289,Knowledge Map of
-5327,quantum mechanics
-5328,quantum
-5359,NMF
-5382,SVM
-5542,Naive Bayes
-5575,morphological generator
-5576,morphological parser
-5577,Morphological
-5723,Contact Phone Fax
-5724,queue
-5749,Non - negative Matrix Factorization
-5758,Convolutional Neural Networks
-5759,CNNs
-5760,CNN
-5821,manifold
-5878,Marsyas
-5912,vector space model
-5989,text classification algorithms
-5990,VSM
-5991,Stanford Tagger
-6332,Peers - peers - coordinator scheme
+2,IR
+3,Natural Language Processing
+12,NLP
+23,semantic Web
+104,Geographic Information Retrieval
+111,query expansion
+197,Music Information Retrieval
+219,word sense disambiguationId,Label
+2696,genetic algorithm
+2697,genetic algorithms
+2700,vector space model
+2748,WSD
+2764,neural networks
+2802,Boolean model
+2804,probabilistic model
+2811,RDF
+2822,VSM
+2827,latent semantic indexing
+2830,LSI
+2839,Latent Semantic
+2840,neural network
+2853,MAP
+2873,probabilistic models
+2875,SVM
+2950,probabilistic
+2985,collaborative filtering
+2997,ontology
+3028,LDA
+3030,Latent Dirichlet Allocation
+3081,MIREX
+3102,latent semantic analysis
+3141,Formal Concept Analysis
+3180,Support Vector Machines
+3288,Arabic web - based information retrieval system
+3289,ARABIRS
+3290,ARABic Information Retrieval System
+3414,k - means algorithm
+3463,inverted index
+3672,semantic similarity
+3693,FCA
+3851,genetic programming
+4294,F - measure
+4326,Markov network

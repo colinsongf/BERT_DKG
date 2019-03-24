@@ -1,55 +1,45 @@
 Id,Label
-5,information retrieval
-7,genetic algorithm
-21,CLIR
-28,Mean Average Precision
-70,mAP
-88,IR
-123,FIRE
-125,Forum for Information Retrieval Evaluation
-129,relevance feedback
-131,RF
-133,Vector Space Model
-328,LSI
-371,Latent Semantic Indexing
-524,Singular Value Decomposition
-528,GA
-529,VSM
-596,SVD
-613,statistical machine translation
-782,Latent Dirichlet Allocation
-784,LDA
-985,latent semantic analysis
-1511,LSAId,Label
-5113,genetic algorithms
-5114,genetic algorithm
-5125,Mean Average Precision
-5135,SVM
-5142,Okapi
-5154,mAP
-5164,SMT
-5183,BM25
-5186,language modeling
-5191,FIRE
-5193,Forum for Information Retrieval Evaluation
-5198,relevance feedback
-5200,RF
-5202,Vector Space Model
-5249,probabilistic model
-5292,LSI
-5294,neural network
-5344,probabilistic models
-5403,Singular Value Decomposition
-5406,GA
-5407,VSM
-5446,nDCG
-5449,SVD
-5478,Latent semantic indexing
-5534,vector space
-5555,Latent Dirichlet Allocation
-5556,LDA
-5567,Query
-5618,probabilistic
-5683,latent semantic analysis
-5722,MT
-5979,LSA
+4,Information Retrieval
+15,CLIR
+25,text classification
+55,IR
+95,Music Information Retrieval
+96,cross - language information retrieval
+132,question answering
+134,question classificationId,Label
+2528,mean Average Precision
+2552,formal concept analysis
+2553,propositional logic
+2568,topic map
+2583,ontology
+2584,SVM
+2590,Recurrent Neural Network
+2597,latent semantic indexing
+2598,Bayesian Networks
+2621,LSI
+2622,FCA
+2623,vector space model
+2626,neural network
+2660,AP
+2675,language modeling
+2679,LM
+2684,MIREX
+2729,meta - data
+2747,probabilistic models
+2755,WordNet ontology
+2758,TF - IDF
+2771,OOV
+2796,Vector space models
+2799,probabilistic model
+2836,HMM
+2874,MT
+2882,Okapi
+2962,VSM
+3018,fuzzy logic
+3057,Naive Bayes
+3086,genetic algorithms
+3135,neural networks
+3269,thesauri
+3291,probabilistic
+3557,Stanford Tagger
+3558,text classification algorithms
