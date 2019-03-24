@@ -215,10 +215,10 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
         entities_ids = tokenizer.convert_tokens_to_ids(entities_tokens)
     else:
         entities_ids = []
-    word_weight = [1] * len(input_ids)
+    word_weight = [1.] * len(input_ids)
     for i, word_id in enumerate(input_ids):
         if word_id in entities_ids:
-            word_weight[i] = 5
+            word_weight[i] = 5.
 
     if len(input_ids) > max_seq_length:
         input_ids = input_ids[:max_seq_length]
@@ -232,7 +232,7 @@ def convert_example_to_features(example, max_seq_length, tokenizer):
         input_mask.append(0)
         doc_id.append(0)
         lm_label_ids.append(-1)
-        word_weight.append(1)
+        word_weight.append(1.)
 
     if example.guid < 1:
         logger.info("*** Example ***")
