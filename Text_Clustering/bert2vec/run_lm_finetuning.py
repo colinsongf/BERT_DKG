@@ -344,7 +344,7 @@ def main(dataset, args, hook):
     if os.path.exists(output_model_file):
         model = MyBertForPreTraining.from_pretrained(args.output_dir)
         args.do_train = False
-
+        print("loaded checkpoint!")
     else:
         model = MyBertForPreTraining(bert_config)
     if args.fp16:

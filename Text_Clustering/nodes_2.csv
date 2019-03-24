@@ -1,59 +1,43 @@
 Id,Label
-2,Information Retrieval
-17,music information retrieval
-22,information science and technology
-38,text classification
-47,quantum information science
-51,Information Science
-62,Spatial Information Science
-69,MIR
-95,Computer and Information Science
-109,IR
-189,quantum cryptography
-224,Linked Data
-225,data -extraction integration cleansing
-226,structured data management
-227,data management
-228,distributed data management
-229,privacy
-231,search
-232,Quality of Web Data
-233,-mining
-281,part - of - speech disambiguation
-282,POS tagging
-314,machine learning
-330,music genre classification
-335,FPGA
-1257,Morphological analyzer
-2787,peer - to - peer systemsId,Label
-5062,collaborative filtering
-5091,Federated database
-5107,chaotic encryption technology
-5108,K - L transform
-5135,quantum key distribution
-5136,QKD
-5141,WebDB
-5147,neural network
-5159,Hidden Markov model
-5160,Raga
-5179,MFCC
-5180,DTW
-5181,Spartan 6 FPGA
-5182,field programmable gate arrays
-5184,dynamic time warping
-5185,MFCC extraction algorithm
-5289,Knowledge Map of
-5356,NMF
-5381,SVM
-5541,Naive Bayes
-5576,Morphological
-5578,morphological generator
-5723,queue
-5724,Contact Phone Fax
-5818,manifold
-5878,Marsyas
-5912,vector space model
-5989,Stanford Tagger
-5990,VSM
-5991,text classification algorithms
-6332,Peers - peers - coordinator scheme
+1,information retrieval
+2,NLP
+3,Natural Language processing
+25,IR
+231,Word Sense Disambiguation
+948,global user similarityId,Label
+2582,ARABic Information Retrieval System
+2583,ARABIRS
+2584,Arabic web - based information retrieval system
+2585,Latent Semantic Analysis
+2594,SOM
+2637,Vector Space Model
+2645,neural networks
+2650,topic map
+2665,probabilistic model
+2693,LSI
+2695,latent semantic indexing
+2701,SVM
+2708,MAP
+2718,Decision tree
+2744,WSD
+2750,OWL
+2761,Singular Value Decomposition
+2788,WordNet ontology
+2790,semantic representation
+2800,ontology matching
+2806,SVD
+2817,MOTS - CLÉS
+2837,ontology
+2844,vector space
+2866,VSM
+2912,thesauri
+2916,probabilistic
+2935,Boolean
+2936,probabilistic models
+3051,Self - organizing Semantic Map
+3052,semantic map
+3053,unsupervised learning algorithm
+3054,neural network
+3081,Boolean model
+3428,surprisal - based vector similarity
+3614,BM25

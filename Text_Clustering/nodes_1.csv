@@ -1,44 +1,45 @@
 Id,Label
 1,Information retrieval
 2,IR
-5,NLP
-7,Natural Language processing
-46,Cross - Language Information Retrieval
-144,Geographic Information Retrieval
-188,question classification
-189,question answering
-214,Resource selection
-298,multilingual Information Retrieval
-349,EWN
-351,multilingual database
-352,ILI
-356,Cross - Language Text Retrieval
-798,neural networks
-1391,LSIId,Label
-3816,ARABic Information Retrieval System
-3817,Arabic web - based information retrieval system
-3818,ARABIRS
-3824,probabilistic framework
-3839,SPHINX IV
-3866,recurrent neural network
-3875,Bayesian Networks
-3878,CORI
-3890,Knowledge graphs
-3913,EuroWordNet
-3923,probabilistic models
-3925,probabilistic
-3944,FCA
-3984,thesauri
-4031,multi - lingual dictionary
-4044,CiteSeer
-4045,neural network
-4206,vector space model
-4214,lexical
-4228,probabilistic model
-4238,Boolean model
-4243,inverted index
-4270,Latent semantic indexing
-4296,VSM
-4327,statistical language models
-4549,LM
-4608,Semantic Spaces
+8,Music Information Retrieval
+21,CLIR
+32,MIR
+44,natural language processing
+196,Machine Translation
+385,pattern recognition
+405,NLPId,Label
+2690,formal concept analysis
+2704,Vector Space Model
+2722,ontology
+2740,latent semantic indexing
+2741,Bayesian Networks
+2746,LSI
+2747,Latent Semantic
+2748,neural network
+2749,semantic relationship
+2751,knowledge graphs
+2763,FCA
+2783,probabilistic models
+2803,thesauri
+2814,SVM
+2815,re - ranking
+2845,SVD
+2853,probabilistic
+2900,relevance feedback
+2901,collaborative filtering
+2911,IDF
+2917,TF - IDF
+2918,GA
+2919,Genetic Algorithms
+2988,MT
+3039,neural networks
+3079,ARABic Information Retrieval System
+3080,ARABIRS
+3081,Arabic web - based information retrieval system
+3114,mean average precision
+3139,Latent Semantic Analysis
+3202,MIREX
+3207,LSA
+3301,Boolean model
+3455,VSM
+3868,RDF
