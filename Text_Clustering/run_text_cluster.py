@@ -14,7 +14,7 @@ from doc_embed import *
 import numpy as np
 from collections import Counter
 import random
-
+from copy import deepcopy
 # Display progress logs on stdout
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s')
@@ -183,7 +183,9 @@ def hook_doc(dataset, X):
                 else:
                     id2field.pop(fields[word][-1])
                     delete_fields.append(fields[word][-1])
-            for (f, t), n in co_occurence.items():
+
+            _co_occurence = deepcopy(co_occurence)
+            for (f, t), n in _co_occurence.items():
                 if f in delete_fields or t in delete_tecs:
                     co_occurence.pop((f, t))
 
