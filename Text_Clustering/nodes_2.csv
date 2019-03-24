@@ -1,119 +1,95 @@
 Id,Label
-3,NLP
-9,Natural language processing
-10,information retrieval
+4,information retrieval
+6,Natural language processing
+7,NLP
 11,CLIR
-17,Web
-20,MT - based approach
 22,Cross - Language Information Retrieval
 24,machine translation
-38,dictionary - based
-43,Okapi
-46,dictionary - based translation
-49,query expansion
-51,SMT
+50,query expansion
 55,IR
-79,FIRE
-80,Forum for Information Retrieval Evaluation
-91,WSD
-101,logistic regression
+63,Flexible information retrieval
+79,Forum for Information Retrieval Evaluation
+80,FIRE
+96,logistic regression
 132,word sense disambiguation
-142,semantic similarity
-145,question answering
-153,Vector Space Model
-167,probabilistic model
-181,ontology
-188,thesauri
-196,SVM
+144,question answering
+154,Vector Space Model
+165,probabilistic model
+166,distributed text document retrieval
+167,parallel query processing strategies
+168,bilingual lexicon extraction
 200,LM
 201,Language Modeling
-207,Mixed Script Information Retrieval
-208,question classification
-209,recurrent neural network
-213,CCS
-241,VSM
-258,latent semantic indexing
-261,LSI
+207,recurrent neural network
+208,embedding based
+209,MSIR
+210,CCS
+211,question classification
+212,Mixed Script Information Retrieval
+213,Concepts Information systems
+214,Clustering and classification Information systems
+215,Bag - ofWords method
+240,VSM
+259,latent semantic indexing
+260,LSI
 272,Precision
-273,Latent Semantic
-275,neural network
-285,Mean Average Precision
-287,MAP
+277,Latent Semantic
+282,MAP
+284,Mean Average Precision
+331,Topic segmentation
+335,English - Chinese CLIR
+336,Chinese IR
+338,English - Chinese Cross - Language Information Retrieval
 340,Statistical Machine Translation
-391,Ad - hoc
-424,Cross - Language Text Retrieval
-488,probabilistic models
-490,vector space
-535,PRF
-556,embedding
-587,language
-593,MT
-601,OOV
-625,Latent Dirichlet Allocation
-628,LDA
-664,neural networks
-703,SVMS
-705,Support Vector Machines
-773,latent semantic analysis
-775,semantic
-852,Recall
-896,WER
-1041,context distance
-1089,statistical machine
-1186,support vector machine
-1302,statistical language models
-1439,Language Model
-1610,multi - modal correlationsId,Label
-1860,Web
-1863,MT - based approach
-1872,dictionary - based
-1875,Okapi
+428,Cross - Language Text Retrieval
+626,LDA
+627,Latent Dirichlet Allocation
+851,RecallId,Label
+1864,MT - based approach
 1878,dictionary - based translation
 1880,SMT
-1893,FIRE
-1894,Forum for Information Retrieval Evaluation
+1886,concept - based indexing
+1893,Forum for Information Retrieval Evaluation
+1894,FIRE
 1904,WSD
-1911,logistic regression
+1907,logistic regression
 1927,Vector Space Model
-1931,probabilistic model
-1940,ontology
-1946,thesauri
-1951,SVM
+1930,probabilistic model
+1931,parallel query processing strategies
+1932,two - stages translation model
+1933,dictionary - based query translation
+1941,ontology
+1942,Hadoop MapReduce
+1945,thesauri
+1946,ontologies
+1947,OHSUMED
+1948,UMLS
+1949,decision tree
+1950,SVM
 1952,LM
 1953,Language Modeling
 1955,recurrent neural network
-1958,CCS
-1965,VSM
-1970,latent semantic indexing
-1971,LSI
+1956,embedding based
+1957,CCS
+1958,Bag - ofWords method
+1964,VSM
+1969,LSI
+1971,latent semantic indexing
 1976,Precision
-1978,neural network
 1981,Latent Semantic
-1983,Mean Average Precision
-1986,MAP
-2031,Ad - hoc
-2035,semantic similarity
+1984,Mean Average Precision
+1985,MAP
+1998,HMM
+2001,Text Tiling algorithm
+2002,C99
+2003,Reader Judgment
+2004,Recall / Precision evaluation metrics
+2005,Lucene toolkit
 2041,EuroWordNet
-2065,probabilistic models
-2066,vector space
-2074,statistical machine translation
-2087,PRF
-2103,embedding
-2116,language
 2128,OOV
-2142,Latent Dirichlet Allocation
-2144,LDA
-2165,neural networks
-2184,MT
-2190,SVMS
-2192,Support Vector Machines
+2142,LDA
+2144,Latent Dirichlet Allocation
+2183,MT
 2236,latent semantic analysis
-2256,semantic
-2275,Recall
-2290,WER
-2348,context distance
-2368,statistical machine
-2421,support vector machine
+2274,Recall
 2476,statistical language models
-2542,Language Model
-2631,Multi - modal correlations

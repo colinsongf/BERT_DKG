@@ -1,126 +1,119 @@
 Id,Label
-7,Information Retrieval
-8,Artificial Intelligence
-18,computer vision
-23,mAP
-26,mean Average Precision
-29,SFS
-49,Music information retrieval
-56,federated spatial databases
-57,federated database
-58,DEM
-59,spatial information science
-76,neural networks
+6,Artificial Intelligence
+9,Information Retrieval
+19,computer vision
+23,SFS
+24,mAP
+32,mean Average Precision
+47,Music information retrieval
+56,spatial information science
+57,DEM
+58,federated spatial databases
+59,Federated database
+79,information science
 85,Cognitive informatics
-86,information science
-100,Relation graphs
-120,π-calculus
-134,databases
-173,SVM
-176,Support Vector Machine
-186,artificial neural network
-188,neural network
-274,machine learning
-277,Harry
-300,MIREX
+99,relation graphs
+132,databases
+133,data mining
+144,Computer and Information Science
+276,machine learning
 353,informatics
-364,computational geometry
-366,information visualization
-406,Visualisierung
-481,CCS
-515,content
-519,Grid
-542,PROMISE
+360,information visualization
+361,computational geometry
 543,From Information Retrieval
-559,Bayesian
-561,Bayesian approach
-567,Knowledge Map of
-602,thesauri
-630,ontology
+555,Bayesian approach
+558,Bayesian
+641,geoscience
 642,GeoFEM
 643,\Earth Simulator
-644,geoscience
-696,GALOIS
-701,NMF
-702,multi
-722,least
-743,LOGIC
-792,BACKGROUND
+651,Information Systems
 822,Prometheus framework
 823,Prometheus
-854,ANN
-962,SOM
-1034,Monte Carlo
-1035,back propagation
-1036,back - propagation
-1037,feed - forward networks
-1038,Artificial Intelligence Research Computer and Information Science
-1077,MFCCs
-1084,latent
-1124,Datenbanken
-1130,Morphological Analyzer
-1135,morphological parser
+1034,back propagation
+1035,Artificial Intelligence Research Computer and Information Science
+1036,Monte Carlo
+1037,back - propagation
+1038,feed - forward networks
+1129,Morphological Analyzer
+1131,morphological parser
 1199,Shannon
-1220,audio - fingerprintId,Label
-1769,mAP
-1771,mean Average Precision
-1774,SFS
-1788,federated database
-1789,federated spatial databases
-1790,DEM
-1802,neural networks
-1806,cluster patterns from relation graphs
-1807,clustering on relation graphs
-1808,clustering algorithms
-1821,π-calculus
+1220,Bark scale
+1221,SES
+1222,Time domain Entropy Signature
+1223,Spectral Entropy Signature
+1224,Entropy
+1225,AFP
+1226,Audio - Fingerprint
+1227,TES
+1228,spectral flatness signature
+1229,AUD - CONT Index Terms
+1230,EDICS
+1236,cryptography
+1371,queue
+1372,Contact Phone Fax
+1423,object detection
+1424,CNNs
+1426,Convolutional Neural Networks
+1600,bibliography
+1667,Visual attribute classificationId,Label
+1769,SFS
+1770,mAP
+1777,mean Average Precision
+1788,Federated database
+1789,DEM
+1790,federated spatial databases
+1806,clustering on relation graphs
+1807,clustering algorithms
+1808,cluster patterns from relation graphs
 1828,SVM
 1829,Support Vector Machine
-1835,artificial neural network
-1837,neural network
-1869,Harry
-1880,MIREX
-1887,very
-1888,computational geometry
-1901,Visualisierung
-1937,CCS
-1949,content
-1952,Grid
+1888,very
 1961,PROMISE
+1962,Bayesian approach
 1963,Bayesian
-1964,Bayesian approach
 1970,Knowledge Map of
 1989,thesauri
 2007,ontology
-2013,GeoFEM
-2014,\Earth Simulator
-2037,GALOIS
-2041,NMF
-2042,multi
-2050,least
-2058,LOGIC
-2073,BACKGROUND
+2012,GeoFEM
+2013,\Earth Simulator
+2037,Galois
 2085,Prometheus framework
 2086,Prometheus
-2099,ANN
+2098,ANN
 2131,Perspectives
-2150,SOM
-2180,Monte Carlo
-2181,back - propagation
-2182,Back Propagation
+2180,back propagation
+2181,Monte Carlo
+2182,back - propagation
 2183,feed - forward networks
-2211,MFCCs
-2217,latent
-2234,Datenbanken
-2239,Morphological analyzer
-2240,morphological generator
-2241,morphological parser
-2242,Morphological
-2267,DICOM - compliant
-2268,GUI - based
+2210,MFCCs
+2239,Morphological
+2240,morphological parser
+2241,Morphological analyzer
+2242,morphological generator
+2267,GUI - based
+2268,DICOM - compliant
 2269,Shannon
-2281,audio - fingerprint
-2282,AUD - CONT Index Terms
-2283,EDICS
-2284,TES
-2285,SES
-2286,Bark scale
+2281,Bark scale
+2282,SES
+2283,Time domain Entropy Signature
+2284,Spectral Entropy Signature
+2285,AFP
+2286,Audio - Fingerprint
+2287,TES
+2288,spectral flatness signature
+2289,AUD - CONT Index Terms
+2290,EDICS
+2296,L
+2318,domain modeling
+2346,queue
+2347,Contact Phone Fax
+2373,CNNs
+2375,Convolutional Neural Networks
+2389,Fuzzy artificial bee colony optimization
+2390,DM
+2391,Cloud computing
+2392,Boosted K - NN
+2393,Fuzzy based ant colony optimization
+2450,metainformation
+2462,modular arithmetic
+2475,Berkeley Attributes of

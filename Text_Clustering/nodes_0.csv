@@ -1,110 +1,100 @@
 Id,Label
-1,Information retrieval
 2,IR
+3,Information retrieval
 4,NLP
-5,Natural Language processing
-6,ARABIRS
-7,Arabic web - based information retrieval system
-8,ARABic Information Retrieval System
-21,machine learning
+5,ARABic Information Retrieval System
+6,Arabic web - based information retrieval system
+7,ARABIRS
+8,Natural Language processing
+25,machine learning
+43,Visual Information Retrieval
 46,Semantic Web
-48,Self - Organizing Maps
-84,multimedia information retrieval
+69,web search
+79,multimedia information retrieval
 112,Text retrieval
-115,OWL
 119,formal concept analysis
-143,semantic links
-148,image retrieval
-151,pre - filtering
-162,topic map
-164,topic maps
+149,Image retrieval
+162,topic maps
+163,topic map
 173,data mining
-180,ontology
-215,thesauri mapping
-222,RDF
-229,knowledge discovery
-238,latent semantic indexing
-245,Haystack
-249,semantic
-251,SW
+230,knowledge discovery
+253,Information Science
 280,knowledge acquisition and
-281,knowledge graphs
-292,FCA
-310,late semantic fusion
-333,multimodal interface
-369,principal component analysis
-398,User Modeling
-433,semantic similarity
-510,meta - data
-512,formal
-538,Soundscape Information Retrieval
-552,meta - information
-570,context
-584,semantic ontology
-590,Concept lattice
-598,GA
-599,Genetic algorithms
-729,algorithmic mediation
+293,FCA
+513,formal
+536,Soundscape Information Retrieval
+547,network
+598,Genetic Algorithms
+599,Darwin 's
+600,GA
+624,Ecommerce
+693,MUMIS
+694,cross document merging algorithm
+730,collaborative exploratory search
 735,multi - dividing ontology algorithm
-741,HMM
-847,neural networks
-879,keyword
-935,neural network
-973,Top - k
-1264,thesauri
-1405,vector space model
-1423,m - commerce
-1657,Mind maps
-1851,RDBSId,Label
+736,multi - dividing ontology learning algorithms
+741,Information Extraction
+846,neural networks
+936,neural network
+973,sensor networks
+996,E - government
+1093,bug localization
+1343,Multimedia
+1354,Knowledge Maps
+1405,vector space modelId,Label
 1989,Code - Mixed
 1990,Arabic web - based information retrieval system
 1991,ARABIRS
 1992,ARABic Information Retrieval System
-2010,Self - Organizing Maps
-2035,OWL
+2037,OWL
 2038,formal concept analysis
-2049,semantic links
-2053,image re - ranking
-2054,logistic regression relevance feedback algorithm
+2053,logistic regression relevance feedback algorithm
+2054,image re - ranking
 2055,pre - filtering
 2057,topic maps
-2059,topic map
+2058,topic map
 2062,ontology
-2072,thesauri mapping
-2076,RDF
-2083,latent semantic indexing
-2085,Haystack
-2087,semantic
+2077,RDF
 2090,SW
-2101,knowledge graphs
+2101,Knowledge graphs
 2102,FCA
 2110,late semantic fusion
-2117,multimodal interface
-2129,principal component analysis
-2140,User Modeling
 2149,semantic similarity
-2182,meta - data
-2186,RSD
-2187,remote sensing devices
-2188,Citygram Project
+2186,remote sensing devices
+2187,Citygram Project
+2188,RSD
 2194,text
-2196,meta - information
-2207,context
 2213,semantic ontology
-2218,Concept lattice
-2224,Darwin 's
-2225,Genetic algorithms
-2226,GA
+2217,Concept lattice
+2224,Genetic Algorithms
+2225,GA
+2226,Darwin 's
+2235,ECOMMTOLOGY
+2254,MUMIS
+2255,cross document merging algorithm
 2268,algorithmic mediation
-2269,multi - dividing ontology algorithm
-2272,HMM
+2269,Multi - dividing ontology algorithm
+2270,multi - dividing ontology learning algorithms
+2271,HMM
+2287,fuzzy ontology framework
 2319,multi - lingual dictionary
-2320,neural networks
-2333,keyword
-2359,neural network
+2320,PolyAnalyst
+2321,neural networks
+2355,CiteSeer
+2358,neural network
+2374,semantic information
+2375,DBpedia
 2376,Top - k
-2485,thesauri
-2535,vector space model
-2542,M - commerce
-2644,Mind maps
-2722,RDBs
+2377,Self - organizing Semantic Map
+2378,semantic map
+2379,unsupervised learning algorithm
+2397,DemonD
+2408,BIRNDL 2017
+2423,automated bug localization
+2456,Negative bootstrap
+2457,User Modeling Subsystem
+2483,context - awareness
+2507,Appendix
+2511,MDBMS
+2512,ECMA
+2517,interactive knowledge maps

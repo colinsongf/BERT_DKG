@@ -1,123 +1,100 @@
 Id,Label
-3,genetic algorithm
-4,genetic algorithms
-6,information retrieval
-13,vector space model
-22,PageRank
-36,IR
-37,Mean Average Precision
-49,SVM
-56,music information retrieval
-62,CORI
-64,Distributed Information Retrieval
-97,BM25
-100,Dirichlet prior
-101,LM
-120,LtR
-133,GA
-183,contextual information
-210,probabilistic model
-211,Boolean model
-229,Boolean
-241,Resource selection
-252,TF - IDF
-265,vector - space model
-284,Query expansion
-294,SD
-295,score distribution
-296,document
-368,Probability Ranking Principle
-394,AP
-397,fuzzy set theory
-424,VSM
-467,RankBoost algorithm
-496,nDCG
-503,SVD
-504,LSI
-506,Singular Value Decomposition
-508,average precision
-509,MAP
-514,Latent Semantic Indexing
-556,collaborative filtering
-607,Relevance Feedback
-619,WordNet ontology
-633,query
-638,shot - aware frame selection
+5,genetic algorithm
+7,information retrieval
+10,vector space model
+21,PageRank
+34,IR
+50,SVM
+59,music information retrieval
+61,Distributed Information Retrieval
+98,LM
+99,Dirichlet prior
+101,language modeling
+114,Learning to Rank
+118,LtR
+135,GA
+242,resource selection
+250,TF - IDF
+283,Query expansion
+291,score distribution
+293,SD
+412,music genre classification
+414,DTW
+417,dynamic time warping
+422,VSM
+437,co - occurrence analysis
+438,content - based analysis
+443,PageRank algorithm
+463,RankBoost algorithm
+464,preference - based representation
+465,multimedia content retrieval
+503,Singular Value Decomposition
+505,SVD
+506,LSI
+512,Latent Semantic Indexing
 732,LDA
-741,RF
-766,probabilistic
-851,probFuse
-876,Fuzzy logic
-912,Ranking SVM
-931,ontology
-946,Latent Dirichlet Allocation
-951,ontology mapping
-1002,Pseudo - relevance feedback
-1013,Pair - wise ranking
-1023,learning - to - rank
-1104,cosine similarity
-1130,PRF
-1412,wavelet trees
-1623,global user similarity
-1625,surprisal - based vector similarity
-1626,local user similarity
-1647,title re - rankingId,Label
-1883,genetic algorithm
-1884,genetic algorithms
+1622,Global User Similarity
+1625,Local User SimilarityId,Label
+1883,genetic algorithms
+1884,genetic algorithm
 1886,vector space model
-1892,PageRank
-1898,Mean Average Precision
-1909,SVM
-1917,CORI
-1940,BM25
-1941,LM
-1944,Dirichlet prior
+1891,PageRank
+1907,SVM
+1912,MFCC
+1914,CORI
+1940,LM
+1941,Dirichlet prior
+1943,language modeling
+1954,Learning to Rank
 1958,LtR
-1963,GA
+1962,GA
 1990,contextual information
 2004,probabilistic model
-2005,Boolean model
-2017,Boolean
-2032,TF - IDF
-2034,vector - space model
-2053,SD
-2054,score distribution
-2055,document
+2025,resource selection algorithm
+2026,Relevant Document Distribution Estimation
+2027,KL divergence resource selection algorithm
+2028,ReDDE
+2029,KL divergence
+2031,TF - IDF
+2050,score distribution
+2052,SD
 2066,MIREX
-2098,Probability Ranking Principle
+2069,probabilistic models
+2102,regression
 2111,AP
-2118,fuzzy set theory
-2131,VSM
-2140,content - based analysis
-2141,co - occurrence analysis
+2113,fuzzy set theory
+2120,FPGA
+2121,MFCC extraction algorithm
+2122,DTW
+2123,DSP
+2124,Spartan 6 FPGA
+2125,dynamic time warping
+2126,field programmable gate arrays
+2129,VSM
+2131,Extended Boolean Model
+2140,co - occurrence analysis
+2141,content - based analysis
+2145,PageRank algorithm
+2160,preference - based representation
+2161,SVM - based fusion strategies
 2162,RankBoost algorithm
-2178,nDCG
 2184,Singular Value Decomposition
 2185,SVD
-2187,MAP
-2188,average precision
-2215,Latent semantic indexing
-2216,LSI
-2240,relevance feedback
-2245,collaborative filtering
-2250,WordNet ontology
-2263,query
-2266,Shot - aware frame selection
-2284,Vector space models
-2318,LDA
-2326,RF
-2339,probabilistic
+2215,LSI
+2216,Latent semantic indexing
+2240,collaborative filtering
+2245,relevance feedback
+2262,query
+2283,Vector space models
+2320,LDA
+2342,probabilistic
 2395,probFuse
 2414,Fuzzy logic
-2436,Ranking SVM
-2451,ontology
-2460,Latent Dirichlet Allocation
-2464,ontology mapping
+2461,Latent Dirichlet Allocation
 2486,Pseudo - relevance feedback
-2490,Pair - wise ranking
-2495,learning - to - rank
-2550,cosine similarity
-2567,PRF
-2751,wavelet trees
-2870,surprisal - based vector similarity
-2889,title re - ranking
+2870,collaborative filtering algorithms
+2871,surprisal - based vector similarity
+2872,Local User Similarity
+2873,MovieLens
+2874,surprisal
+2875,LS&GS
