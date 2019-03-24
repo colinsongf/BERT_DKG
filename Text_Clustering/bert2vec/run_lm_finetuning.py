@@ -86,7 +86,8 @@ class BERTDataset(Dataset):
         for entity in entities:
             field_set = entity['FIELD']
             tec_set = entity['TEC']
-            e = list(field_set.update(tec_set))
+            field_set.update(tec_set)
+            e = list(field_set)
             ents.append([e_.lower() for e_ in e])
 
         self.entities = ents
@@ -117,7 +118,8 @@ class BERTDataset(Dataset):
         cur_tensors = (torch.tensor(cur_features.input_ids),
                        torch.tensor(cur_features.input_mask),
                        torch.tensor(cur_features.doc_id),
-                       torch.tensor(cur_features.lm_label_ids))
+                       torch.tensor(cur_features.lm_label_ids),
+                       torch.tensor(cur_features.word_weight))
 
         return cur_tensors
 
