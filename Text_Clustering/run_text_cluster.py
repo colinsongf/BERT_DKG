@@ -154,15 +154,15 @@ def hook(dataset, X):
                 t_ids = []
                 for e in entity["FIELD"]:
                     if e.lower() not in fields:
-                        fields[e.lower()] = [e, 1, len(fields) + 1]
                         id2field[len(fields) + 1] = e.lower()
+                        fields[e.lower()] = [e, 1, len(fields) + 1]
                     else:
                         fields[e.lower()][1] += 1
                     f_ids.append(fields[e.lower()][-1])
                 for t in entity["TEC"]:
                     if t.lower() not in tecs:
-                        tecs[t.lower()] = [t, 1, len(tecs) + 1]
                         id2tec[len(tecs) + 1] = t.lower()
+                        tecs[t.lower()] = [t, 1, len(tecs) + 1]
                     else:
                         tecs[t.lower()][1] += 1
                     t_ids.append(tecs[t.lower()][-1])
