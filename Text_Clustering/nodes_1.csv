@@ -1,100 +1,370 @@
 Id,Label
-5,genetic algorithm
-7,information retrieval
-10,vector space model
-21,PageRank
-34,IR
-50,SVM
-59,music information retrieval
-61,Distributed Information Retrieval
-98,LM
-99,Dirichlet prior
-101,language modeling
-114,Learning to Rank
-118,LtR
-135,GA
-242,resource selection
-250,TF - IDF
-283,Query expansion
-291,score distribution
-293,SD
-412,music genre classification
-414,DTW
-417,dynamic time warping
-422,VSM
-437,co - occurrence analysis
-438,content - based analysis
-443,PageRank algorithm
-463,RankBoost algorithm
-464,preference - based representation
-465,multimedia content retrieval
-503,Singular Value Decomposition
-505,SVD
-506,LSI
-512,Latent Semantic Indexing
-732,LDA
-1622,Global User Similarity
-1625,Local User SimilarityId,Label
-1883,genetic algorithms
-1884,genetic algorithm
-1886,vector space model
-1891,PageRank
-1907,SVM
-1912,MFCC
-1914,CORI
-1940,LM
-1941,Dirichlet prior
-1943,language modeling
-1954,Learning to Rank
-1958,LtR
-1962,GA
-1990,contextual information
-2004,probabilistic model
-2025,resource selection algorithm
-2026,Relevant Document Distribution Estimation
-2027,KL divergence resource selection algorithm
-2028,ReDDE
-2029,KL divergence
-2031,TF - IDF
-2050,score distribution
-2052,SD
-2066,MIREX
-2069,probabilistic models
-2102,regression
-2111,AP
-2113,fuzzy set theory
-2120,FPGA
-2121,MFCC extraction algorithm
-2122,DTW
-2123,DSP
-2124,Spartan 6 FPGA
-2125,dynamic time warping
-2126,field programmable gate arrays
-2129,VSM
-2131,Extended Boolean Model
-2140,co - occurrence analysis
-2141,content - based analysis
-2145,PageRank algorithm
-2160,preference - based representation
-2161,SVM - based fusion strategies
-2162,RankBoost algorithm
-2184,Singular Value Decomposition
-2185,SVD
-2215,LSI
-2216,Latent semantic indexing
-2240,collaborative filtering
-2245,relevance feedback
-2262,query
-2283,Vector space models
-2320,LDA
-2342,probabilistic
-2395,probFuse
-2414,Fuzzy logic
-2461,Latent Dirichlet Allocation
-2486,Pseudo - relevance feedback
-2870,collaborative filtering algorithms
-2871,surprisal - based vector similarity
-2872,Local User Similarity
-2873,MovieLens
-2874,surprisal
-2875,LS&GS
+1,information retrieval
+5,speech recognition
+6,music information retrieval
+10,machine learning
+11,NLP
+19,computer vision
+35,semantic Web
+37,multimedia information retrieval
+40,MIR
+45,natural language processing
+47,question answering
+56,Machine Translation
+59,spatial information science
+69,image retrieval
+78,IR
+86,Relation graphs
+93,information science
+110,artificial intelligence
+114,Mixed Script Information Retrieval
+115,MSIR
+116,Concepts Information systems
+117,Question classification
+118,Clustering and classification Information systems
+124,databases
+125,knowledge discovery
+133,distributed information retrieval
+134,Resource selection
+150,information retrieval systems
+151,IRSs
+155,Topic segmentation
+168,Multimedia Information Retrieval System
+188,grid information retrieval
+196,ICA
+197,text retrieval
+200,music genre classification
+213,multimedia content retrieval
+214,multimedia information
+223,LSI
+239,data mining
+259,IRS
+270,Soundscape Information Retrieval
+287,network
+294,Formal
+322,regression
+331,sentiment classification
+337,visual information retrieval
+343,informatics
+371,Indirect matching
+385,information management
+390,Data Fusion
+420,E cient and accurate information retrieval
+421,image databases
+474,sensor networks
+498,Virtual
+561,Social Speech Task
+601,CLIR
+626,Interleaving
+640,Information Extraction
+671,Object detection
+676,Web search
+685,Multimedia
+714,Multimodal information retrieval
+718,image segmentations
+732,Entropy
+812,cryptography
+839,video summarization
+893,correlation propagation
+894,multi - modal integration
+895,cross - media information retrieval
+896,cross - media retrieval
+897,PLSA
+949,Information storage
+950,Retrieval Systems
+965,visual attribute classification
+966,Semantic analysis
+989,Audio - to - score alignment
+1249,Question retrieval
+1266,collaborative exploratory search
+1313,cross - language information retrieval
+1393,indexing
+1394,e - government
+1396,Knowledge Representation
+1463,single query reformulations
+1507,query expansion
+1673,Global user similarity
+1674,local user similarity
+1678,faceted
+1679,taxonomy
+1680,content management
+1718,prefix search
+1823,Cognitive informatics
+1843,Computer and Information Science
+1844,word sense disambiguation
+1871,knowledge acquisition and
+1962,information visualization
+2045,From Information Retrieval
+2075,geoscience
+2078,Information Systems
+2201,Artificial Intelligence Research Computer and Information Science
+2425,bibliography
+2512,flexible Information Retrieval
+2574,distributed text document retrieval
+2645,Statistical Machine Translation
+2701,Cross - Language Text RetrievalId,Label
+3436,genetic algorithms
+3437,genetic algorithm
+3446,Mean Average Precision
+3449,SVM
+3454,MFCC
+3464,mAP
+3487,WordNet
+3491,FIRE
+3496,federated database
+3507,GA
+3508,logistic regression relevance feedback algorithm
+3509,pre - filtering
+3510,image re - ranking
+3511,Average Precision
+3513,clustering algorithms
+3514,clustering on relation graphs
+3515,cluster patterns from relation graphs
+3537,Bag - ofWords method
+3538,embedding based
+3539,CCS
+3540,Recurrent Neural Network
+3541,Logistic regression
+3542,Boolean
+3545,latent semantic indexing
+3547,KL divergence resource selection algorithm
+3548,Relevant Document Distribution Estimation
+3549,KL divergence
+3550,CORI
+3551,resource selection algorithm
+3552,ReDDE
+3554,Support Vector Machine
+3571,meta - evaluation
+3573,vector space model
+3574,Text Tiling algorithm
+3575,C99
+3576,Recall / Precision evaluation metrics
+3577,Reader Judgment
+3579,MIREX
+3586,late semantic fusion
+3596,EM
+3600,Hidden Markov model
+3602,Raga
+3609,ordinal regression
+3612,re - ranking
+3617,Semantic Grid
+3618,OWL
+3620,relational database
+3627,independent component analysis
+3633,DNNs
+3639,DTW
+3640,Spartan 6 FPGA
+3641,field programmable gate arrays
+3642,FPGA
+3643,DSP
+3644,dynamic time warping
+3645,MFCC extraction algorithm
+3655,RankBoost algorithm
+3656,SVM - based fusion strategies
+3657,preference - based representation
+3664,Latent Semantic
+3666,SVD
+3668,AP
+3681,machine learning algorithms
+3715,LSI
+3724,RSD
+3725,remote sensing devices
+3726,Citygram Project
+3740,text
+3743,meta - learning
+3753,Rank SVM
+3756,Concept lattice
+3757,lattice theory
+3758,FCA
+3772,deep neural networks
+3777,vector space
+3792,Bayesian
+3793,Bayesian approach
+3800,Euclidean
+3805,mass estimation
+3814,Active Learning
+3819,probabilistic
+3826,convolutional neural networks
+3845,Support Vector Machines
+3846,hierarchical classification
+3858,Multi - dividing ontology algorithm
+3862,latent
+3867,Ward 's clustering
+3868,MDS
+3869,multi - dimensional scaling
+3887,latent semantic analysis
+3889,Galois
+3894,NMF
+3898,probFuse
+3899,probability - based fusion technique
+3900,CombMNZ data
+3920,Formal Concept Analysis
+3922,PolyAnalyst
+3923,neural networks
+3930,Ranking SVM
+3935,latent Dirichlet allocation
+3937,LDA
+3939,Recall
+3942,Precision
+3945,neural network
+3955,ontology
+3963,ontologies
+3975,CiteSeer
+3978,relevance feedback
+3986,Normalized Discounted Cumulative Gain
+3988,Top - k
+3990,ANN
+3997,Pseudo - relevance feedback
+3999,Pair - wise ranking
+4001,unsupervised learning algorithm
+4002,semantic map
+4003,Self - organizing Semantic Map
+4010,Learning - to - rank
+4031,Kendall 's Tau rank correlation coefficient
+4045,Vector Space Models
+4047,VSM
+4053,rank
+4064,Self - Organizing Maps
+4065,SOM
+4076,Grid
+4081,Similar Segments
+4109,classification
+4123,Okapi
+4160,deep neural network
+4164,MFCCs
+4166,interleaving algorithm
+4167,log - based analysis
+4170,LSA
+4209,Topic Maps
+4222,ECMA
+4223,MDBMS
+4230,HMM
+4234,Hierarchical clustering
+4244,EMBR
+4245,Jaccard Index
+4247,meta - algorithm
+4270,Markov models
+4282,audio - fingerprint
+4293,L
+4297,Cosine Similarity
+4301,Edit Distance
+4365,semantic representation
+4412,DL
+4413,description logics
+4414,template matching algorithm
+4424,Non - negative Matrix Factorization
+4429,semantic information
+4438,fuzzy set theory
+4440,CNNs
+4452,approximate matching
+4464,Fuzzy based ant colony optimization
+4465,Fuzzy artificial bee colony optimization
+4466,Boosted K - NN
+4467,DM
+4468,Cloud computing
+4469,EuroWordNet
+4470,thesauri
+4483,multi - modal correlations
+4511,CD
+4516,artificial neural network
+4534,Hopfield Neural Network
+4538,CF
+4541,RF
+4543,probabilistic model
+4544,regression
+4559,fuzzy logic
+4572,RDBS
+4574,Sphinx
+4588,Berkeley Attributes of
+4589,video
+4590,video metadata
+4608,keyword
+4610,dynamic time
+4634,Code - Mixed
+4641,collaborative filtering
+4651,probabilistic framework
+4668,Learning to Rank
+4669,LtR
+4679,topic map
+4686,contextual information
+4693,Boolean model
+4706,PAC - Amodeus
+4713,semantic
+4749,probabilistic models
+4787,Cooper
+4788,aboutness relation
+4789,meta - theory
+4820,Probability Ranking Principle
+4834,context
+4854,NDCG
+4868,hierarchical question classification
+4876,MT
+4883,Algorithmic mediation
+4886,Markov random fields
+4891,fuzzy set
+4906,fuzzy ontology framework
+4925,Cranfield /
+4931,TF - IDF
+4933,Dirichlet Prior
+4934,LM
+4935,Relevance - Based Language Models
+4996,DBpedia
+5000,RDF
+5006,SW
+5015,DemonD
+5022,language modeling
+5053,Sessions Track
+5062,Negative bootstrap
+5063,User Modeling Subsystem
+5090,DB
+5107,Generalized Vector Space model
+5109,Extended Boolean model
+5123,Appendix
+5195,KQML
+5196,Collaborative Agent - based System
+5202,language
+5253,collaborative filtering algorithms
+5254,surprisal - based vector similarity
+5255,Local User Similarity
+5257,surprisal
+5258,LS&GS
+5259,MovieLens
+5293,KISS
+5294,Keytokenbased Index
+5310,Hadoop MapReduce
+5346,statistical language models
+5355,Grid computing
+5405,knowledge graphs
+5462,PROMISE
+5467,Knowledge Map of
+5481,GeoFEM
+5482,\Earth Simulator
+5529,BIRNDL 2017
+5530,Perspectives
+5543,Back Propagation
+5557,context - awareness
+5586,GUI - based
+5587,DICOM - compliant
+5598,domain modeling
+5608,Contact Phone Fax
+5609,queue
+5643,metainformation
+5649,modular arithmetic
+5684,ARABIRS
+5685,ARABic Information Retrieval System
+5686,Arabic web - based information retrieval system
+5695,MT - based approach
+5722,dictionary - based translation
+5724,SMT
+5730,concept - based indexing
+5767,WSD
+5773,semantic relationship
+5918,co - occurrence analysis
+5919,content - based analysis
+5946,WordNet ontology
+5952,ontology matching
+5960,PRF
+6002,query
+6011,OOV
+6022,automatic query expansion
+6158,multi - lingual dictionary
