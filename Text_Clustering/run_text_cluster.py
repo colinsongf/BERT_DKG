@@ -137,12 +137,12 @@ def hook_doc(dataset, X):
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
     else:
         cluster_num = opts.cluster_num
-        # km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
-        #                      init_size=1000, batch_size=1000, verbose=False)
-        # km.fit(X)
-        # labels = km.labels_
-        labels = np.ones([len(dataset.data)])
-        labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
+        km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
+                             init_size=1000, batch_size=1000, verbose=False)
+        km.fit(X)
+        labels = km.labels_
+        # labels = np.ones([len(dataset.data)])
+        # labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
             id2field = {}
