@@ -127,8 +127,7 @@ class BERTDataset(Dataset):
         cur_tensors = (torch.tensor(cur_features.input_ids),
                        torch.tensor(cur_features.input_mask),
                        torch.tensor(cur_features.doc_id),
-                       torch.tensor(cur_features.lm_label_ids),
-                       torch.tensor(self.ent_weights))
+                       torch.tensor(cur_features.lm_label_ids))
 
         return cur_tensors
 
@@ -406,13 +405,14 @@ def main(dataset, args, hook):
         train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
 
         model.train()
+        word_weights = torch.tensor(train_dataset.ent_weights).to(device)
         for _ in trange(int(args.num_train_epochs), desc="Epoch"):
             tr_loss = 0
             nb_tr_examples, nb_tr_steps = 0, 0
             for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
                 batch = tuple(t.to(device) for t in batch)
-                input_ids, input_mask, doc_id, lm_label_ids, word_weight = batch
-                loss = model(input_ids, doc_id, input_mask, lm_label_ids, word_weight)
+                input_ids, input_mask, doc_id, lm_label_ids = batch
+                loss = model(input_ids, doc_id, input_mask, lm_label_ids, word_weights)
                 if n_gpu > 1:
                     loss = loss.mean() # mean() to average on multi-gpu.
                 if args.gradient_accumulation_steps > 1:
