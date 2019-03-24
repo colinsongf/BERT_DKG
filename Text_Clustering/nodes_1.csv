@@ -1,48 +1,46 @@
 Id,Label
-1,information retrieval
-2,NLP
+1,NLP
+2,information retrieval
 3,Natural Language processing
-5,music information retrieval
-23,IRS
-25,IR
-118,Artificial Intelligence
-168,topic segmentation
-219,Cross - Language Text Retrieval
-1465,Peer - to - peer systemsId,Label
-2674,Arabic web - based information retrieval system
-2675,ARABIRS
-2676,ARABic Information Retrieval System
-2719,language modeling
-2724,BM25
-2740,Vector Space Model
-2746,Precision
-2777,ontology
-2808,Decision tree
-2814,Reader Judgment
-2834,neural network
-2839,thesauri
-2851,SVM
-2856,EuroWordNet
-2873,semantic representation
-2890,latent semantic indexing
-2891,LSI
-2956,LDA
-2958,Latent Dirichlet Allocation
-2959,VSM
-2999,Neural networks
-3144,Vector Space
-3145,Boolean model
-3147,Probabilistic
-3152,relevance
-3187,Latent Semantic Analysis
-3203,Support Vector Machine
-3214,semantic relationships
-3316,PRF
-3392,IDF
-3501,Latent Dirichlet Allocation model
-3524,RDBs
-3563,Statistical language models
-3625,TF - IDF
-3735,GA
-3774,MIREX
-3953,peers - peers - coordinator scheme
+12,music information retrieval
+23,IR
+66,CLIR
+143,information scienceId,Label
+2651,Arabic web - based information retrieval system
+2652,ARABIRS
+2653,ARABic Information Retrieval System
+2663,Latent Semantic Analysis
+2690,SPHINX IV
+2709,Vector Space Model
+2718,Learning to Rank
+2722,SVM
+2724,GA
+2728,neural networks
+2742,probabilistic model
+2749,ontology
+2757,genetic algorithms
+2791,HMM
+2793,Hidden Markov Model
+2830,latent semantic indexing
+2871,Formal Concept Analysis
+2873,genetic programming
+2904,keyword
+2933,TF - IDF
+2935,IDF
+2944,N - layer vector space model
+2984,Knowledge Map of
+3015,SMT
+3033,SOM
+3053,probabilistic models
+3136,DBpedia
+3176,Boolean model
+3178,Probabilistic
+3260,LSA
+3303,VSM
+3330,k - means algorithm
+3403,LSI
+3433,MT
+3647,MIREX
+3661,Bayesian networks
+3768,Ranking
+3808,RDF

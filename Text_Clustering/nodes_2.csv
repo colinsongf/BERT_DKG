@@ -1,45 +1,47 @@
 Id,Label
-1,Information Retrieval
+1,Information retrieval
 2,IR
-3,Natural Language Processing
 12,NLP
-23,semantic Web
-104,Geographic Information Retrieval
-111,query expansion
-197,Music Information Retrieval
-219,word sense disambiguationId,Label
-2696,genetic algorithm
-2697,genetic algorithms
-2700,vector space model
-2748,WSD
-2764,neural networks
-2802,Boolean model
-2804,probabilistic model
-2811,RDF
-2822,VSM
-2827,latent semantic indexing
-2830,LSI
-2839,Latent Semantic
-2840,neural network
-2853,MAP
-2873,probabilistic models
-2875,SVM
-2950,probabilistic
-2985,collaborative filtering
-2997,ontology
-3028,LDA
-3030,Latent Dirichlet Allocation
-3081,MIREX
-3102,latent semantic analysis
-3141,Formal Concept Analysis
-3180,Support Vector Machines
-3288,Arabic web - based information retrieval system
-3289,ARABIRS
-3290,ARABic Information Retrieval System
-3414,k - means algorithm
-3463,inverted index
-3672,semantic similarity
-3693,FCA
-3851,genetic programming
-4294,F - measure
-4326,Markov network
+21,music information retrieval
+23,Distributed Information Retrieval
+45,resource selection
+186,MIR
+474,pattern recognitionId,Label
+2636,CORI
+2665,LM
+2666,BM25
+2668,language modeling
+2735,probabilistic model
+2745,LSI
+2746,latent semantic indexing
+2748,formal concept analysis
+2749,FCA
+2750,vector space model
+2774,neural network
+2810,GA
+2811,VSM
+2813,Genetic Algorithm
+2815,SVM
+2831,vector space
+2832,probabilistic
+2833,probabilistic models
+2836,ontology matching
+2888,ontology
+2911,Grid computing
+2914,LDA
+2923,TFIDF
+2941,neural networks
+2953,MT
+2966,MIREX
+3071,thesauri
+3075,Collaborative Filtering
+3130,fuzzy logic
+3161,TF - IDF
+3289,Latent Semantic
+3341,Boolean model
+3342,HMM
+3498,genetic algorithms
+3519,SVD
+3541,K - Means
+3548,COSIMIR
+3603,Arabic web - based information retrieval system
