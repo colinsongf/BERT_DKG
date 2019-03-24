@@ -15,6 +15,7 @@ import numpy as np
 from collections import Counter
 import random
 from copy import deepcopy
+
 # Display progress logs on stdout
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s')
@@ -146,6 +147,11 @@ def hook_doc(dataset, X):
         else:
             labels = np.ones([len(dataset.data)])
             labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
+
+        field_top = 3
+        path = "cluster%d_field_top%d" % (cluster_num, field_top)
+        if not os.path.exists(path):
+            os.makedirs(path)
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
             id2field = {}
@@ -182,13 +188,13 @@ def hook_doc(dataset, X):
             delete_fields = []
             for word in list(confuse):
                 if fields[word][1] > tecs[word][1]:
-                    tecs.pop(word)
                     id2tec.pop(tecs[word][-1])
                     delete_tecs.append(tecs[word][-1])
+                    tecs.pop(word)
                 else:
-                    fields.pop(word)
                     id2field.pop(fields[word][-1])
                     delete_fields.append(fields[word][-1])
+                    fields.pop(word)
 
             for word in confuse_manual:
                 if word in fields:
@@ -223,15 +229,15 @@ def hook_doc(dataset, X):
             #
 
             # 选择top3 field以及相应的tec
-            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:3])
+            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
             used_fields = [i[1][-1] for i in fields_.items()]
             co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
             used_tecs = [i[0][1] for i in co_occurence.items() if i[0][0] in used_fields]
-            with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
+            with open(os.path.join(path, "cluster_%d.csv" % cluster), "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
                                                      (f, t), n in co_occurence_]))
-            with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
+            with open(os.path.join(path, "nodes_%d.csv" % cluster), "w", encoding="utf8") as f:
                 f.write('\n'.join(
                     ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
                                     fields.items() if id in used_fields]))
@@ -263,7 +269,6 @@ def hook_doc(dataset, X):
             plt.axis('off')
             plt.savefig("cluster_%d.png" % cluster)  # save as png
             # plt.show()
-
 
 
 def run():
