@@ -202,8 +202,8 @@ def hook(dataset, X):
             nx.draw_networkx_edges(DG, pos)
             nx.draw_networkx_labels(DG, pos, labels=id2labels)
             plt.axis('off')
-            # plt.savefig("weighted_graph.png")  # save as png
-            plt.show()
+            plt.savefig("cluster_%d.png" % cluster)  # save as png
+            # plt.show()
 
 
 
