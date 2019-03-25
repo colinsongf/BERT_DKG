@@ -335,7 +335,10 @@ def main(dataset, args, hook):
 
     tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
     train_dataset.build_vocab(tokenizer)
-    train_dataset.set_entities_weight(dataset.entities)
+
+    # train_dataset.set_entities_weight(dataset.entities)
+    train_dataset.set_entities_weight(None)
+
     # Prepare model
     bert_config = BertConfig(args.bert_config)
     bert_config.type_vocab_size = len(train_dataset)
