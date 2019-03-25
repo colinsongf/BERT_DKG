@@ -31,7 +31,7 @@ from tqdm import tqdm, trange
 import sklearn.preprocessing as preprocessing
 from .modeling import MyBertForPreTraining, BertConfig
 from .optimization import BertAdam, warmup_linear
-
+import gensim
 from torch.utils.data import Dataset
 import random
 from collections import Counter, OrderedDict
@@ -268,10 +268,11 @@ class Tokenizer():
             [(ids, tok) for tok, ids in self.vocab.items()])
 
     def tokenize(self, doc):
-        if self.lower_case:
-            doc = doc.lower()
-        token_pattern = re.compile(r'(?u)\b\w\w+\b')
-        return token_pattern.findall(doc)
+        return gensim.utils.simple_preprocess(doc)
+        # if self.lower_case:
+        #     doc = doc.lower()
+        # token_pattern = re.compile(r'(?u)\b\w\w+\b')
+        # return token_pattern.findall(doc)
 
     def convert_ids_to_tokens(self, ids):
         tokens = []
