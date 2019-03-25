@@ -117,11 +117,14 @@ class Args(object):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
-        # self.output_dir = "./output_bert_model_weighted_loss"
-        self.output_dir = "./output_bert_model"
+        self.weighted = True
+        if self.weighted:
+            self.output_dir = "./output_bert_model_weighted_loss"
+        else:
+            self.output_dir = "./output_bert_model"
         self.max_seq_length = 512
         self.do_train = True
-        self.train_batch_size = 32
+        self.train_batch_size = 256
         self.learning_rate = 3e-4
         self.num_train_epochs = 15.0
         self.warmup_proportion = 0.1

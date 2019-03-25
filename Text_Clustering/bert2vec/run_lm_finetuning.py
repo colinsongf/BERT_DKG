@@ -336,8 +336,10 @@ def main(dataset, args, hook):
     tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
     train_dataset.build_vocab(tokenizer)
 
-    # train_dataset.set_entities_weight(dataset.entities)
-    train_dataset.set_entities_weight(None)
+    if args.weighted:
+        train_dataset.set_entities_weight(dataset.entities)
+    else:
+        train_dataset.set_entities_weight(None)
 
     # Prepare model
     bert_config = BertConfig(args.bert_config)
@@ -537,6 +539,7 @@ if __name__ == "__main__":
                         help="Loss scaling to improve fp16 numeric stability. Only used when fp16 set to True.\n"
                              "0 (default value): dynamic loss scaling.\n"
                              "Positive power of 2: static loss scaling value.\n")
-
+    parser.add_argument('--weighted',
+                        action='store_true')
     args = parser.parse_args()
     main(args.train_file, args)
