@@ -137,6 +137,7 @@ def hook_doc(dataset, X):
 
         print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean))
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
+        return v_mean, nmi_mean
     else:
         cluster_num = opts.cluster_num
         scs = np.array([])
@@ -288,7 +289,7 @@ def hook_doc(dataset, X):
             plt.axis('off')
             plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
             # plt.show()
-
+        return dbs.mean(), scs.mean()
 
 def run():
     global metric

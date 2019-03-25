@@ -97,7 +97,7 @@ class BERTDataset(Dataset):
         weights = [1.] * len(self.vocab)
         for word_id in self.vocab.values():
             if word_id in ent_ids:
-                weights[word_id] = 2.
+                weights[word_id] = 4.
 
         self.ent_weights = weights
 
@@ -410,6 +410,7 @@ def main(dataset, args, hook):
         train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
 
         model.train()
+        scores = []
         word_weights = torch.tensor(train_dataset.ent_weights).to(device)
         for _ in trange(int(args.num_train_epochs), desc="Epoch"):
             tr_loss = 0
@@ -441,7 +442,7 @@ def main(dataset, args, hook):
                     global_step += 1
             X = model.get_doc_embed().weight.tolist()
             X = preprocessing.normalize(X)
-            hook(dataset, X)
+            scores.append(hook(dataset, X))
         # Save a trained model
         logger.info("** ** * Saving fine - tuned model ** ** * ")
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
@@ -450,6 +451,7 @@ def main(dataset, args, hook):
         config_file = os.path.join(args.output_dir, "bert_config.json")
         json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
+        print(scores)
     X = model.get_doc_embed().weight.tolist()
     X = preprocessing.normalize(X)
     hook(dataset, X)
