@@ -434,9 +434,9 @@ def main(dataset, args, hook):
                     optimizer.step()
                     optimizer.zero_grad()
                     global_step += 1
-            # X = model.get_doc_embed().weight.tolist()
-            # X = preprocessing.normalize(X)
-            # hook(dataset, X)
+            X = model.get_doc_embed().weight.tolist()
+            X = preprocessing.normalize(X)
+            hook(dataset, X)
         # Save a trained model
         logger.info("** ** * Saving fine - tuned model ** ** * ")
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
