@@ -22,7 +22,7 @@ import logging
 import os
 import random
 from io import open
-
+import json
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset, RandomSampler
@@ -172,8 +172,8 @@ def random_word(tokens, tokenizer):
     for i, token in enumerate(tokens):
         prob = random.random()
         # mask token with 15% probability
-        if prob < 0.6:
-            prob /= 0.6
+        if prob < 0.8:
+            prob /= 0.8
             tokens[i] = "[MASK]"
             masked = True
             # # 80% randomly change token to mask token
@@ -442,7 +442,8 @@ def main(dataset, args, hook):
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
         torch.save(model_to_save.state_dict(), output_model_file)
-        bert_config
+        config_file = os.path.join(args.output_dir, "bert_config.json")
+        json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
     X = model.get_doc_embed().weight.tolist()
     X = preprocessing.normalize(X)

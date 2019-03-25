@@ -152,6 +152,15 @@ def hook_doc(dataset, X):
         path = "cluster%d_field_top%d" % (cluster_num, field_top)
         if not os.path.exists(path):
             os.makedirs(path)
+        print("--------------The larger the better---------------------")
+        print("Silhouette Coefficient: %0.3f"
+              % metrics.silhouette_score(X, labels, sample_size=1000))
+        print()
+
+        print("--------------The lower the better---------------------")
+        print("Davies-Bouldin score: %0.3f"
+              % metrics.davies_bouldin_score(X, labels))
+
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
             id2field = {}
