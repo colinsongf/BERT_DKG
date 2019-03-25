@@ -139,27 +139,37 @@ def hook_doc(dataset, X):
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
     else:
         cluster_num = opts.cluster_num
-        if not opts.TEST_MODE:
-            km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
-                                 init_size=1000, batch_size=1000, verbose=False)
-            km.fit(X)
-            labels = km.labels_
-        else:
-            labels = np.ones([len(dataset.data)])
-            labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
+        scs = np.array([])
+        dbs = np.array([])
+        for i in range(opts.run_num):
+            if not opts.TEST_MODE:
+                km = MiniBatchKMeans(n_clusters=cluster_num, init='k-means++', n_init=1,
+                                     init_size=1000, batch_size=1000, verbose=False)
+                km.fit(X)
+                labels = km.labels_
+            else:
+                labels = np.ones([len(dataset.data)])
+                labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
 
-        field_top = 3
-        path = "cluster%d_field_top%d" % (cluster_num, field_top)
-        if not os.path.exists(path):
-            os.makedirs(path)
+            field_top = 3
+            path = "cluster%d_field_top%d" % (cluster_num, field_top)
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+            sc = metrics.silhouette_score(X, labels, sample_size=1000)
+            db = metrics.davies_bouldin_score(X, labels)
+            scs = np.append(scs, sc)
+            dbs = np.append(dbs, db)
+
         print("--------------The larger the better---------------------")
-        print("Silhouette Coefficient: %0.3f"
-              % metrics.silhouette_score(X, labels, sample_size=1000))
+        print("Silhouette Coefficient: var:%0.3f, mean: %0.3f"
+              % (scs.var(), scs.mean()))
         print()
 
         print("--------------The lower the better---------------------")
-        print("Davies-Bouldin score: %0.3f"
-              % metrics.davies_bouldin_score(X, labels))
+        print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
+              % (dbs.var(), dbs.mean()))
+
 
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
