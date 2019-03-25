@@ -42,7 +42,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
+mask_prob = None
 class BERTDataset(Dataset):
     def __init__(self, corpus_path_or_list, seq_len, encoding="utf-8", corpus_lines=None):
         self.tokenizer = None
@@ -167,35 +167,38 @@ def random_word(tokens, tokenizer):
     :param tokenizer: Tokenizer, object used for tokenization (we need it's vocab here)
     :return: (list of str, list of int), masked tokens and related labels for LM prediction
     """
+    global mask_prob
     output_label = []
-    # masked = False
-    for i, token in enumerate(tokens):
-        prob = random.random()
-        # mask token with 15% probability
-        if prob < 0.8:
-            prob /= 0.8
-            tokens[i] = "[MASK]"
-            masked = True
-            # # 80% randomly change token to mask token
-            # if prob < 0.8:
-            #     tokens[i] = "[MASK]"
-            #
-            # # 10% randomly change token to random token
-            # elif prob < 0.9:
-            #     tokens[i] = random.choice(list(tokenizer.vocab.items()))[0]
-            #
-            # # -> rest 10% randomly keep current token
-            #
-            # # append current token to output (we will predict these later)
-            try:
-                output_label.append(tokenizer.vocab[token])
-            except KeyError:
-                # For unknown words (should not occur with BPE vocab)
-                output_label.append(tokenizer.vocab["[UNK]"])
-                logger.warning("Cannot find token '{}' in vocab. Using [UNK] insetad".format(token))
-        else:
-            # no masking token (will be ignored by loss function later)
-            output_label.append(-1)
+    if mask_prob == -1:
+        mask_index = random.randint(0, len(tokens) - 1)
+        output_label = [tokenizer.vocab[token] if i == mask_index else -1 for i, token in enumerate(tokens)]
+    else:
+        for i, token in enumerate(tokens):
+            prob = random.random()
+            if prob < mask_prob:
+                prob /= mask_prob
+                tokens[i] = "[MASK]"
+                # masked = True
+                # # 80% randomly change token to mask token
+                # if prob < 0.8:
+                #     tokens[i] = "[MASK]"
+                #
+                # # 10% randomly change token to random token
+                # elif prob < 0.9:
+                #     tokens[i] = random.choice(list(tokenizer.vocab.items()))[0]
+                #
+                # # -> rest 10% randomly keep current token
+                #
+                # # append current token to output (we will predict these later)
+                try:
+                    output_label.append(tokenizer.vocab[token])
+                except KeyError:
+                    # For unknown words (should not occur with BPE vocab)
+                    output_label.append(tokenizer.vocab["[UNK]"])
+                    logger.warning("Cannot find token '{}' in vocab. Using [UNK] insetad".format(token))
+            else:
+                # no masking token (will be ignored by loss function later)
+                output_label.append(-1)
 
     return tokens, output_label
 
@@ -293,6 +296,8 @@ class Tokenizer():
 
 
 def main(dataset, args, hook):
+    global mask_prob
+    mask_prob = args.mask_prob
 
     if args.local_rank == -1 or args.no_cuda:
         device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
