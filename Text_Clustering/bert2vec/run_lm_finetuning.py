@@ -171,6 +171,7 @@ def random_word(tokens, tokenizer):
     output_label = []
     if mask_prob == -1:
         mask_index = random.randint(0, len(tokens) - 1)
+        tokens[mask_index] = "[MASK]"
         output_label = [tokenizer.vocab[token] if i == mask_index else -1 for i, token in enumerate(tokens)]
     else:
         for i, token in enumerate(tokens):
