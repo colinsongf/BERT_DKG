@@ -117,7 +117,7 @@ class Args(object):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
-        self.weighted = False
+        self.weighted = True
         if self.weighted:
             self.output_dir = "./output_bert_model_weighted_loss"
         else:
