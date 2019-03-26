@@ -1,0 +1,218 @@
+Id,Label
+5,CLIR
+9,Cross - Language Information Retrieval
+27,query expansion
+1020,derivational stemming algorithm
+1021,MT - based approach
+1022,general - purpose online dictionary
+1032,dictionary - based translation
+1033,statistical - based disambiguation
+1034,SMT
+1044,BM25
+1048,TE
+1049,translation enhancement
+1051,RF
+1052,relevance feedback
+1068,two - stages translation model
+1069,word - by - word query translation
+1070,dictionary - based query translation
+1073,Eurospider
+1074,UMLS
+1075,ontologies
+1076,OHSUMED
+1077,thesauri
+1084,retrieval feedback
+1085,automatic relevance feedback
+1086,Precision
+1087,DE
+1089,Mean Average Precision
+1095,Lucene toolkit
+1107,Robust - WSD
+1108,MT dictionary translation
+1109,Lemur toolkit
+1110,SS
+1111,PE
+1113,Paragraph Extraction
+1114,Sentence Selection
+1117,relevance feedback algorithm
+1131,automatic dictionary translation
+1141,pseudo relevance feedback
+1142,PRF
+1146,vector space model
+1150,N - gram
+1155,OOV
+1159,co - occurrence model
+1174,MetaMap[1
+1175,nDCG@10
+1176,MetaMap
+1177,Learning Vector Quantization
+1178,neural networks
+1179,LVQ
+1193,topic
+1196,probabilistic model
+1200,multilingual ontology
+1208,lexicon - based translation
+1209,length normalization
+1211,statistical translation model
+1233,HAL[3
+1234,Conceptual Spaces[4
+1235,probabilistic HAL space
+1236,HAL
+1237,Hyperspace Analogue to Language
+1238,pHAL
+1244,word embedding
+1245,Dirichlet language model
+1261,probabilistic latent semantic analysis
+1262,TMs
+1263,locality - sensitive hashing
+1265,LSH
+1266,TM
+1267,Translation memories
+1281,RankFusion
+1282,analysis
+1287,SMT translation
+1289,community - detection algorithm
+1290,multilingual embeddings
+1291,Scaled Edit Distance
+1292,SED
+1293,Surface Similarity
+1303,token - based
+1304,phrase - based translation
+1308,Ranking SVM
+1315,linked dependence
+1318,expectation maximization
+1329,automatic acronym expansion
+1330,pseudo
+1341,NDCG
+1374,pseudo - relevance feedback
+1375,Frequent Case Generation
+1381,statistics - based
+1383,LSI
+1388,concept - based query expansion
+1416,Machine Readable Dictionary translation
+1417,interlingual representation
+1418,Latent Dirichlet Allocation model
+1419,BiLDA
+1420,probabilistic interlingual representation
+1421,bilingual topic model
+1428,surface pattern matching model
+1429,summary - score model
+1430,Out of Vocabulary
+1431,OOV translation mining
+1432,frequency - distance model
+1439,MediaEval Genre Tagging Task
+1444,TFIDF
+1464,IndonesianEnglish dictionary
+1467,TF - IDF
+1468,Language Grid
+1481,Precision@10
+1482,R - precision
+1483,Generalized Success@10
+1486,Semcor
+1524,MT pivot
+1525,smoothed power law
+1527,log - logistic
+1532,ILI
+1533,generMization
+1534,EuroWordNet InterLingual Index
+1541,EMIM
+1548,rule
+1549,dictionary - based degradation
+1563,shared - task
+1564,relevance prediction
+1574,Latent Semantic
+1575,parallel aligned
+1608,Word2Vec
+1620,Confidence
+1631,word - embeddings model
+1632,machine learning regression model
+1633,Web mining
+1634,OOV translation ranking
+1641,EM
+1645,CCA
+1646,deep belief networks
+1647,keyword
+1648,canonical correlation analysis
+1649,DBN
+1650,cross - lingual semantic analysis
+1651,latent semantic - retrieval model
+1652,latent semantic models
+1658,SPL
+1659,LL
+1661,EE
+1662,EC
+1663,CE
+1671,top
+1687,OCR error modeling
+1688,parallel text alignment
+1689,Forum for Information Evaluation
+1712,WikiTranslate
+1727,probabilistic CLIR model
+1728,two - phased retrieval model
+1729,probabilistic CLIR
+1735,TNG
+1736,transliteration
+1737,triple translation model
+1738,word - by - word translation
+1745,corpus
+1756,Indri search
+1760,Statistical Approach
+1761,MOSES
+1762,Bilingual Evaluation Understudy
+1767,Task - tuned segmentation algorithms
+1768,dictionary - based Chinese
+1769,word sense disambiguation algorithm
+1782,probabilistic translation model
+1783,Minimum Edit Support Candidates
+1784,MESC
+1793,Model
+1794,word - based
+1795,stem - based translation
+1802,CAs
+1811,Ranking Support Vector Machine
+1812,OOV term translation model
+1818,OMTD
+1819,OMTDN
+1826,term
+1848,token - to - token mappings
+1849,Synchronous Context - Free Grammars
+1859,Singular Value Decomposition
+1860,SVD
+1861,Markov network
+1862,vector space
+1876,BKYMON
+1887,Noisy parallel corpora
+1906,α1antitrypsin deficiency
+1907,OOV term translation
+1908,Bayesian Net
+1909,α1-抗胰蛋白酶缺乏症
+1914,Unicode encoding
+1921,co - occurrence - based phrasal translation
+1922,word by -
+1923,dictionary - based approach
+1947,Rocchio ’s
+1948,Rocchio ’s algorithm[2
+1968,full machine translation
+1969,dictionary - based bi
+1986,similarity - based translationphrase identification
+1990,Markov chains
+1991,similarity
+2003,Simple - phrase score
+2004,Clarity score
+2019,word - context matrix
+2020,Bo1
+2028,latent semantic space
+2029,partial least squares
+2030,bilingual semantic relationship
+2031,latent semantic spaces
+2032,concept clique for
+2052,GIRT - Daten
+2053,Standardsystemen
+2060,vector - space representations
+2069,SMT)based
+2070,document - alignment algorithm
+2078,MT - based
+2079,phrase translation
+2083,multilingual association dictionary
+2086,Language Modelling - based retrieval model
+2087,ClinicalTrials.gov

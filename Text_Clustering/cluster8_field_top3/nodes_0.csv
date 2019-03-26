@@ -1,0 +1,101 @@
+Id,Label
+23,Distributed Information Retrieval
+113,Web information retrieval
+197,query expansion
+896,CORI
+897,Regression - SVM
+898,Ranking - SVM
+899,Round Robin merging
+900,SVMmethods
+904,re - ranking strategies
+907,text databases
+908,relevance information
+987,content - based analysis
+988,co - occurrence analysis
+991,PageRank algorithm
+997,PageRank
+1037,relevance feedback
+1056,Query refinement
+1057,Bayes criterion
+1064,information retrieval algorithm
+1080,RCV1
+1081,PSO
+1082,PSO1-IR
+1083,PSO2-IR
+1084,CACM
+1085,particle swarm optimization
+1092,F - score
+1108,BM25
+1145,RF
+1169,Precision
+1208,PRF
+1213,RSV
+1214,multi database model
+1220,Web - community
+1225,Bayesian networks
+1244,fuzzy set
+1272,VSM
+1309,interconnection network
+1310,shared
+1337,Absorbing Model
+1338,probabilistic approach
+1339,probabilistic framework
+1354,Logistic Regression algorithm
+1361,multi - objective model
+1364,relevance prediction
+1376,set - covering - based algorithm
+1377,multivariate linear modeling
+1378,randomized algorithms
+1409,Combination
+1434,Appearing
+1435,Rising Topics
+1436,Vanishing
+1437,Topic drift
+1442,automatic
+1467,mining association
+1468,Contextual meta - rules
+1469,EII
+1471,Entropic Implication Intensity
+1541,Irrelevance Rate Function
+1542,Reliability Theory
+1543,overlapping databases
+1544,multi - evidence method
+1545,shadow document
+1546,Round - robin
+1566,word2vec
+1585,DFR
+1586,Term Frequency normalisation
+1630,Recall
+1670,concept - based information
+1671,association matrix
+1679,eigenvector computations
+1705,ACO - GA
+1706,Ant Colony Optimization(ACO)Genetic Algorithm(GA
+1739,pseudorelevance feedback
+1749,automatic relevance feedback
+1753,normalized query expansion
+1802,Compact Concept Ontology
+1803,iVSearcher
+1805,CCO
+1806,CCOs
+1819,clustering expansion
+1821,hyperlink structure analysis
+1920,Bayesian network
+1921,Kullback - Leibler divergence
+1922,KL
+1944,concept - based relevance feedback
+1945,concept - based browsing
+1946,cluster - based representation
+1949,dynamic document analysis
+1979,Theory of Evidence
+1980,DempsterShafer
+1981,federated
+1990,graph mining
+1991,Markov network retrieval
+1992,Quasi - Clique
+1993,Markov network
+2029,re - ranking method
+2065,MIaS
+2066,MathML
+2067,Content MathML
+2081,relevance modeling

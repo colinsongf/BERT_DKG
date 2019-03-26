@@ -1,0 +1,135 @@
+Id,Label
+136,LSI
+140,latent semantic indexing
+217,probabilistic
+955,Latent Semantic Analysis
+984,Vector Space Model
+1011,Conditional logic
+1012,Boolean model
+1013,probabilistic model
+1017,Bayesian Networks
+1024,vector - space model
+1028,Latent Semantic
+1029,neural network
+1030,competition - based neural network model
+1031,LSl
+1032,semantic relationship
+1034,causal inference network
+1036,generalized logarithm function
+1059,Singular Value Decomposition
+1063,VSM
+1075,SVD
+1076,factorization - based
+1077,clustering - based
+1080,probabilistic models
+1082,vector space
+1085,probabilistic analysis
+1118,HySpirit
+1123,Rocchio relevance feedback algorithm
+1124,Rocchio algorithm
+1125,probabilistic algorithms
+1168,LDA
+1170,Latent Dirichlet Allocation
+1190,Golub Kahan bidiagonalization algorithm
+1191,LSI Numerical
+1192,Medline
+1199,MATLAB
+1241,principal component analysis
+1248,LSA
+1264,Generalized Vector Space model
+1321,vector model
+1344,Jensen - Shannon
+1351,Bayesian
+1357,ontology - based
+1358,domain knowledge representation
+1359,vector
+1360,ontology - based retrieval
+1394,TDM
+1395,Term Document Matrix
+1414,GVSM
+1438,classical refinement semantics
+1439,Shadow semantics
+1474,Expectation Maximization algorithm
+1478,vector - space representation
+1499,LSICG
+1500,static bug localisation
+1543,polynomial filtering
+1544,probabilistic networks
+1545,probabilistic framework
+1567,Description Logic
+1596,Cohen Daubechies
+1597,CDF9/7
+1598,wavelet transform
+1599,discrete cosine transform
+1600,DCT
+1656,Consistence Hashing
+1657,CHORD
+1658,ClientServer model
+1659,Distributed Semantic Table
+1660,Chord space
+1661,DST
+1683,CACM Average
+1696,latent semantic relationship
+1697,semantic ranking
+1698,Latent Semantic Index
+1699,Boolean IR
+1717,OWL Lite
+1718,Horn predicate logics
+1719,probabilistic OWL Lite
+1735,Dirichlet mixtures’
+1736,Dirichlet
+1737,Dirichlet mixtures
+1738,exponential
+1774,SCD
+1775,SOA
+1780,probabilistic description logic
+1781,probabilistic extension
+1788,Kullback - Leibler divergence
+1850,imaging - based conditional logics
+1851,Bayesian revision functions
+1852,probability density functions
+1881,hierarchical overlay network
+1882,CAN
+1883,DAGSVM
+1884,Directed Acyclic Graph Support Vector Machines
+1885,AIB
+1886,Agglomerative Information Bottleneck
+1887,Range Addressable network
+1888,dimensionality
+1889,Pseudo
+1890,Low - rank matrix approximation
+1891,Nearest
+1892,Evolutionary algorithm
+1901,JS
+1902,VSM Latent Semantic Indexing
+1937,AIC
+1938,Akaike information criterion
+1939,statistical model averaging
+1940,single - model LSI
+1991,Conventional vector
+2014,semantics transformation
+2060,random projection
+2061,LX
+2062,term - document matrix
+2063,spectral analysis
+2178,k - means clustering
+2179,K Nearest Neighbours
+2180,K - NN
+2207,Semantic Block
+2221,tf×idf
+2222,probabilistic interpretation
+2223,Dirac
+2224,ONR
+2225,Riemannian metric tensor
+2226,Dirac Notation
+2227,Concept Fock Space
+2228,CFS
+2229,Occupation Number Representations
+2230,Fock
+2245,LSD
+2246,sPLMap
+2284,probabilistic way
+2316,probabilistic four - valued Datalog
+2317,deductive
+2318,Krylov subspace
+2319,numerical linear algebra
