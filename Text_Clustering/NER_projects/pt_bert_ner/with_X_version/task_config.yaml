@@ -15,6 +15,7 @@ task:
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
   max_seq_length: 128
+  data_type: BIOLU
 train:
   # Whether do training in this run
   do: true
@@ -40,7 +41,8 @@ dev:
   batch_size: 32
 test:
   # Whether do predicting in this run
-  do: true
+  do_every_epoch: true
+  do_after_train: true
   # Which dataset to be predicted: train, dev or test
   dataset: test
   # Total batch size for predicting

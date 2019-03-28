@@ -22,12 +22,6 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TRAIN = DEV = TEST = "tiny"
-
-TRAIN = "train"
-DEV = "dev"
-TEST = "test"
-
 
 class BertForNER(BertPreTrainedModel):
 
@@ -119,7 +113,14 @@ class CONLLProcessor(DataProcessor):
 
     @staticmethod
     def get_labels():
-        return ['X', 'O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
+        if config['task']['data_type'] == "BIOLU":
+            return ['X', 'O',
+                    'B-PER', 'I-PER', 'L-PER', 'U-PER',
+                    'B-ORG', 'I-ORG', 'L-ORG', 'U-ORG',
+                    'B-LOC', 'I-LOC', 'L-LOC', 'U-LOC',
+                    'B-MISC', 'I-MISC', 'L-MISC', 'U-MISC']
+        else:
+            return ['X', 'O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
 
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer, label_preprocessed, label_list):
@@ -400,6 +401,17 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
+
+        if config['task']['data_type'] == "tiny":
+            TRAIN = DEV = TEST = "tiny"
+        elif config['task']['data_type'] == "BIOLU":
+            TRAIN = "train_biolu"
+            DEV = "dev_biolu"
+            TEST = "test_biolu"
+        else:
+            TRAIN = "train"
+            DEV = "dev"
+            TEST = "test"
 
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
