@@ -1,22 +1,21 @@
 from __future__ import absolute_import, division, print_function
 
-import os
-import sys
-import re
 import codecs
 import logging
+import os
 import random
-import yaml
-from tqdm import tqdm, trange
+import re
+import sys
 
 import numpy as np
 import torch
-import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-
-from pytorch_pretrained_bert.tokenization import BertTokenizer
+import yaml
+from models import *
 from pytorch_pretrained_bert.modeling import BertPreTrainedModel, BertModel
 from pytorch_pretrained_bert.optimization import BertAdam
+from pytorch_pretrained_bert.tokenization import BertTokenizer
+from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+from tqdm import tqdm, trange
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
