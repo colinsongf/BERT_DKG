@@ -59,4 +59,4 @@ predict:
   batch_size: 512
 # Whether to use CUDA when available
 use_cuda: true
-n_gpu: 2
+n_gpu: 1
