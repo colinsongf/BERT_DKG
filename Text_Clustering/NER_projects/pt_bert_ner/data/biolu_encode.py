@@ -20,6 +20,8 @@ def write_line(new_label: str, prev_label: str, line_content: list, output_file)
     current_line = ' '.join(line_content)
     output_file.write(current_line + '\n')
 
+def not_same_tag(tag1, tag2):
+    return tag1.split("-")[-1]!=tag2.split("-")[-1]
 
 def convert(input_file, output_path):
     output_file = open(output_path, 'w')
@@ -30,13 +32,13 @@ def convert(input_file, output_path):
             current_line = input_file[i]
 
             if '-DOCSTART-' in current_line:
-                output_file.write(current_line + '\n')
-            elif len(current_line) == 0:
-                output_file.write(current_line + '\n')
+                output_file.write(current_line)
+            elif len(current_line) == 1:
+                output_file.write(current_line)
 
             else:
-                prev_iob = None
-                next_iob = None
+                prev_iob = ""
+                next_iob = ""
                 prev_line = None
                 next_line = None
 
@@ -44,38 +46,42 @@ def convert(input_file, output_path):
                     prev_line = input_file[i - 1]
                     next_line = input_file[i + 1]
 
-                    if len(prev_line) > 0:
+                    if len(prev_line.strip()) > 0:
                         prev_line_content = prev_line.split()
-                        prev_iob = prev_line_content[3]
+                        prev_iob = prev_line_content[-1]
 
-                    if len(next_line) > 0:
+                    if len(next_line.strip()) > 0:
                         next_line_content = next_line.split()
-                        next_iob = next_line_content[3]
+                        next_iob = next_line_content[-1]
 
                 except IndexError:
                     pass
 
-                current_line_content = current_line.split()
-                current_iob = current_line_content[3]
+                current_line_content = current_line.strip().split()
+                current_iob = current_line_content[-1]
 
                 # Outside entities
                 if current_iob == 'O':
-                    output_file.write(current_line + '\n')
+                    output_file.write(current_line)
 
                 # Unit length entities
-                elif (prev_iob == 'O' or len(prev_line) == 0) and next_iob == 'O':
+                elif current_iob.startswith("B-") and \
+                        (next_iob == 'O' or len(next_line.strip()) == 0 or next_iob.startswith("B-")):
                     write_line('U-', current_iob[2:], current_line_content, output_file)
 
                 # First element of chunk
-                elif (prev_iob == 'O' or len(prev_line) == 0) and next_iob != 'O':
+                elif current_iob.startswith("B-") and \
+                        (not not_same_tag(current_iob,next_iob) and next_iob.startswith("I-")):
                     write_line('B-', current_iob[2:], current_line_content, output_file)
 
                 # Last element of chunk
-                elif (prev_iob != 'O' and len(prev_line) != 0) and (next_iob == 'O' or len(next_line) == 0):
+                elif current_iob.startswith("I-") and \
+                        (next_iob == 'O' or len(next_line.strip()) == 0 or next_iob.startswith("B-")):
                     write_line('L-', current_iob[2:], current_line_content, output_file)
 
                 # Inside a chunk
-                elif (prev_iob != 'O' and len(prev_line) != 0) and (next_iob != 'O' and len(next_line) != 0):
+                elif current_iob.startswith("I-") and \
+                        next_iob.startswith("I-"):
                     write_line('I-', current_iob[2:], current_line_content, output_file)
 
         except IndexError:
