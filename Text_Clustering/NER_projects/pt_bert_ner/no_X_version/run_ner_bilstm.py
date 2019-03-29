@@ -26,12 +26,6 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TRAIN = DEV = TEST = "tiny"
-
-TRAIN = "ai_data_train_labeled_140"
-DEV = "ai_data_dev46"
-TEST = "ai_data_test46"
-
 
 class BilstmNER(nn.Module):
 
@@ -44,6 +38,7 @@ class BilstmNER(nn.Module):
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
         self.embedding = nn.Embedding(config.vocab_size, self.hidden_size)
         nn.init.xavier_uniform_(self.embedding.weight)
+
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
         embed = self.embedding(input_ids)
@@ -155,7 +150,12 @@ class CONLLProcessor(DataProcessor):
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
-        return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
+        # return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
+        return ['O',
+                'B-PER', 'I-PER', 'E-PER', 'S-PER',
+                'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
+                'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
+                'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
 
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer, label_preprocessed, label_list):
@@ -444,7 +444,19 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-        config['task']['output_dir'] = config['task']['output_dir'] + "_bilstm"
+        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['data_type'] + "_bilstm"
+
+        if config['task']['data_type'] == "tiny":
+            TRAIN = DEV = TEST = "tiny"
+        elif config['task']['data_type'] == "conll03":
+            TRAIN = "train_bioes"
+            DEV = "dev_bioes"
+            TEST = "test_bioes"
+        else:
+            TRAIN = "ai_data_train_labeled_140"
+            DEV = "ai_data_dev46"
+            TEST = "ai_data_test46"
+
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
             use_gpu = True

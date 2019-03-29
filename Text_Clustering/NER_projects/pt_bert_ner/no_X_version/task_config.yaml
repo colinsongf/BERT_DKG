@@ -3,26 +3,29 @@ task:
   task_name: conll
   # The input data directory
   #data_dir: D:\github\bishe\Text_Clustering\data
-  data_dir: /home/yjc/bishe/Text_Clustering/data
+  #data_dir: /home/yjc/bishe/Text_Clustering/data
+  data_dir: ../data
   # bert pre-trained model directory
   #bert_model_dir: D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
-  decoder: AttnCRFDecoder
+  decoder: SoftmaxDecoder
   # The output directory where the model predictions and checkpoints will be written
-  output_dir: ./output_predict_new
+  output_dir: ./output
   # Specify the ckeckpoint to load
   checkpoint: ~
   # Whether you are using an uncased model or not
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
-  max_seq_length: 256
+  max_seq_length: 128
+  # conll03, ai, tiny
+  data_type: conll03
 train:
   # Whether do training in this run
   do: false
   # Total batch size for training
-  batch_size: 8
+  batch_size: 32
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   # Total number of training epochs to perform
@@ -54,8 +57,6 @@ predict:
   do: true
   # Total batch size for predicting
   batch_size: 512
-
-
 # Whether to use CUDA when available
 use_cuda: true
-n_gpu: 1
+n_gpu: 2
