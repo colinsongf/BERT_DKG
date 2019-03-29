@@ -266,10 +266,11 @@ sub endOfChunk {
    if ( $prevTag eq "I" and $tag eq "B" ) { $chunkEnd = $true; }
    if ( $prevTag eq "I" and $tag eq "O" ) { $chunkEnd = $true; }
 
-   if ( $prevTag eq "E" and $tag eq "E" ) { $chunkEnd = $true; }
-   if ( $prevTag eq "E" and $tag eq "I" ) { $chunkEnd = $true; }
-   if ( $prevTag eq "E" and $tag eq "O" ) { $chunkEnd = $true; }
-   if ( $prevTag eq "I" and $tag eq "O" ) { $chunkEnd = $true; }
+#   if ( $prevTag eq "E" and $tag eq "E" ) { $chunkEnd = $true; }
+#   if ( $prevTag eq "E" and $tag eq "I" ) { $chunkEnd = $true; }
+#   if ( $prevTag eq "E" and $tag eq "O" ) { $chunkEnd = $true; }
+   if ( $prevTag eq "E") { $chunkEnd = $true; }
+   if ( $prevTag eq "S") { $chunkEnd = $true; }
 
    if ($prevTag ne "O" and $prevTag ne "." and $prevType ne $type) { 
       $chunkEnd = $true; 
@@ -303,6 +304,8 @@ sub startOfChunk {
    if ( $prevTag eq "E" and $tag eq "E" ) { $chunkStart = $true; }
    if ( $prevTag eq "E" and $tag eq "I" ) { $chunkStart = $true; }
    if ( $prevTag eq "O" and $tag eq "E" ) { $chunkStart = $true; }
+   if ( $prevTag eq "O" and $tag eq "I" ) { $chunkStart = $true; }
+
    if ( $prevTag eq "O" and $tag eq "I" ) { $chunkStart = $true; }
 
    if ($tag ne "O" and $tag ne "." and $prevType ne $type) { 
