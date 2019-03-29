@@ -444,7 +444,8 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['data_type'] + "_bilstm"
+            config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['decoder'] + "_" + \
+                                           config['task']['data_type'] + "_bilstm"
 
         if config['task']['data_type'] == "tiny":
             TRAIN = DEV = TEST = "tiny"
