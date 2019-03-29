@@ -304,6 +304,7 @@ def train():
 
 def draw(train, dev, start, end):
     import matplotlib.pyplot as plt
+    plt.switch_backend('agg')
     x = range(start + 1, end + 1)
     plt.plot(x, train, color='green', marker='o')
     legend = ['train']
