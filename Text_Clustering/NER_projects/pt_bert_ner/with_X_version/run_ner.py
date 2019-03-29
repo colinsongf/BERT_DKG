@@ -402,13 +402,14 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['data_type']
+        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['decoder'] + config['task'][
+            'data_type']
         if config['task']['data_type'] == "tiny":
             TRAIN = DEV = TEST = "tiny"
-        elif config['task']['data_type'] == "BIOLU":
-            TRAIN = "train_biolu"
-            DEV = "dev_biolu"
-            TEST = "test_biolu"
+        elif config['task']['data_type'] == "BIOES":
+            TRAIN = "train_bioes"
+            DEV = "dev_bioes"
+            TEST = "test_bioes"
         else:
             TRAIN = "train"
             DEV = "dev"

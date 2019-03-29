@@ -128,7 +128,12 @@ class CONLLProcessor(DataProcessor):
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
-        return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
+        return ['O',
+                'B-PER', 'I-PER', 'E-PER', 'S-PER',
+                'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
+                'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
+                'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
+        # return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
 
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer, label_preprocessed, label_list):
