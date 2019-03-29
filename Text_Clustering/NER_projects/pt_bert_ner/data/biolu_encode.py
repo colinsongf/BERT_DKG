@@ -67,7 +67,7 @@ def convert(input_file, output_path):
                 # Unit length entities
                 elif current_iob.startswith("B-") and \
                         (next_iob == 'O' or len(next_line.strip()) == 0 or next_iob.startswith("B-")):
-                    write_line('U-', current_iob[2:], current_line_content, output_file)
+                    write_line('S-', current_iob[2:], current_line_content, output_file)
 
                 # First element of chunk
                 elif current_iob.startswith("B-") and \
@@ -77,7 +77,7 @@ def convert(input_file, output_path):
                 # Last element of chunk
                 elif current_iob.startswith("I-") and \
                         (next_iob == 'O' or len(next_line.strip()) == 0 or next_iob.startswith("B-")):
-                    write_line('L-', current_iob[2:], current_line_content, output_file)
+                    write_line('E-', current_iob[2:], current_line_content, output_file)
 
                 # Inside a chunk
                 elif current_iob.startswith("I-") and \

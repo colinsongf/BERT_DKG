@@ -113,12 +113,12 @@ class CONLLProcessor(DataProcessor):
 
     @staticmethod
     def get_labels():
-        if config['task']['data_type'] == "BIOLU":
+        if config['task']['data_type'] == "BIOES":
             return ['X', 'O',
-                    'B-PER', 'I-PER', 'L-PER', 'U-PER',
-                    'B-ORG', 'I-ORG', 'L-ORG', 'U-ORG',
-                    'B-LOC', 'I-LOC', 'L-LOC', 'U-LOC',
-                    'B-MISC', 'I-MISC', 'L-MISC', 'U-MISC']
+                    'B-PER', 'I-PER', 'E-PER', 'S-PER',
+                    'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
+                    'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
+                    'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
         else:
             return ['X', 'O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
 
