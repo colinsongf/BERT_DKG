@@ -10,7 +10,7 @@ task:
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
-  decoder: CRFDecoder
+  decoder: AttnCRFDecoder
   # The output directory where the model predictions and checkpoints will be written
   output_dir: ./output
   # Specify the ckeckpoint to load
