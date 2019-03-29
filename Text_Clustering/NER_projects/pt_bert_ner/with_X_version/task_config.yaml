@@ -6,7 +6,7 @@ task:
   # bert pre-trained model directory
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder
-  decoder: SoftmaxDecoder
+  decoder: CRFDecoder
   # The output directory where the model predictions and checkpoints will be written
   output_dir: ./output_SoftmaxDecoder
   # Specify the ckeckpoint to load
