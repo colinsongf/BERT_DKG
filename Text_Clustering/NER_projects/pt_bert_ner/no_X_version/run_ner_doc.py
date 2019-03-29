@@ -27,14 +27,6 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TRAIN = DEV = TEST = "tiny"
-
-TRAIN = "ai_data_train_labeled_140"
-UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
-DEV = "ai_data_dev46"
-TEST = "ai_data_test46"
-
-
 class BertForNER(BertPreTrainedModel):
 
     def __init__(self, config, num_labels, decoder):
@@ -148,7 +140,12 @@ class CONLLProcessor(DataProcessor):
     @staticmethod
     def get_labels():
         #return ['O', 'B-PER', 'I-PER', 'B-ORG', 'I-ORG', 'B-LOC', 'I-LOC', 'B-MISC', 'I-MISC']
-        return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
+        # return ['O', 'B-FIELD', 'I-FIELD', 'B-TEC', 'I-TEC', 'B-MISC', 'I-MISC']
+        return ['O',
+                'B-PER', 'I-PER', 'E-PER', 'S-PER',
+                'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
+                'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
+                'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
 
 
 def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list=[]):
@@ -485,7 +482,20 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-        config['task']['output_dir'] = config['task']['output_dir'] + "_doc"
+        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['decoder'] + "_" + \
+                                       config['task']['data_type'] + "_doc"
+
+        if config['task']['data_type'] == "tiny":
+            TRAIN = DEV = TEST = "tiny"
+        elif config['task']['data_type'] == "conll03":
+            TRAIN = "train_bioes"
+            DEV = "dev_bioes"
+            TEST = "test_bioes"
+        else:
+            TRAIN = "ai_data_train_labeled_140"
+            DEV = "ai_data_dev46"
+            TEST = "ai_data_test46"
+
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
             use_gpu = True
