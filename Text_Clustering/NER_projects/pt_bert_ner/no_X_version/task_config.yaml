@@ -28,7 +28,7 @@ train:
   # Total batch size for training
   batch_size: 512
   # The initial learning rate for Adam
-  learning_rate: !!float 5e-4
+  learning_rate: !!float 5e-1
   # Total number of training epochs to perform
   epochs: 50
   # Proportion of training to perform linear learning rate warmup for
