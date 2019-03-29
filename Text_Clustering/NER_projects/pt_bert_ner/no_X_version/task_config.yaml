@@ -18,7 +18,7 @@ task:
   # Whether you are using an uncased model or not
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
-  max_seq_length: 512
+  max_seq_length: 384
   # conll03, ai, tiny
   data_type: conll03
   ssl: false
