@@ -417,6 +417,7 @@ if __name__ == "__main__":
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
         config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['data_type']
+
         if config['task']['data_type'] == "tiny":
             TRAIN = DEV = TEST = "tiny"
         elif config['task']['data_type'] == "conll03":
