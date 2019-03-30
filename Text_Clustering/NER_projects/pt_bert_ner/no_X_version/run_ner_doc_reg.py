@@ -27,13 +27,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TRAIN = DEV = TEST = "tiny"
 
-TRAIN = "ai_data_train_labeled"
-UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
-DEV = "ai_data_dev46"
-TEST = "ai_data_test46"
-PREDICT = "ai_data_to_predict_new"
 
 class BertForNER(BertPreTrainedModel):
 
@@ -626,7 +620,28 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         with open(sys.argv[1]) as f:
             config = yaml.load(f.read())
-        config['task']['output_dir'] = config['task']['output_dir'] + "_doc_reg"
+        config['task']['output_dir'] = config['task']['output_dir'] + "_" + config['task']['decoder'] + "_" + \
+                                       config['task']['data_type'] + "_doc_reg"
+
+        if config['task']['data_type'] == "tiny":
+            TRAIN = DEV = TEST = "tiny"
+        elif config['task']['data_type'] == "conll03":
+            TRAIN = "train_bioes"
+            DEV = "dev_bioes"
+            TEST = "test_bioes"
+        else:
+            TRAIN = "ai_data_train_labeled_140"
+            DEV = "ai_data_dev46"
+            TEST = "ai_data_test46"
+
+        TRAIN = DEV = TEST = "tiny"
+
+        TRAIN = "ai_data_train_labeled"
+        UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
+        DEV = "ai_data_dev46"
+        TEST = "ai_data_test46"
+        PREDICT = "ai_data_to_predict_new"
+
         if config['use_cuda'] and torch.cuda.is_available():
             device = torch.device("cuda", torch.cuda.current_device())
             use_gpu = True
