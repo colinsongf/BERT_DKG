@@ -4,7 +4,7 @@ task:
   # The input data directory
   #data_dir: D:\github\bishe\Text_Clustering\data
   #data_dir: /home/yjc/bishe/Text_Clustering/data
-  data_dir: ../data
+  data_dir: ../semi_data
   # bert pre-trained model directory
   #bert_model_dir: D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
