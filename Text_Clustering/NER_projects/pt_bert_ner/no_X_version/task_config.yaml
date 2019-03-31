@@ -6,9 +6,9 @@ task:
   #data_dir: /home/yjc/bishe/Text_Clustering/data
   data_dir: ../semi-data
   # bert pre-trained model directory
-  bert_model_dir: D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model
+  #bert_model_dir: D:\github\bishe\Text_Clustering\NER_projects\pt_bert_ner\bert_model
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
-  #bert_model_dir: bert-base-cased
+  bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
   decoder: CRFDecoder
   # The output directory where the model predictions and checkpoints will be written
@@ -20,7 +20,7 @@ task:
   # The maximum total input sequence length after WordPiece tokenization
   max_seq_length: 128
   # conll03, ai, tiny
-  data_type: tiny
+  data_type: ai
   ssl: false
 train:
   # Whether do training in this run
@@ -29,7 +29,7 @@ train:
   batch_size: 32
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
-  output_lr: !!float 5e-3
+  output_lr: !!float 5e-2
   # Total number of training epochs to perform
   epochs: 20
   # Proportion of training to perform linear learning rate warmup for
