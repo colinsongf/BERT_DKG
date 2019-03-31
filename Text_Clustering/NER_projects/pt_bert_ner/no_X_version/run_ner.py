@@ -230,10 +230,14 @@ def train():
     # Prepare optimizer
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
+    output_layer = ['decoder', 'bilstm']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
-         'weight_decay': 0.01},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
+        {'params': [p for n, p in param_optimizer if
+                    not any(nd in n for nd in no_decay) and n.split('.')[0] not in output_layer], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if
+                    any(nd in n for nd in no_decay) and n.split('.')[0] not in output_layer], 'weight_decay': 0.0},
+        {'params': [p for n, p in param_optimizer if n.split('.')[0] in output_layer],
+         'lr': config['train']['output_lr']}
     ]
     optimizer = BertAdam(optimizer_grouped_parameters, lr=config['train']['learning_rate'],
                          warmup=config['train']['warmup_proportion'], t_total=num_train_steps)
