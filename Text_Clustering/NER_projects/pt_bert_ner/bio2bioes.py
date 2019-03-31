@@ -1,8 +1,8 @@
 import argparse
 
-parser = argparse.ArgumentParser(description='Change encoding from BIO to BIOLU')
+parser = argparse.ArgumentParser(description='Change encoding from BIO to BIOES')
 parser.add_argument('input', metavar='-i', type=str, help='The path to the original file with BIO encoding')
-parser.add_argument('output', metavar='-o', type=str, help='The name of your BIOLU encoded file')
+parser.add_argument('output', metavar='-o', type=str, help='The name of your BIOES encoded file')
 args = parser.parse_args()
 
 input_file = args.input
@@ -10,21 +10,23 @@ output_file = args.output
 
 
 def read_file(input_file):
-    with open(input_file, 'rb') as f:
-        return f.read().decode('ASCII').split('\n')
+    with open(input_file, 'r', encoding="utf8") as f:
+        return f.read().split('\n')
 
 
-def write_line(new_label: str, prev_label: str, line_content: list, output_file):
+def write_line(new_label, prev_label, line_content, output_file):
     new_iob = new_label + prev_label
-    line_content[3] = new_iob
+    line_content[-1] = new_iob
     current_line = ' '.join(line_content)
     output_file.write(current_line + '\n')
 
+
 def not_same_tag(tag1, tag2):
-    return tag1.split("-")[-1]!=tag2.split("-")[-1]
+    return tag1.split("-")[-1] != tag2.split("-")[-1]
+
 
 def convert(input_file, output_path):
-    output_file = open(output_path, 'w')
+    output_file = open(output_path, 'w', encoding="utf8")
 
     for i in range(len(input_file) + 1):
 
@@ -32,9 +34,9 @@ def convert(input_file, output_path):
             current_line = input_file[i]
 
             if '-DOCSTART-' in current_line:
-                output_file.write(current_line)
-            elif len(current_line) == 1:
-                output_file.write(current_line)
+                output_file.write(current_line + "\n")
+            elif len(current_line.strip()) == 0:
+                output_file.write(current_line + "\n")
 
             else:
                 prev_iob = ""
@@ -62,7 +64,7 @@ def convert(input_file, output_path):
 
                 # Outside entities
                 if current_iob == 'O':
-                    output_file.write(current_line)
+                    output_file.write(current_line + "\n")
 
                 # Unit length entities
                 elif current_iob.startswith("B-") and \
@@ -71,7 +73,7 @@ def convert(input_file, output_path):
 
                 # First element of chunk
                 elif current_iob.startswith("B-") and \
-                        (not not_same_tag(current_iob,next_iob) and next_iob.startswith("I-")):
+                        (not not_same_tag(current_iob, next_iob) and next_iob.startswith("I-")):
                     write_line('B-', current_iob[2:], current_line_content, output_file)
 
                 # Last element of chunk
