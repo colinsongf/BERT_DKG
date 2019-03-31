@@ -10,7 +10,7 @@ task:
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
-  decoder: CRFDecoder
+  decoder: SoftmaxDecoder
   # The output directory where the model predictions and checkpoints will be written
   output_dir: ./output
   # Specify the ckeckpoint to load
@@ -30,7 +30,7 @@ train:
   # The initial learning rate for Adam
   learning_rate: !!float 5e-3
   # Total number of training epochs to perform
-  epochs: 30
+  epochs: 20
   # Proportion of training to perform linear learning rate warmup for
   warmup_proportion: 0.1
   # Number of updates steps to accumulate before performing a backward/update pass
