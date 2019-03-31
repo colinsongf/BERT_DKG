@@ -13,6 +13,7 @@ import sys
 import re
 
 from collections import defaultdict, namedtuple
+import os
 
 ANY_SPACE = '<SPACE>'
 
@@ -54,7 +55,9 @@ def parse_tag(t):
     m = re.match(r'^([^-]*)-(.*)$', t)
     return m.groups() if m else (t, '')
 
-def evaluate(iterable, options=None):
+
+def evaluate(iterable, options=None, desc=""):
+    print('\n\n' + '-' * 40 + desc + '-' * 40 + '\n')
     if options is None:
         options = parse_args([])    # use defaults
 
@@ -233,13 +236,24 @@ def start_of_chunk(prev_tag, tag, prev_type, type_):
 
 def main(argv):
     args = parse_args(argv[1:])
-
     if args.file is None:
         counts = evaluate(sys.stdin, args)
     else:
-        with open(args.file) as f:
-            counts = evaluate(f, args)
-    report(counts)
-
+        if os.path.isdir(args.file):
+            files = os.listdir(args.file)
+            dev_count = len(list(filter(lambda f: f.startwith("dev.predict_epoch_"), files)))
+            test_count = len(list(filter(lambda f: f.startwith("test.predict_epoch_"), files)))
+            for i in range(dev_count):
+                with open(os.path.join(args.file, "dev.predict_epoch_%d" % i)) as f:
+                    counts = evaluate(f, args, "dev %" % (i + 1))
+                    report(counts)
+            for i in range(test_count):
+                with open(os.path.join(args.file, "test.predict_epoch_%d" % i)) as f:
+                    counts = evaluate(f, args, "test %" % (i + 1))
+                    report(counts)
+        else:
+            with open(os.path.join(args.file)) as f:
+                counts = evaluate(f, args)
+                report(counts)
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
