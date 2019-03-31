@@ -56,8 +56,7 @@ def parse_tag(t):
     return m.groups() if m else (t, '')
 
 
-def evaluate(iterable, options=None, desc=""):
-    print('\n\n' + '-' * 40 + desc + '-' * 40 + '\n')
+def evaluate(iterable, options=None):
     if options is None:
         options = parse_args([])    # use defaults
 
@@ -161,7 +160,9 @@ def metrics(counts):
         )
     return overall, by_type
 
-def report(counts, out=None):
+
+def report(counts, out=None, desc=""):
+    print('\n\n' + '-' * 40 + desc + '-' * 40 + '\n')
     if out is None:
         out = sys.stdout
 
@@ -241,16 +242,16 @@ def main(argv):
     else:
         if os.path.isdir(args.file):
             files = os.listdir(args.file)
-            dev_count = len(list(filter(lambda f: f.startwith("dev.predict_epoch_"), files)))
-            test_count = len(list(filter(lambda f: f.startwith("test.predict_epoch_"), files)))
+            dev_count = len(list(filter(lambda f: f.startswith("dev.predict_epoch_"), files)))
+            test_count = len(list(filter(lambda f: f.startswith("test.predict_epoch_"), files)))
             for i in range(dev_count):
                 with open(os.path.join(args.file, "dev.predict_epoch_%d" % i)) as f:
-                    counts = evaluate(f, args, "dev %" % (i + 1))
-                    report(counts)
+                    counts = evaluate(f, args)
+                    report(counts, desc="dev %d" % (i + 1))
             for i in range(test_count):
                 with open(os.path.join(args.file, "test.predict_epoch_%d" % i)) as f:
-                    counts = evaluate(f, args, "test %" % (i + 1))
-                    report(counts)
+                    counts = evaluate(f, args)
+                    report(counts, desc="test %d" % (i + 1))
         else:
             with open(os.path.join(args.file)) as f:
                 counts = evaluate(f, args)
