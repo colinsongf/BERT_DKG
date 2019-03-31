@@ -448,11 +448,11 @@ def evaluate(dataset, train_steps=None):
     eval_accuracy = eval_accuracy / nb_eval_examples
     logger.info('eval_loss: %.4f; eval_accuracy: %.4f' % (eval_loss,eval_accuracy))
     if train_steps is not None:
-        fn1 = "%s.predict_epoch_%s " % (dataset, train_steps)
-        fn2 = "%s.mistake_epoch_%s " % (dataset, train_steps)
+        fn1 = "%s.predict_epoch_%s" % (dataset, train_steps)
+        fn2 = "%s.mistake_epoch_%s" % (dataset, train_steps)
     else:
-        fn1 = "%s.predict " % dataset
-        fn2 = "%s.mistake " % dataset
+        fn1 = "%s.predict" % dataset
+        fn2 = "%s.mistake" % dataset
     writer1 = codecs.open(os.path.join(config['task']['output_dir'], fn1), 'w', encoding='utf-8')
     writer2 = codecs.open(os.path.join(config['task']['output_dir'], fn2), 'w', encoding='utf-8')
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
