@@ -38,6 +38,7 @@ class BilstmNER(nn.Module):
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
         self.embedding = nn.Embedding(config.vocab_size, self.hidden_size)
         nn.init.xavier_uniform_(self.embedding.weight)
+        self.bilstm.init_weights()
 
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
