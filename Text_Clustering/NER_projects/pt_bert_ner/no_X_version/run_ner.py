@@ -34,15 +34,17 @@ class BertForNER(BertPreTrainedModel):
         self.dropout_rate = config.hidden_dropout_prob
         self.hidden_size = config.hidden_size
         self.bert = BertModel(config)
-        # self.bilstm = BiLSTM(self.hidden_size, self.hidden_size, 1, self.dropout_rate)
+        self.bilstm = BiLSTM(self.hidden_size, self.hidden_size, 1, self.dropout_rate)
+        self.bilstm.init_weights()
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
         self.apply(self.init_bert_weights)
+
 
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
         hidden, _ = self.bert(input_ids, segment_ids, input_mask,
                                   output_all_encoded_layers=False)  # bert_layer: (batch_size, max_seq_len, hidden_size)
-        #hidden = self.bilstm(hidden)
+        hidden = self.bilstm(hidden)
         return self.decoder(hidden, predict_mask, label_ids)
 
 
@@ -439,7 +441,7 @@ if __name__ == "__main__":
             TEST = "ai_data_test46"
 
         if config['use_cuda'] and torch.cuda.is_available():
-            device = torch.device("cuda", torch.cuda.current_device())
+            device = torch.device("cuda:1")
             use_gpu = True
         else:
             device = torch.device("cpu")

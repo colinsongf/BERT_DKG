@@ -10,7 +10,7 @@ task:
   #bert_model_dir: /home/yjc/bishe/Text_Clustering/output_dir_lm_ai
   bert_model_dir: bert-base-cased
   # output layer, must in: SoftmaxDecoder, CRFDecoder, AttnCRFDecoder, AttnSoftmaxDecoder
-  decoder: AttnCRFDecoder
+  decoder: CRFDecoder
   # The output directory where the model predictions and checkpoints will be written
   output_dir: ./output
   # Specify the ckeckpoint to load
@@ -26,12 +26,12 @@ train:
   # Whether do training in this run
   do: true
   # Total batch size for training
-  batch_size: 4
+  batch_size: 16
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
-  output_lr: !!float 5e-5
+  output_lr: !!float 5e-3
   # Total number of training epochs to perform
-  epochs: 10
+  epochs: 30
   # Proportion of training to perform linear learning rate warmup for
   warmup_proportion: 0.1
   # Number of updates steps to accumulate before performing a backward/update pass
@@ -45,14 +45,14 @@ dev:
   # Which dataset to be predicted: train, dev or test
   dataset: dev
   # Total batch size for predicting
-  batch_size: 4
+  batch_size: 16
 test:
   # Whether do predicting in this run
   do: true
   # Which dataset to be predicted: train, dev or test
   dataset: test
   # Total batch size for predicting
-  batch_size: 4
+  batch_size: 16
   do_every_epoch: true
   do_after_train: true
 predict:
