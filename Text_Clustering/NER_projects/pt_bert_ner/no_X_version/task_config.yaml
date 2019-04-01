@@ -18,7 +18,7 @@ task:
   # Whether you are using an uncased model or not
   lower_case: false
   # The maximum total input sequence length after WordPiece tokenization
-  max_seq_length: 512
+  max_seq_length: 128
   # conll03, ai, tiny
   data_type: ai
   ssl: false
@@ -31,7 +31,7 @@ train:
   learning_rate: !!float 5e-5
   output_lr: !!float 5e-5
   # Total number of training epochs to perform
-  epochs: 30
+  epochs: 10
   # Proportion of training to perform linear learning rate warmup for
   warmup_proportion: 0.1
   # Number of updates steps to accumulate before performing a backward/update pass

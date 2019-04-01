@@ -469,7 +469,7 @@ if __name__ == "__main__":
             UNLABELED_TRAIN = "ai_data_train_unlabeled_1400.txt"
 
         if config['use_cuda'] and torch.cuda.is_available():
-            device = torch.device("cuda", torch.cuda.current_device())
+            device = torch.device("cuda:1")
             use_gpu = True
         else:
             device = torch.device("cpu")
