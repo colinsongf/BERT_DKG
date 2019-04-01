@@ -35,7 +35,7 @@ class BertForNER(BertPreTrainedModel):
         self.hidden_size = config.hidden_size
         self.bert = BertModel(config)
         # self.bilstm = BiLSTM(self.hidden_size, self.hidden_size, 1, self.dropout_rate)
-        self.bilstm.init_weights()
+        # self.bilstm.init_weights()
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
         self.apply(self.init_bert_weights)
 
