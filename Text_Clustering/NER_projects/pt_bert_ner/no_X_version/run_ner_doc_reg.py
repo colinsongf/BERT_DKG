@@ -645,7 +645,7 @@ if __name__ == "__main__":
             TRAIN = "ai_data_train_labeled_140"
             DEV = "ai_data_dev46"
             TEST = "ai_data_test46"
-            UNLABELED_TRAIN = "ai_data_train_unlabeled_1400.txt"
+            UNLABELED_TRAIN = "ai_data_train_unlabeled_1400"
             PREDICT = "ai_data_to_predict_new"
 
         if config['use_cuda'] and torch.cuda.is_available():
