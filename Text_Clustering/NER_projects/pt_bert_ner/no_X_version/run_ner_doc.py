@@ -510,7 +510,7 @@ if __name__ == "__main__":
             TEST = "ai_data_test46"
 
         if config['use_cuda'] and torch.cuda.is_available():
-            device = torch.device("cuda", torch.cuda.current_device())
+            device = torch.device("cuda:1")
             use_gpu = True
         else:
             device = torch.device("cpu")
