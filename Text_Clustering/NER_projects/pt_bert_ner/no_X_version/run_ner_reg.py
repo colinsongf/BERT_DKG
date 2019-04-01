@@ -291,16 +291,16 @@ def train():
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
             loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
             pre_loss = loss.item()
-            print("labeled_loss : %.4f" % pre_loss)
+            # print("labeled_loss : %.4f" % pre_loss)
             if epoch > 2:
-                for ix in range(10):
-                    batch = unlabeled_iter.next()
-                    batch = tuple(t.to(device) for t in batch)
-                    input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
-                    _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
-                    unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
-                    loss += unlabeled_loss*weight
-                    print("unlabeled_loss itr_%d: %.4f" % (ix+1, unlabeled_loss.item()))
+                # for ix in range(10):
+                batch = unlabeled_iter.next()
+                batch = tuple(t.to(device) for t in batch)
+                input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
+                _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
+                unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
+                loss += unlabeled_loss * weight
+                # print("unlabeled_loss itr_%d: %.4f" % (ix+1, unlabeled_loss.item()))
 
             if config['n_gpu'] > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu.
@@ -317,7 +317,7 @@ def train():
                 optimizer.step()
                 optimizer.zero_grad()
                 global_step += 1
-                weight += 1.
+                # weight += 1.
             nb_tr_examples += input_ids.size(0)
             nb_tr_steps += 1
 
@@ -331,11 +331,11 @@ def train():
         if config['test']['do_every_epoch']:
             evaluate(config['test']['dataset'], epoch)
 
-        # Save a checkpoint
-        model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
-        torch.save({'epoch': epoch, 'model_state': model_to_save.state_dict(), 'max_seq_length': max_seq_length,
-                    'lower_case': lower_case,'train_loss_list':train_loss_list, 'dev_loss_list':dev_loss_list},
-                   os.path.join(config['task']['output_dir'], 'checkpoint-%d' % epoch))
+        # # Save a checkpoint
+        # model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
+        # torch.save({'epoch': epoch, 'model_state': model_to_save.state_dict(), 'max_seq_length': max_seq_length,
+        #             'lower_case': lower_case,'train_loss_list':train_loss_list, 'dev_loss_list':dev_loss_list},
+        #            os.path.join(config['task']['output_dir'], 'checkpoint-%d' % epoch))
     if not config['dev']['do_every_epoch'] and config['dev']['do_after_train']:
         evaluate(config['dev']['dataset'])
     if not config['test']['do_every_epoch'] and config['test']['do_after_train']:
