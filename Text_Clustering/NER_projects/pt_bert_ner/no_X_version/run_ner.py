@@ -34,17 +34,16 @@ class BertForNER(BertPreTrainedModel):
         self.dropout_rate = config.hidden_dropout_prob
         self.hidden_size = config.hidden_size
         self.bert = BertModel(config)
-        # self.bilstm = BiLSTM(self.hidden_size, self.hidden_size, 1, self.dropout_rate)
-        # self.bilstm.init_weights()
+        self.bilstm = BiLSTM(self.hidden_size, self.hidden_size, 1, self.dropout_rate)
+        self.bilstm.init_weights()
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate)
         self.apply(self.init_bert_weights)
-
 
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
         hidden, _ = self.bert(input_ids, segment_ids, input_mask,
-                                  output_all_encoded_layers=False)  # bert_layer: (batch_size, max_seq_len, hidden_size)
-        # hidden = self.bilstm(hidden)
+                              output_all_encoded_layers=False)  # bert_layer: (batch_size, max_seq_len, hidden_size)
+        hidden = self.bilstm(hidden)
         return self.decoder(hidden, predict_mask, label_ids)
 
 
@@ -211,6 +210,7 @@ def warmup_linear(x, warmup=0.002):
         return x / warmup
     return 1.0 - x
 
+
 def train():
     if config['train']['gradient_accumulation_steps'] < 1:
         raise ValueError("Invalid gradient_accumulation_steps parameter: {}, should be >= 1".format(
@@ -238,9 +238,9 @@ def train():
                     not any(nd in n for nd in no_decay) and n.split('.')[0] not in output_layer], 'weight_decay': 0.01},
         {'params': [p for n, p in param_optimizer if
                     any(nd in n for nd in no_decay) and n.split('.')[0] not in output_layer], 'weight_decay': 0.0},
-        {'params': [p for n, p in param_optimizer if n.split('.')[0] in output_layer],
-         'lr': config['train']['output_lr']}
+        {'params': [p for n, p in param_optimizer if n.split('.')[0] in output_layer]}
     ]
+    lr = [config['train']['learning_rate'], config['train']['learning_rate'], config['train']['output_lr']]
     optimizer = BertAdam(optimizer_grouped_parameters, lr=config['train']['learning_rate'],
                          warmup=config['train']['warmup_proportion'], t_total=num_train_steps)
 
@@ -258,7 +258,7 @@ def train():
     logger.info("  Num steps = %d", num_train_steps)
     all_input_ids = torch.tensor([f.input_ids for f in train_features], dtype=torch.long)
     all_input_mask = torch.ByteTensor([f.input_mask for f in train_features])
-    #all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
+    # all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
     all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
     all_predict_mask = torch.ByteTensor([f.predict_mask for f in train_features])
     all_label_ids = torch.tensor([f.label_ids for f in train_features], dtype=torch.long)
@@ -289,11 +289,10 @@ def train():
             tr_loss += loss.item()
             if (step + 1) % config['train']['gradient_accumulation_steps'] == 0:
                 # modify learning rate with special warm up BERT uses
-                lr_this_step = config['train']['learning_rate'] * warmup_linear(global_step / num_train_steps,
-                                                                                config['train'][
-                                                                                    'warmup_proportion'])
-                for param_group in optimizer.param_groups:
-                    param_group['lr'] = lr_this_step
+
+                for i, param_group in enumerate(optimizer.param_groups):
+                    param_group['lr'] = lr[i] * warmup_linear(global_step / num_train_steps,
+                                                              config['train']['warmup_proportion'])
                 optimizer.step()
                 optimizer.zero_grad()
                 global_step += 1
@@ -320,6 +319,7 @@ def train():
 
     draw(train_loss_list, dev_loss_list, config['train']['epochs'])
 
+
 def evaluate(dataset, train_steps=None):
     if dataset == 'train':
         eval_examples = processor.get_train_examples(config['task']['data_dir'])
@@ -340,7 +340,7 @@ def evaluate(dataset, train_steps=None):
     logger.info("  Batch size = %d", config[dataset]['batch_size'])
     all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
     all_input_mask = torch.ByteTensor([f.input_mask for f in eval_features])
-    #all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
+    # all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
     all_segment_ids = torch.tensor([f.segment_ids for f in eval_features], dtype=torch.long)
     all_eval_mask = torch.ByteTensor([f.predict_mask for f in eval_features])
     all_label_ids = torch.tensor([f.label_ids for f in eval_features], dtype=torch.long)
@@ -359,7 +359,7 @@ def evaluate(dataset, train_steps=None):
         input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
         with torch.no_grad():
             tmp_eval_loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-            outputs,_ = model(input_ids, segment_ids, input_mask, predict_mask)
+            outputs, _ = model(input_ids, segment_ids, input_mask, predict_mask)
         reshaped_predict_mask, reshaped_label_ids, _ = valid_first(predict_mask, label_ids)
         masked_label_ids = torch.masked_select(label_ids, predict_mask)
         masked_outputs = torch.masked_select(outputs, reshaped_predict_mask)
@@ -381,7 +381,7 @@ def evaluate(dataset, train_steps=None):
         nb_eval_steps += 1
     eval_loss = eval_loss / nb_eval_steps
     eval_accuracy = eval_accuracy / nb_eval_examples
-    logger.info('eval_loss: %.4f; eval_accuracy: %.4f' % (eval_loss,eval_accuracy))
+    logger.info('eval_loss: %.4f; eval_accuracy: %.4f' % (eval_loss, eval_accuracy))
     if train_steps is not None:
         fn1 = "%s.predict_epoch_%s" % (dataset, train_steps)
         fn2 = "%s.mistake_epoch_%s" % (dataset, train_steps)
@@ -406,19 +406,20 @@ def evaluate(dataset, train_steps=None):
     writer2.close()
     return eval_loss
 
-def draw(train, dev,end):
+
+def draw(train, dev, end):
     import matplotlib.pyplot as plt
     plt.switch_backend('agg')
-    x = range(1, end+1)
+    x = range(1, end + 1)
     plt.plot(x, train, color='green', marker='o')
     legend = ['train']
-    if dev !=[]:
+    if dev != []:
         plt.plot(x, dev, color='red', marker='+')
         legend.append('dev')
     plt.xlabel('epoch')
     plt.ylabel('loss')
     plt.legend(legend)
-    plt.title("Loss on "+config['task']['decoder'])
+    plt.title("Loss on " + config['task']['decoder'])
     plt.savefig(os.path.join(config['task']['output_dir'], config['task']['decoder'] + "_loss.jpg"))
 
 
