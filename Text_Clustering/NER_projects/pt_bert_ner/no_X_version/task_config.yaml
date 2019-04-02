@@ -20,13 +20,13 @@ task:
   # The maximum total input sequence length after WordPiece tokenization
   max_seq_length: 128
   # conll03, ai, tiny
-  data_type: conll03
+  data_type: ai
   ssl: false
 train:
   # Whether do training in this run
   do: true
   # Total batch size for training
-  batch_size: 16
+  batch_size: 64
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   output_lr: !!float 5e-3
@@ -45,14 +45,14 @@ dev:
   # Which dataset to be predicted: train, dev or test
   dataset: dev
   # Total batch size for predicting
-  batch_size: 16
+  batch_size: 64
 test:
   # Whether do predicting in this run
   do: true
   # Which dataset to be predicted: train, dev or test
   dataset: test
   # Total batch size for predicting
-  batch_size: 16
+  batch_size: 64
   do_every_epoch: true
   do_after_train: true
 predict:
@@ -61,4 +61,4 @@ predict:
   batch_size: 512
 # Whether to use CUDA when available
 use_cuda: true
-n_gpu: 1
+n_gpu: 2
