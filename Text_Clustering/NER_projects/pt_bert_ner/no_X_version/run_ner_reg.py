@@ -290,7 +290,7 @@ def train():
             batch = tuple(t.to(device) for t in batch)
             input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
             loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-            pre_loss = loss.item()
+            # pre_loss = loss.item()
             # print("labeled_loss : %.4f" % pre_loss)
             if epoch > 2:
                 # for ix in range(10):
