@@ -293,13 +293,13 @@ def train():
             # pre_loss = loss.item()
             # print("labeled_loss : %.4f" % pre_loss)
             if epoch > 2:
-                # for ix in range(10):
-                batch = unlabeled_iter.next()
-                batch = tuple(t.to(device) for t in batch)
-                input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
-                _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
-                unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
-                loss += unlabeled_loss * weight
+                for ix in range(10):
+                    batch = unlabeled_iter.next()
+                    batch = tuple(t.to(device) for t in batch)
+                    input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
+                    _, probs = model(input_ids, segment_ids, input_mask, predict_mask)
+                    unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
+                    loss += unlabeled_loss * weight
                 # print("unlabeled_loss itr_%d: %.4f" % (ix+1, unlabeled_loss.item()))
 
             if config['n_gpu'] > 1:
