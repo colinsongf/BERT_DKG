@@ -141,10 +141,26 @@ class Args(object):
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
-    vectorizer = TfidfVectorizer(max_df=0.5, max_features=10000,
+    vectorizer = TfidfVectorizer(max_df=1000, max_features=30000,
                                  min_df=2, stop_words='english',
                                  use_idf=True)
     X = vectorizer.fit_transform(dataset.data)
+    hook(dataset, X)
+    return X
+
+
+def get_tfidf_embed2(dataset, hook):
+    import gensim
+    from gensim.models.tfidfmodel import TfidfModel
+    from gensim.corpora import Dictionary
+    import sklearn.preprocessing as preprocessing
+    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(dataset.data)]
+    dictionary = Dictionary(docs)
+    corpus = [dictionary.doc2bow(text) for text in docs]
+    tfidfModel = TfidfModel(corpus=corpus, dictionary=dictionary)
+
+    X = tfidfModel[corpus]
+    X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
 
