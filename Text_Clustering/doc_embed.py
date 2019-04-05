@@ -145,7 +145,7 @@ def get_tfidf_embed(dataset, hook):
                                  min_df=2, stop_words='english',
                                  use_idf=True)
     X = vectorizer.fit_transform(dataset.data)
-    hook(dataset, X)
+    hook(dataset, X.toarray())
     return X
 
 
