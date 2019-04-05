@@ -29,8 +29,8 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import sklearn.preprocessing as preprocessing
-from .modeling import MyBertForPreTraining, BertConfig
-from .optimization import BertAdam, warmup_linear
+from modeling import MyBertForPreTraining, BertConfig
+from optimization import BertAdam, warmup_linear
 import gensim
 from torch.utils.data import Dataset
 import random
@@ -334,8 +334,12 @@ def main(dataset, args, hook):
 
     #train_examples = None
     num_train_optimization_steps = None
-    train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
-                                corpus_lines=None)
+    if isinstance(dataset, str):
+        train_dataset = BERTDataset(dataset, seq_len=args.max_seq_length,
+                                    corpus_lines=None)
+    else:
+        train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
+                                    corpus_lines=None)
     num_train_optimization_steps = int(
         len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
     if args.local_rank != -1:
@@ -551,5 +555,8 @@ if __name__ == "__main__":
                              "Positive power of 2: static loss scaling value.\n")
     parser.add_argument('--weighted',
                         action='store_true')
+    parser.add_argument('--mask_prob',
+                        type=float,
+                        default=1.)
     args = parser.parse_args()
-    main(args.train_file, args)
+    main(args.train_file, args, lambda x, y: print("dummy hook!"))
