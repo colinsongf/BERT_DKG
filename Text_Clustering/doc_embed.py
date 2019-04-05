@@ -35,7 +35,7 @@ def get_doc2vec_embed(dataset, hook):
     doc2vec_dbow.train(docs, total_examples=doc2vec_dbow.corpus_count, epochs=10)
     doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
-    X = [doc2vec_dbow.infer_vector(doc.words) for doc in docs]
+    X = [doc2vec_dbow.infer_vector(doc.words) + doc2vec_dm.infer_vector(doc.words) for doc in docs]
     X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
@@ -141,10 +141,12 @@ class Args(object):
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
+    import sklearn.preprocessing as preprocessing
     vectorizer = TfidfVectorizer(max_df=1000, max_features=30000,
                                  min_df=2, stop_words='english',
                                  use_idf=True)
     X = vectorizer.fit_transform(dataset.data)
+    X = preprocessing.normalize(X)
     hook(dataset, X.toarray())
     return X
 
