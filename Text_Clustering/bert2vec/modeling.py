@@ -429,8 +429,6 @@ class BertModel(BertPreTrainedModel):
             token_type_ids = torch.zeros_like(input_ids)
 
         embedding_output = self.embeddings(input_ids, token_type_ids)
-        if not output_all_encoded_layers:
-            embedding_output = embedding_output[-1]
         return embedding_output
 
 

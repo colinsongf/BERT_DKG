@@ -124,10 +124,10 @@ class BERTDataset(Dataset):
         # transform sample to features
         cur_features = convert_example_to_features(cur_example, self.seq_len, self.tokenizer)
 
-        cur_tensors = (torch.tensor(cur_features.input_ids),
-                       torch.tensor(cur_features.input_mask),
-                       torch.tensor(cur_features.doc_id),
-                       torch.tensor(cur_features.lm_label_ids))
+        cur_tensors = (torch.LongTensor(cur_features.input_ids),
+                       torch.LongTensor(cur_features.input_mask),
+                       torch.LongTensor(cur_features.doc_id),
+                       torch.LongTensor(cur_features.lm_label_ids))
 
         return cur_tensors
 
