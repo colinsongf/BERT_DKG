@@ -257,6 +257,7 @@ class BertEmbeddings(nn.Module):
         # any TensorFlow checkpoint file
         self.LayerNorm = BertLayerNorm(config.hidden_size, eps=1e-12)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.hidden_size = config.hidden_size
 
     def forward(self, input_ids, token_type_ids=None):
         batch_size = input_ids.size(0)
@@ -270,7 +271,9 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
 
-        embeddings = words_embeddings + doc_embeddings + position_embeddings
+        # embeddings = words_embeddings + doc_embeddings + position_embeddings
+        embeddings = (words_embeddings + doc_embeddings).sum(-2) + position_embeddings[:, 0]
+        embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
@@ -480,11 +483,11 @@ class BertModel(BertPreTrainedModel):
         if token_type_ids is None:
             token_type_ids = torch.zeros_like(input_ids)
 
-        embedding_output = self.embeddings(input_ids, token_type_ids)
-        extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
-        extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)  # fp16 compatibility
-        extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
-        output = self.attention(embedding_output, extended_attention_mask)
+        output = self.embeddings(input_ids, token_type_ids)
+        # extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
+        # extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)  # fp16 compatibility
+        # extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
+        # output = self.attention(output, extended_attention_mask)
         return output
 
 
