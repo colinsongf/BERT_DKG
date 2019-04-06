@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.INFO,
 
 # parse commandline arguments
 op = OptionParser()
-op.add_option("--embed_type", dest="embed_type", default="get_tfidf_embed")
+op.add_option("--embed_type", dest="embed_type", default="get_bert2vec_embed")
 op.add_option("--run_num", dest="run_num", type=int, default=10)
 op.add_option("--cluster_num", dest="cluster_num", type=int, default=8)
 op.add_option("--doc_path", dest="doc_path", default="ai")
