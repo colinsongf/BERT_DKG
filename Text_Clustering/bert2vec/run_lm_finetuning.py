@@ -256,7 +256,7 @@ class Tokenizer():
         self.doc_len = len(docs)
         self.lower_case = lower_case
         from sklearn.feature_extraction.text import CountVectorizer
-        counter = CountVectorizer(max_df=0.8, min_df=2, max_features=vocab_size - 2, tokenizer=self.tokenize)
+        counter = CountVectorizer(max_df=0.5, min_df=2, max_features=vocab_size - 2, tokenizer=self.tokenize)
         counter.fit_transform(docs)
         self.vocab = counter.vocabulary_
         # self.vocab = self.build_dict(self.tokenize(' '.join(docs)), vocab_size - 2, 2)
