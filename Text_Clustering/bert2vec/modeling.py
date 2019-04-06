@@ -253,8 +253,6 @@ class BertEmbeddings(nn.Module):
         self.position_embeddings = nn.Embedding(config.max_position_embeddings, self.position_embeddings_len)
         self.doc_embeddings = nn.Embedding(config.type_vocab_size, self.doc_embeddings_len)
         # self.interact = nn.Parameter(torch.FloatTensor(self.doc_embeddings_len, self.word_embeddings_len).unsqueeze(0))
-        # self.LayerNorm is not snake-cased to stick with TensorFlow model variable name and be able to load
-        # any TensorFlow checkpoint file
         self.LayerNorm = BertLayerNorm(config.hidden_size, eps=1e-12)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.hidden_size = config.hidden_size
@@ -271,9 +269,9 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
 
-        # embeddings = words_embeddings + doc_embeddings + position_embeddings
-        embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
-        embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
+        embeddings = words_embeddings + doc_embeddings + position_embeddings
+        # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
+        # embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
