@@ -259,7 +259,7 @@ class BertEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.hidden_size = config.hidden_size
 
-    def forward(self, input_ids, token_type_ids=None):
+    def forward(self, input_ids, input_mask, token_type_ids=None):
         batch_size = input_ids.size(0)
         seq_length = input_ids.size(1)
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)
@@ -272,7 +272,7 @@ class BertEmbeddings(nn.Module):
         doc_embeddings = self.doc_embeddings(token_type_ids)
 
         # embeddings = words_embeddings + doc_embeddings + position_embeddings
-        embeddings = (words_embeddings).sum(-2) + doc_embeddings[:, 0]
+        embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
         embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
@@ -483,7 +483,7 @@ class BertModel(BertPreTrainedModel):
         if token_type_ids is None:
             token_type_ids = torch.zeros_like(input_ids)
 
-        output = self.embeddings(input_ids, token_type_ids)
+        output = self.embeddings(input_ids, attention_mask, token_type_ids)
         # extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
         # extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)  # fp16 compatibility
         # extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
