@@ -124,7 +124,7 @@ class Args(object):
             self.output_dir = "./output_bert_model"
         self.max_seq_length = 512
         self.do_train = True
-        self.train_batch_size = 80
+        self.train_batch_size = 64
         self.learning_rate = 3e-4
         self.num_train_epochs = 30.0
         self.warmup_proportion = 0.1
@@ -137,7 +137,6 @@ class Args(object):
         self.loss_scale = 0
         self.vocab_size = vocab_size
         self.mask_prob = 1
-        self.use_more_gpu = False
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
