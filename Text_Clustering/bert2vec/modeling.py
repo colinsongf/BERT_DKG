@@ -272,7 +272,7 @@ class BertEmbeddings(nn.Module):
         doc_embeddings = self.doc_embeddings(token_type_ids)
 
         # embeddings = words_embeddings + doc_embeddings + position_embeddings
-        embeddings = (words_embeddings + doc_embeddings).sum(-2) + position_embeddings[:, 0]
+        embeddings = (words_embeddings).sum(-2) + doc_embeddings[:, 0]
         embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
