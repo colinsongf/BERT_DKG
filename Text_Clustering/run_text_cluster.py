@@ -110,6 +110,7 @@ def hook_doc(dataset, X):
         f = open("result_%s.txt" % opts.embed_type, "a")
         vs = np.array([])
         nmis = np.array([])
+        dbs = np.array([])
         for i in range(opts.run_num):
             # db = DBSCAN(eps=0.3, min_samples=10).fit(X)
             # labels_ = db.labels_
@@ -118,25 +119,23 @@ def hook_doc(dataset, X):
             km.fit(X)
             labels_ = km.labels_
 
-            print("--------------The larger the better (%d)---------------------" % (i + 1), file=f)
             v = metrics.v_measure_score(labels, labels_)
             nmi = metrics.normalized_mutual_info_score(labels, labels_)
             vs = np.append(vs, v)
             nmis = np.append(nmis, nmi)
-            print("V-measure: %0.3f" % v, file=f)
-            print("Normalized Mutual Information: %0.3f"
-                  % nmi, file=f)
-            print("\n\n", file=f)
+            db = metrics.davies_bouldin_score(X, labels)
+            dbs = np.append(dbs, db)
         v_var = vs.var()
         v_mean = vs.mean()
         nmi_var = nmis.var()
         nmi_mean = nmis.mean()
-        print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean), file=f)
-        print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean), file=f)
-        f.close()
-
+        print("--------------The larger the better---------------------")
         print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean))
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
+
+        print("--------------The lower the better---------------------")
+        print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
+              % (dbs.var(), dbs.mean()))
         return v_mean, nmi_mean
     else:
         cluster_num = opts.cluster_num
