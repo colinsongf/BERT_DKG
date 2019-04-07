@@ -36,7 +36,7 @@ def get_doc2vec_embed(dataset, hook):
     doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
     X = [doc2vec_dbow.infer_vector(doc.words) + doc2vec_dm.infer_vector(doc.words) for doc in docs]
-    X = preprocessing.normalize(X)
+    # X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
 
