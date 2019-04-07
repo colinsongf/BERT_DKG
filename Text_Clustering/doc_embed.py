@@ -136,7 +136,7 @@ class Args(object):
         self.fp16 = False
         self.loss_scale = 0
         self.vocab_size = vocab_size
-        self.mask_prob = 1
+        self.mask_prob = 0.75
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
