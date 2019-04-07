@@ -81,7 +81,7 @@ class BERTDataset(Dataset):
 
         self.num_docs = len(self.all_docs)
 
-    def set_entities_weight(self, entities=None):
+    def set_entities_weight(self, entities=None, weight=2):
         ents = set()
         if entities:
             for entity in entities:
@@ -96,7 +96,7 @@ class BERTDataset(Dataset):
         weights = [1.] * len(self.vocab)
         for word_id in self.vocab.values():
             if word_id in ent_ids:
-                weights[word_id] = 4.
+                weights[word_id] = weight
 
         self.ent_weights = weights
 
@@ -347,7 +347,7 @@ def main(dataset, args, hook):
     train_dataset.build_vocab(tokenizer)
 
     if args.weighted:
-        train_dataset.set_entities_weight(dataset.entities)
+        train_dataset.set_entities_weight(dataset.entities, args.weight)
     else:
         train_dataset.set_entities_weight(None)
 
@@ -553,6 +553,9 @@ if __name__ == "__main__":
                              "Positive power of 2: static loss scaling value.\n")
     parser.add_argument('--weighted',
                         action='store_true')
+    parser.add_argument('--weight',
+                        type=float,
+                        default=2.)
     parser.add_argument('--mask_prob',
                         type=float,
                         default=1.)

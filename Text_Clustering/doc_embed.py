@@ -117,11 +117,6 @@ class Args(object):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
-        self.weighted = True
-        if self.weighted:
-            self.output_dir = "./output_bert_model_weighted_loss"
-        else:
-            self.output_dir = "./output_bert_model"
         self.max_seq_length = 512
         self.do_train = True
         self.train_batch_size = 32
@@ -137,6 +132,13 @@ class Args(object):
         self.loss_scale = 0
         self.vocab_size = vocab_size
         self.mask_prob = 0.5
+        self.weighted = True
+        self.weight = 1.
+        if self.weighted:
+            self.output_dir = "./output_bert_model_weighted_loss"
+        else:
+            self.output_dir = "./output_bert_model"
+
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
