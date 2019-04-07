@@ -122,7 +122,7 @@ class Args(object):
             self.output_dir = "./output_bert_model_weighted_loss"
         else:
             self.output_dir = "./output_bert_model"
-        self.max_seq_length = 512
+        self.max_seq_length = 511
         self.do_train = True
         self.train_batch_size = 32
         self.learning_rate = 3e-4

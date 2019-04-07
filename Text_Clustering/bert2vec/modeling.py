@@ -268,10 +268,17 @@ class BertEmbeddings(nn.Module):
         words_embeddings = self.word_embeddings(input_ids)
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
+        # 1.
+        # embeddings = words_embeddings + doc_embeddings + position_embeddings
 
-        embeddings = words_embeddings + doc_embeddings + position_embeddings
+        # 2.
         # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
         # embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
+
+        # 3.
+        embeddings = words_embeddings + position_embeddings
+        embeddings = torch.cat([doc_embeddings[:, 0].unsqueeze(1), embeddings], dim=1)
+
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
         return embeddings
@@ -502,7 +509,7 @@ class MyBertForPreTraining(BertPreTrainedModel):
                 word_weight=None):
         sequence_output = self.bert(input_ids, token_type_ids, attention_mask,
                                     output_all_encoded_layers=False)
-        prediction_scores = self.cls(sequence_output)
+        prediction_scores = self.cls(sequence_output)[:, 1:]
         loss_fct = CrossEntropyLoss(ignore_index=-1, weight=word_weight)
         masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), masked_lm_labels.view(-1))
         return masked_lm_loss
