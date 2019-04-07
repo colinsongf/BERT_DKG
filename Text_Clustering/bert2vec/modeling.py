@@ -309,7 +309,8 @@ class BertSelfAttention(nn.Module):
         value_layer = self.transpose_for_scores(hidden_states)
 
         # Take the dot product between "query" and "key" to get the raw attention scores.
-        attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
+        # attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
+        attention_scores = query_layer + key_layer
         attention_scores = attention_scores / math.sqrt(self.attention_head_size)
         # Apply the attention mask is (precomputed for all layers in BertModel forward() function)
         attention_scores = attention_scores + attention_mask
