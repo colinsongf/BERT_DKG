@@ -36,7 +36,7 @@ def get_doc2vec_embed(dataset, hook):
     doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
     X = [doc2vec_dbow.infer_vector(doc.words) + doc2vec_dm.infer_vector(doc.words) for doc in docs]
-    # X = preprocessing.normalize(X)
+    X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
 
@@ -117,7 +117,7 @@ class Args(object):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
-        self.weighted = False
+        self.weighted = True
         if self.weighted:
             self.output_dir = "./output_bert_model_weighted_loss"
         else:
@@ -136,7 +136,7 @@ class Args(object):
         self.fp16 = False
         self.loss_scale = 0
         self.vocab_size = vocab_size
-        self.mask_prob = 0.75
+        self.mask_prob = 0.5
 
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer

@@ -269,15 +269,15 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
         # 1.
-        # embeddings = words_embeddings + doc_embeddings + position_embeddings
+        embeddings = words_embeddings + doc_embeddings + position_embeddings
 
         # 2.
         # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
         # embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
 
         # 3.
-        embeddings = words_embeddings + position_embeddings
-        embeddings = torch.cat([doc_embeddings[:, 0].unsqueeze(1), embeddings], dim=1)
+        # embeddings = words_embeddings + position_embeddings
+        # embeddings = torch.cat([doc_embeddings[:, 0].unsqueeze(1), embeddings], dim=1)
 
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
@@ -490,7 +490,7 @@ class BertModel(BertPreTrainedModel):
             token_type_ids = torch.zeros_like(input_ids)
 
         output = self.embeddings(input_ids, attention_mask, token_type_ids)
-        attention_mask = torch.cat([attention_mask.new_ones([attention_mask.size(0), 1]), attention_mask], dim=1)
+        # attention_mask = torch.cat([attention_mask.new_ones([attention_mask.size(0), 1]), attention_mask], dim=1)
         extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
         extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)  # fp16 compatibility
         extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
@@ -510,7 +510,8 @@ class MyBertForPreTraining(BertPreTrainedModel):
                 word_weight=None):
         sequence_output = self.bert(input_ids, token_type_ids, attention_mask,
                                     output_all_encoded_layers=False)
-        prediction_scores = self.cls(sequence_output)[:, 1:]
+        # prediction_scores = self.cls(sequence_output)[:, 1:]
+        prediction_scores = self.cls(sequence_output)
         loss_fct = CrossEntropyLoss(ignore_index=-1, weight=word_weight)
         masked_lm_loss = loss_fct(prediction_scores.contiguous().view(-1, self.config.vocab_size),
                                   masked_lm_labels.view(-1))
