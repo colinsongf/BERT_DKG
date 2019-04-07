@@ -111,6 +111,7 @@ def hook_doc(dataset, X):
         vs = np.array([])
         nmis = np.array([])
         dbs = np.array([])
+        chs = np.array([])
         for i in range(opts.run_num):
             # db = DBSCAN(eps=0.3, min_samples=10).fit(X)
             # labels_ = db.labels_
@@ -125,6 +126,8 @@ def hook_doc(dataset, X):
             nmis = np.append(nmis, nmi)
             db = metrics.davies_bouldin_score(X, labels)
             dbs = np.append(dbs, db)
+            ch = metrics.calinski_harabaz_score(X, labels)
+            chs = np.append(chs, ch)
         v_var = vs.var()
         v_mean = vs.mean()
         nmi_var = nmis.var()
@@ -132,11 +135,12 @@ def hook_doc(dataset, X):
         print("--------------The larger the better---------------------")
         print("V-measure: var: %0.4f; mean: %0.4f" % (v_var, v_mean))
         print("Normalized Mutual Information: var: %0.4f; mean: %0.4f" % (nmi_var, nmi_mean))
-
+        print("Calinski-Harabaz score: var: %0.3f, mean: %0.3f"
+              % (chs.var(), chs.mean()))
         print("--------------The lower the better---------------------")
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
-        return v_mean, nmi_mean
+        return v_mean, nmi_mean, dbs.mean(), chs.mean()
     else:
         cluster_num = opts.cluster_num
         scs = np.array([])
