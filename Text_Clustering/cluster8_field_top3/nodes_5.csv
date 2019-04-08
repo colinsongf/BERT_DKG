@@ -1,68 +1,116 @@
 Id,Label
-22,MIR
-30,Music Information Retrieval
-116,Interactive Information Retrieval
-1334,workflow systems
-1370,dynamic programming
-1385,Global Lookup Engine
-1386,Muugle
-1387,Musical
-1391,SCSS
-1396,MuTaTeD
-1397,MuTaTeD'II
-1410,Do - It - Yourself
-1411,DIY
-1414,working memory
-1415,WM
-1438,meta -
-1442,Dynamic Time Warping
-1443,Short - Time - Fourier - Transform
-1444,Spectrum Analysis
-1445,MIRAGE
-1446,DTW
-1447,Music Information Retrieval And Gathering Engine
-1448,Fourier Transform
-1456,Kazaa
-1457,Kazaa MIR
-1511,meta - evaluation
-1513,SpeechDat
-1529,Felt Involvement
-1530,UES
-1531,User Engagement Scale
-1542,Collaborative Agent - based System
-1543,KQML
-1568,Normalized Lift Curves
-1584,pairwise differences
-1612,Ceolaire
-1643,Industrial - Strength Audio Search Algorithm
-1644,Pitch Modification
-1645,Real - Time Audio Processing Framework
-1646,Scalable Acoustic Fingerprinting System Handling Time - Scale
-1675,Metadata
-1676,extraction and segmentation algorithms
-1690,LateBreaking Demos
-1702,Tunepal
-1703,query
-1735,multi
-1736,WaveSurfer sound editor
-1737,WaveSurfer
-1738,BeatRoot
-1759,SIG
-1760,multi - modal interface
-1796,footnote chasing
-1839,M2 K
-1845,IOI deviation and dynamic curve
-1846,Vmus.net
-1847,tempo - dynamic curve
-1883,MIREX framework
-1885,Strangeness Dial
-1907,MIREX evaluation contest
-1916,FoM
-1928,SMS
-1929,Symbolic Melodic Similarity
-1972,SongSampler
-1973,MIDI keyboard
-1982,Adaptive User - Centered
-1983,AUCOMA
-2004,karaoke
-2011,interactive feedback
+49,mAP
+264,query expansion
+490,web information retrieval
+1053,Mean Average Precision
+1054,GMAP
+1069,DFR
+1079,Non - Maximum Suppression
+1081,Selective Forward Search
+1082,semantic windows mining
+1083,overlap regression
+1084,NMS
+1085,ad - hoc manner
+1086,SFS
+1092,re - ranking strategies
+1094,BM25
+1104,Vector Space Model
+1157,Term Frequency Inverse Document Frequency
+1158,TF_IDF
+1185,Markov Random Field
+1209,VSM
+1210,GA
+1219,content - based analysis
+1220,co - occurrence analysis
+1224,PageRank
+1225,PageRank algorithm
+1246,re - ranking
+1250,average precision
+1251,meta - analysis
+1279,relevance feedback
+1306,Query refinement
+1307,Bayes criterion
+1349,CACM
+1350,PSO2-IR
+1351,PSO1-IR
+1352,RCV1
+1353,particle swarm optimization
+1354,PSO
+1373,topic
+1430,RF
+1452,Pseudo - relevance feedback
+1475,pHAL
+1476,probabilistic HAL space
+1477,Conceptual Spaces[4
+1478,HAL
+1479,Hyperspace Analogue to Language
+1480,HAL[3
+1491,F - Score
+1506,PRF
+1524,non
+1547,RankFusion
+1548,analysis
+1550,Web - community
+1557,Bayesian networks
+1727,bigram
+1728,Title re - ranking
+1731,Re - rank
+1732,Q - measure
+1734,MSn - DCG
+1784,probabilistic framework
+1785,Absorbing Model
+1786,probabilistic approach
+1816,relevance prediction
+1996,DirichletLM
+1997,TEL
+1998,Term Location
+2000,MeSH - manipulated indexer
+2001,Boolean matching
+2002,IntelligentMedicalSearch system
+2009,MRF)model
+2010,MASDWP
+2011,mean average segment distance - weighted precision
+2012,mean average segment precision
+2013,MASP
+2024,rank - learning framework
+2050,Irrelevance Rate Function
+2051,Reliability Theory
+2086,word2vec
+2114,Term Frequency normalisation
+2236,bias - variance decomposition
+2264,concept - based information
+2304,eigenvector computations
+2339,Markov Network
+2344,probabilistic ranking
+2354,Bayesian network
+2385,p -
+2386,t - test
+2426,relevance -
+2427,Gibbs sampling technique
+2428,latent Dirichlet allocation model
+2468,Gravitation - Based HITS
+2469,Newton 's theory of gravitation
+2470,G - HITS
+2514,conditional probability rule
+2543,clustering expansion
+2544,hyperlink structure analysis
+2686,KL - Divergence scoring
+2687,synonym expansion
+2753,concept - based relevance feedback
+2754,concept - based browsing
+2755,cluster - based representation
+2792,Wilcoxon test
+2800,DempsterShafer
+2801,Theory of Evidence
+2804,federated
+2819,graph mining
+2820,Quasi - Clique
+2821,Markov network retrieval
+2867,re - ranking method
+2944,relevance modeling
+2956,LCS - based similarity score
+2957,LCS
+2958,common subsequence
+3007,Probabilistic Model Building Genetic Programming
+3008,non - linear ranking function
+3009,Rank - PMBGP

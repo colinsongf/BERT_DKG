@@ -1,241 +1,130 @@
 Id,Label
-7,Natural Language Processing
-11,NLP
-38,Machine Translation
-1340,Catalyst
-1341,Catalyst Burger Mardis 2002
-1342,Catalyst architecture
-1343,Sentiment Extraction
-1344,Supervised learning algorithm
-1345,Identifying Topic
-1346,supervised approach
-1347,unsupervised algorithms
-1354,Wikidata
-1355,Lexical taxonomies
-1356,CheBi chemical ontology
-1357,MusicBrainz
-1361,Web And semantic knowledge - Driven automatic question answering system
-1362,WAD
-1374,SOM
-1380,Maximum Entropy
-1382,Hidden Markov Model
-1393,MLLOD
-1394,LEMON Model
-1401,neural network
-1405,word2vec
-1414,probabilistic model
-1415,vector
-1419,distribution analysis
-1424,online
-1425,RSG
-1426,Rich Semantic Graph
-1427,WordNet ontology
-1428,semantic representation
-1429,Cause - Effect
-1457,wallah&#x02019
-1464,Automatic Query Expansion
-1466,thesauri
-1470,link structure information
-1489,Wikiedi
-1490,QuestionCube
-1491,mutual
-1492,Link Parser
-1493,Self - Organizing Map
-1494,Document representation
-1497,online English dictionary
-1502,Molecular Interaction Map
-1503,distributed word vector representation
-1504,Skip - Gram Model
-1505,SGM
-1506,SUM
-1508,dictionary - based CLIR
-1509,n - gram matching
-1518,WordNet semantic dictionaryis
-1519,Support Vector Machines
-1520,Markov Random Fields
-1521,SVMs
-1522,probabilistic context - free grammars
-1523,SVM
-1526,Jaccard coefficient - based WSD algorithm
-1527,n - best evaluation
-1528,log - likelihood ratio
-1530,text mining - based approach
-1532,Bilingual parallel
-1537,Stemmers
-1549,Latent Semantic Analysis
-1550,MWEs
-1552,multimodal algorithm
-1553,Context
-1554,LocalMax algorithm
-1555,Mutual Expectation
-1566,probabilistic models
-1569,COLIEE
-1570,deep neural network
-1585,ontology alignment
-1588,morphological generator
-1592,embedding
-1613,statistical semantic analyzer
-1620,Cosine Similarity
-1621,Sub - 2
-1622,Probabilistic Neural Network
-1623,PNN
-1624,Edit Distance
-1625,Sub - 1
-1627,Forum for Information Retrieval Evaluation
-1628,DPIL
-1629,Jaccard Similarity
-1663,LM
-1664,Harris’ Distributional Hypothesis
-1681,multilingual stemmer
-1683,Hierarchical Agglomerative Clustering
-1684,HAC
-1692,semantic networks
-1693,U - WIN
-1694,CBC
-1698,K - NLP
-1699,KB
-1700,High - Performance
-1701,HPL
-1705,Hierarchical Conditional Random Fields
-1706,hidden markov models
-1707,HMMs
-1708,HCRF
-1713,Blexisma2
-1714,Grid computing
-1725,Latent Dirichlet Allocation
-1757,Bayesian classifier
-1767,IndoWordnet visualizer
-1768,IndoWordnet lexical database
-1773,concept - oriented databases
-1774,AI knowledge representation
-1789,Base Phrase
-1790,Conditional Random Fields
-1791,HelpDesk
-1812,semantic distance
-1833,EBMT
-1834,EXample - based TRanslation
-1835,ExampleBased Machine
-1836,LOGOS
-1837,EXTRA
-1849,meta - search
-1854,Computing Reviews
-1867,string rewriting kernel
-1868,kernel
-1869,string re - writing kernel
-1872,transfer - based MT
-1874,CSG
-1891,denotational concept semantics
-1896,meta - semantic tags
-1904,Babel
-1905,Lesk
-1906,Extended Lesk
-1918,topic partition
-1930,Corpus Of Parallel Patent Applications
-1931,COPPA
-1938,Conceptual Graph model
-1952,Urdu stemmer
-1954,graph - based algorithms
-1955,min - cut algorithms
-1959,Einguistic parser
-1960,DAI
-1973,word embeddings
-1974,Word embedding
-1988,Phoneme - Based model
-1998,Semantical
-2005,Bilingual Corpus
-2016,word continuous intersection model
-2017,multi - feature fusion algorithm
-2019,Recall
-2026,SWD
-2027,Snippets
-2028,semantic relation
-2030,SDLC
-2044,semantic models
-2045,stemming algorithm
-2046,stemming algorithms
-2047,Lovins stemmer
-2048,Uzbek stemmer
-2055,DVT
-2056,deep vein thrombosis
-2057,Quranic representation
-2058,Hexadecimal Representation
-2059,Digital
-2065,CasSys
-2066,verbal
-2067,LU
-2068,lexical unit
-2072,K - Means clustering algorithm
-2076,Fuzzy NER
-2077,Factoid Question Answering model
-2078,semantically
-2079,FSVM
-2080,Fuzzy Support Vector
-2081,FSVM NE
-2082,DBnary
-2083,Frequently - Asked - Questions - style
-2091,Shannon information
-2092,Gibbs sampling
-2098,Precision
-2099,Conditional Random Field
-2100,F - Score
-2109,vector - based language representations
-2110,vector representations
-2112,FSA Rule Based Heuristic Approach
-2113,Statistical Approach
-2114,Finite State Automata
-2115,Rule Based Heuristic Approach
-2116,Code Mix Entity Extraction - IL
-2117,BIO tag
-2118,SVM - Light
-2123,IndoWordNet
-2124,WordNets
-2132,AutoASC
-2138,XML - RPC
-2139,JSON - encoded HTTP
-2143,HowNet
-2144,Concept - Sememe tree
-2151,AVE
-2158,semantic analyzers
-2163,Semi - supervised
-2164,Web - based learning
-2165,STyLE
-2171,TF
-2202,Anaphora Resolution system
-2203,Anaphora
-2207,knowledge - based contextual overlap WSD
-2208,Semantic Word Distance
-2223,DBN - based edit distance
-2224,ED
-2225,Dynamic Bayesian network
-2226,DBN)-based
-2234,Nearest Neighbor Cosine Classifier
-2249,Statistical modelling
-2250,statistical stemming algorithms
-2251,Statistical Language Models
-2252,Statistical Graphical Language Models
-2253,SLMs
-2254,SGLMs
-2268,NN
-2270,linear text segmentation algorithm
-2273,Advanced
-2274,Rule - Based techniques
-2275,M2NL - NLP
-2276,M2NL
-2278,ElementBased
-2286,FilWordNet
-2287,SUMO ontology
-2313,semantic spaces
-2314,DHIYA
-2315,Arabic morphological automaton
-2316,morphological automaton
-2324,keyphrase
-2332,one -
-2337,Random Walks on Graphs
-2338,Clair
-2339,Biased LexRank
-2340,Clairlib
-2343,tree - kernel based Support Vector Regression
-2355,black - box approach
-2359,WUs
-2360,Single WUs
-2361,Multi Word Units
+20,Computer and Information Science
+31,Computer Science
+180,Electrical Engineering
+938,VP Ellipsis
+939,VP
+940,Verb Phrase
+951,Unifying Framework for Programming Paradigms
+952,π-calculus
+953,T - calculus
+954,LTAGs
+960,fuzzy concept networks
+964,ZuchtData Dienstleistungen
+973,3Department
+974,Chemical Abstract Machine
+975,CCS
+976,Formal Models
+977,SNAP
+978,Safe Networking with Active Packets
+983,Cause and Effect
+984,Type Systems for Effects
+985,thesauri
+991,Double - KWIC Coordinate Indexing Technique
+995,LOGIC
+996,COMMON
+997,Coordinated Multi Multi
+1001,MIS Option
+1002,λ-calculus
+1003,Proofs
+1004,Church - Rosser
+1005,Video
+1006,Nuprl Proof Development System
+1007,User - Level Introduction
+1008,calculational predicate logic inference
+1009,Nuprl
+1010,Kuprl
+1011,Kuprl -
+1024,Theoretical Results
+1025,Sound Code Generation from Hybrid System Models
+1026,EDGE
+1030,Feedback
+1031,Tactile
+1036,Inhabited Dynamical Systems
+1037,integrated layered software
+1038,Ω(n
+1039,linear space neural network
+1040,Common Element Problem
+1041,Ω(log
+1042,Lower Bound Result
+1047,queue
+1048,Contact Phone Fax
+1051,Finding Matchings in the
+1064,Strong Competence Hypothesis
+1075,Fuzzy Linguistic Approach
+1079,Grover space
+1080,Quantum counting algorithm
+1081,ERATO
+1085,SOM
+1086,Self - Organizing Map
+1087,neural network
+1088,LCD
+1089,MIMO
+1116,Causal Reasoning in Gait Analysis
+1118,inverted index caching
+1119,GAP - tree
+1124,CSEG
+1125,CSCW
+1126,collaborative filtering
+1134,High - Cost Banner Blindness
+1137,Witas
+1139,SIGMOD Record
+1140,decision trees
+1141,SE - tree
+1142,SE - tree based Characterization of the
+1149,Scalable Architecture for
+1150,Scalable Architecture
+1151,SABLE
+1152,broad - coverage translation
+1157,congruence closure
+1158,Horn
+1159,Horn clauses
+1160,order - sorted congruence closure
+1172,Dissertation Proposal
+1179,Convex Hulls
+1180,Convex Hull
+1181,BV embedding
+1182,BV
+1199,sensor - fusion problem
+1211,Ellipsis
+1213,Tikhonov regularization method
+1214,regularization
+1215,Adaptive regularization
+1216,Tikhonov regularization
+1222,action representation
+1223,Reconsiderat ion
+1224,Mobile Information Device Profile
+1225,Java 2 Micro Edition
+1226,MOWAHS
+1227,Work Across Heterogeneous System
+1228,NavIT
+1229,MObile
+1230,MIDP
+1231,Personal Digital Assistant
+1232,J2ME
+1233,Abstract Predicate
+1234,path dictionary
+1237,SPUD
+1238,mFOL representation
+1239,mFOL
+1240,Spherical Diffusion
+1241,surface modeling
+1242,Gaussian function
+1243,Green 's function
+1244,spherical diffusion process
+1245,Interactive visualization
+1247,Latent - Variable
+1256,TVC Model
+1261,Location - selection
+1262,Steiner tree
+1263,Weighted Steiner tree
+1264,Model of
+1282,Pearls Abstract Algorithms
+1284,Abstract Progressive processing
+1285,meta - level controller
+1286,Markov decision
+1295,elliptic curve cryptography
+1308,Adaptive Support
+1309,CCTV
+1319,Elizabeth Sklar
+1320,User - Defined Functions

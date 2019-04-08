@@ -1,139 +1,127 @@
 Id,Label
-30,Norwegian Social Science Data Services
-33,Computer and Information Science
-51,Computer Science
-1811,Verb Phrase
-1812,VP Ellipsis
-1813,VP
-1826,π-calculus
-1827,T - calculus
-1828,Unifying Framework for Programming Paradigms
-1833,LTAGs
-1835,neural network
-1841,Poisson equation
-1842,GaAs MESFET
-1843,GaAs MESFET Transistors
-1844,Schottky gate
-1847,fuzzy concept networks
-1851,ZuchtData Dienstleistungen
-1877,Formal Models
-1878,CCS
-1879,Chemical Abstract Machine
-1880,SNAP
-1881,Safe Networking with Active Packets
-1887,Type Systems for Effects
-1888,Cause and Effect
-1899,ontology
-1909,Double - KWIC Coordinate Indexing Technique
-1918,LOGIC
-1919,COMMON
-1920,Coordinated Multi Multi
-1929,MIS Option
-1931,CiteSeer
-1933,λ-calculus
-1934,Proofs
-1935,Church - Rosser
-1946,Kuprl -
-1947,calculational predicate logic inference
-1948,Nuprl
-1949,Nuprl Proof Development System
-1950,User - Level Introduction
-1951,Kuprl
-1958,Perspectives
-1973,Theoretical Results
-1974,Sound Code Generation from Hybrid System Models
-1975,Domain ontologies
-1976,hierarchical clustering
-1977,social network theory
-1981,EDGE
-1987,Tactile
-1988,Feedback
-1992,Combinatory Categorial Grammar
-1994,Inhabited Dynamical Systems
-1995,integrated layered software
-1996,Virtual mine
-1998,virtual mine - planning simulations
-2001,Ω(log
-2002,Common Element Problem
-2003,Lower Bound Result
-2004,linear space neural network
-2005,Ω(n
-2007,Soft set theory
-2021,Contact Phone Fax
-2022,queue
-2025,Finding Matchings in the
-2051,Strong Competence Hypothesis
-2060,Perspecti ~ ves of
-2071,Fuzzy Linguistic Approach
-2078,Quantum counting algorithm
-2079,ERATO
-2080,Grover space
-2082,Self - Organizing Map
-2083,SOM
-2087,MIMO
-2088,LCD
-2111,PBAM
-2169,Causal Reasoning in Gait Analysis
-2174,inverted index caching
-2195,CSCW
-2196,CSEG
-2197,collaborative filtering
-2205,Foundations of Computing
-2206,Handbook of
-2214,High - Cost Banner Blindness
-2230,Witas
-2234,SIGMOD Record
-2241,SE - tree
-2242,decision trees
-2243,SE - tree based Characterization of the
-2244,Asynchronous Learning Networks
-2286,ChemXSeer
-2291,Horn
-2292,order - sorted congruence closure
-2293,congruence closure
-2294,Horn clauses
-2317,Dissertation Proposal
-2322,Convex Hulls
-2323,Convex Hull
-2342,sensor - fusion problem
-2358,Ellipsis
-2365,Tikhonov regularization method
-2366,Tikhonov regularization
-2367,Regularization
-2368,Adaptive regularization
-2378,BRS
-2380,action representation
-2381,Reconsiderat ion
-2384,J2ME
-2385,Work Across Heterogeneous System
-2386,MIDP
-2387,Java 2 Micro Edition
-2388,NavIT
-2389,MOWAHS
-2390,Personal Digital Assistant
-2391,Mobile Information Device Profile
-2399,Abstract Predicate
-2400,path dictionary
-2403,mFOL
-2404,mFOL representation
-2405,SPUD
-2407,Spherical Diffusion
-2408,Green 's function
-2409,Gaussian function
-2410,surface modeling
-2411,spherical diffusion process
-2412,Interactive visualization
-2419,Latent - Variable
-2445,Steiner tree
-2446,Weighted Steiner tree
-2447,Location - selection
-2448,Model of
-2475,Pearls Abstract Algorithms
-2484,Abstract Progressive processing
-2485,meta - level controller
-2486,Markov decision
-2492,elliptic curve cryptography
-2501,Adaptive Support
-2503,CCTV
-2520,Elizabeth Sklar
-2521,Tools for Innovation
+99,query expansion
+116,word sense disambiguation
+200,Text mining
+1050,OHSUMED
+1051,thesauri
+1052,ontologies
+1053,UMLS
+1058,LM
+1065,vector space model
+1070,neural network
+1073,DE
+1093,word2vec
+1097,Singular Value Decomposition
+1100,distribution analysis
+1101,clustering
+1112,Topic Modeling
+1113,PRF
+1114,pseudo relevance feedback
+1118,embedding
+1143,WordNet ontology
+1150,N - layer vector space approach
+1152,N - layer vector space model
+1153,online lexical dictionary
+1154,Synset
+1164,information retrieval algorithm
+1184,vector space
+1198,simulated annealing
+1199,k - means
+1200,particle swarm optimization
+1201,SA
+1202,Dimensionality reduction
+1203,PSO
+1223,Jaccard coefficient - based WSD algorithm
+1224,text mining - based approach
+1231,Stemmers
+1241,Dirichlet language model
+1242,word embedding
+1251,latent Dirichlet allocation
+1252,latent semantic analysis
+1308,pseudo
+1309,automatic acronym expansion
+1314,semantics
+1315,probabilistic model
+1316,IP - Core
+1317,Lucene
+1318,FPGA
+1325,Inverse Document Frequency
+1328,semantic relevance
+1346,concept - based query expansion
+1353,VSM
+1365,multilingual stemmer
+1380,MediaEval Genre Tagging Task
+1388,semantic representation
+1400,EM
+1425,SVD
+1439,IndoWordnet visualizer
+1440,IndoWordnet lexical database
+1463,automatic relevance feedback
+1466,EII
+1467,Contextual meta - rules
+1468,mining association
+1469,Entropic Implication Intensity
+1489,semantic distance
+1521,Computing Reviews
+1529,concept - based
+1533,Stemming algorithms
+1538,Static Sense Vector’
+1539,SENSEVAL
+1540,Dynamic Sense Vector
+1541,Dynamic Sense Vector’
+1570,Semantic Vectors
+1583,Expectation Maximization
+1588,Lesk
+1589,Extended Lesk
+1623,RDF
+1632,Page Rank algorithm
+1658,semantic structuring
+1659,Generative Lexicon Theory
+1668,F - measure
+1680,DIRA
+1686,corpus
+1700,Lexical Database
+1713,SEM
+1714,Structural equation modelling
+1715,Snippets
+1716,semantic relation
+1717,SWD
+1732,Lovins stemmer
+1733,stemming algorithm
+1734,Uzbek stemmer
+1744,CAs
+1758,Flickling
+1761,term
+1775,K - Means clustering algorithm
+1792,Dynamic Page Rank
+1805,Markov network
+1815,vector representations
+1816,vector - based language representations
+1817,distributed stemming analysis
+1829,deep semantic analysis
+1831,LODifier
+1834,AutoASC
+1852,Average
+1901,Semantic Word Distance
+1908,Rocchio ’s algorithm[2
+1909,Rocchio ’s
+1912,dynamic document analysis
+1935,statistical
+1942,Markov chains
+1943,Bag - of - words model
+1944,bagof -
+1945,graph - of - word
+1950,RF
+1952,Simple - phrase score
+1953,Clarity score
+1962,Bo1
+1963,R - precision
+1964,word - context matrix
+1984,concept - association - graph based approach
+1985,concept clique for
+2000,stem -
+2001,corpus - based algorithm
+2016,Kullback - Leibler Distance
+2054,Indri search
+2055,Language Modelling - based retrieval model
+2056,matrix - space model

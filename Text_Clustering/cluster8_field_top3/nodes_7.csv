@@ -1,194 +1,22 @@
 Id,Label
-28,Semantic Web
-124,Web information retrieval
-441,Data Mining
-1449,hierarchical clustering
-1458,SynFinder
-1466,SIM - DL similarity theory
-1471,nRQL
-1474,OWL
-1483,semantic links
-1508,ontologies
-1514,keyword - inverted index
-1519,SIREN
-1529,Fuzzy query expansion
-1530,Fuzzy
-1534,OWL ontology
-1535,relational database
-1549,RDFS
-1555,Spatial - Temporal
-1556,PRAIS
-1557,Dozen Dimensional Digital Content
-1558,Spatial and Temporal Ontology
-1559,STO
-1560,DDDC
-1574,SWHi
-1586,questionnaire - based survey
-1607,GA
-1608,Genetic algorithms
-1632,personalized semantic network
-1633,Personal Knowledge Advantage Machine
-1634,pKaM
-1639,PSO
-1642,particle swarm optimization
-1660,Service - Oriented Architecture
-1661,Intelligent Search Lifecycle Architecture
-1662,SOA
-1671,UWIRS
-1672,Ubiquitous
-1688,MapReduce
-1690,WebQR
-1726,Chefmoz
-1728,FOAF
-1734,CPU -
-1754,contextual information
-1761,SeRQL
-1772,multiagent
-1773,Hierarchical Small - Worlds
-1774,HSW
-1775,SARIPOD
-1776,PN
-1777,Possibilistic Networks
-1778,DNA microarray
-1779,MeatSearch
-1780,ontology - based approach
-1781,MeatAnnot
-1782,ontology - based semantic annotations
-1788,OBIRE
-1789,neural networks
-1790,genetic algorithm
-1818,vector - space model
-1819,ontology - based scheme
-1832,Active Learning
-1833,automated learning algorithm
-1834,D3 M
-1835,Generalized Queries Algorithm
-1836,interactive knowledge discovery
-1846,meta - data
-1852,context injection
-1860,DOM tree
-1863,Fuzzy artificial bee colony optimization
-1864,Boosted K - NN
-1866,Fuzzy based ant colony optimization
-1867,DM
-1868,SVM
-1869,Hybrid Query
-1870,Unified Web
-1878,VQS
-1912,link - context derivation
-1913,ODP
-1946,SWD
-1947,Social Web Directory
-1962,semantic distance
-1973,fuzzy - based approach
-1974,fuzzy information retrieval model
-1978,Page Links
-1979,Notebook Memex
-1990,GA - Particle Swarm Optimization
-1991,HGAPSO
-2006,GUI
-2007,fuzzy sets
-2015,phrase - based document
-2016,Intelligent agent
-2017,Genetic Algorithm - Particle Swarm Optimization
-2038,DRDF(S
-2039,RDF(S
-2043,Virtual Query System
-2054,self - map tree
-2055,self - map
-2056,decision tree
-2057,self - map decision tree
-2058,ontology - based query formulation
-2060,e
-2061,e - portfolio
-2062,e -
-2064,meta - data model
-2065,MPEG-7
-2067,Darwin 's theory
-2083,Minerva II
-2096,semantic model
-2100,subgraph isomorphism
-2101,Graph based data
-2102,RDF schema
-2103,Dublin Core
-2104,XML Schema
-2108,Carrot
-2112,LB
-2113,RPU
-2114,Result Generator
-2115,AC List Builder
-2116,RG
-2117,SOAS
-2140,BioPatentMiner
-2146,artificial neural networks
-2150,Opinion Mining algorithm
-2161,Qooqle
-2172,intermittently
-2173,OSSOBOOK database
-2180,ASK
-2199,PageRank algorithm
-2200,Invisible Web
-2201,Hubs an Authorities algorithm
-2203,rule filtering
-2210,semantic technology
-2224,probabilistic methods
-2238,COMPASS location
-2239,Translator
-2240,COMPASS
-2241,Geo RDF
-2242,geo - coordinates
-2243,semantic tags
-2257,macro - clustering
-2275,ontology - based information visualization
-2276,SemreX
-2277,semantic association
-2283,CSS
-2291,sample relational databases
-2293,hierarchical
-2296,reusable multiagent architecture
-2314,RDF Sitemap
-2349,multiple layered database
-2350,Information Super - Highway
-2351,MLDB
-2365,Swoogle
-2366,N - Gram
-2389,SogouT-16
-2398,Newton 's theory of gravitation
-2399,G - HITS
-2400,Gravitation - Based HITS
-2401,Matchmaking Visualizer
-2439,DMP
-2440,Cxense
-2441,Insight
-2442,Cxense Insight
-2463,patent
-2474,LD - SDS
-2519,KBs
-2520,KB
-2522,LexOn
-2523,LexOn Search
-2527,Keyqueries
-2597,DBLP
-2598,DataBase systems
-2599,SAGAXsearch
-2600,Logic Programming
-2601,Self Adaptive Genetic Algorithms
-2627,biological databases
-2708,XML /
-2709,Tonal MIR
-2712,Clustering Technique
-2713,hierarchical representation
-2714,Q / A index
-2743,ProThes
-2772,CACM
-2773,Swarm Intelligence
-2774,Mongolian ontology
-2782,PAWebSearch
-2784,multi - facet search paradigm
-2785,view
-2791,semantic verification
-2792,ontology based knowledge
-2795,Kid 's Lifestyle Ontology
-2807,Virtual Query
-2808,VQL
-2836,Multi - Tier Agent - Based Architecture
+35,Music information retrieval
+37,Norwegian Social Science Data Services
+38,Library Information Science Abstracts
+1802,Kazaa MIR
+1803,Kazaa
+1832,meta - evaluation
+1842,OMRAS
+1928,Ceolaire
+1953,MELDEX
+1959,MIREX
+2031,Metadata
+2041,Modèles
+2044,LateBreaking Demos
+2053,Tunepal
+2080,MLA - L
+2081,MLA
+2179,M2 K
+2221,Strangeness Dial
+2257,MIREX evaluation contest
+2270,Symbolic Melodic Similarity
+2271,SMS

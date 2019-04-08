@@ -1,400 +1,92 @@
 Id,Label
-6,music information retrieval
-75,private information retrieval
-112,MIR
-1274,claVision
-1275,visual - based automatic music transcription system
-1281,SVM
-1283,mutual information
-1284,MFCC
-1285,vocal - timbre similarity
-1297,SFS
-1307,LDC
-1308,F - measure
-1314,Dissent
-1315,Tor
-1327,GA
-1338,k databases
-1339,Self - Organising Map clustering algorithm
-1341,automated harmonic analysis
-1342,template - matching algorithm
-1369,Support Vector Machine
-1377,MIREX
-1381,Human Computation
-1382,MoodSwings</i
-1386,flexible harmonic model
-1387,F0
-1388,EM
-1391,pitch detection algorithm
-1392,Raga
-1401,Gaussian
-1404,MATT2
-1412,independent component analysis
-1416,DNNs
-1421,MFCC extraction algorithm
-1422,field programmable gate arrays
-1423,FPGA
-1424,dynamic time warping
-1426,DTW
-1427,Spartan 6 FPGA
-1437,HCCL
-1438,Recursive Alignment(RA
-1439,multilevel filter strategy
-1440,Gabor filters
-1452,machine learning algorithms
-1456,meta - evaluation
-1457,Average Dynamic Recall
-1462,Reed - Solomon
-1467,Graph spectral representation
-1468,FACEG
-1469,AdaBoost
-1470,Fuzzy Analysis Center of Effect Generator algorithm
-1493,Hamming distance
-1500,deep neural networks
-1529,Euclidean distance
-1541,Naive Bayes
-1556,convolutional neural networks
-1558,GMM
-1559,BOF
-1560,bag - offrames
-1561,Gaussian mixture model
-1565,Support Vector Machines
-1569,spectral crest facture
-1585,MDS
-1594,multimodal
-1595,pattern recognition approach
-1596,multimodal approach
-1602,latent semantic analysis
-1603,distance - based methods
-1605,PIR - Tor
-1606,multi
-1607,NMF
-1610,Mirex 2005
-1611,Fourier analysis
-1612,instantaneous frequency estimation
-1614,MA
-1615,fuzzy inference model
-1616,LCS
-1617,Query - by - Humming / Singing system
-1618,Query - by - Humming system
-1619,Longest Common Subsequence
-1620,MIREX QBSH Database
-1629,self - organizing maps
-1657,neural network
-1672,recurrent neural networks
-1687,ENST - Drums database
-1691,symbolic databases
-1705,kurtosis metric
-1706,SAPIR
-1707,Random Linear Fountain
-1708,Reconstruction Group
-1709,RG
-1710,RLF
-1715,salience representations
-1716,fully convolutional neural network
-1732,Raw Chroma Accuracy
-1733,Raw Pitch Accuracy
-1734,RCA
-1735,TWMDPT
-1736,harmonic cluster tracking
-1737,two - way mismatch dual pitch tracking
-1738,RPA
-1739,HCT
-1766,Probabilistic Neural Networks
-1767,Differential Evolution algorithm
-1769,Dodecaphonic Trace Vector
-1770,Feedforward Neural Networks
-1771,MFCCs
-1772,Discriminant Analysis
-1773,K - nearest neighbor
-1774,ChucK
-1786,Support Vector Regression algorithm
-1787,AGMIS
-1800,clustering algorithm
-1810,HMM
-1824,QBE - based MIR
-1825,score - based genre prediction
-1826,automatic music genre prediction
-1840,homomorphic encryption
-1848,Markov models
-1851,mel - frequency cepstral coefficients
-1852,EDICS
-1853,AUD - CONT Index Terms
-1854,audio - fingerprint
-1855,Shannon
-1856,SES
-1857,spectral flatness signature
-1858,Time domain Entropy Signature
-1859,Spectral Entropy Signature
-1860,TES
-1861,AFP
-1862,Bark scale
-1872,L
-1880,k - means algorithm
-1893,Random Oracle model
-1894,M
-1895,Quadratic Residuosity Assumption
-1896,L M
-1897,O(Mk Lk
-1906,Hidden Markov Models
-1907,OMR
-1908,RNN
-1909,genetic algorithm
-1910,singular value decomposition
-1913,SVD
-1917,singer
-1919,segmentation algorithm
-1925,Mongeau - Sankoff
-1926,Mongeau - Sankoff measure
-1927,MIREX symbolic melodic similarity competition
-1941,NP -
-1945,Non - negative Matrix Factorization
-1953,CNNs
-1954,CNN
-1965,k
-1978,Azimuth Discrimination and Resynthesis
-1979,ADRess
-1980,Rendezvous Points
-1981,metadata
-1982,RPs
-1989,Approximate GCD
-1990,Ring - LWE
-1991,SyncPlayer
-2008,QUIND
-2009,CBP2PMIR
-2015,multi - server scheme
-2039,percussion pattern analysis
-2040,drum
-2064,AMusE
-2065,YAAFE
-2069,Marsyas
-2070,dynamic time
-2075,Disklavier Dataset
-2076,Accelerated Multiplicative Update
-2077,Spectral factorization
-2087,N
-2088,K M
-2108,semantics - based MIR
-2126,SOMs
-2127,Multidimensional Scaling
-2151,MUsic Dynamics Extraction through Linguistic Description
-2152,MUDELD
-2160,two - prover constant - bit interactive proof
-2161,multi - prover interactive proof system
-2162,constant - bit answer
-2163,constant - bit two - prover interactive proof system
-2183,PCP
-2184,hidden
-2185,FBK
-2186,chord
-2187,shared
-2188,parallel
-2191,one way trapdoor permutations
-2192,Oblivious Transfer protocol
-2198,LFCPIR
-2199,OLFCPIR
-2205,meta - data
-2223,Estimation Tracking
-2224,F0s
-2225,Multiple Fundamental Frequency
-2226,multipleF0
-2229,Stacked Denoising Autoencoder
-2230,SDA
-2231,DBN
-2232,Deep Belief Network
-2234,Meter inference algorithms
-2251,Mel scale log magnitudes
-2252,MLS
-2253,batch normalization
-2254,BN
-2260,DESAM Toolbox
-2261,Matlab
-2262,decoding algorithms
-2276,gene sequence alignment algorithm
-2277,BASIL
-2278,BLAST
-2279,BLASTed Image Linkage
-2281,QBH
-2291,histogram equalization
-2296,ObliviStore
-2297,ORAMs
-2298,Cloud computing
-2299,ORAM
-2300,Oblivious RAM
-2301,OS+PIR
-2303,HSS
-2304,AUC
-2326,Philips
-2327,dynamic noise reduction
-2328,DNR
-2329,Byzantine robust
-2330,multiplicity codes
-2331,multiplicity
-2332,LDC - locality
-2340,Multipitch estimation
-2341,Fo
-2342,single - method approach
-2358,HMMs
-2398,Last.fm
-2399,K - means clustering
-2400,MusiClef
-2401,mi - SVM
-2411,peers - peers - coordinator scheme
-2414,Computational Auditory Scene Analysis
-2415,Marsyas scheduler
-2416,Marsyas[4
-2417,flexible
-2433,Weak Oblivious Transfer
-2434,Oblivious
-2448,deep
-2452,Cepstral
-2453,Linear - frequency cepstral coefficients
-2454,Melfrequency cepstral coefficients
-2455,LFCC
-2489,RSA
-2490,Accredited SPIR
-2519,Cepstral Mean Subtraction
-2520,CMS
-2522,WSCM
-2523,DP
-2524,weighted syllable confusion matrix
-2525,dynamic programming
-2526,acoustic distance
-2527,Personal Hybrid Ranking Method
-2528,Query by Humming
-2537,convolutional neural network
-2547,rate - distortion theory
-2551,Stereo panning
-2552,mel - frequency cepstral
-2553,Redundant Arrays of Inexpensive Disks
-2563,secure coprocessor
-2564,UC
-2565,NN
-2566,SC
-2575,ENP
-2576,Scripting
-2577,ENP - Script
-2586,FT - PIR
-2598,LSTM
-2599,Deep Learning
-2600,multi - layer perceptron network
-2601,Long Short - Term Memory
-2602,single -
-2605,DTM
-2606,dynamic texture mixture
-2607,dynamic texture model
-2608,dynamic texture</i
-2637,FSA
-2638,lyrics recognition
-2639,finite state automaton
-2668,FMA
-2669,CR
-2670,censorship resistance
-2679,φ(m
-2680,ΦHA
-2681,Φ-Hiding Assumption
-2687,crossversion
-2688,automatic classification algorithms
-2715,MDD
-2716,QQR
-2717,Query Quality Refinement
-2719,liquid state machine
-2720,LSM
-2730,lattice - based
-2742,blind bandwidth extension algorithm
-2743,SVR
-2744,Support Vector Regression
-2762,k - NN
-2777,coalitions
-2778,k repli - cated databases
-2779,Ω(n
-2784,Application - Specific Integrated Circuits
-2785,ASIC
-2790,Learning With Errors over Rings
-2791,CPA
-2792,embedding
-2793,RLWE
-2794,information - dynamic analysis
-2796,IDyOM
-2797,LMS
-2805,Genetic Algorithms
-2814,Probabilistic Latent Semantic Analysis
-2818,RCO
-2819,commodity - based secure number - product protocol
-2820,melody segmentation algorithm
-2821,predictive filtering
-2822,Kalman filters
-2823,single - node neural network
-2825,RLS filters
-2826,curve
-2827,LMS detection
-2828,1-out
-2829,k - out - of - N
-2830,Symmetric PIR
-2831,k - out - of - N oblivious transfer
-2833,1-out - of - N oblivious transfer protocol
-2834,1-out - of - N oblivious transfer
-2849,MIREX 2007
-2851,distributed
-2852,DSS
-2853,multi - file model
-2855,efficient dynamic programming algorithms
-2862,Cepstral Mean Subtracted
-2863,CMS -
-2864,Equal Error Rate
-2865,EER
-2866,SID
-2867,CMSMFCC
-2868,Mel Frequency Cepstral Coefficients
-2876,affective acoustic ecology
-2877,P2P based Collaborative Filtering
-2878,POE
-2879,Partial Order Embedding
-2891,recall - precision
-2892,Ultima
-2894,Kullback - Leibler divergence
-2895,commodity - based ” model
-2898,Support Vector classification
-2955,Beat per Minute
-2956,BPM
-2989,Hidden Markov Model
-2995,parallel computing
-3004,hybrid representation
-3012,attribute - based taxonomy
-3014,Rhythm Transform
-3031,Mood Cloud
-3032,automatic music mood prediction
-3033,FASST
-3034,Flexible Audio Source Separation Toolbox
-3035,Inner Product function
-3041,chroma similarity
-3042,dynamic programming local alignment
-3044,artificial neural networks
-3060,twostage comb filter - based approach
-3069,Fast Fourier Transform
-3070,machine learning classification
-3071,FFT
-3094,SuperCollider
-3098,two - dimensional map
-3099,Self - Organising Maps
-3106,voice - controlled digital synthesizers
-3116,Linear Predicative Coding coefficients
-3117,FFT coefficients
-3118,wavelet coefficients
-3119,Pitch
-3120,wavelet analysis
-3121,LPC
-3131,homomorphic
-3132,homomorphic encryption schemes
-3136,crossvalidation
-3137,MagnaTagATune
-3176,Trivial PIR
-3193,diapason
-3199,lyric alignment
-3200,O(1
-3243,multi - pitch detection model
-3244,automatic symbolic alignment
-3270,outsourcing
-3279,Music21
-3302,Reed - Solomon code
-3307,EXIF image metadata
+288,Semantic Web
+340,Private Information Retrieval
+351,PIR
+1667,questionnaire - based survey
+1695,SPARQL
+1706,pKaM
+1707,personalized semantic network
+1708,Personal Knowledge Advantage Machine
+1710,PIR - Tor
+1744,meta - data
+1798,RG
+1799,SAPIR
+1800,Random Linear Fountain
+1801,RLF
+1802,Reconstruction Group
+1837,FOAF
+1839,Chefmoz
+1902,homomorphic encryption
+1903,public encryptions
+1933,Alice
+1934,Clyde
+1941,context injection
+1950,VQS
+1953,Somewhat Homomorphic Encryption
+1954,Searchable Encryption
+1955,SHE
+1976,multi - server scheme
+1981,Cairsweb
+1982,semantic crawling
+2029,Page Links
+2030,Notebook Memex
+2068,Oblivious Transfer protocol
+2069,one way trapdoor permutations
+2073,Virtual Query System
+2087,UCE
+2142,AC List Builder
+2143,Result Generator
+2144,RPU
+2145,LB
+2146,SOAS
+2152,ObliviStore
+2154,ORAM
+2155,OS+PIR
+2156,ORAMs
+2157,Oblivious RAM
+2223,ASK
+2231,Invisible Web
+2232,Hubs an Authorities algorithm
+2233,PageRank algorithm
+2264,COMPASS location
+2265,COMPASS
+2266,Geo RDF
+2267,Translator
+2268,geo - coordinates
+2270,RSA
+2271,Accredited SPIR
+2279,DHTs
+2280,DHT
+2281,hash tables
+2319,Redundant Arrays of Inexpensive Disks
+2320,ontology visualization
+2324,SC
+2325,secure coprocessor
+2326,UC
+2327,NN
+2331,FT - PIR
+2394,CR
+2395,censorship resistance
+2440,Cloud framework
+2441,Cloud Sim
+2449,coalitions
+2450,k repli - cated databases
+2471,collaborative
+2495,LD - SDS
+2504,k - out - of - N
+2505,1-out - of - N oblivious transfer protocol
+2506,k - out - of - N oblivious transfer
+2507,1-out - of - N oblivious transfer
+2508,Symmetric PIR
+2509,oblivious transfer
+2510,1-out
+2545,commodity - based ” model
+2554,DS
+2555,Discovery Service
+2590,Fully homomorphic encryption
+2726,homomorphic encryption schemes
+2727,homomorphic
+2748,Trivial PIR
+2771,Hellman tables
+2790,VQL
+2791,Virtual Query

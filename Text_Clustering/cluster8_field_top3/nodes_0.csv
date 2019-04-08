@@ -1,101 +1,192 @@
 Id,Label
-23,Distributed Information Retrieval
-113,Web information retrieval
-197,query expansion
-896,CORI
-897,Regression - SVM
-898,Ranking - SVM
-899,Round Robin merging
-900,SVMmethods
-904,re - ranking strategies
-907,text databases
-908,relevance information
-987,content - based analysis
-988,co - occurrence analysis
-991,PageRank algorithm
-997,PageRank
-1037,relevance feedback
-1056,Query refinement
-1057,Bayes criterion
-1064,information retrieval algorithm
-1080,RCV1
-1081,PSO
-1082,PSO1-IR
-1083,PSO2-IR
-1084,CACM
-1085,particle swarm optimization
-1092,F - score
-1108,BM25
-1145,RF
-1169,Precision
-1208,PRF
-1213,RSV
-1214,multi database model
-1220,Web - community
-1225,Bayesian networks
-1244,fuzzy set
-1272,VSM
-1309,interconnection network
-1310,shared
-1337,Absorbing Model
-1338,probabilistic approach
-1339,probabilistic framework
-1354,Logistic Regression algorithm
-1361,multi - objective model
-1364,relevance prediction
-1376,set - covering - based algorithm
-1377,multivariate linear modeling
-1378,randomized algorithms
-1409,Combination
-1434,Appearing
-1435,Rising Topics
-1436,Vanishing
-1437,Topic drift
-1442,automatic
-1467,mining association
-1468,Contextual meta - rules
-1469,EII
-1471,Entropic Implication Intensity
-1541,Irrelevance Rate Function
-1542,Reliability Theory
-1543,overlapping databases
-1544,multi - evidence method
-1545,shadow document
-1546,Round - robin
-1566,word2vec
-1585,DFR
-1586,Term Frequency normalisation
-1630,Recall
-1670,concept - based information
-1671,association matrix
-1679,eigenvector computations
-1705,ACO - GA
-1706,Ant Colony Optimization(ACO)Genetic Algorithm(GA
-1739,pseudorelevance feedback
-1749,automatic relevance feedback
-1753,normalized query expansion
-1802,Compact Concept Ontology
-1803,iVSearcher
-1805,CCO
-1806,CCOs
-1819,clustering expansion
-1821,hyperlink structure analysis
-1920,Bayesian network
-1921,Kullback - Leibler divergence
-1922,KL
-1944,concept - based relevance feedback
-1945,concept - based browsing
-1946,cluster - based representation
-1949,dynamic document analysis
-1979,Theory of Evidence
-1980,DempsterShafer
-1981,federated
-1990,graph mining
-1991,Markov network retrieval
-1992,Quasi - Clique
-1993,Markov network
-2029,re - ranking method
-2065,MIaS
-2066,MathML
-2067,Content MathML
-2081,relevance modeling
+38,semantic Web
+130,ontology
+619,data mining
+1389,hierarchical clustering
+1401,SIM - DL similarity theory
+1407,nRQL
+1412,OWL
+1418,WordNet
+1427,semantic links
+1435,topic - map - based ontology systems
+1436,topic map
+1437,topic maps
+1473,ontologies
+1475,Description Logic SHIN
+1477,Methontology
+1478,OIS ontology
+1482,keyword - inverted index
+1483,ontology - based KBs
+1484,vector - space model
+1487,FCA
+1508,OWL ontology
+1509,KEPLER
+1527,RDFS
+1531,Spatial - Temporal
+1532,PRAIS
+1533,Dozen Dimensional Digital Content
+1534,Spatial and Temporal Ontology
+1535,STO
+1536,DDDC
+1542,ontology matching
+1543,ontology similarity
+1553,SWHi
+1567,context
+1574,co - occurrence theory
+1576,Embedding ontology into
+1577,semantic ontology
+1609,equivalence relation
+1610,fuzzy ontology framework
+1611,inclusion relation
+1612,order relation
+1613,fuzzy semantic query
+1637,Galois lattice
+1638,Formal Concepts Analysis
+1666,WebQR
+1680,Recall Ratio
+1681,Precision Ratio
+1692,ontology learning
+1716,Concept lattice
+1717,SOM
+1718,Kohonen Self Organising Map model
+1744,Hierarchical agglomerative clustering
+1745,AGG_ANTS
+1746,Ant based clustering
+1753,ontology - based semantic annotations
+1754,DNA microarray
+1755,ontology - based approach
+1756,MeatAnnot
+1757,MeatSearch
+1759,semantic query
+1762,OBIRE
+1767,contextual information
+1811,ontology - based scheme
+1850,Hybrid Query
+1851,Unified Web
+1902,erythropoietin
+1903,bio - ontologies
+1904,vector model
+1944,semantic distance
+1959,Penn Treebank to
+1960,Treebanks and Linguistic Theories
+1961,TLT
+1962,Trace - Free Functional Dependencies
+1964,fuzzy - based approach
+1965,fuzzy information retrieval model
+1971,tag information
+1972,ontology - based knowledge
+1973,context - based
+1974,integrated information system
+1981,ROSRS
+1982,SkyTagClustering
+1983,core - tag clusters
+1984,core - tag clustering
+1985,core - tag
+1986,CETClustering
+1987,multi - measurements
+1988,core - tag clustering algorithm
+1989,folksonomy
+1990,K - means
+2002,Fuzzy Ontology
+2013,genetic algorithms
+2037,Intelligent agent
+2057,RDF(S
+2058,DRDF(S
+2065,decision tree
+2066,self - map
+2067,self - map tree
+2068,self - map decision tree
+2071,ontology based query expansion
+2072,ontology - based query formulation
+2074,e - portfolio
+2075,e -
+2076,e
+2085,MPEG-7
+2086,meta - data model
+2120,ontology - driven
+2121,ontology model
+2122,semantic relationships
+2124,Graph based data
+2125,subgraph isomorphism
+2126,RDF schema
+2128,Dublin Core
+2159,Dokumentbeständen
+2160,XDOC
+2162,Wissensverarbeitung
+2174,BioPatentMiner
+2186,MapReduce
+2187,Opinion Mining algorithm
+2222,OSSOBOOK database
+2223,intermittently
+2226,denotational concept semantics
+2242,rule filtering
+2245,semantic technology
+2248,Interactive Knowledge Stack
+2249,SCMS
+2252,SP theory of computing
+2253,SP
+2254,complement
+2255,reversion relation
+2292,ontology - based information visualization
+2293,SemreX
+2306,semantic model
+2307,sample relational databases
+2339,spatial metadata
+2348,RDF Sitemap
+2354,fuzzy description logic
+2355,fuzzy sets theory
+2367,Finite lattices
+2379,multiple layered database
+2380,Information Super - Highway
+2381,MLDB
+2404,SNOMED CT
+2407,N - Gram
+2408,Swoogle
+2419,neighborhood
+2447,ontology theory
+2453,Matchmaking Visualizer
+2462,complement relation
+2521,patent
+2538,node counting
+2560,KBs
+2562,LexOn Search
+2563,LexOn
+2564,SIREn
+2616,Logic Programming
+2617,DBLP
+2618,Self Adaptive Genetic Algorithms
+2619,SAGAXsearch
+2620,DataBase systems
+2636,fuzzy machine learning framework
+2646,biological databases
+2647,semantic maps
+2648,fuzzy linguistic variable ontology models
+2649,RDF data model
+2716,sorted duality
+2724,TDD
+2725,Topology - DirectionDistance
+2726,DISC
+2730,Tonal MIR
+2731,XML /
+2736,Clustering Technique
+2737,Procrustes alignment
+2738,Manifold alignment
+2739,manifold
+2740,semisupervised alignment
+2742,Q / A index
+2784,Mongolian ontology
+2785,MySQL
+2798,multi - objective evolutionary biclustering framework
+2799,multi - objective modeling
+2813,view
+2814,multi - facet search paradigm
+2817,Art of Memory
+2818,Memory Islands
+2819,Knowledge maps
+2820,ontology based knowledge
+2821,semantic verification
+2848,query reformulation / ontology alignment
+2849,oMAP
+2889,Index model
+2890,text mining algorithm
+2892,partition clustering
