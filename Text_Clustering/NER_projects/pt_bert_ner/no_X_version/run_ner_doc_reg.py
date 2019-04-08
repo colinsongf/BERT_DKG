@@ -572,7 +572,8 @@ def predict():
 
     not_include_entities = ["information science", "information retrieval", "ir",
                             "natural language processing", "nlp",
-                            "machine learning"]
+                            "machine learning", "computer science","electrical engineering",
+                            "computer and information science"]
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
         example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
