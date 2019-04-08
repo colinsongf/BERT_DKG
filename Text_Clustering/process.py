@@ -48,7 +48,7 @@ def json_to_conll2():
     nlp = spacy.load('en')
     r1 = re.compile("[\n]+")
     r2 = re.compile("[\W]{3,}")
-    r3 = re.compile("[\xa \t]")
+    r3 = re.compile("[\xa0 \t]")
     defined_words = set(["Information retrieval", "Information sciences", "Information science"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
         with open("data/ai_data_to_predict_new.txt", "w") as fw2:
