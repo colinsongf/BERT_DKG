@@ -592,8 +592,8 @@ def predict():
             if label_list[label_id] != "O":
                 if label_list[label_id].startswith("B-"):
                     if pretype is not None:
-                        entities[pretype].append(
-                            ' '.join(entity) if ' '.join(entity).lower() not in not_include_entities)
+                        if ' '.join(entity).lower() not in not_include_entities:
+                            entities[pretype].append(' '.join(entity))
                         entity = []
                     pretype = label_list[label_id].split("-")[1]
                     entity.append(re.sub(r, "", example.words[word_idx]))
@@ -602,7 +602,8 @@ def predict():
                         entity.append(re.sub(r, "", example.words[word_idx]))
             else:
                 if pretype is not None:
-                    entities[pretype].append(' '.join(entity) if ' '.join(entity).lower() not in not_include_entities)
+                    if ' '.join(entity).lower() not in not_include_entities:
+                        entities[pretype].append(' '.join(entity))
                     entity = []
                     pretype = None
             w1_sent.append(line)
