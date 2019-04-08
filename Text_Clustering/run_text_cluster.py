@@ -86,7 +86,7 @@ def load_ai_data():
     print("%d docs" % len(docs))
 
     docs_entities = []
-    path = "NER_projects/pt_bert_ner/no_X_version/output_predict_new_doc_reg/prediction_entities.txt"
+    path = "NER_projects/pt_bert_ner/no_X_version/output_AttnCRFDecoder_ai_reg_doc/prediction_entities.txt"
     if os.path.exists(path):
         with open(path, encoding="utf8") as f:
             for line in f.readlines():
