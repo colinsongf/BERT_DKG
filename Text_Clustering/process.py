@@ -49,8 +49,7 @@ def json_to_conll2():
     r1 = re.compile("[\n]+")
     r2 = re.compile("[\W]{3,}")
     r3 = re.compile("[\xa0 \t]")
-    #defined_words = set(["Information retrieval", "Information sciences", "Information science"])
-    defined_words = []
+    defined_words = set(["Information retrieval", "Information sciences", "Information science"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
         with open("data/ai_data_to_predict_new.txt", "w") as fw2:
             with open("/home/yjc/fc_out_academic.txt") as fr:
@@ -61,7 +60,8 @@ def json_to_conll2():
                     if not line:
                         break
                     ob = json.loads(line)
-                    if set(ob["entities"]).intersection(defined_words) != set():
+                    if True:
+                    # if set(ob["entities"]).intersection(defined_words) != set():
                         doc = ob['paperAbstract']
                         doc = re.sub(r1, " ", doc)
                         doc = re.sub(r2, " ", doc)
