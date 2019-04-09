@@ -155,11 +155,6 @@ def hook_doc(dataset, X):
                 labels = np.ones([len(dataset.data)])
                 labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
 
-            field_top = 5
-            path = "cluster%d_field_top%d" % (cluster_num, field_top)
-            if not os.path.exists(path):
-                os.makedirs(path)
-
             sc = metrics.silhouette_score(X, labels, sample_size=1000)
             db = metrics.davies_bouldin_score(X, labels)
             scs = np.append(scs, sc)
@@ -174,6 +169,16 @@ def hook_doc(dataset, X):
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
 
+        field_top = 5
+        path = "cluster%d_field_top%d" % (cluster_num, field_top)
+        if not os.path.exists(path):
+            os.makedirs(path)
+
+        import pandas as pd
+        node_columns = ["lower_word", "normal_case", "entity_type", "degree"]
+        edge_columns = ["from_id", "to_id", "nums"]
+        df_nodes = pd.DataFrame(columns=node_columns)
+        df_edges = pd.DataFrame(columns=edge_columns)
         pre_fields = set()
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
@@ -181,21 +186,26 @@ def hook_doc(dataset, X):
             tecs = {}
             id2tec = {}
             co_occurence = {}  # {(field_id, tec_id):nums}
+
+            # n_df = pd.DataFrame(np.array([[] for ]), columns=node_columns)
+            # e_df = pd.DataFrame(columns=edge_columns)
+            # df_nodes.append()
+
             entities = np.array(dataset.entities)[labels == cluster]
             for entity in entities:
                 f_ids = []
                 t_ids = []
                 for e in entity["FIELD"]:
                     if e.lower() not in fields:
-                        id2field[len(fields) + 1] = e.lower()
-                        fields[e.lower()] = [e, 1, len(fields) + 1]
+                        id2field[len(fields)] = e.lower()
+                        fields[e.lower()] = [e, 1, len(fields)]
                     else:
                         fields[e.lower()][1] += 1
                     f_ids.append(fields[e.lower()][-1])
                 for t in entity["TEC"]:
                     if t.lower() not in tecs:
-                        id2tec[len(tecs) + 1] = t.lower()
-                        tecs[t.lower()] = [t, 1, len(tecs) + 1]
+                        id2tec[len(tecs)] = t.lower()
+                        tecs[t.lower()] = [t, 1, len(tecs)]
                     else:
                         tecs[t.lower()][1] += 1
                     t_ids.append(tecs[t.lower()][-1])
@@ -206,7 +216,7 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
-            confuse_manual = []
+            confuse_manual = [] # 预定义的待删除实体
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
@@ -231,6 +241,8 @@ def hook_doc(dataset, X):
             for (f, t), n in _co_occurence.items():
                 if f in delete_fields or t in delete_tecs:
                     co_occurence.pop((f, t))
+
+
 
             # cluster = 1
             # 选择top 50频次的边以及相应节点
@@ -274,29 +286,29 @@ def hook_doc(dataset, X):
                     [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
                      tecs.items() if id in used_tecs]))
 
-            eages = [(f, t + len(fields), n) for (f, t), n in co_occurence_]
-            id2label = {id: normal for lower, [normal, num, id] in fields.items()}
-            id2label.update({id + len(fields): normal for lower, [normal, num, id] in tecs.items()})
-
-            import networkx as nx
-            from matplotlib import pyplot as plt
-            plt.switch_backend('agg')
-            DG = nx.DiGraph()
-            DG.add_weighted_edges_from(eages)
-
-            pos = nx.spring_layout(DG, k=0.15, iterations=100)
-
-            id2labels = {id: id2label[id] for id in pos.keys()}
-
-            d = nx.degree(DG)
-            d = [(d[node] + 1) * 50 for node in DG.nodes()]
-
-            nx.draw_networkx_nodes(DG, pos, node_size=d)
-            nx.draw_networkx_edges(DG, pos)
-            nx.draw_networkx_labels(DG, pos, labels=id2labels)
-            plt.axis('off')
-            plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
-            # plt.show()
+            # eages = [(f, t + len(fields), n) for (f, t), n in co_occurence_]
+            # id2label = {id: normal for lower, [normal, num, id] in fields.items()}
+            # id2label.update({id + len(fields): normal for lower, [normal, num, id] in tecs.items()})
+            #
+            # import networkx as nx
+            # from matplotlib import pyplot as plt
+            # plt.switch_backend('agg')
+            # DG = nx.DiGraph()
+            # DG.add_weighted_edges_from(eages)
+            #
+            # pos = nx.spring_layout(DG, k=0.15, iterations=100)
+            #
+            # id2labels = {id: id2label[id] for id in pos.keys()}
+            #
+            # d = nx.degree(DG)
+            # d = [(d[node] + 1) * 50 for node in DG.nodes()]
+            #
+            # nx.draw_networkx_nodes(DG, pos, node_size=d)
+            # nx.draw_networkx_edges(DG, pos)
+            # nx.draw_networkx_labels(DG, pos, labels=id2labels)
+            # plt.axis('off')
+            # plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
+            # # plt.show()
         return dbs.mean(), scs.mean()
 
 def run():
