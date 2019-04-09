@@ -1,0 +1,290 @@
+Id,Label
+15,natural language processing NLP
+27,Statistical Machine Translation SMT
+29,automatic
+70,supervised
+75,Web mining
+76,pattern recognition
+81,Sentiment Analysis
+103,Computational Linguistics
+104,e - commerce
+116,content - based image retrieval
+129,speech recognition
+167,Chinese - to - English translation
+169,automatic text classification
+185,content - based image retrieval CBIR
+191,Optical Character Recognition
+193,Speech
+203,machine translation MT
+213,automatic speech recognition
+220,Text Retrieval
+237,keyword search
+240,neural machine translation
+266,natural language
+297,speech - to - speech translation
+320,information
+338,sentiment classification
+341,statistical
+344,image retrieval
+347,Semantic Web
+355,information extraction
+358,supervised learning
+382,ontology matching
+405,language processing
+411,Knowledge Discovery
+428,text categorization
+444,computer vision
+521,cross - language information retrieval CLIR
+536,Text alignment
+630,question answering
+686,Document classification
+871,document clustering
+912,word
+997,Document retrieval
+1549,Question Classification
+716,Support
+717,Vector Machines SVMs
+718,VectorMachine SVM
+719,structure learning model
+720,Max - Margin Structure MMS
+723,Arabic web - based information retrieval system
+726,Head - Complement order
+727,machine translation evaluation metric
+733,top - k
+753,Bayesian model
+754,Latent Dirichlet Allocation model
+755,EfficientTreeMiner
+756,prefix string representation
+759,Sentiment Extraction
+760,Supervised learning algorithm
+761,Identifying Topic
+769,hierarchical clustering
+772,Linguistic
+774,fuzzy similarity - based approach
+781,Maximum Entropy model
+782,RBF neural net
+784,logistic regression
+786,neural network
+788,neural networks
+789,bidirectional
+790,Topic
+791,Recurrent Neural Networks RNN
+811,lattice - based system combination model
+819,TF - IDF
+820,sentiment analysis model
+823,Gaussian Mixture Model GMM
+824,probabilistic formulation
+850,maximum likelihood estimation
+866,string kernels
+867,tree kernels
+868,Convolution kernels
+892,dynamic
+893,Alliant Techsystems Research Technology
+907,Bayes categorization algorithm
+908,Bayes
+909,BackPropagation Artificial Neural Networks
+917,Term Frequency -
+918,Inverse Document Frequency
+919,statistical keyword selection algorithm
+921,natural language processing model
+928,Islamic Hadith Narration
+942,Phenotype
+943,Disease and
+945,DisMatch
+962,Query - Document Bipartite Graph
+967,F - score
+980,NUS - WIDE
+982,matrix factorization
+983,matrix factorization method
+986,robust machine learning
+999,Out - Of - Vocabulary OOV
+1002,F - measure
+1040,bi - sentence filtering
+1044,Word To Category Module
+1066,Physiological explanations
+1069,convolutional
+1102,SOQA - SimPack Toolkit Browser
+1103,ontology language
+1104,SOQA - SimPack Toolkit SST
+1105,ontology alignment
+1111,N - Gram Construction
+1112,Small Training Corpora Linguistically
+1113,Competitive HMM
+1114,Statistical Global Feature Extraction Method
+1115,Metrics Definition
+1116,Modal Conditional Statements
+1117,Optical Font Recognition Domain
+1124,Bag - of - Concepts semantic modelling representation
+1136,Nave Bayes
+1137,decision tree
+1148,Cosine based similarity algorithm
+1149,cosine - based similarity algorithm
+1150,correlation - based similarity algorithm
+1163,recurrent neural network
+1166,Rocchio - style classifier
+1167,Naive Bayes
+1168,error - driven resampling mechanism
+1169,Decision Trees
+1170,Reuters-
+1207,translation model
+1208,language model
+1209,n - gram - based tense models
+1258,Non - negative matrix factorization NMF
+1259,SS - NPAF
+1260,Reuters
+1261,SS - NMF
+1262,latent semantic space
+1263,latent semantic indexing LSI
+1268,phrase - based translation
+1275,translation enhancement TE
+1282,statistical inference theory
+1283,machine learning algorithm
+1284,phrase - based machine translation PBMT
+1304,phrase - based
+1305,hierarchical phrase - based
+1312,logistic regression based algorithm
+1313,logistic regression model
+1316,list - based
+1317,graph - based
+1318,Knowledge Graphs
+1334,Generalized data management
+1336,-DNF algorithm
+1337,ontology model
+1364,N - gram
+1365,topic modelling
+1366,multimedia Topic modeling
+1369,semantic mapping
+1370,multi active learning
+1371,Conditional random fields
+1380,pre - filtering
+1381,image re - ranking
+1382,logistic regression relevance feedback algorithm
+1388,corpus - based learning method
+1390,manual - linguistic approach
+1392,Standard Arabic MSA
+1393,Grapheme - to - Phoneme converter
+1394,Grapheme - to - phoneme conversion
+1395,Text - to - Speech module
+1396,Algiers
+1400,collective corpus weighting
+1401,phrase scoring
+1402,graph - based random walk
+1407,Average Precision
+1408,directional
+1409,symmetric similarity
+1411,semantic knowledge
+1425,semantic description scheme
+1426,Answer Validation
+1427,Relative Operating Characteristic ROC analysis
+1428,Validation of Answers
+1443,computational theory
+1444,script recognition
+1448,mutual information
+1449,boundary entropy
+1485,uncertainty model
+1486,objective function model
+1487,Language modeling
+1488,semi
+1489,generation error model
+1494,fuzzy structured
+1495,fuzzy SQL statement
+1508,sentence recognition
+1509,language independent sentence alignment
+1510,Firewall
+1511,FPgrowth algorithm
+1512,Apriori - multiple
+1513,FP - growth
+1514,Weka Tool
+1515,Keywords Association Rules
+1516,Multiple Semi - Supervised Learning
+1517,single - instance semi - supervised learning
+1521,document - based polyrepresentation
+1537,Hadoop MAP
+1538,Fuzzy C - Means FCM method
+1545,Agglomerative Clustering algorithm
+1546,context - dependent hierarchical connectionist
+1547,feed - forward neural networks
+1548,Hierarchies of
+1549,HMM
+1551,Champollion - based sentence - level alignment algorithm
+1552,reverse
+1553,hierarchical alignment
+1554,K - vec - based word - level alignment algorithm
+1555,reverse alignment dictionary construction
+1558,latent
+1559,Dirichlet allocation LDA
+1560,multimodal joint sentiment topic modelMJST
+1569,SPARQL algebra
+1570,semantic optimization
+1571,SPARQL operator Optional
+1572,relational algebra optimization
+1573,PSpace - completeness
+1574,Neural
+1584,workflow
+1588,n - gram language model
+1589,word - based
+1617,log - linear model
+1621,Hidden Markov Model HMM
+1623,Index Evaluation
+1624,secure
+1626,Convolutional Neural Networks CNN
+1630,Dirichlet distribution
+1656,Bidirectional Long Short Term Memory RNNs
+1657,Recurrent Neural Networks
+1658,speaker adaptation
+1692,Spanish Classifier
+1694,knowledge - based methods
+1704,document co - clustering
+1705,Semi - Supervised Non - negative Matrix Factorization
+1706,word - document matrix
+1707,tri - factorization
+1708,SS - NMF based framework
+1713,neural network 
+1714,Fuzzy logic
+1715,unsupervised learning
+1719,word - by - word
+1722,Segmental Conditional Random Fields SCARF
+1723,Gaussian Mixture Model Hidden Markov Model GMM HMM
+1724,Artificial Neural Network Hidden Markov Model ANN HMM
+1725,ANN
+1726,Deep Belief Networks DBN
+1727,Maximum Mutual Information MMI
+1736,probability ranking
+1737,n - gram language models
+1738,n - gram probability
+1742,self - index search engine
+1780,semantic similarity information
+1781,semantic tree kernel
+1784,medical document test collection OHSUMED
+1802,multiple - instance learning model
+1806,joint ranking model
+1807,Ranking model construction
+1818,Convolution Neural Networks CNNs
+1819,Facebook fastText
+1823,MT
+1824,PB - SMT
+1829,QuickSort - based method
+1830,top - k CARs
+1832,loglinear framework
+1833,word embedding
+1834,log - linear translation model
+1835,additive
+1836,log - linear translation
+1841,alpha - like coefficients
+1842,kappa - like measures
+1843,Cohen
+1852,wordto - word translation
+1855,end system
+1856,lattice based
+1871,spell - checking algorithm
+1872,hybrid spell checking methodology
+1873,phonetic
+1874,n - gram algorithms
+1875,Hamming Distance
+1876,Bag - ofWords method
+1877,Question answering Computing methodologies
+1878,BengaliEnglish
+1879,embedding based
+1903,workflow hierarchy
+1913,Word Error Rate WER
+1914,Deep feedforward

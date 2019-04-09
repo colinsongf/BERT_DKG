@@ -1,0 +1,202 @@
+Id,Label
+7,Digital Signal Processing DSP
+13,grid resource prediction
+16,grid resources prediction
+47,fuzzy PID
+59,Time Series Forecasting
+103,closed - loop
+136,wind power prediction
+205,on - line identification
+217,geographic information system
+220,Fault classification
+315,data mining
+377,closed - loop system
+383,fuzzy inference system
+388,fuzzy classification
+435,pattern classification
+531,time series prediction
+693,fault detection
+740,wind speed prediction
+832,Power
+858,wastewater treatment
+1067,fuzzy systems
+1118,reactive power compensation
+1202,Multilayer Perceptron
+1265,transformer fault diagnosis
+1266,fault diagnosis
+1290,fault identification
+1364,Network fault knowledge acquisition
+1799,short
+343,back - propagation neural network BPNN
+344,trail - and - error procedure
+345,T - SVR
+346,particle
+347,vector regression SVR
+348,PSO - SVR model
+349,PSO - SVR
+353,artificial neural network
+358,neural networks
+359,neural network
+364,fuzzy controller
+374,computational intelligence
+375,fuzzy PID controller
+376,fuzzy PID tuning method
+380,Takagi - Sugeno
+387,fuzzy models
+388,statistical modeling
+389,Fuzzy C - Means
+390,artificial intelligence
+391,neural and
+397,artificial neural network ANN
+420,Neural Networks NNs
+423,closed control
+434,artificial neural networks
+447,single position NWP neural network model
+449,rough set neural network prediction model
+450,persistence model
+451,single position wind power calculation model
+452,rough set theory
+500,ANN model
+512,Box - Jenkins
+513,ordered derivative learning
+514,TS - type neuro system MTSNFS
+522,Hot spot analysis
+523,landscape epidemiology modeling framework
+524,spatial agent - based model ABM
+525,probabilistic neural network
+526,modular neural network
+568,RBF neural network
+574,Support
+606,fuzzy decision principle
+607,probabilistic model
+608,fuzzy partition method
+666,fuzzy servo - controller
+667,error feedback scheme
+672,feedback linearization technique
+673,neural network NN
+674,Fisher s Discriminant Ratio Kernel
+714,radial basis function
+715,RBF neural chip
+716,XOR logic
+717,back - propagation algorithm
+718,floating - point processor
+719,back propagation algorithm
+790,fuzzy inference
+795,E - tsRBF
+796,Radial basis function neural networks
+797,meta - evolutionary algorithm
+859,fuzzy neural networks
+880,neural network model
+908,proposed
+941,Fuzzy Inductive Reasoning FIR methodology
+960,feed - forward neural networks
+980,adaptive weighted particle swarm optimization
+981,Adaptive weighed particle swarm optimization
+985,clustering
+1079,BP neural network NN
+1080,NN - based approach
+1149,Vector Machines
+1150,Independent Component Analysis algorithm
+1168,probabilistic circuit
+1169,fuzzy PID proportional - integral - derivative controller
+1170,probabilistic CMOS PCOMS
+1254,fuzzy system
+1255,Adaptive fuzzy inference
+1256,adaptive Neurofuzzy system
+1257,BP network algorithm
+1258,genetic - neural Network Algorithm
+1259,Model Predictive Control MPC algorithm
+1260,Artificial Neural Networks ANN
+1261,Model Predictive Control of
+1262,statistical model
+1263,ANN estimator
+1284,radial basis function RBF
+1301,power factor error
+1302,k - NN classifier
+1303,Minkowski distance
+1304,Minkowski
+1305,Minkowski distance metrics
+1306,k - NN
+1320,back - propagation ANN
+1321,simple
+1322,economic order quantity EOQ
+1323,Lyapunov theorem
+1368,Elman neural networks
+1379,neural Artificial Neural Network ANN
+1381,temporal coding
+1382,Spiking Neural Networks SNN
+1383,Spike Response Model SRM
+1440,fuzzy fault
+1457,Error - Correcting Output Codes ECOC
+1458,UCI Machine Learning Repository
+1474,adaptive control
+1518,phase lock loop PLL
+1519,Synchronous Reference Frame Theory SRF SRF theory
+1544,multi - stage neural network
+1545,fault location problem
+1546,single network
+1547,Particle Swarm Optimization PSO algorithm
+1642,Plant pipes monitoring
+1643,pipeline
+1644,bio - mimetic robot
+1645,Bio - mimetic robots
+1708,NRS - CGA - SVR
+1709,financial forecasting
+1710,Support vector machine
+1711,chaotic genetic algorithm CGA
+1733,Particle swarm optimization PSO
+1837,Levenberg - Marquardt LM algorithm
+1838,Bacterial Memetic Algorithm
+1839,Modified Operator Execution Order BMAM
+1927,transformer fault
+1928,decision - level model
+1936,slidingmode control scheme
+1937,fault tolerant
+1938,radial basis function NNs
+1950,variable universe fuzzy controller
+1951,fuzzy PID control
+1952,variable universe fuzzy PID control
+1953,PID control
+1954,improved universe fuzzy PID
+1955,Matlab program
+1990,Gaussian
+1991,pi - sigma neural network
+1992,artiicial neural networks
+2104,High - Order Sliding Mode technique
+2105,flexible Hypersonic Vehicle model
+2106,flexible Hypersonic Vehicle longitudinal dynamics
+2107,dynamic state - feedback controller
+2130,Support vector machines
+2131,dynamic neural network based method
+2132,neural computing scheme
+2164,feedforward
+2172,short term wind speed prediction
+2173,particle swarm optimization IPSO algorithm
+2181,Sensor Fault Detection
+2203,Linear Principal Component Analysis LPCA
+2204,Neural Nonlinear Principal Component Analysis NNLPCA
+2205,Pre - analysis
+2206,Partial Least Square PLS
+2207,auto - associative neural network
+2208,Nonlinear Principal Component Analysis NLPCA
+2209,Partial Least Square
+2210,Fault visualization
+2217,Nonlinear Autoregressive Model
+2218,cross validation
+2219,Exogenous Input
+2221,statistical
+2292,Ripple Minimization
+2293,Switched Reluctance Motors
+2294,Sensorless Control
+2354,Hematite furnace roasting process
+2362,fault dictionary
+2363,RBF artificial neural network
+2397,language computation
+2398,semantic type
+2399,distributed processing
+2400,fuzzy authority value
+2401,logic inference
+2402,general neural networks
+2455,multilayer perceptron networks
+2456,Valle dAosta highway
+2457,adaptive fuzzy logic systems
