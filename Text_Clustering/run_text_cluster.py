@@ -169,7 +169,7 @@ def hook_doc(dataset, X):
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
 
-        field_top = 5
+        field_top = 15
         path = "cluster%d_field_top%d" % (cluster_num, field_top)
         if not os.path.exists(path):
             os.makedirs(path)
