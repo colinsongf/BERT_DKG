@@ -269,7 +269,10 @@ def hook_doc(dataset, X):
             #
 
             # 选择top3 field以及相应的tec
-            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(fields)*0.01):int(len(fields)*0.05)+field_top])
+            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+
+            # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[
+            #                int(len(fields) * 0.01):int(len(fields) * 0.05) + field_top])
 
             # filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
             # fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(filter_fields)*0.01):int(len(filter_fields)*0.05)+field_top])
