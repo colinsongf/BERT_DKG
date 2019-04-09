@@ -48,10 +48,10 @@ def json_to_conll2():
     nlp = spacy.load('en')
     r1 = re.compile("[\n]+")
     r2 = re.compile("[\W]{3,}")
-    r3 = re.compile("[\xa0 \t]")
+    r3 = re.compile('''[^\w,.?!\-;:'"<>]''')
     defined_words = set(["Information retrieval", "Information sciences", "Information science"])
     with open("data/ai_data_sents_new.txt", "w") as fw1:
-        with open("data/ai_data_to_predict_new.txt", "w") as fw2:
+        with open("NER_projects/pt_bert_ner/semi-data/ai_data_to_predict_new.txt", "w") as fw2:
             with open("/home/yjc/fc_out_academic.txt") as fr:
                 max_len = 8489
                 i = 1
