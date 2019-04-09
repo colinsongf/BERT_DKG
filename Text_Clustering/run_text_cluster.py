@@ -240,7 +240,7 @@ def hook_doc(dataset, X):
 
             # 更新dataframe
             n_arr = np.array([[f[0], f[1][0], 0, f[1][1]] for f in fields.items()])
-            n_arr = np.concatenate(n_arr, np.array([[t[0], t[1][0], 0, t[1][1]] for t in tecs.items()]))
+            n_arr = np.append(n_arr, np.array([[t[0], t[1][0], 1, t[1][1]] for t in tecs.items()]), axis=0)
             e_arr = np.array([[e[0][0], e[0][1], e[1]] for e in co_occurence.items()])
 
             n_df = pd.DataFrame(n_arr, columns=node_columns)
