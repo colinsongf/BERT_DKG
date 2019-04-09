@@ -155,7 +155,7 @@ def hook_doc(dataset, X):
                 labels = np.ones([len(dataset.data)])
                 labels = np.array(list(map(lambda x: random.randint(0, cluster_num - 1), labels)))
 
-            field_top = 3
+            field_top = 5
             path = "cluster%d_field_top%d" % (cluster_num, field_top)
             if not os.path.exists(path):
                 os.makedirs(path)
@@ -174,7 +174,7 @@ def hook_doc(dataset, X):
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
 
-
+        pre_fields = set()
         for cluster in range(cluster_num):
             fields = {}  # { lowercase entity: [normal case, nums, id]}
             id2field = {}
@@ -206,8 +206,7 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
-            confuse_manual = ["information science", "information retrieval", "ir",
-                              "natural language processing", "nlp"]
+            confuse_manual = []
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
@@ -253,7 +252,12 @@ def hook_doc(dataset, X):
             #
 
             # 选择top3 field以及相应的tec
-            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+            # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+
+            filter_fields = [f for f in fields.items() if f[0] not in pre_fields]
+            fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+            pre_fields.update(set([f[0] for f in fields_.items()]))
+
             used_fields = [i[1][-1] for i in fields_.items()]
             co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
             used_tecs = [i[0][1] for i in co_occurence.items() if i[0][0] in used_fields]
