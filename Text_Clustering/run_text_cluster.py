@@ -187,10 +187,6 @@ def hook_doc(dataset, X):
             id2tec = {}
             co_occurence = {}  # {(field_id, tec_id):nums}
 
-            # n_df = pd.DataFrame(np.array([[] for ]), columns=node_columns)
-            # e_df = pd.DataFrame(columns=edge_columns)
-            # df_nodes.append()
-
             entities = np.array(dataset.entities)[labels == cluster]
             for entity in entities:
                 f_ids = []
@@ -242,6 +238,15 @@ def hook_doc(dataset, X):
                 if f in delete_fields or t in delete_tecs:
                     co_occurence.pop((f, t))
 
+            # 更新dataframe
+            n_arr = np.array([[f[0], f[1][0], 0, f[1][1]] for f in fields.items()])
+            n_arr = np.concatenate(n_arr, np.array([[t[0], t[1][0], 0, t[1][1]] for t in tecs.items()]))
+            e_arr = np.array([[e[0][0], e[0][1], e[1]] for e in co_occurence.items()])
+
+            n_df = pd.DataFrame(n_arr, columns=node_columns)
+            e_df = pd.DataFrame(e_arr, columns=edge_columns)
+            df_nodes = df_nodes.append(n_df,ignore_index=True)
+            df_edges = df_edges.append(e_df,ignore_index=True)
 
 
             # cluster = 1
@@ -266,7 +271,7 @@ def hook_doc(dataset, X):
             # 选择top3 field以及相应的tec
             # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
 
-            filter_fields = [f for f in fields.items() if f[0] not in pre_fields]
+            filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
             fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
             pre_fields.update(set([f[0] for f in fields_.items()]))
 
@@ -309,6 +314,9 @@ def hook_doc(dataset, X):
             # plt.axis('off')
             # plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
             # # plt.show()
+
+        df_nodes.to_csv("nodes.csv",index_label="node_id")
+        df_edges.to_csv("edges.csv",index_label="edge_id")
         return dbs.mean(), scs.mean()
 
 def run():
