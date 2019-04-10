@@ -197,7 +197,7 @@ def hook_doc(dataset, X):
                     key = func_get(e, fields)
                     if not key:
                         id2field[len(fields)] = e.lower()
-                        fields[e.lower()] = [e, 1, len(fields)]
+                        fields[e.lower()] = [e.strip('-').strip(" "), 1, len(fields)]
                         f_ids.append(fields[e.lower()][-1])
                     else:
                         fields[key][1] += 1
