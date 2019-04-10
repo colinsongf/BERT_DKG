@@ -194,19 +194,24 @@ def hook_doc(dataset, X):
                 f_ids = []
                 t_ids = []
                 for e in entity["FIELD"]:
-                    if e.lower() not in fields:
+                    key = func_get(e, fields)
+                    if not key:
                         id2field[len(fields)] = e.lower()
                         fields[e.lower()] = [e, 1, len(fields)]
+                        f_ids.append(fields[e.lower()][-1])
                     else:
-                        fields[e.lower()][1] += 1
-                    f_ids.append(fields[e.lower()][-1])
+                        fields[key][1] += 1
+                        f_ids.append(fields[key][-1])
                 for t in entity["TEC"]:
-                    if t.lower() not in tecs:
+                    key = func_get(t, tecs)
+                    if not key:
                         id2tec[len(tecs)] = t.lower()
                         tecs[t.lower()] = [t, 1, len(tecs)]
+                        t_ids.append(tecs[t.lower()][-1])
                     else:
-                        tecs[t.lower()][1] += 1
-                    t_ids.append(tecs[t.lower()][-1])
+                        tecs[key][1] += 1
+                        t_ids.append(tecs[key][-1])
+
                 for f in f_ids:
                     for t in t_ids:
                         if id2field[f] != id2tec[t]:
@@ -338,6 +343,15 @@ def hook_doc(dataset, X):
         df_edges.to_csv("edges.csv",index_label="edge_id")
         cluster_df.to_csv("top%d_res.csv"%field_top,index=False)
         return dbs.mean(), scs.mean()
+
+def func_get(e, entities):
+    if e.lower() in entities:
+        return e.lower()
+    if e.lower()+"s" in entities:
+        return e.lower()+"s"
+    if ' '.join(e.lower().split(" ")[:-1]) in entities:
+        return ' '.join(e.lower().split(" ")[:-1])
+    return None
 
 def run():
     global metric
