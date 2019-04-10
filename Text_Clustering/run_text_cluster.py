@@ -324,13 +324,10 @@ def hook_doc(dataset, X):
 
             top_tec = sorted([(t[1][0],t[1][1]) for t in tecs.items()], key=lambda x: x[1], reverse=True)[:field_top]
             top_field = [(f[1][0],f[1][1]) for f in fields_]
-            c = 1
+            print('-' * 30 + "fields of cluster %d" % cluster + '-' * 30)
             for i,(f,t) in enumerate(zip(top_field,top_tec)):
-                if i%field_top==0:
-                    print('-'*30+"fields of cluster %d"%c+'-'*30)
-                    print("\n")
                 print(str(f)+" ###### "+str(t))
-
+            print("\n")
 
 
         df_nodes.to_csv("nodes.csv",index_label="node_id")
