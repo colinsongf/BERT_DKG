@@ -1,21 +1,21 @@
 cluster #0 (1135 abstracts),nums #0,cluster #1 (890 abstracts),nums #1,cluster #2 (864 abstracts),nums #2,cluster #3 (1231 abstracts),nums #3,cluster #4 (924 abstracts),nums #4,cluster #5 (1146 abstracts),nums #5,cluster #6 (1123 abstracts),nums #6,cluster #7 (1175 abstracts),nums #7
-artificial intelligence,49,pattern recognition,6,Information Retrieval,51,machine learning,25,Fuzzy,7,Information Systems,43,pattern recognition,115,Artificial Intelligence,29
-machine learning,22,Machine Learning,5,machine learning,36,pattern recognition,18,fuzzy logic,7,artificial intelligence,24,machine learning,25,data mining,24
-Multi - agent systems,17,image compression,5,machine translation,33,computer vision,13,Pattern Recognition,7,information technology IT,21,face recognition,20,machine learning,20
-fuzzy logic,10,inter - symbol interference,4,Natural Language Processing,30,computer,9,reinforcement learning,4,Information Technology,17,computer vision,16,semantic web,16
-artificial intelligence AI,10,inter - symbol interference ISI,3,statistical machine translation,18,data mining,9,closed - loop system,4,Information Systems IS,15,speech recognition,11,information systems,13
-pattern recognition,10,Channel coding,3,Information Retrieval IR,17,Support,8,Machine Learning,4,Machine Learning,15,artificial intelligence,11,Geographic Information System,8
-data mining,10,Orthogonal frequency division,3,text classification,14,binary classification,6,Multilayer Perceptron,4,Computer Science,15,image processing,10,e - commerce,8
-Knowledge Representation,9,Artificial Intelligence,3,machine,10,Machine,5,fuzzy PID,3,pattern recognition,12,data mining,8,Semantic,7
-reinforcement learning,7,multi - carrier,3,Automatic speech recognition,9,supervised learning,5,fault diagnosis,3,data mining,12,Pattern Recognition Society,8,information retrieval,7
-information systems,7,wind speed prediction,3,text mining,9,dimensionality reduction,5,fuzzy systems,2,health information systems,10,iris recognition,7,knowledge discovery,7
-neural networks,36,neural network,79,Neural Networks,21,neural network,28,neural network,149,Neural networks,15,neural network,103,neural network,12
-neural network,30,neural networks,33,neural network,11,neural networks,25,neural networks,103,neural network,14,neural networks,61,neural networks,10
-genetic algorithm,17,genetic algorithm,30,Support,9,probabilistic model,9,artificial neural network,26,artificial neural networks,10,BP neural network,21,Artificial neural networks,7
-Artificial Neural Networks,15,BP neural network,29,F - measure,6,deep neural networks,9,Artificial Neural Networks,23,artificial neural network,8,Artificial Neural Network,19,fuzzy logic,6
-genetic algorithms,14,Artificial neural networks,11,convolutional neural networks,6,Bayesian framework,8,artificial neural network ANN,21,game theory,4,artificial neural networks,18,genetic algorithm,5
-Bayesian networks,6,improved,10,logistic regression,5,Bayesian inference,8,RBF neural network,18,BP Neural Network,4,Support,13,decision tree,5
-genetic programming,5,genetic algorithm GA,9,probabilistic model,5,Hilbert space,7,fuzzy neural network,15,meta - analysis,4,Vector Machine SVM,11,genetic algorithms,5
-Bayesian network,4,artificial neural network,8,Convolutional Neural Networks CNN,5,Bayesian model,7,genetic algorithm,14,k - means,3,artificial neural network ANN,10,context - awareness,4
-NP - complete,4,Artificial Neural Network ANN,8,Reuters-,5,np - complete,6,BP neural network,12,Artificial Neural Networks ANN,3,Hough transform,8,artificial neural network,4
-Nash equilibrium,4,RBF neural network,7,Vector Machines SVMs,4,K - Means,6,Lyapunov stability theory,11,fuzzy,3,Artificial Neural Networks ANN,7,Computational Intelligence,4
+artificial intelligence,76,Machine Learning,7,Information Retrieval,70,machine learning,28,Fuzzy,62,Information Systems,61,pattern recognition,140,Artificial Intelligence,39
+machine learning,25,pattern recognition,6,machine learning,40,pattern recognition,23,Pattern Recognition,9,Artificial,31,Fuzzy,39,information,28
+knowledge,24,inter - symbol interference,5,machine translation,38,computer vision,13,fuzzy PID,7,information technology IT,24,image,35,semantic web,25
+Multi - agent systems,23,image compression,5,semantic,36,fuzzy,10,Differential,6,Information Technology,21,machine learning,28,data mining,25
+fuzzy logic,16,Orthogonal frequency division,4,Natural Language Processing,32,image,10,Multilayer Perceptron,6,Machine Learning,20,face recognition,22,machine learning,21
+Evolutionary,13,inter,4,statistical machine translation,23,np - complete,9,reinforcement learning,5,Geographic Information System,18,computer vision,17,e -,21
+information systems,12,Artificial Intelligence,4,language,16,computer,9,online,4,Computer Science,18,artificial intelligence,12,Semantic,20
+pattern recognition,10,multi - carrier,4,text classification,14,data mining,9,closed - loop system,4,e -,17,speech recognition,11,Geographic Information System,19
+data mining,10,end - to - end,4,machine,14,Support,8,Machine Learning,4,Information Systems IS,15,pattern,11,Fuzzy,19
+reinforcement learning,9,inter - symbol interference ISI,3,natural language,14,unsupervised,7,uncertain,4,health information technology,15,iris,10,data,18
+neural network,68,neural network,127,Neural Networks,33,Bayesian,57,neural network,292,neural network,33,neural network,184,neural networks,23
+genetic algorithm,39,genetic algorithm,38,probabilistic,12,neural networks,55,artificial neural network,72,artificial neural network,21,artificial neural networks,52,Artificial,21
+Artificial Neural Networks,22,BP neural network,35,convolutional neural network,10,probabilistic,36,genetic algorithm,22,Bayesian,6,BP neural network,22,artificial neural network,13
+Bayesian network,11,artificial neural network,27,Support,9,Gaussian,26,RBF neural networks,21,BP Neural Network,5,Support,13,genetic algorithm,10
+multi,7,Gaussian,10,Convolutional Neural Networks CNNs,8,K - Means,13,fuzzy neural network,21,Artificial Neural Networks ANN,5,Vector Machine SVM,11,Bayesian networks,6
+Evolutionary Algorithms,6,particle swarm optimization PSO,10,logistic regression,7,deep neural networks,12,Recurrent Neural,17,game theory,4,Gabor filter,11,Computational Intelligence,6
+AI -,6,improved,10,Vector Machines SVMs,6,gaussian mixture model,11,BP neural network,16,D,4,artificial neural network ANN,10,Petri,5
+Logic,5,genetic algorithm GA,9,Deep Neural Networks,6,joint,11,Lyapunov functions,12,meta - analysis,4,Vector Machines,10,Decision tree,5
+Nash equilibrium,5,Hopfield neural network,8,vector space model,6,Hilbert space,8,cellular neural networks,12,Genetic algorithm,4,RBF neural networks,10,intelligent,5
+rule - based,5,RBF neural network,8,F - measure,6,Bayesian framework,8,Lyapunov stability theory,11,fuzzy neural network,3,Hough transform,9,context - awareness,4
