@@ -212,7 +212,8 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
-            confuse_manual = ['artificial',"pattern","iris"] # 预定义的待删除实体
+            confuse_manual = ['artificial',"pattern","iris","computer",
+                              ] # 预定义的待删除实体
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
@@ -269,14 +270,17 @@ def hook_doc(dataset, X):
             #
 
             # 选择top3 field以及相应的tec
-            fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+            # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
 
+            # 选择1%之后的几个
             # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[
             #                int(len(fields) * 0.01):int(len(fields) * 0.05) + field_top])
 
-            # filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
-            # fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(filter_fields)*0.01):int(len(filter_fields)*0.05)+field_top])
-            # pre_fields.update(set([f[0] for f in fields_.items()]))
+
+            filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
+            #fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(filter_fields)*0.01):int(len(filter_fields)*0.05)+field_top])
+            fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
+            pre_fields.update(set([f[0] for f in fields_.items()]))
 
             used_fields = [i[1][-1] for i in fields_.items()]
             co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
