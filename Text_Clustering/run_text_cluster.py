@@ -344,11 +344,14 @@ def hook_doc(dataset, X):
         cluster_df.to_csv("top%d_res.csv"%field_top,index=False)
         return dbs.mean(), scs.mean()
 
+# 判断实体是否已存在
 def func_get(e, entities):
     if e.lower() in entities:
         return e.lower()
-    if e.lower()+"s" in entities:
+    if e.lower()+"s" in entities: # svm = svms
         return e.lower()+"s"
+    if e.lower().strip("s") in entities: # svms = svm
+        return e.lower().strip("s")
     if ' '.join(e.lower().split(" ")[:-1]) in entities:
         return ' '.join(e.lower().split(" ")[:-1])
     return None
