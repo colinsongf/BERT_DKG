@@ -568,12 +568,13 @@ def predict():
     last_example_id = None
     entities = {"FIELD": [], "TEC": [], "MISC": []}
     import re
-    r = re.compile("[^A-Za-z-]")
+    r = re.compile("[^A-Za-z\-]")
 
-    not_include_entities = ["information science", "information retrieval", "ir",
-                            "natural language processing", "nlp",
-                            "machine learning", "computer science","electrical engineering",
-                            "computer and information science"]
+    # not_include_entities = ["information science", "information retrieval", "ir",
+    #                         "natural language processing", "nlp",
+    #                         "machine learning", "computer science","electrical engineering",
+    #                         "computer and information science"]
+    not_include_entities = []
     for eval_feature, predict_line, predict_mask in zip(eval_features, predictions, predict_masks):
         example = eval_examples_dict[eval_feature.ex_id]
         w1_sent = []
