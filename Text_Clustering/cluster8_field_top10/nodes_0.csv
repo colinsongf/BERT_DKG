@@ -1,0 +1,311 @@
+Id,Label
+14,neural networks
+30,artificial intelligence
+38,machine learning
+40,knowledge
+41,fuzzy logic
+137,pattern recognition
+138,Multi - agent systems
+180,Evolutionary
+255,information systems
+808,data mining
+492,neural network
+498,genetic algorithm
+500,Hopfield nets
+501,semantic nets
+503,Rough Set Theory
+506,quulitative bond
+507,knowledge - based approach
+510,multi
+511,fuzzy probabilistic aumann belief logic
+512,fuzzy probabilistic of belief
+513,fuzzy probabilistic
+514,fuzzy probabilistic belief base revision
+552,belief revision
+554,artificial immune system
+555,consensus - based methods
+556,fuzzy inference rules
+557,collaborative 
+558,demographic filtering
+565,NP - complete
+578,digit - recognition system
+580,Minimal Concession MC strategy
+584,IF - THEN
+589,Evolutionary Algorithms
+590,Artificial Neural Networks
+595,rule - based representation
+596,Logic
+597,Description Logics
+598,first - order logic
+617,Intelligent
+619,formalism design
+626,fuzzy expert system
+630,interval - valued fuzzy sets
+634,Quickies
+635,ink recognition technologies
+636,Intelligent Sticky Notes
+640,FPGA - based SAT solver
+641,SAT - based
+642,SAT
+643,depth - first search
+650,knowledge representation
+657,Lottery Paradox
+659,clausal defeasible logic CDL
+664,Neural Networks NN
+665,IEEE - Reliability Test
+666,Monte Carlo Simulation MCS
+667,Loss of
+668,Load Expectation
+669,Game Theory GT
+670,case - base
+671,mutation operator selection
+672,mutation testing
+673,machine learning algorithms
+675,neuro - fuzzy network
+683,equation - based model EBM
+709,analytic hierarchy process
+715,Bayes
+726,cooperative strategy learning
+727,WoLF - PHC algorithms
+744,input - output behavior
+747,rule - based
+748,case - based reasoning
+751,mining of
+752,weighted association
+753,evolved
+754,neural controller
+755,adaptive learning mechanism
+756,adaptive neural controller
+760,model checking
+761,Supervisory control theory
+762,supervisory
+763,finite element analysis
+773,backtrack search
+774,Non - Monotonic Reasoning
+775,Boolean Satisfiability SAT domain
+776,Automated Reasoning
+777,Binate Covering
+778,Binate Covering Problem BCP
+783,Artificial Intelligence programming languages
+800,Hybrid Snort system
+801,Intrusion Detection System IDS
+809,Artiicial Intelligence
+811,Intentional theory
+834,Principal Component Analysis
+835,Bayes Nets BN
+839,probability theory
+841,Bridged MLP
+842,Deep neural networks
+852,TFN representation
+853,Lower and
+854,Upper Bound Estimator FLUBE
+855,Prediction Interval PI
+856,Triangular
+859,Laboratoire Psychologie
+860,Vision Sciences
+863,reinforcement
+866,cyborg technology
+868,Heuristic search
+869,Self Organizing Maps
+870,Circular Back Propagation
+871,Neural Gas Networks
+872,feedforward neural models
+873,Lyme
+905,vector representation
+914,amino - acid mutating
+915,logistic regression
+920,Nonmonotonic reasoning
+922,AGM belief revision
+923,Rational
+924,AGM belief
+929,Warmuth 
+930,logical - combinatorial methods
+931,mental disorder diagnostic
+943,deep learning
+956,a
+964,real - valued genetic algorithms
+965,Cohort Driven Operators CDOs
+966,population - based operators
+967,evolutionary computational methods
+968,Guided Gaussian Mutation GGM
+980,statistical methods
+981,gene expression analysis
+990,Channelrhodopsin- Q
+1006,time - phased optimization methods
+1007,single - stage optimization methods
+1008,Key - words Heuristic Methods
+1009,Iterative Improvement Methods
+1028,learnable evolution
+1036,rejuvenation delta
+1038,upgrade correctness
+1048,Baldwin effect
+1049,Baldwinian learning
+1055,Laplacian matrix
+1056,Vicsek model
+1057,Church - Turing thesis
+1060,metamorphic testing
+1068,immuno networks
+1077,dual confidence association rules
+1088,Empirical Process Modeling
+1091,fuzzy model
+1110,constraint - based programming
+1132,complex - valued neural network
+1133,valued neural networks
+1151,affective - cognitive architecture
+1196,Tree Creation
+1197,Genetic programming
+1198,tree - generation algorithms
+1199,Population Initialization
+1200,Subtree Mutation
+1201,Tree Growth
+1202,strongly - typed genetic programming
+1203,s - expressions
+1204,Introns
+1217,probabilistic algorithm
+1218,BDI architecture
+1219,Integrating
+1240,Adaptive Network Fuzzy Inference ANFIS
+1241,handoff
+1243,handover decision algorithm
+1248,neural NPCs
+1249,dasiaConquerorpsila
+1253,gradient - based methods
+1254,fault tolerance
+1255,Intelligent Tutoring Systems ITS
+1256,perceptron networks
+1274,semantic routing
+1283,Knowledge - Based techniques
+1295,back -
+1296,Cultural learning
+1297,Darwinian evolution
+1298,genotype - to - phenotype mapping
+1315,Rotting Bandits
+1316,temporal interval algebras
+1317,propositional linear temporal logic
+1318,Temporal reasoning
+1319,meta - APL
+1320,BDI -
+1321,BDI - based agent programming language
+1322,Maude term
+1348,pipeline
+1349,bio - mimetic robot
+1350,Plant pipes monitoring
+1355,Fuzzy neural networks
+1360,SOL Skip Ordered Linear tableau calculus
+1361,organization theory
+1363,kd - tree based perturbation method
+1372,Cognitive
+1384,black - box modeling
+1385,antenna modeling
+1389,program transformation
+1390,Alternative Bit Protocol ABP
+1393,BP - neural network
+1394,Keywords - fuzzy analytic hierarchy
+1395,fuzzy analytic hierarchy
+1396,Taxman
+1420,combinatorial models
+1421,multi - layer neural network
+1425,temporal logic
+1426,simple
+1427,Translation Algorithm
+1428,K - means AK system
+1429,B - cells
+1430,hormone concentration
+1434,immune network theory
+1435,cell - cell interactions
+1436,Natural immune system
+1446,neuro fuzzy techniques
+1447,evolving
+1468,Evolutionary Computation Conference Technical Chair
+1469,Track Chair
+1470,GECCO Genetic
+1475,synaptic plasticity
+1480,complexity estimation
+1481,MYCm - like
+1482,design - automation community
+1483,device - independent diagnostic program
+1503,personal construct theory
+1512,Distributed Artificial Intelligence DAI
+1513,RoboCup Soccer Simulator
+1514,Quidditch
+1515,coupling neural network
+1516,general - purpose control
+1517,three learning
+1533,Boolean matrix decomposition
+1534,GreCon
+1536,semantic - aware diagnosis
+1537,Fuzzy
+1538,General Modus Ponen
+1539,linguistic approximation
+1540,distributed artificial intelligence
+1541,multiagent learning
+1544,Boolean algebra
+1545,AI -
+1558,feedforward neural network
+1560,logic - based action language GOLOG
+1567,Quantum Interaction Approach
+1568,quantum computation
+1569,quantum mechanics
+1570,unified theory
+1573,Journal Impact Factor
+1577,Automated interpretation
+1578,laser - induced breakdown spectroscopy
+1579,Fuzzy logic inference rules
+1580,fuzzy logic inference engine
+1587,FSP Finite State Processes
+1588,Goal Net
+1589,Labeled Transition System Analyzer
+1590,Goal Net modeling methodology
+1597,Practical Handbook of
+1601,Bayesian model
+1615,NEAT Neuro - Evolution of Augmenting Topologies algorithm
+1623,Monte - Carlo
+1624,Progressive Pruning
+1625,Objective Monte - Carlo
+1626,move - selection strategy
+1627,Simulated Annealing
+1650,Hubble Space Telescope
+1651,I -
+1652,Nickel - Cadmium Battery Expert
+1658,norm compliance
+1665,emotion modeling
+1672,Rules based decision
+1673,statistical testing
+1674,AI Artificial Intelligent adaptive
+1695,symbolic model checking
+1696,model - checking algorithm
+1699,Dempster - Shafer theory
+1705,Informatik 
+1717,matcher neural networks
+1738,Radial Basis Function
+1739,complex - valued neural networks CVNNs
+1771,Decision - theoretic refinement planning
+1772,DRIPS
+1773,decision -
+1776,embodiment
+1777,Intelligence Dynamicsi
+1778,dynamical approach
+1780,EOG neural networks
+1781,electrooculography EOG
+1784,hierarchical agent architecture
+1798,grammatical encoding
+1802,Neural Networks algorithms
+1803,neural Extended Pruning procedure
+1804,ESA - Envisat
+1839,Piezoelectric
+1840,EH Micro MEMS
+1841,MEMS - DO
+1842,EH - MEMS
+1843,Multi - Objective Design Optimisation DO Framework
+1848,Mario AI controller
+1849,Connectionist modeling
+1863,Rieszor spaces
+1864,fuzzy set theory
+1870,Dynamic link
+1871,Higher - level concept
+1887,linear regression
+1889,Rete algorithm
+1895,automata networks
+1896,time series approximation
+1902,all
+1903,formal neural network

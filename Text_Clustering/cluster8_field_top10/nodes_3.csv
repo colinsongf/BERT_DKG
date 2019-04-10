@@ -1,0 +1,235 @@
+Id,Label
+1,machine learning
+2,pattern recognition
+73,computer vision
+87,Support
+148,genetic algorithms
+205,computer
+245,data mining
+524,fuzzy
+795,image
+875,unsupervised
+465,Distance - based methods
+466,neural networks
+478,probabilistic
+516,Gaussian mixtures
+521,top - down features
+522,bottom - up
+523,cognitive psychology
+532,Subspace selection
+533,subspace sample selection
+535,Vector Machine SVM
+536,prefix string representation
+537,EfficientTreeMiner
+539,decision tree induction algorithms
+540,decision tree induction
+541,formal concept analysis FCA
+547,subspace clustering
+570,Gaussian
+587,BackPropagation algorithm
+588,Supervised Scaled Regression Clustering
+589,feedforward Artificial Neural Networks ANNs
+590,Genetic Algorithms SSRCGA
+591,regression systems
+607,gaussian mixture model
+621,homomorphic encryption scheme
+622,machine learning algorithms
+625,M - estimator
+626,KMedoid
+627,Rough K - Means
+628,K - Means
+634,computational
+637,ridge regression
+639,Euclidean distance
+644,Algebraic geometry
+650,distributed algorithm
+658,regularization networks
+663,fuzzy decision principle
+664,fuzzy partition method
+665,hidden Markov model
+674,Laplace approximation
+675,Gaussian variational approximation
+676,Variational approximation
+689,kernel - based SOCP
+690,Second - order cone programming SOCP
+691,Twin SVM
+708,RGB RGB - D
+709,AoG model
+710,And - Or Graph AoG
+721,maximum likelihood estimation
+722,Bayesian tasks
+723,Bayesian
+725,conditional probability density
+744,AdaBoost
+780,gradient descent search
+784,NP - hard combinatorial optimization
+791,linear algebra
+792,lattice theory
+802,super - resolution of
+803,low - resolution face image
+804,Reconstruction - based super - resolution
+817,Laplacian Eigenmap
+818,Semi - supervised Locality Preserving Projections
+820,Compactness Enhancement SLPP
+821,Locality Preserving Projections LPP
+831,convolutional neural network
+863,deep neural networks
+875,Taylor expansion
+877,hill - climbing optimization
+878,Darwinian methods
+879,Lamarckian
+880,Baldwinian evolution
+881,Darwinian
+903,fuzzy rough set theory
+909,Scale Space
+937,Sparsity Score SS
+938,filter - type method
+939,graph based analysis
+940,sparse representation
+948,gradient - based forward greedy method
+949,gradient - based optimisation
+950,Kernel Logistic Regression KLR
+951,Bayesian Gaussian Process Regression GPR model
+952,Vector Machines SVMs
+964,PACBayesian theorem
+965,distribution - free generalization error bounds
+966,Bayesian GPC techniques
+967,VC type union bound
+968,Vector machines
+985,Constrained Graph Concept Factorization CGCF
+986,Concept Factorization CF
+987,semi - supervised learning
+988,semi - supervised matrix factorization algorithm
+989,Matrix factorization
+1005,logistic regression
+1053,vector regression
+1056,Probabilistic Estimate of Clustering
+1060,Banach contraction theorem
+1061,Fuzzy -contractive mappings
+1062,Systems Theory
+1063,statistical metric spaces
+1064,Archimedean fuzzy metric spaces
+1072,spectral graph theory
+1073,matrix - normals
+1114,semi - supervised subspace clustering
+1115,Semi - supervised Impurity based Subspace Clustering
+1116,k - Nearest Neighbor approach
+1149,kernel - based
+1190,Tensor based dimensionality reduction
+1192,high - order tensor decomposition approach
+1193,low - rank approximation error
+1194,High - Order Singular Value Decomposition HOSVD
+1202,Kullback - Leibler
+1209,Bayesian network structure
+1219,Generalized Matrix Learning
+1220,adaptive square matrices
+1221,Vector Quantization GMLVQ algorithm
+1227,concept - independent
+1248,partial differential equation PDE
+1262,model - based framework
+1263,organizing
+1321,Aircraft Integrated Drive Generator fault diagnostic decision
+1365,Fourier domain
+1366,parametric global motion
+1427,regression SVM
+1428,pattern recognition SVM
+1429,regression Support
+1430,density estimation
+1431,integral equation SVM
+1444,DBD - MQ
+1445,DeepBit
+1446,deep binary descriptor
+1447,multi DBD - MQ
+1448,unsupervised feature learning method
+1449,K - AutoEncoders KAEs network
+1467,BPCA - L
+1468,PCA - L
+1549,K -
+1551,sequential forward selection SFS
+1552,Submodular functions
+1560,U - loss function
+1561,LogitBoost
+1562,loss
+1566,regression
+1586,neurofuzzy model
+1587,neurofuzzy classifier identification algorithm
+1588,ANOVA decomposition
+1624,function approximation
+1651,Turing test
+1652,Hierarchical Bayesian model
+1668,Riemannian manifold
+1669,DaimlerChrysler
+1699,Bayesian variational learning
+1700,unsupervised feature selection
+1708,D - Wave Systems
+1709,ensemble NN model
+1710,NN model
+1711,D - Wave X quantum computer
+1712,training
+1713,Sensitivity Heuristic
+1716,K - nearest neighbor
+1727,feedforward back
+1728,boosting algorithm
+1729,propagation neural networks
+1730,Residuated lattices
+1737,metric - based methods
+1738,information - geometric formulation
+1756,Random Forest
+1758,Regression Tree CART Linear Discriminant Analysis
+1759,Classification
+1760,Accuracy Evaluations
+1798,gait analysis
+1799,texture synthesis
+1800,mathematical theory of crystallographic groups
+1801,image compression
+1802,pattern indexing
+1808,Rauch - Tung - Striebel smoother
+1809,Bayesian ranking framework
+1810,Pairwise image comparisons
+1834,Support Vector Machines
+1836,decision tree
+1840,boundary - based corner detection algorithm
+1841,Statlog
+1858,Weka Tool
+1859,FPgrowth algorithm
+1860,Keywords Association Rules
+1861,FP - growth
+1862,Apriori - multiple
+1883,Kernel Linear Discriminant Analysis KLDA
+1886,robust PCA approach
+1887,robust spectral clustering
+1888,mixed geometric model
+1889,random sample consensus
+1920,Gibbs Sampling algorithm
+1921,fixed length representation
+1922,Baum - Welch variant
+1945,curvature regularization
+2016,Non - negative Matrix Factorisation NMF
+2033,Conventional back propagation neural network
+2034,Tensor
+2035,image classification model
+2043,D visualization
+2058,single output one
+2059,multi - output model
+2089,Random field models
+2090,random field
+2109,Euclidean transformation
+2197,data - modelling framework
+2198,data - modelling approach
+2255,fuzzy neural networks EFuNNs
+2256,interactive segmentation
+2257,image restoration
+2289,structure - and - motion problem
+2290,re - initialization
+2295,coarse - to-ne approach
+2296,intelligent genetic algorithm
+2297,facial model
+2298,genetic algorithm - based optimization approach
+2299,facial modeling
+2301,Pattern Recognition Society
+2346,pixel similarity metrics
+2369,image stitching algorithm
+2370,action matrix method
+2443,Classifier calibration
+2444,Pool Adjacent Violators algorithm
+2503,posteriorixD

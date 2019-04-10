@@ -1,0 +1,278 @@
+Id,Label
+25,genetic algorithm
+37,fuzzy PID
+38,Fuzzy
+115,online
+277,reinforcement learning
+297,closed - loop system
+330,Pattern Recognition
+331,Machine Learning
+722,Differential
+1073,Multilayer Perceptron
+223,neural network
+227,artificial neural network
+235,Kalman filter EKF approach
+236,genetic algorithm GA
+237,extended
+239,fuzzy controller
+240,Kalman filter
+241,Fuzzy logic controllers
+245,computational intelligence
+248,fuzzy PID tuning method
+249,fuzzy PID controller
+252,Fuzzy Rule Based Control System
+254,Lyapunov stability theory
+255,Takagi - Sugeno
+257,RBF neural networks
+262,statistical modeling
+263,neural and
+264,artificial intelligence
+265,Fuzzy C - Means
+283,BP neural network
+298,mutual exchangeabilityME
+299,generalized exchange principleGEP
+300,exchange principle
+317,sliding discrete Fourier transform DFT
+318,least - squares algorithm
+332,sliding mode control
+362,TS - type neuro system MTSNFS
+363,Box - Jenkins
+364,ordered derivative learning
+379,fuzzy wavelet neural network
+380,fuzzy neural network
+410,linear matrix
+443,k -
+461,k - server problem
+462,Q - learning algorithm
+481,error feedback scheme
+482,fuzzy servo - controller
+489,feedback linearization technique
+506,Elman neural network
+510,Sugeno fuzzy integral
+511,machine intelligence quotient MIQ
+512,Choquet fuzzy integral
+516,-approximate algorithm
+522,cubic polynomial TSCP
+573,adaptive
+587,gene regulatory network
+588,Lyapunov theory
+593,fuzzy neural net PID controller
+594,fuzzy neural network PID controller
+595,fuzzy logic method
+596,cabin temperature control model
+597,dynamic learning of
+603,convex fuzzy mappings
+604,directional derivative
+605,convex fuzzy programming
+610,Logical Analysis of Data LAD
+611,Carbon Fiber Reinforced Polymers CFRP
+621,soft relation
+622,soft set relation
+623,fuzzy soft set
+624,Soft set theory
+634,linear
+658,robust
+661,Hopfield neural networks
+672,fuzzy membership functions
+676,median filter
+677,FNN filter
+678,feedforward neural network
+679,inference type
+680,adaptive weighted fuzzy mean AWFM filter
+681,Fuzzy neural networks controller
+682,magnetism - control
+683,fusion matrix theory
+696,complex - valued neural network CVNN
+697,real - valued neural network RVNN
+698,cooperative conveyance system
+699,cooperative pattern generator
+700,cold - rolling thickness control
+701,automatic Gauge control AGC
+718,linear matrix inequality LMI
+736,Bayesian network
+760,divide
+761,neural - genetic multimodel parameter estimation algorithm
+762,hybrid
+763,evolutionary algorithms evolution
+774,backpropagation
+800,probabilistic
+815,Kriging response surface model
+817,single - objective constrained problem
+833,Matlab
+841,induction
+843,Takagi - Sugeno fuzzy models
+845,neuro - fuzzy
+864,GLR - fuzzy numbers
+887,T - S fuzzy classifier
+893,genetic regulatory network
+897,neural controller
+928,fuzzy cellular neural networks
+963,deep
+970,obstacle - avoidance algorithm
+984,Bayesian filtering
+986,Non Dominated Sorting Genetic Algorithm - II
+987,Hybrid Neural - Genetic - Fuzzy System NGFS
+997,probabilistic CMOS PCOMS
+998,fuzzy PID proportional - integral - derivative controller
+1059,adaptive robust control
+1060,fuzzy - based performance index
+1067,adaptive Neurofuzzy system
+1068,Adaptive fuzzy inference
+1075,graph algorithms
+1076,Context
+1078,statistical analysis
+1133,neural models
+1134,radial basis function network
+1135,delta - bar - delta
+1136,random search
+1137,quick - propagation
+1138,Lyapunov theorem
+1155,DE algorithm
+1163,fuzzy bidirectional associative clustering
+1164,multisynapse neural network
+1165,neural architecture
+1166,Lagrange
+1178,parallel genetic algorithm
+1194,Spiking Neural Networks SNN
+1196,temporal coding
+1197,Spike Response Model SRM
+1198,neural Artificial Neural Network ANN
+1213,supervised learning algorithm
+1214,generalized delta algorithm
+1215,Key - Words
+1222,passivity theory
+1250,adaptive model tracking
+1251,sliding mode variable structure control
+1252,fuzzy sliding mode control
+1257,Fuzzy set theory
+1258,fuzzy relation matrix
+1259,fuzzy set notations
+1268,KeywordsRBF neural network
+1269,fuzzy RBF neural network
+1301,mixed - integer programming
+1324,contraction - expansion
+1325,self - adaptive fuzzy controller
+1326,fuzzy control algorithm
+1327,fixed universe fuzzy controller
+1337,differential calculus
+1339,artificial immune system
+1377,regulation logic
+1378,Zadeh operators
+1380,improved
+1413,reinforcement backpropagation algorithm
+1414,supervised connectionist learning
+1415,artificial neural network robot behavior
+1416,Differential Evolution
+1417,evolutionary learning
+1418,evolutionary strategies
+1419,evolutionary programming
+1420,signal prediction
+1427,cluster analysis
+1428,decision function techniques
+1429,velocity controller
+1430,pattern recognition theory
+1431,Optimal control theory
+1444,actor - critic method
+1453,differential array sensors
+1472,Bayesian network fault diagnosis model
+1479,DA - FOPID
+1480,Simulated Annealing SA
+1481,Fractional Order PID
+1482,Dragonfly Algorithm DA
+1485,continuoustime neural network model
+1486,Hebbian - type learning
+1503,Mackey - Glass
+1518,robust reinforcement learning control
+1542,Modified Operator Execution Order BMAM
+1543,Levenberg - Marquardt LM algorithm
+1544,Bacterial Memetic Algorithm
+1549,GA tuned controller
+1550,Smith Predictor
+1551,E coli
+1552,meta - heuristics
+1553,FA PID controller
+1554,Firefly Algorithm FA
+1555,fed - batch cultivation
+1556,dynamic neural MLP
+1557,temporal dynamic
+1558,FIR filter
+1559,Tsoi algorithm
+1560,Back - PropagationThrough - Time
+1626,Newman - Girvan NG modularity function
+1627,fuzzy validity index
+1628,fuzzy PID control
+1629,variable universe fuzzy controller
+1630,variable universe fuzzy PID control
+1631,PID control
+1632,improved universe fuzzy PID
+1633,self - organization controller
+1634,self - organization competition neural network
+1643,neuralnetwork - type SIRMs
+1644,fuzzy inference method
+1646,Gaussian
+1647,pi - sigma neural network
+1648,artiicial neural networks
+1660,observer - based robust adaptive variable universe fuzzy control
+1661,dynamic self - structure
+1662,closed
+1663,dynamic structure
+1687,fuzzy control mechanism
+1688,Intelligent mobile robot
+1690,fuzzy logic ANN CFNN
+1691,compensated
+1741,dynamic state - feedback controller
+1742,High - Order Sliding Mode technique
+1743,flexible Hypersonic Vehicle model
+1744,flexible Hypersonic Vehicle longitudinal dynamics
+1765,variable weight combination forecasting approach
+1766,variable weight combination forecasting model
+1767,adaptive genetic algorithm
+1768,Shanghai GDP Simulation
+1771,online training
+1772,wind energy control system
+1776,least - squares policy
+1841,dynamic set - point adjustment
+1842,PI proportional - integral controller
+1843,solar photo - voltaic system
+1844,control theory
+1845,maximum - likelihood parameter
+1846,Markov chain
+1881,inverted pendulum
+1895,Ripple Minimization
+1896,Switched Reluctance Motors
+1897,Sensorless Control
+1908,k - means algorithm
+1909,pattern recognition algorithm
+1925,switching fuzzy model
+1926,close - loop system
+1927,fuzzy Lyapunov function FLF
+1939,Fuzzy ART Variant
+1940,Fuzzy ART algorithm
+1949,re - heater
+1950,Steam turbine
+1953,field strength prediction
+1967,adaptive neural robust controller
+1968,differential reconstruction
+1974,Back Propagation learning algorithm
+1990,language computation
+1991,general neural networks
+1992,fuzzy authority value
+1993,logic inference
+1994,distributed processing
+1995,semantic type
+1999,fuzzy flip - flop F
+2000,Fuzzy D flip - flop based neurons
+2001,Fuzzy Flip - Flop based Neural Networks FNN
+2002,fuzzy D flip
+2003,fuzzy D flip - flop neurons
+2064,mutual utility independence
+2065,mutual weak difference independence
+2066,mutual difference independence
+2079,RV - based ITFNN
+2080,interval type- fuzzy modeling framework
+2081,RV - based
+2082,interval kernel
+2083,reduced - set vector - based interval type-
+2088,Differential DE
+2101,divide conquer method
+2102,divide - method
