@@ -326,8 +326,8 @@ def hook_doc(dataset, X):
 
             top_tec = sorted([(t[1][0],t[1][1]) for t in tecs.items()], key=lambda x: x[1], reverse=True)[:field_top]
             top_field = [(f[1][0],f[1][1]) for f in fields_.items()]
-            cluster_df["cluster #%d (%d abstracts)" % (i,len(labels[labels==cluster]))] = np.array([f[0] for f in top_field]+[t[0] for t in top_tec])
-            cluster_df["nums #%d" %i] = np.array([f[1] for f in top_field] + [t[1] for t in top_tec])
+            cluster_df["cluster #%d (%d abstracts)" % (cluster_num,len(labels[labels==cluster]))] = np.array([f[0] for f in top_field]+[t[0] for t in top_tec])
+            cluster_df["nums #%d" %cluster_num] = np.array([f[1] for f in top_field] + [t[1] for t in top_tec])
             print('-' * 30 + "fields of cluster %d, docs:%d" % (cluster, len(labels[labels==cluster]))+ '-' * 30)
             for i,(f,t) in enumerate(zip(top_field,top_tec)):
                 print(str(f)+" ###### "+str(t))
