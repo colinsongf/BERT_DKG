@@ -169,7 +169,7 @@ def hook_doc(dataset, X):
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
 
-        field_top = 8
+        field_top = 10
         path = "cluster%d_field_top%d" % (cluster_num, field_top)
         if not os.path.exists(path):
             os.makedirs(path)
@@ -212,8 +212,8 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
-            confuse_manual = ['artificial',"pattern","iris","computer","support"
-                              ] # 预定义的待删除实体
+            # confuse_manual = ['artificial',"pattern","iris","computer","support"] # 预定义的待删除实体
+            confuse_manual = []
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
@@ -280,7 +280,7 @@ def hook_doc(dataset, X):
             filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
             #fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(filter_fields)*0.01):int(len(filter_fields)*0.05)+field_top])
             fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
-            pre_fields.update(set([f[0] for f in fields_.items()]))
+            pre_fields.update(set([(f[0],f[1][2]) for f in fields_.items()]))
 
             used_fields = [i[1][-1] for i in fields_.items()]
             co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
@@ -321,11 +321,16 @@ def hook_doc(dataset, X):
             # plt.axis('off')
             # plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
             # # plt.show()
-
-        for i,f in enumerate(list(pre_fields)):
-            if i%3==0:
+        top_tec = sorted(tecs.items(), key=lambda x: x[1][1], reverse=True)[:field_top]
+        c = 1
+        for i,(f,t) in enumerate(zip(list(pre_fields),top_tec)):
+            if i%field_top==0:
+                print('-'*30+"fields of cluster %d"%c+'-'*30)
                 print("\n")
-            print(f+" ")
+            print(f+" ###### "+(t[1][0],t[1][1]))
+
+
+
         df_nodes.to_csv("nodes.csv",index_label="node_id")
         df_edges.to_csv("edges.csv",index_label="edge_id")
         return dbs.mean(), scs.mean()
