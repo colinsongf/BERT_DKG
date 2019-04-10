@@ -110,6 +110,7 @@ def get_bert2vec_embed(dataset, hook):
     from bert2vec.run_lm_finetuning import main
     X = main(dataset, Args(), hook)
     X = preprocessing.normalize(X)
+    hook(dataset, X)
     return X
 
 class Args(object):

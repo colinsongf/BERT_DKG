@@ -462,9 +462,6 @@ def main(dataset, args, hook):
         json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
         print(scores)
-    X = model.get_doc_embed().weight.tolist()
-    X = preprocessing.normalize(X)
-    hook(dataset, X)
     return model.get_doc_embed().weight.tolist()
 
 def accuracy(out, labels):

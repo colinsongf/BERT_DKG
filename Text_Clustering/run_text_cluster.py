@@ -169,7 +169,7 @@ def hook_doc(dataset, X):
         print("Davies-Bouldin score: var: %0.3f, mean: %0.3f"
               % (dbs.var(), dbs.mean()))
 
-        field_top = 15
+        field_top = 3
         path = "cluster%d_field_top%d" % (cluster_num, field_top)
         if not os.path.exists(path):
             os.makedirs(path)
@@ -212,7 +212,7 @@ def hook_doc(dataset, X):
                             co_occurence[(f, t)] += 1
             # 对于同一个词，保留次数多的那个类别，即要么FIELD，要么TEC
             confuse = set(id2field.values()).intersection(set(id2tec.values()))
-            confuse_manual = [''] # 预定义的待删除实体
+            confuse_manual = ['artificial',"pattern","iris"] # 预定义的待删除实体
             delete_tecs = []
             delete_fields = []
             for word in list(confuse):
