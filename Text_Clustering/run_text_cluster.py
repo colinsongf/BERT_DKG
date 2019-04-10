@@ -322,6 +322,10 @@ def hook_doc(dataset, X):
             # plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
             # # plt.show()
 
+        for i,f in enumerate(list(pre_fields)):
+            if i%3==0:
+                print("\n")
+            print(f+" ")
         df_nodes.to_csv("nodes.csv",index_label="node_id")
         df_edges.to_csv("edges.csv",index_label="edge_id")
         return dbs.mean(), scs.mean()
