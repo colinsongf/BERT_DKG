@@ -323,7 +323,7 @@ def hook_doc(dataset, X):
             # # plt.show()
 
             top_tec = sorted([(t[1][0],t[1][1]) for t in tecs.items()], key=lambda x: x[1], reverse=True)[:field_top]
-            top_field = [(f[1][0],f[1][1]) for f in fields_]
+            top_field = [(f[1][0],f[1][1]) for f in fields_.items()]
             print('-' * 30 + "fields of cluster %d" % cluster + '-' * 30)
             for i,(f,t) in enumerate(zip(top_field,top_tec)):
                 print(str(f)+" ###### "+str(t))
