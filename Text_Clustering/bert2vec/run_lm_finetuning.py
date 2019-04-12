@@ -361,12 +361,12 @@ def main(dataset, args, hook):
         bert_config.type_vocab_size = len(train_dataset)
         bert_config.vocab_size = len(train_dataset.vocab)
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
-        if os.path.exists(output_model_file):
-            model = MyBertForPreTraining.from_pretrained(args.output_dir)
-            args.do_train = False
-            print("loaded checkpoint!")
-        else:
-            model = MyBertForPreTraining(bert_config)
+        # if os.path.exists(output_model_file):
+        #     model = MyBertForPreTraining.from_pretrained(args.output_dir)
+        #     args.do_train = False
+        #     print("loaded checkpoint!")
+        # else:
+        model = MyBertForPreTraining(bert_config)
         if args.fp16:
             model.half()
         model.to(device)
