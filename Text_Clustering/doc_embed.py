@@ -1,4 +1,31 @@
 
+def get_tfidf_embed(dataset, hook):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    import sklearn.preprocessing as preprocessing
+    vectorizer = TfidfVectorizer(max_df=1000, max_features=30000,
+                                 min_df=2, stop_words='english',
+                                 use_idf=True)
+    X = vectorizer.fit_transform(dataset.data)
+    X = preprocessing.normalize(X)
+    hook(dataset, X.toarray())
+    return X
+
+
+def get_tfidf_embed2(dataset, hook):
+    import gensim
+    from gensim.models.tfidfmodel import TfidfModel
+    from gensim.corpora import Dictionary
+    import sklearn.preprocessing as preprocessing
+    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(dataset.data)]
+    dictionary = Dictionary(docs)
+    corpus = [dictionary.doc2bow(text) for text in docs]
+    tfidfModel = TfidfModel(corpus=corpus, dictionary=dictionary)
+
+    X = tfidfModel[corpus]
+    X = preprocessing.normalize(X)
+    hook(dataset, X)
+    return X
+
 def get_lda_embed(dataset, hook):
     import gensim
     from gensim.corpora.dictionary import Dictionary
@@ -32,9 +59,9 @@ def get_lda_embed2(dataset, hook):
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.decomposition import LatentDirichletAllocation
     import sklearn.preprocessing as preprocessing
-    cntVector = CountVectorizer(max_df=1000, min_df=2)
+    cntVector = CountVectorizer(max_df=1000, min_df=2, stop_words='english',max_features=30000)
     cntTf = cntVector.fit_transform(dataset.data)
-    lda = LatentDirichletAllocation(n_topics=100)
+    lda = LatentDirichletAllocation(n_components=200, max_iter=20)
     docres = lda.fit_transform(cntTf)
     X = preprocessing.normalize(docres)
     hook(dataset, X)
@@ -53,6 +80,15 @@ def get_doc2vec_embed(dataset, hook):
     doc2vec_dm.train(docs, total_examples=doc2vec_dm.corpus_count, epochs=10)
 
     X = [doc2vec_dbow.infer_vector(doc.words) + doc2vec_dm.infer_vector(doc.words) for doc in docs]
+    X = preprocessing.normalize(X)
+    hook(dataset, X)
+    return X
+
+def get_doc2vec2_embed(dataset, hook):
+    print("data len:%d" % len(dataset.data))
+    from doc2vec.paragraphvec.doc2vec import main
+    import sklearn.preprocessing as preprocessing
+    X = main(dataset.data)
     X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
@@ -156,41 +192,3 @@ class Args(object):
             self.output_dir = "./output_bert_model_weighted_loss"
         else:
             self.output_dir = "./output_bert_model"
-
-
-def get_tfidf_embed(dataset, hook):
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    import sklearn.preprocessing as preprocessing
-    vectorizer = TfidfVectorizer(max_df=1000, max_features=30000,
-                                 min_df=2, stop_words='english',
-                                 use_idf=True)
-    X = vectorizer.fit_transform(dataset.data)
-    X = preprocessing.normalize(X)
-    hook(dataset, X.toarray())
-    return X
-
-
-def get_tfidf_embed2(dataset, hook):
-    import gensim
-    from gensim.models.tfidfmodel import TfidfModel
-    from gensim.corpora import Dictionary
-    import sklearn.preprocessing as preprocessing
-    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(dataset.data)]
-    dictionary = Dictionary(docs)
-    corpus = [dictionary.doc2bow(text) for text in docs]
-    tfidfModel = TfidfModel(corpus=corpus, dictionary=dictionary)
-
-    X = tfidfModel[corpus]
-    X = preprocessing.normalize(X)
-    hook(dataset, X)
-    return X
-
-
-def get_doc2vec2_embed(dataset, hook):
-    print("data len:%d" % len(dataset.data))
-    from doc2vec.paragraphvec.doc2vec import main
-    import sklearn.preprocessing as preprocessing
-    X = main(dataset.data)
-    X = preprocessing.normalize(X)
-    hook(dataset, X)
-    return X
