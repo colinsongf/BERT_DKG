@@ -61,7 +61,7 @@ def get_lda_embed2(dataset, hook):
     import sklearn.preprocessing as preprocessing
     cntVector = CountVectorizer(max_df=1000, min_df=2, stop_words='english',max_features=30000)
     cntTf = cntVector.fit_transform(dataset.data)
-    lda = LatentDirichletAllocation(n_components=200, max_iter=20)
+    lda = LatentDirichletAllocation(n_components=200, max_iter=10)
     docres = lda.fit_transform(cntTf)
     X = preprocessing.normalize(docres)
     hook(dataset, X)
