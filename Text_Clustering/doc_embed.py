@@ -1,27 +1,44 @@
 
-def get_lda_embed(data):
+def get_lda_embed(dataset, hook):
     import gensim
     from gensim.corpora.dictionary import Dictionary
     import sklearn.preprocessing as preprocessing
-    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
-    dictionary = Dictionary(docs)
-    dictionary.filter_extremes(no_below=1, no_above=0.8)
-    corpus = [dictionary.doc2bow(text) for text in docs]
-
-    lda = gensim.models.ldamodel.LdaModel(corpus=corpus, num_topics=50, alpha='auto', eval_every=5, update_every=5, chunksize=10000, passes=100)
-    from gensim.test.utils import datapath
     import numpy as np
-    temp_file = datapath("lda_model")
-    lda.save(temp_file)
+
+    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(dataset.data)]
+    dictionary = Dictionary(docs)
+    dictionary.filter_extremes(no_below=2, no_above=0.8)
+    corpus = [dictionary.doc2bow(text) for text in docs]
+    tfidf = gensim.models.TfidfModel(corpus)
+    corpus_tfidf = tfidf[corpus]
+    lda = gensim.models.ldamodel.LdaModel(corpus=corpus_tfidf, num_topics=100)
+    corpus_lda = lda[corpus_tfidf]
+    # from gensim.test.utils import datapath
+    # temp_file = datapath("lda_model")
+    # lda.save(temp_file)
     #lda = gensim.models.ldamodel.LdaModel.load(temp_file)
+
     topics = lda.get_topics()
     X = []
     for doc in corpus:
-        topic_probs = lda.get_document_topics(doc)
+        topic_probs = lda.get_document_topics(doc, per_word_topics=True)
+        np.array(sorted(topic_probs[2],key=lambda x:x[1][1]))
         X.append(np.sum([topics[pair[0]]*pair[1] for pair in topic_probs], axis=0))
     X = preprocessing.normalize(X)
+    hook(dataset,X)
     return X
 
+def get_lda_embed2(dataset, hook):
+    from sklearn.feature_extraction.text import CountVectorizer
+    from sklearn.decomposition import LatentDirichletAllocation
+    import sklearn.preprocessing as preprocessing
+    cntVector = CountVectorizer(max_df=1000, min_df=2)
+    cntTf = cntVector.fit_transform(dataset.data)
+    lda = LatentDirichletAllocation(n_topics=100)
+    docres = lda.fit_transform(cntTf)
+    X = preprocessing.normalize(docres)
+    hook(dataset, X)
+    return X
 
 def get_doc2vec_embed(dataset, hook):
     import gensim
