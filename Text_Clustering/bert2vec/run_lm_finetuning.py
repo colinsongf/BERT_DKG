@@ -452,7 +452,7 @@ def main(dataset, args, hook):
                     optimizer.zero_grad()
                     global_step += 1
             X = model.get_doc_embed().weight.tolist()
-            np.array(X).tofile("mat.npy")
+            np.array(X).tofile(os.path.join(args.output_dir,"mat.npy"))
             ms.append(np.array(X).mean())
             X = preprocessing.normalize(X)
             scores.append(hook(dataset, X))
