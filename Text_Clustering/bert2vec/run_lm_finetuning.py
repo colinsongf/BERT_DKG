@@ -426,7 +426,9 @@ def main(dataset, args, hook):
             model.train()
             scores = []
             ms = []
+            X = model.get_doc_embed().weight.tolist()
             ms.append(np.array(X).mean())
+
             word_weights = torch.tensor(train_dataset.ent_weights).to(device)
             for _ in trange(int(args.num_train_epochs), desc="Epoch"):
                 tr_loss = 0
