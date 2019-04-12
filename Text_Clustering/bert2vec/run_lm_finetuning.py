@@ -421,6 +421,7 @@ def main(dataset, args, hook):
 
         model.train()
         scores = []
+        ms = []
         word_weights = torch.tensor(train_dataset.ent_weights).to(device)
         for _ in trange(int(args.num_train_epochs), desc="Epoch"):
             tr_loss = 0
@@ -452,6 +453,7 @@ def main(dataset, args, hook):
                     global_step += 1
             X = model.get_doc_embed().weight.tolist()
             np.array(X).tofile("mat.npy")
+            ms.append(np.array(X).mean())
             X = preprocessing.normalize(X)
             scores.append(hook(dataset, X))
         # Save a trained model
@@ -463,7 +465,19 @@ def main(dataset, args, hook):
         json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
         print(scores)
+        draw(ms, args.output_dir)
     return model.get_doc_embed().weight.tolist()
+
+def draw(ms, output_dir):
+    import matplotlib.pyplot as plt
+    plt.switch_backend('agg')
+    plt.plot(range(len(ms)), ms)
+    legend = 'mask=%s'% str(mask_prob*100)+"%" if mask_prob!=-1 else "1"
+    plt.xlabel('epoch')
+    plt.ylabel('average of doc matrix')
+    plt.legend(legend)
+    plt.savefig(os.path.join(output_dir, "mask_%s.jpg" % str(mask_prob*100)+"%" if mask_prob!=-1 else "1"))
+
 
 def accuracy(out, labels):
     outputs = np.argmax(out, axis=1)
