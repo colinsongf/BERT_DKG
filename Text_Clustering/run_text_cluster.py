@@ -104,7 +104,6 @@ def load_ai_data():
 
 
 def hook_doc(dataset, X):
-    np.array(X).tofile("mat.npy")
     if metric:
         labels = dataset.target
         true_k = np.unique(labels).shape[0]

@@ -185,8 +185,8 @@ class Args(object):
         self.fp16 = False
         self.loss_scale = 0
         self.vocab_size = vocab_size
-        self.mask_prob = 0.5
-        self.weighted = True
+        self.mask_prob = -1
+        self.weighted = False
         self.weight = 1.
         if self.weighted:
             self.output_dir = "./output_bert_model_weighted_loss"

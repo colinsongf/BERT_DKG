@@ -451,6 +451,7 @@ def main(dataset, args, hook):
                     optimizer.zero_grad()
                     global_step += 1
             X = model.get_doc_embed().weight.tolist()
+            np.array(X).tofile("mat.npy")
             X = preprocessing.normalize(X)
             scores.append(hook(dataset, X))
         # Save a trained model
