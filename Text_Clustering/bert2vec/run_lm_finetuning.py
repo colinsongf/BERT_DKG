@@ -297,186 +297,193 @@ class Tokenizer():
 
 
 def main(dataset, args, hook):
-    global mask_prob
-    mask_prob = args.mask_prob
+    probs = [-1, 0.25,0.5,0.75,1]
+    mss = []
+    for p in probs:
+        global mask_prob
+        mask_prob = p
+        # mask_prob = args.mask_prob
 
-    if args.local_rank == -1 or args.no_cuda:
-        device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
-        n_gpu = torch.cuda.device_count()
-    else:
-        torch.cuda.set_device(args.local_rank)
-        device = torch.device("cuda", args.local_rank)
-        n_gpu = 1
-        # Initializes the distributed backend which will take care of sychronizing nodes/GPUs
-        torch.distributed.init_process_group(backend='nccl')
-    logger.info("device: {} n_gpu: {}, distributed training: {}, 16-bits training: {}".format(
-        device, n_gpu, bool(args.local_rank != -1), args.fp16))
-
-    if args.gradient_accumulation_steps < 1:
-        raise ValueError("Invalid gradient_accumulation_steps parameter: {}, should be >= 1".format(
-                            args.gradient_accumulation_steps))
-
-    args.train_batch_size = args.train_batch_size // args.gradient_accumulation_steps
-
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    if n_gpu > 0:
-        torch.cuda.manual_seed_all(args.seed)
-
-    if not args.do_train:
-        raise ValueError("Training is currently the only implemented execution option. Please set `do_train`.")
-
-    if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
-
-    #train_examples = None
-    num_train_optimization_steps = None
-    if isinstance(dataset, str):
-        train_dataset = BERTDataset(dataset, seq_len=args.max_seq_length,
-                                    corpus_lines=None)
-    else:
-        train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
-                                    corpus_lines=None)
-    num_train_optimization_steps = int(
-        len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
-    if args.local_rank != -1:
-        num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
-
-    tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
-    train_dataset.build_vocab(tokenizer)
-
-    if args.weighted:
-        train_dataset.set_entities_weight(dataset.entities, args.weight)
-    else:
-        train_dataset.set_entities_weight(None)
-
-    # Prepare model
-    bert_config = BertConfig(args.bert_config)
-    bert_config.type_vocab_size = len(train_dataset)
-    bert_config.vocab_size = len(train_dataset.vocab)
-    output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
-    if os.path.exists(output_model_file):
-        model = MyBertForPreTraining.from_pretrained(args.output_dir)
-        args.do_train = False
-        print("loaded checkpoint!")
-    else:
-        model = MyBertForPreTraining(bert_config)
-    if args.fp16:
-        model.half()
-    model.to(device)
-    if args.local_rank != -1:
-        try:
-            from apex.parallel import DistributedDataParallel as DDP
-        except ImportError:
-            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use distributed and fp16 training.")
-        model = DDP(model)
-    elif n_gpu > 1:
-        model = torch.nn.DataParallel(model)
-
-    # Prepare optimizer
-    param_optimizer = list(model.named_parameters())
-    no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
-    optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
-        ]
-
-    if args.fp16:
-        try:
-            from apex.optimizers import FP16_Optimizer
-            from apex.optimizers import FusedAdam
-        except ImportError:
-            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use distributed and fp16 training.")
-
-        optimizer = FusedAdam(optimizer_grouped_parameters,
-                              lr=args.learning_rate,
-                              bias_correction=False,
-                              max_grad_norm=1.0)
-        if args.loss_scale == 0:
-            optimizer = FP16_Optimizer(optimizer, dynamic_loss_scale=True)
+        if args.local_rank == -1 or args.no_cuda:
+            device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
+            n_gpu = torch.cuda.device_count()
         else:
-            optimizer = FP16_Optimizer(optimizer, static_loss_scale=args.loss_scale)
+            torch.cuda.set_device(args.local_rank)
+            device = torch.device("cuda", args.local_rank)
+            n_gpu = 1
+            # Initializes the distributed backend which will take care of sychronizing nodes/GPUs
+            torch.distributed.init_process_group(backend='nccl')
+        logger.info("device: {} n_gpu: {}, distributed training: {}, 16-bits training: {}".format(
+            device, n_gpu, bool(args.local_rank != -1), args.fp16))
 
-    else:
-        optimizer = BertAdam(optimizer_grouped_parameters,
-                             lr=args.learning_rate,
-                             warmup=args.warmup_proportion,
-                             t_total=num_train_optimization_steps)
+        if args.gradient_accumulation_steps < 1:
+            raise ValueError("Invalid gradient_accumulation_steps parameter: {}, should be >= 1".format(
+                                args.gradient_accumulation_steps))
 
-    global_step = 0
-    if args.do_train:
-        logger.info("***** Running training *****")
-        logger.info("  Num examples = %d", len(train_dataset))
-        logger.info("  Batch size = %d", args.train_batch_size)
-        logger.info("  Num steps = %d", num_train_optimization_steps)
+        args.train_batch_size = args.train_batch_size // args.gradient_accumulation_steps
 
-        if args.local_rank == -1:
-            train_sampler = RandomSampler(train_dataset)
+        random.seed(args.seed)
+        np.random.seed(args.seed)
+        torch.manual_seed(args.seed)
+        if n_gpu > 0:
+            torch.cuda.manual_seed_all(args.seed)
+
+        if not args.do_train:
+            raise ValueError("Training is currently the only implemented execution option. Please set `do_train`.")
+
+        if not os.path.exists(args.output_dir):
+            os.makedirs(args.output_dir)
+
+        #train_examples = None
+        num_train_optimization_steps = None
+        if isinstance(dataset, str):
+            train_dataset = BERTDataset(dataset, seq_len=args.max_seq_length,
+                                        corpus_lines=None)
         else:
-            #TODO: check if this works with current data generator from disk that relies on next(file)
-            # (it doesn't return item back by index)
-            train_sampler = DistributedSampler(train_dataset)
-        train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
+            train_dataset = BERTDataset(dataset.data, seq_len=args.max_seq_length,
+                                        corpus_lines=None)
+        num_train_optimization_steps = int(
+            len(train_dataset) / args.train_batch_size / args.gradient_accumulation_steps) * args.num_train_epochs
+        if args.local_rank != -1:
+            num_train_optimization_steps = num_train_optimization_steps // torch.distributed.get_world_size()
 
-        model.train()
-        scores = []
-        ms = []
-        word_weights = torch.tensor(train_dataset.ent_weights).to(device)
-        for _ in trange(int(args.num_train_epochs), desc="Epoch"):
-            tr_loss = 0
-            nb_tr_examples, nb_tr_steps = 0, 0
-            for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
-                batch = tuple(t.to(device) for t in batch)
-                input_ids, input_mask, doc_id, lm_label_ids = batch
-                loss = model(input_ids, doc_id, input_mask, lm_label_ids, word_weights)
-                if n_gpu > 1:
-                    loss = loss.mean() # mean() to average on multi-gpu.
-                if args.gradient_accumulation_steps > 1:
-                    loss = loss / args.gradient_accumulation_steps
-                if args.fp16:
-                    optimizer.backward(loss)
-                else:
-                    loss.backward()
-                tr_loss += loss.item()
-                nb_tr_examples += input_ids.size(0)
-                nb_tr_steps += 1
-                if (step + 1) % args.gradient_accumulation_steps == 0:
-                    if args.fp16:
-                        # modify learning rate with special warm up BERT uses
-                        # if args.fp16 is False, BertAdam is used that handles this automatically
-                        lr_this_step = args.learning_rate * warmup_linear(global_step/num_train_optimization_steps, args.warmup_proportion)
-                        for param_group in optimizer.param_groups:
-                            param_group['lr'] = lr_this_step
-                    optimizer.step()
-                    optimizer.zero_grad()
-                    global_step += 1
-            X = model.get_doc_embed().weight.tolist()
-            np.array(X).tofile(os.path.join(args.output_dir,"mat.npy"))
-            ms.append(np.array(X).mean())
-            X = preprocessing.normalize(X)
-            scores.append(hook(dataset, X))
-        # Save a trained model
-        logger.info("** ** * Saving fine - tuned model ** ** * ")
-        model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
+        tokenizer = Tokenizer(train_dataset.all_docs, vocab_size =args.vocab_size,  lower_case=args.do_lower_case)
+        train_dataset.build_vocab(tokenizer)
+
+        if args.weighted:
+            train_dataset.set_entities_weight(dataset.entities, args.weight)
+        else:
+            train_dataset.set_entities_weight(None)
+
+        # Prepare model
+        bert_config = BertConfig(args.bert_config)
+        bert_config.type_vocab_size = len(train_dataset)
+        bert_config.vocab_size = len(train_dataset.vocab)
         output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
-        torch.save(model_to_save.state_dict(), output_model_file)
-        config_file = os.path.join(args.output_dir, "bert_config.json")
-        json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
+        if os.path.exists(output_model_file):
+            model = MyBertForPreTraining.from_pretrained(args.output_dir)
+            args.do_train = False
+            print("loaded checkpoint!")
+        else:
+            model = MyBertForPreTraining(bert_config)
+        if args.fp16:
+            model.half()
+        model.to(device)
+        if args.local_rank != -1:
+            try:
+                from apex.parallel import DistributedDataParallel as DDP
+            except ImportError:
+                raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use distributed and fp16 training.")
+            model = DDP(model)
+        elif n_gpu > 1:
+            model = torch.nn.DataParallel(model)
 
-        print(scores)
-        draw(ms, args.output_dir)
+        # Prepare optimizer
+        param_optimizer = list(model.named_parameters())
+        no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
+        optimizer_grouped_parameters = [
+            {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+            {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
+            ]
+
+        if args.fp16:
+            try:
+                from apex.optimizers import FP16_Optimizer
+                from apex.optimizers import FusedAdam
+            except ImportError:
+                raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use distributed and fp16 training.")
+
+            optimizer = FusedAdam(optimizer_grouped_parameters,
+                                  lr=args.learning_rate,
+                                  bias_correction=False,
+                                  max_grad_norm=1.0)
+            if args.loss_scale == 0:
+                optimizer = FP16_Optimizer(optimizer, dynamic_loss_scale=True)
+            else:
+                optimizer = FP16_Optimizer(optimizer, static_loss_scale=args.loss_scale)
+
+        else:
+            optimizer = BertAdam(optimizer_grouped_parameters,
+                                 lr=args.learning_rate,
+                                 warmup=args.warmup_proportion,
+                                 t_total=num_train_optimization_steps)
+
+        global_step = 0
+        if args.do_train:
+            logger.info("***** Running training *****")
+            logger.info("  Num examples = %d", len(train_dataset))
+            logger.info("  Batch size = %d", args.train_batch_size)
+            logger.info("  Num steps = %d", num_train_optimization_steps)
+
+            if args.local_rank == -1:
+                train_sampler = RandomSampler(train_dataset)
+            else:
+                #TODO: check if this works with current data generator from disk that relies on next(file)
+                # (it doesn't return item back by index)
+                train_sampler = DistributedSampler(train_dataset)
+            train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
+
+            model.train()
+            scores = []
+            ms = []
+            word_weights = torch.tensor(train_dataset.ent_weights).to(device)
+            for _ in trange(int(args.num_train_epochs), desc="Epoch"):
+                tr_loss = 0
+                nb_tr_examples, nb_tr_steps = 0, 0
+                for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
+                    batch = tuple(t.to(device) for t in batch)
+                    input_ids, input_mask, doc_id, lm_label_ids = batch
+                    loss = model(input_ids, doc_id, input_mask, lm_label_ids, word_weights)
+                    if n_gpu > 1:
+                        loss = loss.mean() # mean() to average on multi-gpu.
+                    if args.gradient_accumulation_steps > 1:
+                        loss = loss / args.gradient_accumulation_steps
+                    if args.fp16:
+                        optimizer.backward(loss)
+                    else:
+                        loss.backward()
+                    tr_loss += loss.item()
+                    nb_tr_examples += input_ids.size(0)
+                    nb_tr_steps += 1
+                    if (step + 1) % args.gradient_accumulation_steps == 0:
+                        if args.fp16:
+                            # modify learning rate with special warm up BERT uses
+                            # if args.fp16 is False, BertAdam is used that handles this automatically
+                            lr_this_step = args.learning_rate * warmup_linear(global_step/num_train_optimization_steps, args.warmup_proportion)
+                            for param_group in optimizer.param_groups:
+                                param_group['lr'] = lr_this_step
+                        optimizer.step()
+                        optimizer.zero_grad()
+                        global_step += 1
+                X = model.get_doc_embed().weight.tolist()
+                ms.append(np.array(X).mean())
+                X = preprocessing.normalize(X)
+                scores.append(hook(dataset, X))
+            # Save a trained model
+            logger.info("** ** * Saving fine - tuned model ** ** * ")
+            model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
+            output_model_file = os.path.join(args.output_dir, "pytorch_model.bin")
+            torch.save(model_to_save.state_dict(), output_model_file)
+            config_file = os.path.join(args.output_dir, "bert_config.json")
+            json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
+
+            print(scores)
+            mss.append(ms)
+    draw(mss, probs, args.output_dir)
     return model.get_doc_embed().weight.tolist()
 
-def draw(ms, output_dir):
+def draw(mss,probs, output_dir):
     import matplotlib.pyplot as plt
     plt.switch_backend('agg')
-    plt.plot(range(len(ms)), ms)
-    legend = 'mask=%s'% str(mask_prob*100)+"%" if mask_prob!=-1 else "1"
+    legend = []
+    for p,ms in zip(probs, mss):
+        legend.append('mask=%s'% (str(mask_prob*100)+"%" if mask_prob!=-1 else "1"))
+        plt.plot(range(len(ms)), ms)
     plt.xlabel('epoch')
     plt.ylabel('average of doc matrix')
     plt.legend(legend)
-    plt.savefig(os.path.join(output_dir, "mask_%s.jpg" % str(mask_prob*100)+"%" if mask_prob!=-1 else "1"))
+
+    plt.savefig(os.path.join(output_dir, "mask.jpg"))
 
 
 def accuracy(out, labels):
