@@ -426,6 +426,7 @@ def main(dataset, args, hook):
             model.train()
             scores = []
             ms = []
+            ms.append(np.array(X).mean())
             word_weights = torch.tensor(train_dataset.ent_weights).to(device)
             for _ in trange(int(args.num_train_epochs), desc="Epoch"):
                 tr_loss = 0
@@ -477,12 +478,11 @@ def draw(mss,probs, output_dir):
     plt.switch_backend('agg')
     legend = []
     for p,ms in zip(probs, mss):
-        legend.append('mask=%s'% (str(mask_prob*100)+"%" if mask_prob!=-1 else "1"))
+        legend.append('mask=%s'% (str(p*100)+"%" if p!=-1 else "1"))
         plt.plot(range(len(ms)), ms)
     plt.xlabel('epoch')
     plt.ylabel('average of doc matrix')
     plt.legend(legend)
-
     plt.savefig(os.path.join(output_dir, "mask.jpg"))
 
 
