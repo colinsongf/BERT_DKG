@@ -298,7 +298,8 @@ class Tokenizer():
 
 def main(dataset, args, hook):
     probs = [-1, 0.25,0.5,0.75,1]
-    mss = []
+    msws = []
+    msds = []
     for p in probs:
         global mask_prob
         mask_prob = p
@@ -425,10 +426,8 @@ def main(dataset, args, hook):
 
             model.train()
             scores = []
-            ms = []
-            X = model.get_doc_embed().weight.tolist()
-            ms.append(np.array(X).mean())
-
+            msd = [np.array(model.get_doc_embed().weight.tolist()).mean()]
+            msw = [np.array(model.get_word_embed().weight.tolist()).mean()]
             word_weights = torch.tensor(train_dataset.ent_weights).to(device)
             for _ in trange(int(args.num_train_epochs), desc="Epoch"):
                 tr_loss = 0
@@ -459,7 +458,8 @@ def main(dataset, args, hook):
                         optimizer.zero_grad()
                         global_step += 1
                 X = model.get_doc_embed().weight.tolist()
-                ms.append(np.array(X).mean())
+                msd.append(np.array(X).mean())
+                msw.append(np.array(model.get_word_embed().weight.tolist()).mean())
                 X = preprocessing.normalize(X)
                 scores.append(hook(dataset, X))
             # Save a trained model
@@ -471,11 +471,13 @@ def main(dataset, args, hook):
             json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
             print(scores)
-            mss.append(ms)
-    draw(mss, probs, args.output_dir)
+            msds.append(msd)
+            msws.append(msw)
+    draw(msds, probs, args.output_dir, "doc")
+    draw(msws, probs, args.output_dir, "word")
     return model.get_doc_embed().weight.tolist()
 
-def draw(mss,probs, output_dir):
+def draw(mss,probs, output_dir, type):
     import matplotlib.pyplot as plt
     plt.switch_backend('agg')
     legend = []
@@ -483,9 +485,9 @@ def draw(mss,probs, output_dir):
         legend.append('mask=%s'% (str(p*100)+"%" if p!=-1 else "1"))
         plt.plot(range(len(ms)), ms)
     plt.xlabel('epoch')
-    plt.ylabel('average of doc matrix')
+    plt.ylabel('average of %s matrix' % type)
     plt.legend(legend)
-    plt.savefig(os.path.join(output_dir, "mask.jpg"))
+    plt.savefig(os.path.join(output_dir, "mask_%s.jpg"%type))
 
 
 def accuracy(out, labels):
