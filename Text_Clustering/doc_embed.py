@@ -186,7 +186,7 @@ class Args(object):
         self.loss_scale = 0
         self.vocab_size = vocab_size
         self.mask_prob = 1
-        self.all_mask = False
+        self.all_mask = True
         self.weighted = False
         self.weight = 1.
         if self.weighted:
