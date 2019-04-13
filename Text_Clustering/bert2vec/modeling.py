@@ -486,11 +486,11 @@ class BertModel(BertPreTrainedModel):
         self.attention = BertSelfAttention(config)
         self.apply(self.init_bert_weights)
 
-    def forward(self, input_ids, token_type_ids=None, attention_mask=None, output_all_encoded_layers=True):
+    def forward(self, input_ids, token_type_ids=None, attention_mask=None, predict_mask=None, output_all_encoded_layers=True):
         if token_type_ids is None:
             token_type_ids = torch.zeros_like(input_ids)
 
-        output = self.embeddings(input_ids, attention_mask, token_type_ids)
+        output = self.embeddings(input_ids, attention_mask, predict_mask, token_type_ids)
         # attention_mask = torch.cat([attention_mask.new_ones([attention_mask.size(0), 1]), attention_mask], dim=1)
         extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
         extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)  # fp16 compatibility
