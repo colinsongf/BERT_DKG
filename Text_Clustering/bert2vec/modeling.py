@@ -261,7 +261,6 @@ class BertEmbeddings(nn.Module):
         batch_size = input_ids.size(0)
         seq_length = input_ids.size(1)
         lengths = input_mask.sum(-1).float()+1
-        print(lengths.requires_grad)
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)
         position_ids = position_ids.unsqueeze(0).expand_as(input_ids)
         if token_type_ids is None:
