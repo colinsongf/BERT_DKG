@@ -486,7 +486,7 @@ def draw(mss,probs, output_dir, type):
         plt.plot(range(len(ms)), ms)
     plt.xlabel('epoch')
     plt.ylabel('average of %s matrix' % type)
-    plt.legend(legend)
+    plt.legend(legend,loc='best')
     plt.savefig(os.path.join(output_dir, "mask_%s.jpg"%type))
 
 
