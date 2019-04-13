@@ -270,7 +270,7 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
         # 1.
-        embeddings = words_embeddings + doc_embeddings/lengths + position_embeddings
+        embeddings = words_embeddings + doc_embeddings/(lengths+1) + position_embeddings
 
         # 2.
         # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
