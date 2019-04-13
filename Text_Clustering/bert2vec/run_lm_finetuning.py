@@ -474,8 +474,8 @@ def main(dataset, args, hook):
 
             msds.append(msd)
             msws.append(msw)
-            best_scores.append((max([f[1] for f in scores])))
-    print(best_scores)
+            best_scores.append(max([f[1] for f in scores]))
+    np.array(best_scores).tofile(os.path.join(args.output_dir, "best_scores.txt"))
     draw(msds, probs, args.output_dir, "doc")
     draw(msws, probs, args.output_dir, "word")
     return model.get_doc_embed().weight.tolist()
