@@ -260,7 +260,7 @@ class BertEmbeddings(nn.Module):
     def forward(self, input_ids, input_mask, token_type_ids=None):
         batch_size = input_ids.size(0)
         seq_length = input_ids.size(1)
-        lengths = input_mask.sum(-1)
+        lengths = input_mask.sum(-1).float()+1
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)
         position_ids = position_ids.unsqueeze(0).expand_as(input_ids)
         if token_type_ids is None:
@@ -270,7 +270,7 @@ class BertEmbeddings(nn.Module):
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
         # 1.
-        embeddings = words_embeddings + doc_embeddings/(lengths+1.).unsqueeze(1).unsqueeze(1) + position_embeddings
+        embeddings = words_embeddings + doc_embeddings/lengths.unsqueeze(1).unsqueeze(1) + position_embeddings
 
         # 2.
         # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
