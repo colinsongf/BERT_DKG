@@ -257,10 +257,10 @@ class BertEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.hidden_size = config.hidden_size
 
-    def forward(self, input_ids, input_mask, token_type_ids=None):
+    def forward(self, input_ids, input_mask, predict_mask, token_type_ids=None):
         batch_size = input_ids.size(0)
         seq_length = input_ids.size(1)
-        lengths = input_mask.sum(-1).float()+1
+        lengths = ((predict_mask==-1).sum(-1)-(input_mask==0).sum(-1)).float()+1
         position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)
         position_ids = position_ids.unsqueeze(0).expand_as(input_ids)
         if token_type_ids is None:
@@ -509,7 +509,7 @@ class MyBertForPreTraining(BertPreTrainedModel):
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, masked_lm_labels=None,
                 word_weight=None):
-        sequence_output = self.bert(input_ids, token_type_ids, attention_mask,
+        sequence_output = self.bert(input_ids, token_type_ids, attention_mask,masked_lm_labels,
                                     output_all_encoded_layers=False)
         # prediction_scores = self.cls(sequence_output)[:, 1:]
         prediction_scores = self.cls(sequence_output)
