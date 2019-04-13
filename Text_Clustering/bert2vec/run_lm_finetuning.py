@@ -303,6 +303,7 @@ def main(dataset, args, hook):
         probs = [args.mask_prob]
     msws = []
     msds = []
+    best_scores = []
     for p in probs:
         global mask_prob
         mask_prob = p
@@ -471,9 +472,10 @@ def main(dataset, args, hook):
             config_file = os.path.join(args.output_dir, "bert_config.json")
             json.dump(json.loads(bert_config.to_json_string()), open(config_file, "w"))
 
-            print(scores)
             msds.append(msd)
             msws.append(msw)
+            best_scores.append((max([f[1] for f in scores])))
+    print(best_scores)
     draw(msds, probs, args.output_dir, "doc")
     draw(msws, probs, args.output_dir, "word")
     return model.get_doc_embed().weight.tolist()
