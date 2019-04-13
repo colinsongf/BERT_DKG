@@ -297,14 +297,15 @@ class Tokenizer():
 
 
 def main(dataset, args, hook):
-    probs = [-1, 0.25,0.5,0.75,1]
+    if args.all_mask:
+        probs = [-1, 0.25,0.5,0.75,1]
+    else:
+        probs = [args.mask_prob]
     msws = []
     msds = []
     for p in probs:
         global mask_prob
         mask_prob = p
-        # mask_prob = args.mask_prob
-
         if args.local_rank == -1 or args.no_cuda:
             device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
             n_gpu = torch.cuda.device_count()
@@ -486,7 +487,7 @@ def draw(mss,probs, output_dir, type):
         plt.plot(range(len(ms)), ms)
     plt.xlabel('epoch')
     plt.ylabel('average of %s matrix' % type)
-    plt.legend(legend,loc='upper right')
+    plt.legend(legend,loc='best')
     plt.savefig(os.path.join(output_dir, "mask_%s.jpg"%type))
 
 
