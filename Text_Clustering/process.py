@@ -50,6 +50,7 @@ def json_to_conll2():
     r2 = re.compile("[\W]{3,}")
     r3 = re.compile('''[^\w,.?!\-;:'"<>]''')
     defined_words = set(["Information retrieval", "Information sciences", "Information science"])
+    fc = open("data/ai_conference.txt", "w")
     with open("data/ai_data_sents_new.txt", "w") as fw1:
         with open("NER_projects/pt_bert_ner/semi-data/ai_data_to_predict_new.txt", "w") as fw2:
             with open("/home/yjc/fc_out_academic.txt") as fr:
@@ -77,6 +78,7 @@ def json_to_conll2():
                                                           re.sub(r3, "", word.text)]) + "\n\n")
                             fw1.write('\n'.join(fw1_) + "\n\n")
                             fw_c.write('\n')
+                            fc.write(ob['journalName'] + "\n")
                             i += 1
                 print(i)
 
