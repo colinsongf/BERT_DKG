@@ -338,10 +338,11 @@ def train():
     train_sampler = RandomSampler(train_data)
     train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=config['train']['batch_size'])
 
-    unlabeled_train_data = create_tensor_data(unlabeled_train_features)
-    unlabeled_train_sampler = SequentialSampler(unlabeled_train_data)
-    unlabeled_data_loader = DataLoader(unlabeled_train_data, sampler=unlabeled_train_sampler,
-                                       batch_size=config['train']['batch_size'])
+    if config['task']['ssl']:
+        unlabeled_train_data = create_tensor_data(unlabeled_train_features)
+        unlabeled_train_sampler = SequentialSampler(unlabeled_train_data)
+        unlabeled_data_loader = DataLoader(unlabeled_train_data, sampler=unlabeled_train_sampler,
+                                           batch_size=config['train']['batch_size'])
 
     global_step = int(
         len(train_examples) / config['train']['batch_size'] / config['train'][
