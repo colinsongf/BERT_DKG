@@ -16,7 +16,7 @@ task:
   # The dataset, one of conll2003, ai
   data_type: conll2003
   # Use tiny dataset when set true
-  debug: true
+  debug: false
   # Whether use Entropy Minimization Regularization, must given `train_unlabeled.txt` when set true.
   ssl: false
   # Whether use the BIOES format
@@ -27,9 +27,9 @@ task:
   # Both options satisfy that the total sequence length still smaller then 'max_seq_length'.
   doc_level: true
   # The type of embedding layer, BertEmbed / RandomEmbed
-  embedder: RandomEmbed
+  embedder: BertEmbed
   # The type of middle layer, MultiAttn / BiLSTM / None
-  encoder: MultiAttn
+  encoder: None
   # The number of encoders
   layer_num: 1
   # Output layer, must in: SoftmaxDecoder / CRFDecoder
