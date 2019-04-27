@@ -43,18 +43,22 @@ class NERModel(nn.Module):
             self.embedder = BertEmbed.from_pretrained(config_path, model_state)
         else:
             self.embedder = eval(embedder)(config)
-        self.encoder = eval(encoder)(self.hidden_size, self.dropout_rate, layer_num)
+        if encoder != "None":
+            self.encoder = eval(encoder)(self.hidden_size, self.dropout_rate, layer_num)
+        else:
+            self.encoder = None
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate, cal_X_loss)
 
 
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
         if not config['task']['doc_level']:
-            embed = self.embedder(input_ids, input_mask, segment_ids)  # (batch_size, max_seq_len, hidden_size)
+            output = self.embedder(input_ids, input_mask, segment_ids)  # (batch_size, max_seq_len, hidden_size)
         else:
-            embed = self.embedder(input_ids, input_mask)  # (batch_size, max_seq_len, hidden_size)
-        hidden = self.encoder(embed, input_mask)  # (batch_size, max_seq_len, hidden_size)
-        return self.decoder(hidden, predict_mask, label_ids)
+            output = self.embedder(input_ids, input_mask)  # (batch_size, max_seq_len, hidden_size)
+        if self.encoder:
+            output = self.encoder(output, input_mask)  # (batch_size, max_seq_len, hidden_size)
+        return self.decoder(output, predict_mask, label_ids)
 
 
 class InputExample(object):

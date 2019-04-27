@@ -85,7 +85,7 @@ def load_ai_data():
 
     docs_entities = []
     # TODO: change the 'prediction_entities.txt' path
-    path = "NER_projects/models/output/conll2003/RandomEmbed_BiLSTM_CRFDecoder_reg_doc/prediction_entities.txt"
+    path = "NER_projects/output/conll2003/BertEmbed_MultiAttn_CRFDecoder_reg_doc/prediction_entities.txt"
     if os.path.exists(path):
         with open(path, encoding="utf8") as f:
             for line in f.readlines():

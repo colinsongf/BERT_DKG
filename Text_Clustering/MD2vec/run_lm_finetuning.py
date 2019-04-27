@@ -79,7 +79,7 @@ class MyDataset(Dataset):
 
         self.num_docs = len(self.all_docs)
 
-    # TODO: change the entity type accordding to your data
+    # TODO: change the entity type according to your data
     def set_entities_weight(self, entities=None, weight=2):
         ents = set()
         if entities:
