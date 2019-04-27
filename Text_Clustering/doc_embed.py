@@ -1,4 +1,6 @@
+# -*- coding:utf8 -*-
 
+# sklearn的TF-IDF模型
 def get_tfidf_embed(dataset, hook):
     from sklearn.feature_extraction.text import TfidfVectorizer
     import sklearn.preprocessing as preprocessing
@@ -11,6 +13,7 @@ def get_tfidf_embed(dataset, hook):
     return X
 
 
+# gensim的TF-IDF模型
 def get_tfidf_embed2(dataset, hook):
     import gensim
     from gensim.models.tfidfmodel import TfidfModel
@@ -26,12 +29,13 @@ def get_tfidf_embed2(dataset, hook):
     hook(dataset, X)
     return X
 
+
+# gensim的LDA模型
 def get_lda_embed(dataset, hook):
     import gensim
     from gensim.corpora.dictionary import Dictionary
     import sklearn.preprocessing as preprocessing
     import numpy as np
-
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(dataset.data)]
     dictionary = Dictionary(docs)
     dictionary.filter_extremes(no_below=2, no_above=0.8)
@@ -39,12 +43,6 @@ def get_lda_embed(dataset, hook):
     tfidf = gensim.models.TfidfModel(corpus)
     corpus_tfidf = tfidf[corpus]
     lda = gensim.models.ldamodel.LdaModel(corpus=corpus_tfidf, num_topics=100)
-    corpus_lda = lda[corpus_tfidf]
-    # from gensim.test.utils import datapath
-    # temp_file = datapath("lda_model")
-    # lda.save(temp_file)
-    #lda = gensim.models.ldamodel.LdaModel.load(temp_file)
-
     topics = lda.get_topics()
     X = []
     for doc in corpus:
@@ -55,6 +53,8 @@ def get_lda_embed(dataset, hook):
     hook(dataset,X)
     return X
 
+
+# sklearn 的 LDA模型
 def get_lda_embed2(dataset, hook):
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.decomposition import LatentDirichletAllocation
@@ -67,6 +67,8 @@ def get_lda_embed2(dataset, hook):
     hook(dataset, X)
     return X
 
+
+# gensim 的doc2vec模型
 def get_doc2vec_embed(dataset, hook):
     import gensim
     from gensim.models.doc2vec import Doc2Vec, TaggedDocument
@@ -84,22 +86,15 @@ def get_doc2vec_embed(dataset, hook):
     hook(dataset, X)
     return X
 
-def get_doc2vec2_embed(dataset, hook):
-    print("data len:%d" % len(dataset.data))
-    from doc2vec.paragraphvec.doc2vec import main
-    import sklearn.preprocessing as preprocessing
-    X = main(dataset.data)
-    X = preprocessing.normalize(X)
-    hook(dataset, X)
-    return X
 
+# 用训练好的BERT模型的最后一层求和作为序列向量，直接用官方的预训练模型效果较差。
 def get_bert_embed(data):
     import torch
     import gensim
     from pytorch_pretrained_bert import BertModel, BertTokenizer
     docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
     device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
-    model = BertModel.from_pretrained('bert-base-uncased')
+    model = BertModel.from_pretrained('bert-base-uncased')  # 可以指定由专门预料上训练的模型路径
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     model.to(device)
     model.eval()
@@ -119,55 +114,18 @@ def get_bert_embed(data):
     return X
 
 
-def get_finetuned_bert_embed(data):
-    import torch
-    import gensim
+# 采用MD2vec模型，参数由 Args 类控制
+def get_MD2vec_embed(dataset, hook):
     import sklearn.preprocessing as preprocessing
-    from torch.utils.data import TensorDataset
-    import os
-    from pytorch_pretrained_bert import BertModel, BertTokenizer
-    from flair.data import Sentence
-    import sklearn
-    import numpy as np
-    # if not os.path.exists("data/20news_conll.txt"):
-    #     docs = [Sentence(doc) for doc in data]
-    #     with open("data/20news_conll.txt", "w") as f:
-    #         for doc in docs:
-    #             f.write('\n'.join(["-DOCSTART-\n"]+[tok.text for tok in doc.tokens]+["\n\n"]))
-    # docs = [Sentence(doc) for doc in data]
-    docs = [gensim.utils.simple_preprocess(doc) for i, doc in enumerate(data)]
-    device = torch.device("cuda", torch.cuda.current_device()) if torch.cuda.is_available() else torch.device("cpu")
-    model = BertModel.from_pretrained('bert2vec/output_dir_lm_ai')
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=False)
-    model.to(device)
-    model.eval()
-    X = []
-    for i, doc in enumerate(docs):
-        print("converting %d" % i)
-        doc_tok = ['[CLS]']
-        for word in doc:
-            toks = tokenizer.tokenize(word)
-            doc_tok.extend(toks)
-        doc_tok += ['[SEP]']
-        doc_ids = tokenizer.convert_tokens_to_ids(doc_tok[:512])
-        tokens_tensor = torch.tensor([doc_ids]).to(device)
-        with torch.no_grad():
-            encoded_layers, pooled_output = model(tokens_tensor, output_all_encoded_layers=True)
-        X.append(np.concatenate([encoded_layer.sum(1).tolist()[0] for encoded_layer in encoded_layers[-4:]]))
-
-    return preprocessing.normalize(X)
-
-
-def get_bert2vec_embed(dataset, hook):
-    import sklearn.preprocessing as preprocessing
-    from bert2vec.run_lm_finetuning import main
+    from MD2vec.run_lm_finetuning import main
     X = main(dataset, Args(), hook)
     X = preprocessing.normalize(X)
     hook(dataset, X)
     return X
 
 class Args(object):
-    def __init__(self, train_file="./data/20news.txt", vocab="./bert2vec/vocab.txt", bert_config="./bert2vec/bert_config.json", vocab_size = 28000):
+    def __init__(self, train_file="./data/20newsgroup.txt", vocab="./MD2vec/vocab.txt",
+                 bert_config="./MD2vec/bert_config.json", vocab_size=28000):
         self.train_file = train_file
         self.vocab = vocab
         self.bert_config = bert_config
@@ -185,11 +143,11 @@ class Args(object):
         self.fp16 = False
         self.loss_scale = 0
         self.vocab_size = vocab_size
-        self.mask_prob = 1
-        self.all_mask = True
-        self.weighted = False
-        self.weight = 1.
-        if self.weighted:
+        self.mask_prob = 1  # mask的比例
+        self.all_mask = True  # 调试模式下，每个mask比例都会跑一遍
+        self.weighted = False  # 是否采用实体词信息计算 weighted loss
+        self.weight = 1.  # 如果采用weighted loss，设定实体词权重（）
+        if self.weighted:  # 设定输出目录
             self.output_dir = "./output_bert_model_weighted_loss"
         else:
             self.output_dir = "./output_bert_model"

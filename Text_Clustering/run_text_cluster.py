@@ -1,20 +1,18 @@
 # -*- coding:utf8 -*-
 from __future__ import print_function
 
-from sklearn.datasets import fetch_20newsgroups
-from sklearn import metrics
-
-from sklearn.cluster import MiniBatchKMeans
-import os
 import logging
-from optparse import OptionParser
-import sys
-from time import time
-from doc_embed import *
-import numpy as np
-from collections import Counter
+import os
 import random
+import sys
 from copy import deepcopy
+from optparse import OptionParser
+
+import numpy as np
+from doc_embed import *
+from sklearn import metrics
+from sklearn.cluster import MiniBatchKMeans
+from sklearn.datasets import fetch_20newsgroups
 
 # Display progress logs on stdout
 logging.basicConfig(level=logging.INFO,
@@ -22,7 +20,7 @@ logging.basicConfig(level=logging.INFO,
 
 # parse commandline arguments
 op = OptionParser()
-op.add_option("--embed_type", dest="embed_type", default="get_bert2vec_embed")
+op.add_option("--embed_type", dest="embed_type", default="get_MD2vec_embed")
 op.add_option("--run_num", dest="run_num", type=int, default=10)
 op.add_option("--cluster_num", dest="cluster_num", type=int, default=8)
 op.add_option("--doc_path", dest="doc_path", default="20newsgroup")
@@ -75,7 +73,7 @@ class Mydataset(object):
 
 def load_ai_data():
     docs = []
-    with open("data/ai_data_sents_new.txt", encoding="utf8") as f:
+    with open("data/ai_abstracts.txt", encoding="utf8") as f:
         doc = []
         for line in f.readlines():
             if line == "\n":
@@ -86,7 +84,8 @@ def load_ai_data():
     print("%d docs" % len(docs))
 
     docs_entities = []
-    path = "NER_projects/pt_bert_ner/no_X_version/output_AttnCRFDecoder_ai_reg_doc/prediction_entities.txt"
+    # TODO: change the 'prediction_entities.txt' path
+    path = "NER_projects/models/output/conll2003/RandomEmbed_BiLSTM_CRFDecoder_reg_doc/prediction_entities.txt"
     if os.path.exists(path):
         with open(path, encoding="utf8") as f:
             for line in f.readlines():
