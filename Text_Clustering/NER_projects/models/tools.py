@@ -1,4 +1,46 @@
 import torch
+import tempfile,tarfile
+import os
+from pytorch_pretrained_bert.modeling import BertConfig
+from pytorch_pretrained_bert.modeling import PRETRAINED_MODEL_ARCHIVE_MAP,CONFIG_NAME,cached_path
+
+def get_config(config_path_or_type, logger):
+    if config_path_or_type in PRETRAINED_MODEL_ARCHIVE_MAP:
+        archive_file = PRETRAINED_MODEL_ARCHIVE_MAP[config_path_or_type]
+    else:
+        archive_file = config_path_or_type
+    # redirect to the cache, if necessary
+    try:
+        resolved_archive_file = cached_path(archive_file)
+    except EnvironmentError:
+        logger.error(
+            "Model name '{}' was not found in model name list ({}). "
+            "We assumed '{}' was a path or url but couldn't find any file "
+            "associated to this path or url.".format(
+                config_path_or_type,
+                ', '.join(PRETRAINED_MODEL_ARCHIVE_MAP.keys()),
+                archive_file))
+        return None
+    if resolved_archive_file == archive_file:
+        logger.info("loading archive file {}".format(archive_file))
+    else:
+        logger.info("loading archive file {} from cache at {}".format(
+            archive_file, resolved_archive_file))
+    if os.path.isdir(resolved_archive_file):
+        serialization_dir = resolved_archive_file
+    else:
+        # Extract archive to temp dir
+        tempdir = tempfile.mkdtemp()
+        logger.info("extracting archive file {} to temp dir {}".format(
+            resolved_archive_file, tempdir))
+        with tarfile.open(resolved_archive_file, 'r:gz') as archive:
+            archive.extractall(tempdir)
+        serialization_dir = tempdir
+    # Load config
+    config_file = os.path.join(serialization_dir, CONFIG_NAME)
+    config = BertConfig.from_json_file(config_file)
+    logger.info("Model config {}".format(config))
+    return config
 
 def valid_first(predict_mask, labels=None, logits=None):
     '''

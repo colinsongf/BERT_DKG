@@ -13,34 +13,34 @@ import numpy as np
 import torch
 import torch.nn as nn
 import yaml
+from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+from tqdm import tqdm, trange
+
+from pytorch_pretrained_bert.optimization import BertAdam
+from pytorch_pretrained_bert.tokenization import BertTokenizer
+
+from tools import *
 from decoders import *
 from embedders import *
 from encoders import *
-from pytorch_pretrained_bert.modeling import BertConfig
-from pytorch_pretrained_bert.optimization import BertAdam
-from pytorch_pretrained_bert.tokenization import BertTokenizer
-from tools import valid_first
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from tqdm import tqdm, trange
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
 class NERModel(nn.Module):
-    def __init__(self, config_path,
+    def __init__(self, config_path_or_type,
                  num_labels, layer_num, embedder, encoder, decoder,
                  model_state=None, cal_X_loss=False):
         super(NERModel, self).__init__()
-        config = BertConfig.from_json_file(os.path.join(config_path, "bert_config.json"))
+        config = get_config(config_path_or_type, logger)
         self.dropout_rate = config.hidden_dropout_prob
         self.hidden_size = config.hidden_size
         self.embedding_dim = config.hidden_size
 
         if embedder == "BertEmbed":
-            self.embedder = BertEmbed.from_pretrained(config_path, model_state)
+            self.embedder = BertEmbed.from_pretrained(config_path_or_type, model_state)
         else:
             self.embedder = eval(embedder)(config)
         if encoder != "None":
@@ -59,7 +59,6 @@ class NERModel(nn.Module):
         if self.encoder:
             output = self.encoder(output, input_mask)  # (batch_size, max_seq_len, hidden_size)
         return self.decoder(output, predict_mask, label_ids)
-
 
 class InputExample(object):
     '''
