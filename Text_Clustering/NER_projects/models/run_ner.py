@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 class NERModel(nn.Module):
     def __init__(self, config_path_or_type,
                  num_labels, layer_num, embedder, encoder, decoder,
-                 model_state=None, cal_X_loss=False):
+                 cal_X_loss=False, model_state=None):
         super(NERModel, self).__init__()
         config = get_config(config_path_or_type, logger)
         self.dropout_rate = config.hidden_dropout_prob
@@ -658,7 +658,7 @@ if __name__ == "__main__":
             lower_case = checkpoint['lower_case']
             model = NERModel(config['task']['bert_model_dir'], len(label_list), config['task']['layer_num'],
                              config['task']['embedder'], config['task']['encoder'], config['task']['decoder'],
-                             checkpoint['model_state'], config['task']['cal_X_loss'])
+                             config['task']['cal_X_loss'],checkpoint['model_state'])
             train_loss_list = checkpoint['train_loss_list']
             dev_loss_list = checkpoint['dev_loss_list']
         else:
