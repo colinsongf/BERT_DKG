@@ -23,7 +23,7 @@ op = OptionParser()
 op.add_option("--embed_type", dest="embed_type", default="get_MD2vec_embed")
 op.add_option("--run_num", dest="run_num", type=int, default=10)
 op.add_option("--cluster_num", dest="cluster_num", type=int, default=8)
-op.add_option("--doc_path", dest="doc_path", default="20newsgroup")
+op.add_option("--doc_path", dest="doc_path", default="ai")
 op.add_option("--TEST_MODE", dest="TEST_MODE", default=False)
 print(__doc__)
 op.print_help()
@@ -106,14 +106,11 @@ def hook_doc(dataset, X):
     if metric:
         labels = dataset.target
         true_k = np.unique(labels).shape[0]
-        f = open("result_%s.txt" % opts.embed_type, "a")
         vs = np.array([])
         nmis = np.array([])
         dbs = np.array([])
         chs = np.array([])
         for i in range(opts.run_num):
-            # db = DBSCAN(eps=0.3, min_samples=10).fit(X)
-            # labels_ = db.labels_
             km = MiniBatchKMeans(n_clusters=true_k, init='k-means++', n_init=1,
                                  init_size=1000, batch_size=1000, verbose=False)
             km.fit(X)
@@ -255,38 +252,12 @@ def hook_doc(dataset, X):
             df_nodes = df_nodes.append(n_df,ignore_index=True)
             df_edges = df_edges.append(e_df,ignore_index=True)
 
-
-            # cluster = 1
-            # 选择top 50频次的边以及相应节点
-            # co_occurence = dict(sorted(co_occurence.items(), key=lambda x: x[1], reverse=True)[:50])
-            # used_fields = [i[0] for i in co_occurence.keys()]
-            # used_tecs = [i[1] for i in co_occurence.keys()]
-            # with open("cluster_%d.csv" % cluster, "w", encoding="utf8") as f:
-            #     f.write('\n'.join(
-            #         ["Source,Target,Type,Weight"] + [','.join([str(f), str(t + len(fields)), "Directed", str(n)]) for
-            #                                          (f, t), n in co_occurence.items()]))
-            # with open("nodes_%d.csv" % cluster, "w", encoding="utf8") as f:
-            #     f.write('\n'.join(
-            #         ["Id,Label"] + [','.join([str(id), str(normal)]) for lower, [normal, num, id] in
-            #                         fields.items() if id in used_fields]))
-            #     f.write("\n")
-            #     f.write('\n'.join(
-            #         [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
-            #                         tecs.items() if id in used_tecs]))
-            #
-
             # 选择top3 field以及相应的tec
             fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
 
             # 选择1%之后的几个
             # fields_ = dict(sorted(fields.items(), key=lambda x: x[1][1], reverse=True)[
             #                int(len(fields) * 0.01):int(len(fields) * 0.05) + field_top])
-
-
-            # filter_fields = dict([f for f in fields.items() if f[0] not in pre_fields])
-            # #fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[int(len(filter_fields)*0.01):int(len(filter_fields)*0.05)+field_top])
-            # fields_ = dict(sorted(filter_fields.items(), key=lambda x: x[1][1], reverse=True)[:field_top])
-            # pre_fields.update(set([(f[0],f[1][2]) for f in fields_.items()]))
 
             used_fields = [i[1][-1] for i in fields_.items()]
             co_occurence_ = [i for i in co_occurence.items() if i[0][0] in used_fields]
@@ -304,6 +275,17 @@ def hook_doc(dataset, X):
                     [','.join([str(id + len(fields)), str(normal)]) for lower, [normal, num, id] in
                      tecs.items() if id in used_tecs]))
 
+            top_tec = sorted([(t[1][0], t[1][1]) for t in tecs.items()], key=lambda x: x[1], reverse=True)[:field_top]
+            top_field = [(f[1][0], f[1][1]) for f in fields_.items()]
+            cluster_df["cluster #%d (%d abstracts)" % (cluster, len(labels[labels == cluster]))] = np.array(
+                [f[0] for f in top_field] + [t[0] for t in top_tec])
+            cluster_df["nums #%d" % cluster] = np.array([f[1] for f in top_field] + [t[1] for t in top_tec])
+            print('-' * 30 + "fields of cluster %d, docs:%d" % (cluster, len(labels[labels == cluster])) + '-' * 30)
+            for i, (f, t) in enumerate(zip(top_field, top_tec)):
+                print(str(f) + " ###### " + str(t))
+            print("\n")
+
+            # 用 networkx 画图
             # eages = [(f, t + len(fields), n) for (f, t), n in co_occurence_]
             # id2label = {id: normal for lower, [normal, num, id] in fields.items()}
             # id2label.update({id + len(fields): normal for lower, [normal, num, id] in tecs.items()})
@@ -327,15 +309,6 @@ def hook_doc(dataset, X):
             # plt.axis('off')
             # plt.savefig(os.path.join(path, "cluster_%d.png" % cluster))  # save as png
             # # plt.show()
-
-            top_tec = sorted([(t[1][0],t[1][1]) for t in tecs.items()], key=lambda x: x[1], reverse=True)[:field_top]
-            top_field = [(f[1][0],f[1][1]) for f in fields_.items()]
-            cluster_df["cluster #%d (%d abstracts)" % (cluster,len(labels[labels==cluster]))] = np.array([f[0] for f in top_field]+[t[0] for t in top_tec])
-            cluster_df["nums #%d" %cluster] = np.array([f[1] for f in top_field] + [t[1] for t in top_tec])
-            print('-' * 30 + "fields of cluster %d, docs:%d" % (cluster, len(labels[labels==cluster]))+ '-' * 30)
-            for i,(f,t) in enumerate(zip(top_field,top_tec)):
-                print(str(f)+" ###### "+str(t))
-            print("\n")
 
 
         df_nodes.to_csv("nodes.csv",index_label="node_id")

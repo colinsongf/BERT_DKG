@@ -511,5 +511,6 @@ class MyBertForPreTraining(BertPreTrainedModel):
 
     def get_doc_embed(self):
         return self.bert.embeddings.doc_embeddings
+
     def get_word_embed(self):
         return self.bert.embeddings.word_embeddings
