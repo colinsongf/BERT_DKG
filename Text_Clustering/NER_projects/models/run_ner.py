@@ -405,11 +405,11 @@ def train():
         if config['test']['do_every_epoch']:
             evaluate('test', epoch)
 
-        # Save a checkpoint
-        model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
-        torch.save({'epoch': epoch, 'model_state': model_to_save.state_dict(), 'max_seq_length': max_seq_length,
-                    'lower_case': lower_case, 'train_loss_list': train_loss_list, 'dev_loss_list': dev_loss_list},
-                   os.path.join(config['task']['output_dir'], 'checkpoint-%d' % epoch))
+        # # Save a checkpoint
+        # model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
+        # torch.save({'epoch': epoch, 'model_state': model_to_save.state_dict(), 'max_seq_length': max_seq_length,
+        #             'lower_case': lower_case, 'train_loss_list': train_loss_list, 'dev_loss_list': dev_loss_list},
+        #            os.path.join(config['task']['output_dir'], 'checkpoint-%d' % epoch))
 
     draw(train_loss_list, dev_loss_list, config['train']['epochs'])
 
