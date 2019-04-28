@@ -7,6 +7,7 @@
 2. 文档聚类，用于将相似的论文摘要聚成一类，在文档向量化模型中对实体词的loss进行加权计算，以使向量包含更多实体词信息。
     - 用Masked Doc2vec(MD2vec)进行文档向量化，`doc_embed.py`中也有`TF-IDF`,`doc2vec`等方法来进行对比。
     - 聚类使用`kmeans`方法。
+    - 聚类目的是缩小图谱规模，发现子领域。
 3. 用`gephi`绘制知识图谱。 
 # MD2vec
 本项目借用BERT模型的MASK LM 思想，提出MD2vec模型用于生成文档向量，相比doc2vec，
@@ -15,6 +16,7 @@ doc2vec中的DM模型是根据有限窗口内的词直接求和来预测下一�
 而MD2vec是对所有非“[mask]”词的加权求和，在权重计算上考虑到
 了不同词的本身信息（word embedding）以及词的位置信息（position embedding）。
 MD2vec模型如下图所示：
+
 ![img1](imgs/img1.png)
 
 # NER_projects
@@ -77,6 +79,8 @@ BERT预训练模型中`max_position_embeddings`参数。为`false`时，输入�
 
 # 图谱示例：
 下图为某个聚类的领域-技术实体，该聚类主要和“信息”“语言”相关，选择了top10领域实体（红色）展现，蓝色为相关技术实体:
+
 ![img1](imgs/img2.png)
 `Information Retrieval`领域详情：
+
 ![img1](imgs/img3.png)
