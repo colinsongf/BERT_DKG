@@ -39,7 +39,6 @@ def get_config(config_path_or_type, logger):
     # Load config
     config_file = os.path.join(serialization_dir, CONFIG_NAME)
     config = BertConfig.from_json_file(config_file)
-    logger.info("Model config {}".format(config))
     return config
 
 def valid_first(predict_mask, labels=None, logits=None):
