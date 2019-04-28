@@ -41,7 +41,7 @@ train:
   # Whether do training in this run
   do: true
   # Total batch size for training
-  batch_size: 64
+  batch_size: 50
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   # Total number of training epochs to perform
@@ -55,11 +55,11 @@ train:
 dev:
   do_every_epoch: true
   do: true
-  batch_size: 64
+  batch_size: 50
 test:
   do_every_epoch: true
   do: true
-  batch_size: 64
+  batch_size: 50
 predict:
   do: false
   batch_size: 512
