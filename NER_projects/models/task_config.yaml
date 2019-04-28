@@ -36,12 +36,12 @@ task:
   decoder: CRFDecoder
   # We break the word into tokens, assume the labels are 'S-PER X X X', if 'cal_X_loss' is true,
   # then the last three tokens' loss will be added to the total loss when training.
-  cal_X_loss: True
+  cal_X_loss: false
 train:
   # Whether do training in this run
   do: true
   # Total batch size for training
-  batch_size: 50
+  batch_size: 54
   # The initial learning rate for Adam
   learning_rate: !!float 5e-5
   # Total number of training epochs to perform
@@ -55,11 +55,11 @@ train:
 dev:
   do_every_epoch: true
   do: true
-  batch_size: 50
+  batch_size: 54
 test:
   do_every_epoch: true
   do: true
-  batch_size: 50
+  batch_size: 54
 predict:
   do: false
   batch_size: 512
