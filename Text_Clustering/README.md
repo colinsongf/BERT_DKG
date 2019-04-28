@@ -1,8 +1,25 @@
+# 领域知识图谱构建
+本项目旨在构建计算机领域的领域-技术知识图谱，主要包含3部分：
+1. 命名实体识别，提取出论文摘要中的领域词和技术词，即`FIELD`和`TEC`两类，在BERT模型基础上添加了些内容，包括：
+    - 用半监督熵正则化方法融合无标注数据；
+    - 摘要中重要实体会出现在多个句子中，将输入变为多个句子；
+    - 可以选择在预测的时候是否将`wordpiece`后的后面几个`token`（对应label为`X`）也进行loss计算。
+2. 文档聚类，用于将相似的论文摘要聚成一类，在文档向量化模型中对实体词的loss进行加权计算，以使向量包含更多实体词信息。
+    - 用Masked Doc2vec(MD2vec)进行文档向量化，`doc_embed.py`中也有`TF-IDF`,`doc2vec`等方法来进行对比。
+    - 聚类使用`kmeans`方法。
+3. 用`gephi`绘制知识图谱。 
 # MD2vec
+本项目借用BERT模型的MASK LM 思想，提出MD2vec模型用于生成文档向量，相比doc2vec，
+doc2vec中的DM模型是根据有限窗口内的词直接求和来预测下一个词，
+这意味着其并不关注窗口内词的序列信息，也不区分那些词的权重，
+而MD2vec是对所有非“[mask]”词的加权求和，在权重计算上考虑到
+了不同词的本身信息（word embedding）以及词的位置信息（position embedding）。
+MD2vec模型如下图所示：
+![img1](imgs/img1.png)
 
 # NER_projects
 ## bert_model
-需下载预训练模型，解压后有如下三个：
+需下载预训练模型文件：
 - `bert_config.json`
 - `pytorch_model.bin`
 - `vocab.txt`
@@ -58,3 +75,8 @@ BERT预训练模型中`max_position_embeddings`参数。为`false`时，输入�
 2. `encoder`： 中间层，可选 `MultiAttn`（等价于BERT里面的`Multi-Head Attention`） 或者 `BiLSTM`
 3. `decoder`：输出层，可选`SoftmaxDecoder`或者`CRFDecoder`
 
+# 图谱示例：
+下图为某个聚类的领域-技术实体，该聚类主要和“信息”“语言”相关，选择了top10领域实体（红色）展现，蓝色为相关技术实体:
+![img1](imgs/img2.png)
+`Information Retrieval`领域详情：
+![img1](imgs/img3.png)

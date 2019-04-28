@@ -348,7 +348,7 @@ def train():
     global_step = math.ceil(
         len(train_features) / config['train']['batch_size'] / config['train'][
             'gradient_accumulation_steps'] * start_epoch)
-    logger.info("Global step: %d"%global_step)
+    logger.info(" Global step: %d"%global_step)
 
     logger.info("***** Running training*****")
     if config['task']['ssl']:
