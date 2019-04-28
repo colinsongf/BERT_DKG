@@ -29,11 +29,11 @@ task:
   # The type of embedding layer, BertEmbed / RandomEmbed
   embedder: BertEmbed
   # The type of middle layer, MultiAttn / BiLSTM / None
-  encoder: None
+  encoder: MultiAttn
   # The number of encoders
   layer_num: 1
   # Output layer, must in: SoftmaxDecoder / CRFDecoder
-  decoder: SoftmaxDecoder
+  decoder: CRFDecoder
   # We break the word into tokens, assume the labels are 'S-PER X X X', if 'cal_X_loss' is true,
   # then the last three tokens' loss will be added to the total loss when training.
   cal_X_loss: False

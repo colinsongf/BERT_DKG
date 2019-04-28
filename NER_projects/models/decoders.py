@@ -75,15 +75,15 @@ class CRFDecoder(nn.Module):
         logits = self.crf.pad_logits(logits)
         if not self.cal_X_loss:
             predict_mask, labels, logits = valid_first(predict_mask, labels, logits)
-        lens = predict_mask.sum(-1)
+        # lens = predict_mask.sum(-1)
         if labels is None:
-            scores, preds = self.crf.viterbi_decode(logits, lens)
+            scores, preds = self.crf.viterbi_decode(logits, predict_mask)
             return preds, p
-        return self.score(logits, lens, labels)
+        return self.score(logits, predict_mask, labels)
 
-    def score(self, logits, lens, labels):
-        norm_score = self.crf.calc_norm_score(logits, lens)
-        gold_score = self.crf.calc_gold_score(logits, labels, lens)
+    def score(self, logits, predict_mask, labels):
+        norm_score = self.crf.calc_norm_score(logits, predict_mask)
+        gold_score = self.crf.calc_gold_score(logits, labels, predict_mask)
         loglik = gold_score - norm_score
         return -loglik.mean()
 
