@@ -31,7 +31,7 @@ MD2vec模型如下图所示：
 - conll2003: conll 2003数据集
     - full: 未经拆分的全量数据
         - BIO: BIO标注格式，其中`tiny.txt`是用于调试的数据集
-        - BIOES: BIOES标注格式，通过[`bio2bioes.py`](util/bio2bioes.py)文件转换而来
+        - BIOES: BIOES标注格式，通过[`bio2bioes.py`](NER_projects/util/bio2bioes.py)文件转换而来
             
         |文件名|文档数|句子数|词数|
         |----|-----|----|----|
