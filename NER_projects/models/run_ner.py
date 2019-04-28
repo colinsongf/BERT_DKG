@@ -29,6 +29,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class NERModel(nn.Module):
     def __init__(self, config_path_or_type,
                  num_labels, layer_num, embedder, encoder, decoder,
@@ -49,7 +50,6 @@ class NERModel(nn.Module):
             self.encoder = None
         self.decoder = eval(decoder).create(num_labels, self.hidden_size, self.dropout_rate, cal_X_loss)
 
-
     def forward(self, input_ids, segment_ids, input_mask, predict_mask, label_ids=None):
         ''' return mean loss of words or preds'''
         if not config['task']['doc_level']:
@@ -60,10 +60,12 @@ class NERModel(nn.Module):
             output = self.encoder(output, input_mask)  # (batch_size, max_seq_len, hidden_size)
         return self.decoder(output, predict_mask, label_ids)
 
+
 class InputExample(object):
     '''
      An 'InputExample' represents a document.
     '''
+
     def __init__(self, guid, words, labels):
         self.guid = guid
         self.words = words
@@ -84,6 +86,7 @@ class InputFeatures(object):
         self.ex_id = ex_id  # the id of the source InputExample
         self.start_ix = start_ix  # the start index in the source InputExample.
 
+
 def memory_usage_psutil():
     # return the memory usage( xx MB)
     import psutil, os
@@ -101,16 +104,18 @@ class NERProcessor():
     @staticmethod
     def get_labels():
         if config['task']['data_type'] == "ai":
-            return ['O',
-                    'B-FIELD', 'I-FIELD', 'E-FIELD', 'S-FIELD',
-                    'B-TEC', 'I-TEC', 'E-TEC', 'S-TEC',
-                    'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
+            l = ['O',
+                 'B-FIELD', 'I-FIELD', 'E-FIELD', 'S-FIELD',
+                 'B-TEC', 'I-TEC', 'E-TEC', 'S-TEC',
+                 'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
+            return l + ['X'] if config['task']['cal_X_loss'] else l
         else:
-            return ['O',
-                    'B-PER', 'I-PER', 'E-PER', 'S-PER',
-                    'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
-                    'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
-                    'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
+            l = ['O',
+                 'B-PER', 'I-PER', 'E-PER', 'S-PER',
+                 'B-ORG', 'I-ORG', 'E-ORG', 'S-ORG',
+                 'B-LOC', 'I-LOC', 'E-LOC', 'S-LOC',
+                 'B-MISC', 'I-MISC', 'E-MISC', 'S-MISC']
+            return l + ['X'] if config['task']['cal_X_loss'] else l
 
     @staticmethod
     def create_examples_from_conll_format_file(data_file, set_type):
@@ -125,28 +130,28 @@ class NERProcessor():
         for index, line in enumerate(codecs.open(data_file, encoding='utf-8')):
             segs = line.split()
             if not line.strip():
-                if words and words[-1]!='[SEP]':
+                if words and words[-1] != '[SEP]':
                     words.append("[SEP]")
                     labels.append("")
                 continue
-            if segs[0]=='-DOCSTART-' and words != []:
+            if segs[0] == '-DOCSTART-' and words != []:
                 guid = "%s-%d" % (set_type, start)
-                max_len = max(max_len, len(words)-1)
+                max_len = max(max_len, len(words) - 1)
                 examples.append(InputExample(guid=guid, words=words[:-1], labels=labels[:-1]))
                 words = []
                 labels = []
                 start = -1
-            elif segs[0]=='-DOCSTART-':
+            elif segs[0] == '-DOCSTART-':
                 continue
             else:
                 words.append(segs[0])
-                labels.append(segs[-1] if len(segs)>1 else "")
+                labels.append(segs[-1] if len(segs) > 1 else "")
                 if start == -1:
                     start = index
         guid = "%s-%d" % (set_type, start)
         examples.append(InputExample(guid=guid, words=words[:-1], labels=labels[:-1]))
         max_len = max(max_len, len(words) - 1)
-        logger.info("%s max_doc_len = %d"%(set_type, max_len))
+        logger.info("%s max_doc_len = %d" % (set_type, max_len))
         return examples
 
 
@@ -162,14 +167,14 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
         tokenize_count = [[]]
         tokens = [[]]
         segment_ids = [[]]  # 每个token对应的句子id（相对于doc而言）
-        sent_index = [0] # doc里面每个句子起始的index
+        sent_index = [0]  # doc里面每个句子起始的index
         predict_mask = [[]]
         label_ids = [[]]
-        sent_id = 0 # 当前的句子id
+        sent_id = 0  # 当前的句子id
         for i, w in enumerate(example.words):
             if w == '[SEP]':  # 遇到SEP表示一个句子结束，这里不将[SEP]加到feature中
                 sent_id += 1
-                sent_index.append(i+1)
+                sent_index.append(i + 1)
                 segment_ids.append([])
                 tokenize_count.append([])
                 tokens.append([])
@@ -197,7 +202,7 @@ def convert_examples_to_features(examples, max_seq_length, tokenizer, label_list
         part_label_ids = []
         part_tokens = []
         start_ix = 0
-        for i,sent in enumerate(segment_ids):
+        for i, sent in enumerate(segment_ids):
             words_num += len(sent)
             if words_num > max_seq_length - 2 or not config['task']['doc_level']:
                 if part_segment_ids:
@@ -278,6 +283,7 @@ def warmup_linear(x, warmup=0.002):
         return x / warmup
     return 1.0 - x
 
+
 def create_tensor_data(features):
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_input_mask = torch.ByteTensor([f.input_mask for f in features])
@@ -348,7 +354,7 @@ def train():
     global_step = math.ceil(
         len(train_features) / config['train']['batch_size'] / config['train'][
             'gradient_accumulation_steps'] * start_epoch)
-    logger.info(" Global step: %d"%global_step)
+    logger.info(" Global step: %d" % global_step)
 
     logger.info("***** Running training*****")
     if config['task']['ssl']:
@@ -372,7 +378,7 @@ def train():
                 unlabeled_loss = -((probs.log() * probs).sum(-1) * predict_mask.float()).mean()
                 loss = weight * unlabeled_loss + loss
 
-                #print("unlabeled loss: %.3f; \nlabeled loss: %.3f; " % (unlabeled_loss.item(), loss.item()))
+                # print("unlabeled loss: %.3f; \nlabeled loss: %.3f; " % (unlabeled_loss.item(), loss.item()))
 
             if config['n_gpu'] > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu.
@@ -415,6 +421,7 @@ def train():
 
     draw(train_loss_list, dev_loss_list, config['train']['epochs'])
 
+
 def evaluate(dataset, train_steps=None):
     examples = processor.get_examples(data_dir, dataset)
     examples_dict = {e.guid: e for e in examples}
@@ -440,7 +447,7 @@ def evaluate(dataset, train_steps=None):
         input_ids, input_mask, segment_ids, predict_mask, label_ids = batch
         with torch.no_grad():
             tmp_loss = model(input_ids, segment_ids, input_mask, predict_mask, label_ids)
-            outputs,_ = model(input_ids, segment_ids, input_mask, predict_mask)
+            outputs, _ = model(input_ids, segment_ids, input_mask, predict_mask)
         if not config['task']['cal_X_loss']:
             reshaped_predict_mask, _, _ = valid_first(predict_mask)
         else:
@@ -481,7 +488,7 @@ def evaluate(dataset, train_steps=None):
         word_idx = feature.start_ix
         mistake = False
         for index, label_id in enumerate(predict_line[:sum(predict_mask)]):
-            if example.words[word_idx]=='[SEP]':
+            if example.words[word_idx] == '[SEP]':
                 word_idx += 1
                 w1_sent.append("\n")
             line = ' '.join([example.words[word_idx], example.labels[word_idx], label_list[label_id]])
@@ -500,7 +507,7 @@ def predict():
     examples = processor.get_examples(data_dir, "predict")
     examples_dict = {e.guid: e for e in examples}
     features, tokenize_info = convert_examples_to_features(examples, max_seq_length,
-                                                                     tokenizer, label_list)
+                                                           tokenizer, label_list)
 
     logger.info("***** Running Evaluation on prediction set*****")
     logger.info("  Num examples = %d", len(examples))
@@ -510,7 +517,7 @@ def predict():
     data = create_tensor_data(features)
     sampler = SequentialSampler(data)
     dataloader = DataLoader(data, sampler=sampler,
-                                 batch_size=config['predict']['batch_size'])
+                            batch_size=config['predict']['batch_size'])
     model.eval()
     predictions = []
     predict_masks = []
@@ -584,7 +591,7 @@ def predict():
     writer2.close()
 
 
-def draw(train, dev,end):
+def draw(train, dev, end):
     import matplotlib.pyplot as plt
     plt.switch_backend('agg')
     x = range(1, end + 1)
@@ -660,7 +667,7 @@ if __name__ == "__main__":
             lower_case = checkpoint['lower_case']
             model = NERModel(config['task']['bert_model_dir'], len(label_list), config['task']['layer_num'],
                              config['task']['embedder'], config['task']['encoder'], config['task']['decoder'],
-                             config['task']['cal_X_loss'],checkpoint['model_state'])
+                             config['task']['cal_X_loss'], checkpoint['model_state'])
             train_loss_list = checkpoint['train_loss_list']
             dev_loss_list = checkpoint['dev_loss_list']
         else:
