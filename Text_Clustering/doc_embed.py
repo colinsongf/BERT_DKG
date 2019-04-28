@@ -147,7 +147,4 @@ class Args(object):
         self.all_mask = True  # 调试模式下，每个mask比例都会跑一遍
         self.weighted = False  # 是否采用实体词信息计算 weighted loss
         self.weight = 1.  # 如果采用weighted loss，设定的实体词权重
-        if self.weighted:  # 设定输出目录
-            self.output_dir = "./output_bert_model_weighted_loss"
-        else:
-            self.output_dir = "./output_bert_model"
+        self.output_dir = "./output_dir"

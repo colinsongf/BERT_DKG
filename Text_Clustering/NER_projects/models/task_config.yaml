@@ -25,7 +25,7 @@ task:
   # If true, the input sequence consists of as more sentences as possible;
   # If false, the input sequence consists of only one sentence.
   # Both options satisfy that the total sequence length still smaller then 'max_seq_length'.
-  doc_level: true
+  doc_level: false
   # The type of embedding layer, BertEmbed / RandomEmbed
   embedder: BertEmbed
   # The type of middle layer, MultiAttn / BiLSTM / None
@@ -42,10 +42,8 @@ train:
   do: true
   # Total batch size for training
   batch_size: 32
-  # The initial learning rate for Adam in BERT layers (Encoder layers)
+  # The initial learning rate for Adam
   learning_rate: !!float 5e-5
-  # The initial learning rate for Adam in Decoder layers
-  output_lr: !!float 5e-3
   # Total number of training epochs to perform
   epochs: 10
   # Proportion of training to perform linear learning rate warmup for

@@ -311,7 +311,7 @@ def train():
                                                                                                tokenizer, label_list)
 
     num_train_steps = math.ceil(
-        len(train_examples) / config['train']['batch_size'] / config['train']['gradient_accumulation_steps']) * \
+        len(train_features) / config['train']['batch_size'] / config['train']['gradient_accumulation_steps']) * \
                       config['train']['epochs']
     # Prepare optimizer
     param_optimizer = list(model.named_parameters())
@@ -324,13 +324,14 @@ def train():
     optimizer = BertAdam(optimizer_grouped_parameters, lr=config['train']['learning_rate'],
                          warmup=config['train']['warmup_proportion'], t_total=num_train_steps)
 
-    with codecs.open(os.path.join(config['task']['output_dir'], "train.tokenize_info"), 'w',
-                     encoding='utf-8') as f:
-        for item in train_tokenize_info:
-            f.write(' '.join([str(num) for num in item]) + '\n')
+    # with codecs.open(os.path.join(config['task']['output_dir'], "train.tokenize_info"), 'w',
+    #                  encoding='utf-8') as f:
+    #     for item in train_tokenize_info:
+    #         f.write(' '.join([str(num) for num in item]) + '\n')
 
     logger.info("***** Running training *****")
     logger.info("  Num examples = %d", len(train_examples))
+    logger.info("  Num features = %d", len(train_features))
     logger.info("  Batch size = %d", config['train']['batch_size'])
     logger.info("  Num steps = %d", num_train_steps)
 
@@ -344,9 +345,10 @@ def train():
         unlabeled_data_loader = DataLoader(unlabeled_train_data, sampler=unlabeled_train_sampler,
                                            batch_size=config['train']['batch_size'])
 
-    global_step = int(
-        len(train_examples) / config['train']['batch_size'] / config['train'][
+    global_step = math.ceil(
+        len(train_features) / config['train']['batch_size'] / config['train'][
             'gradient_accumulation_steps'] * start_epoch)
+    logger.info("Global step: %d"%global_step)
 
     logger.info("***** Running training*****")
     if config['task']['ssl']:

@@ -32,7 +32,7 @@
         |tiny|2|30|658|
         |tiny_unlabeled|20|235|3446|
             
-- ai: 8488篇AI领域论文的摘要信息
+- ai: 8488篇来自[Semantic Scholar](https://www.semanticscholar.org/)中`Computer Science`领域论文的摘要信息。
     - semi:
         - BIOES:
         

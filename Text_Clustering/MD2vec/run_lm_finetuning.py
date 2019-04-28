@@ -488,7 +488,7 @@ if __name__ == "__main__":
                         # required=True
                         )
     parser.add_argument("--output_dir",
-                        default=r"./output_dir",
+                        default=r"../output_dir",
                         type=str,
                         # required=True,
                         help="The output directory where the model checkpoints will be written.")
