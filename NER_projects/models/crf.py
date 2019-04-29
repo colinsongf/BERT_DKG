@@ -13,8 +13,8 @@ class CRF(nn.Module):
         self.initialize()
 
     def initialize(self):
-        self.transition.data[:, self.end] = -100.0
-        self.transition.data[self.start, :] = -100.0
+        self.transition.data[:, self.end] = -1000.0
+        self.transition.data[self.start, :] = -1000.0
 
     def pad_logits(self, logits):
         batch_size, seq_len, label_num = logits.size()

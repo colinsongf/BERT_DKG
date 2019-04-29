@@ -17,7 +17,7 @@ task:
   data_type: conll2003
   # Use tiny dataset when set true
   debug: false
-  # Whether use Entropy Minimization Regularization, must given `train_unlabeled.txt` when set true.
+  # Whether to use Entropy Minimization Regularization, must given `train_unlabeled.txt` when set true.
   ssl: false
   # Whether use the BIOES format
   BIOES: true
