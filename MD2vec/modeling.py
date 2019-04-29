@@ -268,14 +268,18 @@ class BertEmbeddings(nn.Module):
         words_embeddings = self.word_embeddings(input_ids)
         position_embeddings = self.position_embeddings(position_ids)
         doc_embeddings = self.doc_embeddings(token_type_ids)
+
         # 1.
-        embeddings = words_embeddings + doc_embeddings/lengths.unsqueeze(-1).unsqueeze(-1) + position_embeddings
+        embeddings = doc_embeddings + words_embeddings + position_embeddings
 
         # 2.
+        # embeddings = words_embeddings + doc_embeddings/lengths.unsqueeze(-1).unsqueeze(-1) + position_embeddings
+
+        # 3.
         # embeddings = words_embeddings[input_mask.byte()].sum(-2) + doc_embeddings[:, 0]
         # embeddings = embeddings.unsqueeze(1).expand(batch_size, seq_length, self.hidden_size)
 
-        # 3.
+        # 4.
         # embeddings = words_embeddings + position_embeddings
         # embeddings = torch.cat([doc_embeddings[:, 0].unsqueeze(1), embeddings], dim=1)
 
