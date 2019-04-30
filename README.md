@@ -99,3 +99,5 @@ python run_text_cluster.py
 
 - https://github.com/huggingface/pytorch-pretrained-BERT
 - https://github.com/sberbank-ai/ner-bert
+- [BERT paper](https://arxiv.org/pdf/1810.04805.pdf?fbclid=IwAR3FQiWQzP7stmPWZ4kzrGmiUaN81UpiNeq4GWthrxmwgX0B9f1CvuXJC2E)
+- [doc2vec parper](http://www.jmlr.org/proceedings/papers/v32/le14.pdf)
